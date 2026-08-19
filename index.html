@@ -127,6 +127,11 @@
 .jk-card.net.zero{background:#ddf0e9;border-color:#9fd3c1}
 .jk-card.net.zero .v{color:#1e7a62}
 @media(max-width:640px){.jk-zero-b button{flex:1;min-width:100%}.jk-co-a button{width:100%}.jk-co-a span{min-width:100%}}
+/* --- age split button / subsidy cap row --- */
+.jk-add.age{background:#eef4fa;border-color:#3a6ea5;color:#2c5580}
+.jk-add.age:hover{background:#dde8f4}
+.jk-bd tr.cut td{background:#fbeeec;color:#a33f36;font-weight:700}
+.jk-tag.age{background:#8a6a22}
 
 /* ===== 会社案内・採用パンフレット ギャラリー ===== */
 .pm-row{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x proximity}
@@ -363,7 +368,7 @@
 
 <div class="panel" id="jk-sim">
   <h3>💰 研修助成金シミュレーション(人材開発支援助成金)</h3>
-  <p style="font-size:13px;line-height:1.9;color:#4a554f">AI研修・DX研修は、厚生労働省の<b>人材開発支援助成金</b>の対象になり得ます。制度上は「事業展開等リスキリング支援コース」でDX化に向けた訓練が対象とされており、条件を満たせば<b>研修経費の最大75%(中小企業)と、受講中の賃金(1時間あたり1,000円)</b>が助成されます。ここで人数・時間・費用を入れると、想定助成額と実質負担がその場で出ます。<b>会社情報(主たる事業・従業員数)から中小企業／大企業を自動で判定</b>し、<b>実質負担が±0円になる研修費用・研修時間を逆算</b>することもできます。<b>対象者や訓練内容が違えば複数コースを同時に活用できる</b>ため、2つのコースを組み合わせた合計額でも試算できます。<span class="sm-src">令和8年度制度／出典:厚生労働省 人材開発支援助成金</span></p>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f">AI研修・DX研修は、厚生労働省の<b>人材開発支援助成金</b>の対象になり得ます。制度上は「事業展開等リスキリング支援コース」でDX化に向けた訓練が対象とされており、条件を満たせば<b>研修経費の最大75%(中小企業)と、受講中の賃金(1時間あたり1,000円)</b>が助成されます。ここで人数・時間・費用を入れると、想定助成額と実質負担がその場で出ます。<b>会社情報(主たる事業・従業員数)から中小企業／大企業を自動で判定</b>し、<b>実質負担が±0円になる研修費用・研修時間を逆算</b>することもできます。<b>対象者や訓練内容が違えば複数コースを同時に活用できる</b>ため、2つのコースを組み合わせた合計額でも試算できます。<span class="sm-src">令和8年8月3日版／出典:厚生労働省 人材開発支援助成金(人材育成支援コース・事業展開等リスキリング支援コース・人への投資促進コース 各パンフレット)</span></p>
 
   <div class="jk-wrap">
     <div class="jk-head">
@@ -405,7 +410,7 @@
 
       <div class="jk-plan" id="jk-plan-a">
         <div class="jk-plan-h">
-          <span class="jk-tag">コースA</span>
+          <span class="jk-tag" id="jk-tag-a">コースA</span>
           <span class="jk-plan-name" id="jk-nm-a">—</span>
         </div>
         <div class="jk-grid">
@@ -415,7 +420,7 @@
           </div>
         </div>
         <div class="jk-grid" style="margin-top:12px">
-          <div class="jk-f"><label>受講人数 <span class="u">名</span></label><input type="number" id="jk-n-a" min="1" step="1" value="20"></div>
+          <div class="jk-f"><label id="jk-nl-a">受講人数 <span class="u">名</span></label><input type="number" id="jk-n-a" min="1" step="1" value="20"></div>
           <div class="jk-f"><label>研修時間 <span class="u">1名あたり h</span></label><input type="number" id="jk-h-a" min="0" step="1" value="28"></div>
           <div class="jk-f"><label>1名あたりの研修費用 <span class="u">税込 円</span></label><input type="number" id="jk-cost-a" min="0" step="1000" value="220000"></div>
         </div>
@@ -429,12 +434,13 @@
 
       <div class="jk-addwrap" id="jk-addwrap">
         <button type="button" class="jk-add" id="jk-add">＋ 2本目のコースを追加して組み合わせる</button>
-        <span>対象者(正社員／有期社員／45歳以上など)や訓練内容が違えば、2つのコースを同時に活用できます。</span>
+        <button type="button" class="jk-add age" id="jk-age">👥 45歳以上とそれ以外に分けて入力する</button>
+        <span>対象者(正社員／有期社員／45歳以上など)や訓練内容が違えば、2つのコースを同時に活用できます。年齢で分けると、同じ研修の受講者を「45歳以上」「45歳未満」の人数だけで入れ分けられます(コースはそれぞれ変更できます)。</span>
       </div>
 
       <div class="jk-plan b" id="jk-plan-b" style="display:none">
         <div class="jk-plan-h">
-          <span class="jk-tag b">コースB</span>
+          <span class="jk-tag b" id="jk-tag-b">コースB</span>
           <span class="jk-plan-name" id="jk-nm-b">—</span>
           <button type="button" class="jk-del" id="jk-del">× 2本目を外す</button>
         </div>
@@ -446,7 +452,7 @@
         </div>
         <label class="jk-sync"><input type="checkbox" id="jk-sync" checked><b>研修時間・研修費用をコースAと同じにする</b><span>同じ研修を、45歳以上とそれ以外など「対象者」で分けて申請する場合に使います(人数だけ入れ分けます)</span></label>
         <div class="jk-grid" style="margin-top:12px">
-          <div class="jk-f"><label>受講人数 <span class="u">名</span></label><input type="number" id="jk-n-b" min="1" step="1" value="5"></div>
+          <div class="jk-f"><label id="jk-nl-b">受講人数 <span class="u">名</span></label><input type="number" id="jk-n-b" min="1" step="1" value="5"></div>
           <div class="jk-f"><label>研修時間 <span class="u">1名あたり h</span></label><input type="number" id="jk-h-b" min="0" step="1" value="16"></div>
           <div class="jk-f"><label>1名あたりの研修費用 <span class="u">税込 円</span></label><input type="number" id="jk-cost-b" min="0" step="1000" value="120000"></div>
         </div>
@@ -458,7 +464,7 @@
         <div class="jk-plan-sum" id="jk-sum-b">—</div>
       </div>
 
-      <div style="font-size:11px;color:#8a938e;margin-top:10px;line-height:1.8">緑のセルが入力欄です。下段3つはコースと企業区分から自動で入りますが、個別の認定条件に合わせて上書きもできます。<label style="margin-left:10px;font-size:11px;color:#4a554f"><input type="checkbox" id="jk-cap" checked style="width:13px;height:13px;padding:0;vertical-align:-1px;margin-right:4px;accent-color:#2f9e82">経費助成の1名あたり上限を適用する</label></div>
+      <div style="font-size:11px;color:#8a938e;margin-top:10px;line-height:1.8">緑のセルが入力欄です。下段3つはコースと企業区分から自動で入りますが、個別の認定条件に合わせて上書きもできます。<label style="margin-left:10px;font-size:11px;color:#4a554f"><input type="checkbox" id="jk-cap" checked style="width:13px;height:13px;padding:0;vertical-align:-1px;margin-right:4px;accent-color:#2f9e82">助成額の上限(1名あたりの経費助成・1事業所の年間限度額)を適用する</label></div>
 
       <div class="jk-sec">
         <h4>■ 試算結果<span id="jk-sumlabel" class="jk-sumlabel"></span></h4>
@@ -520,7 +526,7 @@
         <h4>■ 主なコース一覧(令和8年度)</h4>
         <div style="overflow-x:auto">
         <table class="jk-courses" id="jk-course-tbl">
-          <thead><tr><th style="min-width:210px">訓練コース</th><th style="min-width:130px">対象</th><th class="r">賃金助成</th><th class="r">経費助成</th><th class="r">OJT助成</th></tr></thead>
+          <thead><tr><th style="min-width:210px">訓練コース</th><th style="min-width:130px">対象</th><th class="r">賃金助成</th><th class="r">経費助成</th><th class="r">OJT助成</th><th class="r" style="min-width:120px">1名あたり経費上限</th></tr></thead>
           <tbody></tbody>
         </table>
         </div>
@@ -530,8 +536,10 @@
       <div class="jk-sec">
         <h4>■ ご注意事項</h4>
         <div class="jk-small">
-          <li>入力する「研修時間」は<b>OFF-JT(座学・演習)の時間</b>です。最低時間は、人材育成支援コース・リスキリング支援コースが<b>10時間以上</b>、有期実習型・中高年齢者実習型が<b>15時間以上</b>(OJTを含めた総訓練時間で2か月・142時間以上)、大臣認定の認定実習併用職業訓練が<b>外部研修85時間以上</b>(OJTを含めた総訓練時間で6か月・425時間以上)です。</li>
-          <li>研修時間が100時間未満の場合、<b>経費助成には1名あたりの上限</b>があります(リスキリング支援コース:中小30万円・大企業20万円/人材育成訓練・中高年齢者・大臣認定:中小15万円・大企業10万円)。上限はコースごと・受講者ごとに判定されます。</li>
+          <li>入力する「研修時間」は<b>OFF-JT(座学・演習)の時間</b>です。最低時間は、人材育成支援コース・リスキリング支援コースが<b>10時間以上</b>、有期実習型・中高年齢者実習型が<b>15時間以上</b>(OJTを含めた総訓練時間で2か月・142時間以上)、大臣認定の認定実習併用職業訓練が<b>外部研修85時間以上</b>(OJTを含めた総訓練時間で6か月・425時間以上)です。<b>この下限を下回る時間は入力できません</b>(下回った場合は自動で最低時間に補正します)。</li>
+          <li><b>経費助成には1名あたりの上限</b>があり、実訓練時間に応じて3区分になります。事業展開等リスキリング支援コースは<b>10〜100時間未満 30万円／100〜200時間未満 40万円／200時間以上 50万円</b>(大企業は20/25/30万円)、人材育成支援コース(人材育成訓練・有期実習型・中高年齢者実習型・大臣認定)は<b>15万円／30万円／50万円</b>(大企業は10/20/30万円)です。定額制訓練は<b>受講者1人1月あたり2万円</b>のため、契約月数によって上限が変わります。</li>
+          <li><b>1事業所が1年度に受給できる助成額にも上限</b>があります。人材育成支援コース(①〜⑤)は<b>1,000万円</b>、定額制訓練を含む人への投資促進コースは<b>2,500万円</b>、事業展開等リスキリング支援コースは<b>1億円</b>です(いずれも支給申請日を基準に4月1日〜翌年3月31日)。<b>同じコース群の助成額は合算して判定</b>されるため、2コースを組み合わせる場合はご注意ください。</li>
+          <li>助成対象となる<b>訓練の受講回数は1労働者につき1年度3回まで</b>です(令和8年8月3日以降の計画届によるeラーニングは1年度1回まで、有期実習型訓練は同一労働者に1回まで)。また、賃金助成の対象となる実訓練時間は<b>1人1訓練あたり1,200時間</b>が上限です。</li>
           <li><b>2つのコースを組み合わせる場合</b>、計画届・支給申請は<b>コースごとに別々</b>に行います。同一の受講者・同一の訓練に対して、複数コースから重複して助成を受けることはできません。組み合わせの可否は必ず社会保険労務士・労働局にご確認ください。</li>
           <li>研修カリキュラムは、受講者の職務にとって専門知識・技能の習得であることが必要です。</li>
           <li>計画届と異なるカリキュラム(日程・時間・場所・講師・経費額等)を実施した場合、その対象部分は助成金対象外となります。</li>
@@ -658,18 +666,31 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
   
 
 <script>
-/* 助成金シミュレーター(人材開発支援助成金 / 令和8年度) — 2コース組み合わせ + 会社情報から自動判定 + 実質±0円の自動逆算 */
+/* 助成金シミュレーター(人材開発支援助成金 / 令和8年8月3日版)
+   2コース組み合わせ + 会社情報から企業区分を自動判定 + 実質±0円の自動逆算
+   + 最低OFF-JT時間の強制 + 経費助成の時間3区分 + 1事業所1年度の支給限度額 + 45歳以上/未満の入れ分け */
 (function(){
+  /* cap = [中小[10h〜100h未満, 100h〜200h未満, 200h以上], 大企業[同]] … 1人1訓練あたりの経費助成限度額 */
+  var CAP_IKUSEI  = [[150000,300000,500000],[100000,200000,300000]];  /* 人材育成支援コース */
+  var CAP_RESKILL = [[300000,400000,500000],[200000,250000,300000]];  /* 事業展開等リスキリング支援コース */
   var COURSES = [
-    {k:'jinzai',   n:'①人材育成支援コース(正社員)',                 t:'正社員',                     w:[800,400],  r:[45,30], o:[0,0],           minh:10,  cap:[150000,100000]},
-    {k:'jakunen',  n:'②若年人材育成訓練(有期社員)',                 t:'有期社員(15〜45歳)',         w:[800,400],  r:[70,70], o:[0,0],           minh:10,  cap:[150000,100000]},
-    {k:'nintei',   n:'②認定実習併用職業訓練(大臣認定)',             t:'有期社員(15〜45歳)',         w:[800,400],  r:[45,30], o:[200000,110000], minh:85, cap:[150000,100000]},
-    {k:'yuki',     n:'③有期実習型訓練',                             t:'有期社員(正社員化予定)',     w:[800,400],  r:[75,75], o:[100000,90000],  minh:15, cap:[150000,100000]},
-    {k:'chukonen', n:'④中高年齢者実習型訓練',                       t:'45歳以上',                   w:[800,400],  r:[60,45], o:[100000,90000],  minh:15, cap:[150000,100000]},
-    {k:'itnintei', n:'⑤情報技術分野認定実習併用職業訓練(大臣認定)', t:'IT未経験の新人(15〜45歳未満)', w:[800,400], r:[60,45], o:[200000,110000], minh:85, cap:[150000,100000]},
-    {k:'teigaku',  n:'⑥定額制訓練(eラーニング・サブスク)',          t:'雇用保険加入者',             w:[0,0],      r:[60,45], o:[0,0],           minh:0,   cap:null},
-    {k:'reskill',  n:'⑦事業展開等リスキリング支援コース(DX・GX・新規事業)', t:'雇用保険加入者',      w:[1000,500], r:[75,60], o:[0,0],           minh:10,  cap:[300000,200000]}
+    {k:'jinzai',   n:'①人材育成支援コース(正社員)',                 t:'正社員',                     w:[800,400],  r:[45,30], o:[0,0],           minh:10, cap:CAP_IKUSEI,  grp:'ikusei'},
+    {k:'jakunen',  n:'②若年人材育成訓練(有期社員)',                 t:'有期社員(15〜45歳)',         w:[800,400],  r:[70,70], o:[0,0],           minh:10, cap:CAP_IKUSEI,  grp:'ikusei'},
+    {k:'nintei',   n:'②認定実習併用職業訓練(大臣認定)',             t:'有期社員(15〜45歳)',         w:[800,400],  r:[45,30], o:[200000,110000], minh:85, cap:CAP_IKUSEI,  grp:'ikusei'},
+    {k:'yuki',     n:'③有期実習型訓練',                             t:'有期社員(正社員化予定)',     w:[800,400],  r:[75,75], o:[100000,90000],  minh:15, cap:CAP_IKUSEI,  grp:'ikusei'},
+    {k:'chukonen', n:'④中高年齢者実習型訓練',                       t:'45歳以上',                   w:[800,400],  r:[60,45], o:[100000,90000],  minh:15, cap:CAP_IKUSEI,  grp:'ikusei'},
+    {k:'itnintei', n:'⑤情報技術分野認定実習併用職業訓練(大臣認定)', t:'IT未経験の新人(15〜45歳未満)', w:[800,400], r:[60,45], o:[200000,110000], minh:85, cap:CAP_IKUSEI,  grp:'ikusei'},
+    {k:'teigaku',  n:'⑥定額制訓練(eラーニング・サブスク)',          t:'雇用保険加入者',             w:[0,0],      r:[60,45], o:[0,0],           minh:0,  cap:null,        grp:'toushi'},
+    {k:'reskill',  n:'⑦事業展開等リスキリング支援コース(DX・GX・新規事業)', t:'雇用保険加入者',      w:[1000,500], r:[75,60], o:[0,0],           minh:10, cap:CAP_RESKILL, grp:'reskill'}
   ];
+  /* 1事業所が1年度に受給できる助成額の上限(コース群ごとに合算して判定) */
+  var GRP = {
+    ikusei:  {n:'人材育成支援コース',             lim:10000000},
+    toushi:  {n:'人への投資促進コース(定額制訓練)', lim:25000000},
+    reskill: {n:'事業展開等リスキリング支援コース', lim:100000000}
+  };
+  var WAGE_H_MAX = 1200;   /* 賃金助成の対象となる実訓練時間の上限(1人1訓練あたり) */
+
   /* 中小企業事業主の範囲(厚生労働省 雇用関係助成金 共通) — capは万円 / A・Bどちらかに該当すれば中小 */
   var IND = [
     {k:'kensetsu', n:'建設業・工務店',                                        g:'製造業その他',         cap:30000, emp:300},
@@ -680,25 +701,31 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     {k:'sonota',   n:'上記以外(運輸業・不動産業 など)',                       g:'製造業その他',         cap:30000, emp:300}
   ];
   var PRESET = {
-    a:{s:0, sync:false, p:[{c:'reskill',  n:20, h:28, cost:220000}]},
-    b:{s:0, sync:false, p:[{c:'chukonen', n:20, h:28, cost:220000}]},
-    c:{s:0, sync:false, p:[{c:'jinzai',   n:5,  h:16, cost:120000}]},
-    d:{s:0, sync:true,  p:[{c:'chukonen', n:5,  h:28, cost:220000}, {c:'jinzai', n:15, h:28, cost:220000}]},
-    e:{s:0, sync:false, p:[{c:'jinzai',   n:5,  h:16, cost:120000}, {c:'reskill', n:20, h:28, cost:220000}]}
+    a:{s:0, sync:false, age:false, p:[{c:'reskill',  n:20, h:28, cost:220000}]},
+    b:{s:0, sync:false, age:false, p:[{c:'chukonen', n:20, h:28, cost:220000}]},
+    c:{s:0, sync:false, age:false, p:[{c:'jinzai',   n:5,  h:16, cost:120000}]},
+    d:{s:0, sync:true,  age:true,  p:[{c:'chukonen', n:5,  h:28, cost:220000}, {c:'jinzai', n:15, h:28, cost:220000}]},
+    e:{s:0, sync:false, age:false, p:[{c:'jinzai',   n:5,  h:16, cost:120000}, {c:'reskill', n:20, h:28, cost:220000}]}
   };
   var DEF = {a:'reskill', b:'jinzai'};
+  var AGEDEF = {a:'reskill', b:'reskill'};   /* 年齢で分けるときの初期コース(年齢制限もOJT要件もない⑦) */
   var LABEL = {a:'コースA', b:'コースB'};
+  var AGE   = {a:'45歳以上', b:'45歳未満'};
   var size = 0;   /* 0=中小企業 1=大企業 */
   var useB = false;
+  var ageMode = false;
   var undoSnap = null;
+  var clampNote = null;
 
   function yen(v){ return Math.round(v).toLocaleString('ja-JP') + '円'; }
   function man(v){ var m = v / 10000; return (Math.abs(m) >= 100 ? Math.round(m) : Math.round(m * 10) / 10).toLocaleString('ja-JP') + '万円'; }
+  function oku(v){ return v >= 1e8 ? (v / 1e8) + '億円' : man(v); }
   function manL(m){ return m >= 10000 ? (m / 10000) + '億円' : m.toLocaleString('ja-JP') + '万円'; }
   function q(id){ return document.getElementById(id); }
   function num(id){ var e = q(id); if(!e) return 0; var v = parseFloat(e.value); return isFinite(v) ? v : 0; }
   function keys(){ return useB ? ['a','b'] : ['a']; }
   function synced(){ var e = q('jk-sync'); return !!(e && e.checked); }
+  function lb(p){ return ageMode ? AGE[p] : LABEL[p]; }
   function cur(p){
     var s = q('jk-course-' + p), k = s ? s.value : DEF[p];
     for(var i = 0; i < COURSES.length; i++){ if(COURSES[i].k === k) return COURSES[i]; }
@@ -709,6 +736,8 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     for(var i = 0; i < IND.length; i++){ if(IND[i].k === k) return IND[i]; }
     return IND[0];
   }
+  function band(h){ return h >= 200 ? 2 : (h >= 100 ? 1 : 0); }
+  function bandName(b){ return ['10時間以上100時間未満', '100時間以上200時間未満', '200時間以上'][b]; }
 
   function buildOnce(root){
     ['a','b'].forEach(function(p){
@@ -734,9 +763,12 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
         tr.appendChild(td(c.w[0] ? c.w[0].toLocaleString('ja-JP') + '円 (' + c.w[1].toLocaleString('ja-JP') + '円)' : '—', 'r'));
         tr.appendChild(td(c.r[0] === c.r[1] ? c.r[0] + '%' : c.r[0] + '% (' + c.r[1] + '%)', 'r'));
         tr.appendChild(td(c.o[0] ? man(c.o[0]) + ' (' + man(c.o[1]) + ')' : '—', 'r'));
+        tr.appendChild(td(c.cap ? c.cap[0].map(function(v){ return man(v).replace('万円', ''); }).join('/') + '万円'
+                                : '1人1月 2万円', 'r'));
         tb.appendChild(tr);
       });
     }
+    paintLabels();
     applyDefaults();
     judge(true);
   }
@@ -768,6 +800,35 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     }
   }
 
+  /* ===== 最低OFF-JT時間(コースごと)の強制 ===== */
+  function minHFor(p){
+    if(useB && synced()) return Math.max(cur('a').minh, cur('b').minh);
+    return cur(p).minh;
+  }
+  function paintMinAttr(){
+    ['a','b'].forEach(function(p){
+      var e = q('jk-h-' + p); if(!e) return;
+      var m = minHFor(p);
+      e.min = m > 0 ? m : 0;
+      e.title = m > 0 ? 'このコースは OFF-JT ' + m + '時間以上が必要です' : '';
+    });
+  }
+  /* 下限を下回っていたら引き上げる。補正したら {from,to,course} を返す */
+  function clampH(p){
+    var e = q('jk-h-' + p); if(!e || e.readOnly) return null;
+    var m = minHFor(p), v = num('jk-h-' + p);
+    if(m > 0 && v < m){
+      e.value = m;
+      return {p:p, from:v, to:m, c:(useB && synced()) ? (cur('a').minh >= cur('b').minh ? cur('a') : cur('b')) : cur(p)};
+    }
+    return null;
+  }
+  function clampAll(){
+    var notes = [];
+    keys().forEach(function(p){ var r = clampH(p); if(r) notes.push(r); });
+    return notes.length ? notes : null;
+  }
+
   /* 「研修時間・費用をコースAと同じにする」— 同じ研修を対象者で分けるケース */
   function applySync(){
     var on = synced();
@@ -782,6 +843,19 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     }
   }
 
+  /* コース名タグ・人数ラベルを「コースA/B」または「45歳以上/45歳未満」に切り替える */
+  function paintLabels(){
+    ['a','b'].forEach(function(p){
+      var t = q('jk-tag-' + p);
+      if(t) t.textContent = lb(p);
+      var l = q('jk-nl-' + p);
+      if(l) l.innerHTML = (ageMode ? lb(p) + 'の人数' : '受講人数') + ' <span class="u">名</span>';
+    });
+    /* 年齢モード中は「＋2本目を追加」の行が隠れるので、解除は2本目の×ボタンが兼ねる */
+    var d = q('jk-del');
+    if(d) d.textContent = ageMode ? '× 年齢で分けるのをやめる' : '× 2本目を外す';
+  }
+
   /* コース・企業区分から自動入力欄を埋める(pを省略すると全プラン) */
   function applyDefaults(p){
     (p ? [p] : ['a','b']).forEach(function(k){
@@ -790,6 +864,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       if(q('jk-rate-' + k)) q('jk-rate-' + k).value = c.r[size];
       if(q('jk-ojt-'  + k)) q('jk-ojt-'  + k).value = c.o[size];
     });
+    applySync();
+    paintMinAttr();
+    clampNote = clampAll();
     applySync();
     calc();
   }
@@ -803,28 +880,52 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     var cost = ov.cost != null ? ov.cost : num('jk-cost-' + p);
     var wage = num('jk-wage-' + p), rate = num('jk-rate-' + p) / 100, ojt = num('jk-ojt-' + p);
     var useCap = q('jk-cap') ? q('jk-cap').checked : true;
-    var wage1 = wage * h, exp1raw = cost * rate;
-    var capV = c.cap ? c.cap[size] : null;
+    var wageH = Math.min(h, WAGE_H_MAX), wageCapped = h > WAGE_H_MAX;
+    var wage1 = wage * wageH, exp1raw = cost * rate;
+    var bd = band(h);
+    var capV = c.cap ? c.cap[size][bd] : null;
     var capped = false, exp1 = exp1raw;
-    if(useCap && capV != null && h < 100 && exp1raw > capV){ exp1 = capV; capped = true; }
+    if(useCap && capV != null && exp1raw > capV){ exp1 = capV; capped = true; }
     var tot1 = wage1 + exp1 + ojt;
     return {p:p, c:c, n:n, h:h, cost:cost, wage:wage, rate:rate, ojt:ojt, useCap:useCap,
-            wage1:wage1, exp1:exp1, exp1raw:exp1raw, capV:capV, capped:capped,
+            wage1:wage1, wageH:wageH, wageCapped:wageCapped, exp1:exp1, exp1raw:exp1raw,
+            capV:capV, capped:capped, band:bd,
             tot1:tot1, total:tot1 * n, costTot:cost * n};
   }
 
-  /* ===== 実質負担を±0円にする自動逆算 ===== */
-  /* 逆算の単位: 「時間・費用が共通」の組み合わせ(同じ研修を対象者で分けるケース)は合計で±0にする */
+  /* 1事業所1年度の支給限度額をコース群ごとに適用した助成額 */
+  function grantOf(rs){
+    var useCap = q('jk-cap') ? q('jk-cap').checked : true;
+    var byG = {}, order = [];
+    rs.forEach(function(r){
+      var g = r.c.grp;
+      if(!byG[g]){ byG[g] = {g:g, n:GRP[g].n, lim:GRP[g].lim, sum:0}; order.push(g); }
+      byG[g].sum += r.total;
+    });
+    var total = 0, groups = [];
+    order.forEach(function(g){
+      var o = byG[g];
+      o.paid = (useCap && o.sum > o.lim) ? o.lim : o.sum;
+      o.over = o.sum > o.lim;
+      o.cut  = o.sum - o.paid;
+      total += o.paid;
+      groups.push(o);
+    });
+    return {total:total, groups:groups};
+  }
+
+  /* ===== 実質±0円の自動逆算 ===== */
   function groups(){
-    if(useB && synced()) return [{ids:['a','b'], drv:'a', lb:'コースA・B（共通の研修）'}];
-    return keys().map(function(p){ return {ids:[p], drv:p, lb:useB ? LABEL[p] : ''}; });
+    if(useB && synced()) return [{ids:['a','b'], drv:'a', lb:ageMode ? '45歳以上・45歳未満（共通の研修）' : 'コースA・B（共通の研修）'}];
+    return keys().map(function(p){ return {ids:[p], drv:p, lb:useB ? lb(p) : ''}; });
   }
   function netOf(ids, ov){
-    var s = 0;
-    ids.forEach(function(p){ var r = calcPlan(p, ov); s += r.costTot - r.total; });
-    return s;
+    var rs = ids.map(function(p){ return calcPlan(p, ov); });
+    var cost = 0;
+    rs.forEach(function(r){ cost += r.costTot; });
+    return cost - grantOf(rs).total;
   }
-  /* net(実質負担)は費用について単調増加・時間について単調減少。経費上限の分岐を含めて二分探索で解く */
+  /* net は費用について単調増加・時間について単調減少。経費上限や事業所限度額の分岐も含めて二分探索で解く */
   function solve(ids, field){
     var lo = 0, hi = (field === 'cost') ? 20000000 : 2000;
     function f(x){ var ov = {}; ov[field] = x; return netOf(ids, ov); }
@@ -876,7 +977,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
         else if(r.err === 'noh' && noWage)
           out.push(zmsg('cap', pf + '<b>このコースは賃金助成がありません。</b>研修時間を増やしても助成額は増えないため、時間では実質0円にできません。研修費用の方を逆算してください。'));
         else
-          out.push(zmsg('cap', pf + '研修時間を2,000時間まで増やしても実質0円に届きません。1名あたりの研修費用が高すぎる可能性があります。'));
+          out.push(zmsg('cap', pf + '研修時間を2,000時間まで増やしても実質0円に届きません。1名あたりの研修費用が高すぎるか、1事業所あたりの年間限度額に達している可能性があります。'));
         return;
       }
       /* 丸め: 実質負担が0以下に収まる範囲で、費用は最大・時間は最小の値を採る(二分探索の丸め誤差もここで吸収する) */
@@ -885,22 +986,30 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       var v = (field === 'cost') ? Math.max(0, Math.floor(r.x / st) * st) : Math.max(0, Math.ceil(r.x));
       if(field === 'cost'){ if(netAt(v + st) <= 0) v += st; }
       else if(v - st >= 0 && netAt(v - st) <= 0){ v -= st; }
+      var note = '';
+      /* 最低OFF-JT時間を下回る解は、要件を満たす最小時間まで引き上げる */
+      if(field === 'h'){
+        var mh = minHFor(g.drv);
+        if(mh > 0 && v < mh){
+          note += '<br>※ このコースは <b>OFF-JT ' + mh + '時間以上</b>が要件のため、' + v + '時間ではなく <b>' + mh + '時間</b>に設定しました（そのぶん賃金助成が増えるので、実質負担はマイナス＝受取超過になります）。';
+          v = mh;
+        } else if(v >= 100){
+          note += '<br>※ 100時間以上のため、経費助成の1名あたり上限が上がります（' + bandName(band(v)) + 'の区分）。';
+        }
+      }
       var e = q((field === 'cost' ? 'jk-cost-' : 'jk-h-') + g.drv);
       if(e) e.value = v;
-      var net = netAt(v), heads = 0, note = '';
+      var net = netAt(v), heads = 0;
       g.ids.forEach(function(p){ heads += num('jk-n-' + p); });
       if(field === 'cost'){
         out.push(zmsg('ok', pf + '1名あたりの研修費用を <span class="jk-zn">' + yen(v) + '</span>（税込）にすると、実質負担は <b>' + netLabel(net) + '</b> になります。入力欄に反映しました。<br>'
-          + 'この金額は<b>受講人数によって変わりません</b>。いまは' + heads + '名ですが、人数を増やしても1名' + yen(v) + 'までなら実質負担は変わりません（研修費用も助成金も人数に比例するためです）。'));
+          + 'この金額は<b>受講人数によって変わりません</b>。いまは' + heads + '名ですが、人数を増やしても1名' + yen(v) + 'までなら実質負担は変わりません（研修費用も助成金も人数に比例するためです）。' + note));
       } else {
-        var minh = 0;
-        g.ids.forEach(function(p){ if(cur(p).minh > minh) minh = cur(p).minh; });
-        if(v >= 100) note = '<br>※ 100時間以上のため、経費助成の1名あたり上限は適用されません。';
-        else if(minh > 0 && v < minh) note = '<br>※ この時間はOFF-JTの最低要件（' + minh + '時間）を下回るため、そのままでは助成の対象になりません。';
         out.push(zmsg('ok', pf + 'いまの研修費用（1名 ' + yen(num('jk-cost-' + g.drv)) + '）のまま実質負担を±0円にするには、<span class="jk-zn">OFF-JT ' + v + '時間</span> が必要です。実質負担は <b>' + netLabel(net) + '</b> になります。入力欄に反映しました。' + note));
       }
     });
     applySync();
+    clampNote = null;
     calc();
     box.innerHTML = out.join('');
   }
@@ -915,6 +1024,8 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     });
     undoSnap = null;
     applySync();
+    clampNote = clampAll();
+    applySync();
     calc();
     box.innerHTML = zmsg('cap', '逆算する前の研修時間・研修費用に戻しました。');
   }
@@ -924,7 +1035,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       return '<tr' + (cls ? ' class="' + cls + '"' : '') + '><td>' + label + '</td><td>' + f +
              '</td><td class="r">' + one + '</td><td class="r">' + all + '</td></tr>';
     }
-    return tr('賃金助成', r.wage ? yen(r.wage) + ' × ' + r.h + 'h' : '対象外(このコースは賃金助成なし)', yen(r.wage1), yen(r.wage1 * r.n)) +
+    return tr('賃金助成', r.wage ? yen(r.wage) + ' × ' + r.wageH + 'h' + (r.wageCapped ? '(上限' + WAGE_H_MAX + 'h)' : '') : '対象外(このコースは賃金助成なし)', yen(r.wage1), yen(r.wage1 * r.n)) +
            tr('経費助成', yen(r.cost) + ' × ' + Math.round(r.rate * 1000) / 10 + '%' + (r.capped ? ' → 上限 ' + man(r.capV) + ' を適用' : ''), yen(r.exp1), yen(r.exp1 * r.n)) +
            tr('OJT一律助成', r.ojt ? yen(r.ojt) + ' × 1名(一律)' : '対象外(このコースはOJT助成なし)', yen(r.ojt), yen(r.ojt * r.n));
   }
@@ -932,8 +1043,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
   function calc(){
     var root = q('jk-sim'); if(!root) return;
     var ks = keys(), rs = ks.map(function(p){ return calcPlan(p); });
-    var total = 0, costTot = 0, headcount = 0;
-    rs.forEach(function(r){ total += r.total; costTot += r.costTot; headcount += r.n; });
+    var g = grantOf(rs);
+    var total = g.total, raw = 0, costTot = 0, headcount = 0;
+    rs.forEach(function(r){ raw += r.total; costTot += r.costTot; headcount += r.n; });
     var net = costTot - total;
     var off = costTot > 0 ? (1 - net / costTot) : 0;
     var sr = num('jk-sr');
@@ -954,14 +1066,14 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
 
     /* 結果カード */
     set('jk-o-total', man(total));
-    set('jk-o-total-s', multi ? yen(total) + '（' + rs.map(function(r){ return LABEL[r.p] + ' ' + yen(r.total); }).join(' ＋ ') + '）'
+    set('jk-o-total-s', multi ? yen(total) + '（' + rs.map(function(r){ return lb(r.p) + ' ' + yen(r.total); }).join(' ＋ ') + '）'
                               : yen(total) + ' / 1名あたり ' + yen(rs[0].tot1));
     set('jk-o-cost', man(costTot));
     set('jk-o-cost-s', multi ? rs.map(function(r){ return yen(r.cost) + ' × ' + r.n + '名'; }).join(' ＋ ') : yen(rs[0].cost) + ' × ' + rs[0].n + '名');
     set('jk-o-net', Math.round(net) === 0 ? '±0円' : (Math.abs(net) < 10000 ? yen(net) : man(net)));
     set('jk-o-off', Math.round(off * 1000) / 10 + '%');
     set('jk-o-net2', yen(costTot + sr - total));
-    set('jk-sumlabel', multi ? '（コースA + コースB の合計 / 受講者 計' + headcount + '名）' : '');
+    set('jk-sumlabel', multi ? '（' + lb('a') + ' + ' + lb('b') + ' の合計 / 受講者 計' + headcount + '名）' : '');
     var nc = root.querySelector('.jk-card.net');
     if(nc) nc.className = 'jk-card net' + (Math.abs(net) < 1000 ? ' zero' : '');
 
@@ -971,32 +1083,46 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       var html = '';
       if(multi){
         rs.forEach(function(r){
-          html += '<tr class="sub"><td colspan="2">' + LABEL[r.p] + '：' + r.c.n +
+          html += '<tr class="sub"><td colspan="2">' + lb(r.p) + '：' + r.c.n +
                   ' <span class="c">' + r.n + '名 × ' + r.h + 'h</span></td>' +
                   '<td class="r">1名あたり</td><td class="r">合計</td></tr>';
           html += rowsFor(r);
-          html += '<tr class="mid"><td>' + LABEL[r.p] + ' 小計</td><td></td><td class="r">' + yen(r.tot1) + '</td><td class="r">' + yen(r.total) + '</td></tr>';
+          html += '<tr class="mid"><td>' + lb(r.p) + ' 小計</td><td></td><td class="r">' + yen(r.tot1) + '</td><td class="r">' + yen(r.total) + '</td></tr>';
         });
-        html += '<tr class="tot"><td>助成金 合計(A+B)</td><td></td><td class="r"></td><td class="r">' + yen(total) + '</td></tr>';
       } else {
         html += rowsFor(rs[0]);
-        html += '<tr class="tot"><td>助成金 合計</td><td></td><td class="r">' + yen(rs[0].tot1) + '</td><td class="r">' + yen(total) + '</td></tr>';
       }
+      g.groups.forEach(function(o){
+        if(o.over) html += '<tr class="cut"><td>1事業所の年間限度額</td><td>' + o.n + ' は1事業所1年度あたり ' + oku(o.lim) + 'が上限' +
+                           '</td><td class="r">—</td><td class="r">− ' + yen(o.cut) + '</td></tr>';
+      });
+      html += '<tr class="tot"><td>助成金 ' + (multi ? '合計(' + lb('a') + '+' + lb('b') + ')' : '合計') + '</td><td></td><td class="r">' +
+              (multi ? '' : yen(rs[0].tot1)) + '</td><td class="r">' + yen(total) + '</td></tr>';
       body.innerHTML = html;
     }
 
     /* メッセージ */
     var msgs = [];
+    if(clampNote){
+      clampNote.forEach(function(cn){
+        msgs.push(['warn', '<b>研修時間を ' + cn.to + '時間 に補正しました。</b>' + cn.c.n + 'は1名あたり <b>OFF-JT ' + cn.to + '時間以上</b>が要件のため、' +
+                   (cn.from > 0 ? cn.from + '時間' : '未入力') + 'では助成の対象になりません' +
+                   ((useB && synced()) ? '（2コースで研修時間をそろえているため、厳しいほうの要件に合わせています）' : '') + '。']);
+      });
+    }
     rs.forEach(function(r){
-      var pf = multi ? '<b>[' + LABEL[r.p] + ']</b> ' : '';
+      var pf = multi ? '<b>[' + lb(r.p) + ']</b> ' : '';
       if(r.n < 1) msgs.push(['warn', pf + '受講人数を1名以上で入力してください。']);
-      if(r.c.minh > 0 && r.h < r.c.minh) msgs.push(['warn', pf + '<b>研修時間が要件を下回っています。</b>' + r.c.n + 'は1名あたり OFF-JT ' + r.c.minh + '時間以上が必要です(現在 ' + r.h + '時間)。このままでは助成の対象になりません。']);
       if(r.c.o[0] > 0) msgs.push(['cap', pf + '<b>' + r.c.n + 'はOJT(職場内訓練)が必須のコースです。</b>OJTを含めた総訓練時間で' + (r.c.minh >= 85 ? '6か月・425時間以上' : '2か月・142時間以上') + 'が必要になるため、座学だけの研修では対象になりません。実施計画は社労士にご確認ください。']);
-      if(r.capped) msgs.push(['cap', pf + '研修時間が100時間未満のため、<b>経費助成は1名あたり' + man(r.capV) + 'が上限</b>です。上限適用前は1名あたり' + yen(r.exp1raw) + 'でした(差額 ' + yen((r.exp1raw - r.exp1) * r.n) + ' は対象外)。']);
-      if(!r.useCap && r.capV != null && r.h < 100 && r.exp1raw > r.capV) msgs.push(['cap', pf + '上限を適用していないため、1名あたりの経費助成が上限(' + man(r.capV) + ')を超えた金額で試算されています。実際の支給は上限までとなります。']);
-      if(r.c.k === 'teigaku') msgs.push(['cap', pf + '定額制訓練(eラーニング)は賃金助成の対象外です。経費助成の上限額は契約形態により異なるため、社労士にご確認ください。']);
+      if(r.capped) msgs.push(['cap', pf + '実訓練時間が' + bandName(r.band) + 'のため、<b>経費助成は1名あたり' + man(r.capV) + 'が上限</b>です。上限適用前は1名あたり' + yen(r.exp1raw) + 'でした(差額 ' + yen((r.exp1raw - r.exp1) * r.n) + ' は対象外)。']);
+      if(!r.useCap && r.capV != null && r.exp1raw > r.capV) msgs.push(['cap', pf + '上限を適用していないため、1名あたりの経費助成が上限(' + man(r.capV) + ')を超えた金額で試算されています。実際の支給は上限までとなります。']);
+      if(r.wageCapped) msgs.push(['cap', pf + '賃金助成の対象となる実訓練時間は<b>1人1訓練あたり' + WAGE_H_MAX + '時間が上限</b>です。超過分は賃金助成の対象外として試算しています。']);
+      if(r.c.k === 'teigaku') msgs.push(['cap', pf + '定額制訓練(eラーニング)は賃金助成の対象外です。経費助成の限度額は<b>受講者1人1月あたり2万円</b>のため、契約月数によって上限が変わります。実額は社労士にご確認ください。']);
     });
-    if(multi && rs[0].c.k === rs[1].c.k) msgs.push(['cap', '<b>A・Bで同じコースを選んでいます。</b>対象者や訓練内容が異なれば別々に申請できますが、同一の受講者・同一の訓練で重複して受給することはできません。']);
+    g.groups.forEach(function(o){
+      if(o.over) msgs.push(['warn', '<b>1事業所あたりの年間限度額を超えています。</b>' + o.n + 'は<b>1事業所が1年度に受給できる助成額が' + oku(o.lim) + '</b>までです。試算上の' + yen(o.sum) + 'に対し、' + yen(o.cut) + 'が上限超過となるため、受給できるのは' + yen(o.paid) + 'までとして計算しています。']);
+    });
+    if(multi && rs[0].c.k === rs[1].c.k) msgs.push(['cap', '<b>' + lb('a') + '・' + lb('b') + 'で同じコースを選んでいます。</b>対象者や訓練内容が異なれば別々に申請できますが、同一の受講者・同一の訓練で重複して受給することはできません。']);
     if(multi) msgs.push(['cap', '<b>2コースを組み合わせた試算です。</b>計画届・支給申請はコースごとに別々に行います。組み合わせの可否は社会保険労務士・労働局にご確認ください。']);
     if(net < 0) msgs.push(['ok', '<b>助成金想定額が研修費用を上回っています。</b>賃金助成・OJT助成を含むため、実質負担はマイナス(受取超過)の試算です。']);
     var box = q('jk-msg');
@@ -1018,6 +1144,23 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     var pb = q('jk-plan-b'), aw = q('jk-addwrap');
     if(pb) pb.style.display = useB ? '' : 'none';
     if(aw) aw.style.display = useB ? 'none' : '';
+    if(!useB && ageMode){ ageMode = false; }
+    paintLabels();
+    applyDefaults();
+  }
+
+  /* 45歳以上 / 45歳未満 に分けて入力するモード */
+  function setAge(on){
+    ageMode = !!on;
+    if(ageMode){
+      if(q('jk-course-a')) q('jk-course-a').value = AGEDEF.a;
+      if(q('jk-course-b')) q('jk-course-b').value = AGEDEF.b;
+      if(q('jk-sync')) q('jk-sync').checked = true;
+      setB(true);
+    } else {
+      setB(false);
+    }
+    paintLabels();
     applyDefaults();
   }
 
@@ -1025,9 +1168,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     var root = q('jk-sim'); if(!root) return;
     var boxes = root.querySelectorAll('[data-jk-chk]'), hit = 0;
     for(var i = 0; i < boxes.length; i++){
-      var lb = boxes[i].closest('label');
-      if(boxes[i].checked){ hit++; if(lb) lb.className = 'on'; }
-      else if(lb) lb.className = '';
+      var lbl = boxes[i].closest('label');
+      if(boxes[i].checked){ hit++; if(lbl) lbl.className = 'on'; }
+      else if(lbl) lbl.className = '';
     }
     var m = q('jk-chk-msg'); if(!m) return;
     if(hit){
@@ -1041,12 +1184,16 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
 
   function route(e){
     if(!e.target.closest || !e.target.closest('#jk-sim')) return;
-    var id = e.target.id;
+    var id = e.target.id, isChange = e.type === 'change';
     if(id === 'jk-ind' || id === 'jk-emp' || id === 'jk-capital'){ judge(true); return; }
     if(id === 'jk-course-a'){ applyDefaults('a'); return; }
     if(id === 'jk-course-b'){ applyDefaults('b'); return; }
-    if(id === 'jk-sync'){ applySync(); calc(); return; }
-    if(id === 'jk-h-a' || id === 'jk-cost-a'){ applySync(); calc(); return; }
+    if(id === 'jk-sync'){ applySync(); paintMinAttr(); clampNote = isChange ? clampAll() : clampNote; applySync(); calc(); return; }
+    if(id === 'jk-h-a' || id === 'jk-h-b'){
+      if(isChange){ clampNote = clampAll(); }
+      applySync(); calc(); return;
+    }
+    if(id === 'jk-cost-a'){ applySync(); calc(); return; }
     if(e.target.hasAttribute && e.target.hasAttribute('data-jk-chk')){ chk(); return; }
     calc();
   }
@@ -1062,8 +1209,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     var t = e.target;
     if(!t.closest || !t.closest('#jk-sim')) return;
 
+    if(t.closest('#jk-age')){ setAge(!ageMode); return; }
     if(t.closest('#jk-add')){ setB(true); return; }
-    if(t.closest('#jk-del')){ setB(false); return; }
+    if(t.closest('#jk-del')){ ageMode = false; setB(false); return; }
 
     if(t.closest('#jk-emp2n')){
       var emp = num('jk-emp');
@@ -1086,6 +1234,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       var p = PRESET[pb.getAttribute('data-jk-preset')];
       if(!p) return;
       size = p.s; paintSize();
+      ageMode = !!p.age;
       if(q('jk-sync')) q('jk-sync').checked = !!p.sync;
       var pk = ['a','b'];
       p.p.forEach(function(v, i){
@@ -1095,7 +1244,12 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
         if(q('jk-h-' + k))    q('jk-h-' + k).value    = v.h;
         if(q('jk-cost-' + k)) q('jk-cost-' + k).value = v.cost;
       });
-      setB(p.p.length > 1);
+      useB = p.p.length > 1;
+      var pb2 = q('jk-plan-b'), aw2 = q('jk-addwrap');
+      if(pb2) pb2.style.display = useB ? '' : 'none';
+      if(aw2) aw2.style.display = useB ? 'none' : '';
+      paintLabels();
+      applyDefaults();
       judge(false);
       if(q('jk-zero-msg')) q('jk-zero-msg').innerHTML = '';
       undoSnap = null;
@@ -1107,7 +1261,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     if(el && !el.getAttribute('data-jk-ready')){
       el.setAttribute('data-jk-ready', '1');
       useB = false;
+      ageMode = false;
       undoSnap = null;
+      clampNote = null;
       var pb2 = el.querySelector('#jk-plan-b'), aw2 = el.querySelector('#jk-addwrap');
       if(pb2) pb2.style.display = 'none';
       if(aw2) aw2.style.display = '';
