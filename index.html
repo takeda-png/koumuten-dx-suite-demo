@@ -133,6 +133,14 @@
 .jk-bd tr.cut td{background:#fbeeec;color:#a33f36;font-weight:700}
 .jk-tag.age{background:#8a6a22}
 
+/* --- sharoushi fee (auto) --- */
+.jk-srbtn{display:block;margin:6px 0 0 auto;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:4px 12px;font-size:10.5px;font-weight:700;color:#5c6b77;cursor:pointer;white-space:nowrap}
+.jk-srbtn:hover{background:#f2fbf7;border-color:#9fd3c1;color:#16302b}
+.jk-srb{display:block;margin-top:3px;font-size:10.5px;color:#8a938e;font-weight:600;line-height:1.7}
+.jk-srb.manual{color:#8a6a22}
+.jk-srin{width:160px;text-align:right;background:#f2fbf7;border:1px solid #9fd3c1}
+@media(max-width:640px){.jk-srin{width:130px}}
+
 /* ===== 会社案内・採用パンフレット ギャラリー ===== */
 .pm-row{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x proximity}
 .pm-row figure{margin:0;flex:0 0 auto;width:430px;scroll-snap-align:start}
@@ -494,15 +502,15 @@
         </div>
 
         <div style="overflow-x:auto">
-        <table class="jk-bd" style="margin-top:12px">
+        <table class="jk-bd" style="margin-top:12px;min-width:320px">
           <thead><tr><th>参考:申請代行(社労士)費用まで含めた場合</th><th class="r" style="width:190px">金額</th></tr></thead>
           <tbody>
-            <tr><td>申請代行(社労士)費用 <span class="u" style="font-size:10.5px;color:#8a938e">…お見積り金額を入力</span></td><td class="r"><input type="number" id="jk-sr" min="0" step="10000" placeholder="0" style="width:160px;text-align:right;background:#f2fbf7;border:1px solid #9fd3c1"></td></tr>
+            <tr><td>申請代行(社労士)費用 <span class="u jk-srb" id="jk-sr-basis">…自動計算</span></td><td class="r"><input type="number" id="jk-sr" class="jk-srin" min="0" step="10000" placeholder="0"><button type="button" class="jk-srbtn" id="jk-sr-reset">目安に戻す</button></td></tr>
             <tr class="tot"><td>研修費用 + 申請代行費用 − 助成金</td><td class="r" id="jk-o-net2">—</td></tr>
           </tbody>
         </table>
         </div>
-        <div style="font-size:11px;color:#8a938e;margin-top:6px;line-height:1.8">申請代行費用は、コース・人数・申請内容によって変わります。お見積り金額を入力すると、総額での実質負担が出ます。2コースを組み合わせる場合は、2件分のお見積り合計を入力してください。</div>
+        <div style="font-size:11px;color:#8a938e;margin-top:6px;line-height:1.8">申請代行費用は、社会保険労務士監修のシミュレーションシートの計算式（<b>通常のコースは初期20万円＋1名あたり1万円／大臣認定の認定実習併用職業訓練は初期25万円＋1名あたり3万円</b>）で自動計算しています。<b>あくまで想定額であり、実際の金額は大きく異なる可能性があります。詳細は社会保険労務士にご確認ください。</b>お見積り金額が分かる場合は上書きしてください（「目安に戻す」で自動計算に戻ります）。2コースを組み合わせる場合は<b>2件分</b>として計算しています。同時にご依頼して初期費用が1回になる場合は、手入力で調整してください。</div>
         <div id="jk-msg"></div>
       </div>
 
@@ -906,6 +914,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
   var ageMode = false;
   var undoSnap = null;
   var clampNote = null;
+  var srAuto = true;   /* 申請代行費用を自動計算するか(手入力すると false) */
 
   function yen(v){ return Math.round(v).toLocaleString('ja-JP') + '円'; }
   function man(v){ var m = v / 10000; return (Math.abs(m) >= 100 ? Math.round(m) : Math.round(m * 10) / 10).toLocaleString('ja-JP') + '万円'; }
@@ -1104,6 +1113,21 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     return {total:total, groups:groups};
   }
 
+  /* 申請代行(社労士)費用 — シミュレーションシートの式
+     通常のコース: 初期200,000円 + 1名あたり10,000円 / 大臣認定(認定実習併用): 初期250,000円 + 1名あたり30,000円
+     ※想定額であり実額は社労士の見積による(注記で明示している) */
+  function srFeeOf(p){
+    var c = cur(p), n = num('jk-n-' + p);
+    var nin = (c.k === 'nintei' || c.k === 'itnintei');   /* 大臣認定の認定実習併用職業訓練 */
+    var init = nin ? 250000 : 200000, per = nin ? 30000 : 10000;
+    return {init:init, per:per, n:n, nin:nin, total:init + per * n};
+  }
+  function srTotal(){
+    var t = 0;
+    keys().forEach(function(p){ t += srFeeOf(p).total; });
+    return t;
+  }
+
   /* ===== 実質±0円の自動逆算 ===== */
   function groups(){
     if(useB && synced()) return [{ids:['a','b'], drv:'a', lb:ageMode ? '45歳以上・45歳未満（共通の研修）' : 'コースA・B（共通の研修）'}];
@@ -1238,6 +1262,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     rs.forEach(function(r){ raw += r.total; costTot += r.costTot; headcount += r.n; });
     var net = costTot - total;
     var off = costTot > 0 ? (1 - net / costTot) : 0;
+    /* 申請代行費用は自動計算(手入力されている間は上書きしない) */
+    var srAll = srTotal();
+    if(srAuto && q('jk-sr')) q('jk-sr').value = srAll;
     var sr = num('jk-sr');
     var multi = rs.length > 1;
 
@@ -1263,6 +1290,15 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     set('jk-o-net', Math.round(net) === 0 ? '±0円' : (Math.abs(net) < 10000 ? yen(net) : man(net)));
     set('jk-o-off', Math.round(off * 1000) / 10 + '%');
     set('jk-o-net2', yen(costTot + sr - total));
+    var srParts = keys().map(function(p){
+      var f = srFeeOf(p);
+      return (multi ? lb(p) + ' ' : '') + man(f.init) + ' + ' + man(f.per) + '×' + f.n + '名' + (f.nin ? '(大臣認定)' : '');
+    }).join('　/　');
+    var srb = q('jk-sr-basis');
+    if(srb){
+      srb.className = 'u jk-srb' + (srAuto ? '' : ' manual');
+      srb.textContent = (srAuto ? '…自動計算: ' : '…手入力中（自動の目安は ' + yen(srAll) + ' = ') + srParts + (srAuto ? '' : '）');
+    }
     set('jk-sumlabel', multi ? '（' + lb('a') + ' + ' + lb('b') + ' の合計 / 受講者 計' + headcount + '名）' : '');
     var nc = root.querySelector('.jk-card.net');
     if(nc) nc.className = 'jk-card net' + (Math.abs(net) < 1000 ? ' zero' : '');
@@ -1384,6 +1420,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       applySync(); calc(); return;
     }
     if(id === 'jk-cost-a'){ applySync(); calc(); return; }
+    if(id === 'jk-sr'){ srAuto = false; calc(); return; }   /* 手入力を尊重する */
     if(e.target.hasAttribute && e.target.hasAttribute('data-jk-chk')){ chk(); return; }
     calc();
   }
@@ -1399,6 +1436,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     var t = e.target;
     if(!t.closest || !t.closest('#jk-sim')) return;
 
+    if(t.closest('#jk-sr-reset')){ srAuto = true; calc(); return; }
     if(t.closest('#jk-age')){ setAge(!ageMode); return; }
     if(t.closest('#jk-add')){ setB(true); return; }
     if(t.closest('#jk-del')){ ageMode = false; setB(false); return; }
@@ -1454,6 +1492,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       ageMode = false;
       undoSnap = null;
       clampNote = null;
+      srAuto = true;
       var pb2 = el.querySelector('#jk-plan-b'), aw2 = el.querySelector('#jk-addwrap');
       if(pb2) pb2.style.display = 'none';
       if(aw2) aw2.style.display = '';
