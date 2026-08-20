@@ -2209,7 +2209,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
 
     h += '<div style="overflow-x:auto"><table class="jk-bd jk-etbl2" style="margin-top:12px;min-width:700px">'
       +  '<thead><tr><th style="min-width:130px">グループ</th><th style="min-width:190px">割り当てるコース</th>'
-      +  '<th class="r">人数</th><th class="r">時間</th><th class="r">1名単価(税込)</th><th class="r">1名あたり助成</th><th class="r">助成額 小計</th></tr></thead><tbody>';
+      +  '<th class="r">人数</th><th class="r">時間</th><th class="r">1名単価(税込)</th><th class="r">1名あたり助成</th>'
+      +  '<th class="r">1名あたり収支<br><span style="font-weight:400;color:#8a938e">助成 − 単価</span></th>'
+      +  '<th class="r">助成額 小計</th></tr></thead><tbody>';
     r.gs.forEach(function(g){
       h += '<tr>'
         +  '<td><span class="c">' + g.job + '</span><span class="sub">' + easyAgeLabel(g) + ' / ' + (g.emp === 'sei' ? '正社員' : '有期社員') + ' / ' + (g.dx === 'y' ? 'DX・GX・新規事業' : '職務の専門知識') + '</span></td>'
@@ -2217,9 +2219,16 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
         +  (g.b.ojt1 ? ' / OJT' + man(g.b.ojt1) : '') + '</span></td>'
         +  '<td class="r">' + g.n + '名</td><td class="r">' + g.b.h + 'h</td>'
         +  '<td class="r">' + yen(g.b.price) + '</td><td class="r">' + yen(g.b.g1) + '</td>'
+        +  '<td class="r" style="color:' + (g.b.g1 - g.b.price >= 0 ? '#1e7a62' : '#c4554d') + ';font-weight:800">'
+        +  (g.b.g1 - g.b.price >= 0 ? '+' : '−') + yen(Math.abs(g.b.g1 - g.b.price)) + '</td>'
         +  '<td class="r"><b>' + yen(g.grant) + '</b></td></tr>';
     });
-    h += '<tr class="tot"><td colspan="2">合計</td><td class="r">' + r.people + '名</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">' + yen(r.gross) + '</td></tr>';
+    var diffTot = r.gross - r.cost;
+    h += '<tr class="tot"><td colspan="2">合計</td><td class="r">' + r.people + '名</td><td class="r">—</td>'
+      +  '<td class="r">' + yen(r.cost) + '</td><td class="r">' + yen(r.gross) + '</td>'
+      +  '<td class="r" style="color:' + (diffTot >= 0 ? '#1e7a62' : '#c4554d') + '">'
+      +  (diffTot >= 0 ? '+' : '−') + yen(Math.abs(diffTot)) + '</td>'
+      +  '<td class="r">' + yen(r.gross) + '</td></tr>';
     h += '</tbody></table></div>';
 
     if(r.over.length){
@@ -2246,7 +2255,8 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
         +  '<td>' + x.h + '時間' + (x.cur ? ' <span class="jk-hnow">(いま)</span>' : '') + (x.min && !x.cur ? ' <span class="jk-hnow">最小</span>' : '') + '</td>'
         +  '<td class="r">' + yen(x.grant) + '</td><td class="r">' + yen(x.cost) + '</td><td class="r">' + yen(x.sr) + '</td>'
         +  '<td class="r"><b>' + (x.net <= 0 ? '0円' : yen(x.net)) + '</b></td>'
-        +  '<td class="r">' + (x.per <= 0 ? '0円' : yen(x.per)) + '</td>'
+        +  '<td class="r" style="color:' + (x.per > 0 ? '#c4554d' : '#1e7a62') + '">'
+        +  (x.per > 0 ? yen(x.per) : (x.per < 0 ? '+' + yen(-x.per) : '0円')) + '</td>'
         +  '<td>' + (x.cur ? '' : '<button type="button" class="jk-hbtn" data-jk-eh="' + x.h + '">この時間にする</button>') + '</td></tr>';
     });
     h += '</tbody></table></div>';
@@ -2262,6 +2272,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       +  '研修時間は' + r.baseH + '時間(コースの最低時間がこれを上回る場合はその時間)、'
       +  (easyMode === 'max'
           ? '1名あたりの費用は<b>経費助成の上限にちょうど届く金額</b>を自動で設定しています。これ以上費用を上げても助成額は増えません。'
+            + '<br>🔴<b>助成MAXは「助成額を最大にする」モードであって、「会社の手出しをゼロにする」モードではありません。</b>'
+            + '単価を上げるほど助成も増えますが、経費助成率は100%ではないので<b>1名あたりの収支はマイナス（会社の持ち出し）</b>になります'
+            + '（下の表の「1名あたり収支」をご覧ください）。<b>手出しをなくしたいなら「実質0円(自動)」に切り替えてください。</b>'
           : easyMode === 'zero'
           ? (r.zeroNG
              ? '1名あたりの費用は<b>助成金と研修費用がちょうど釣り合う金額</b>をコースごとに逆算しています。'
