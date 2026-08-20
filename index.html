@@ -141,6 +141,31 @@
 .jk-srin{width:160px;text-align:right;background:#f2fbf7;border:1px solid #9fd3c1}
 @media(max-width:640px){.jk-srin{width:130px}}
 
+/* --- かんたん試算(職種別・自動提案) --- */
+.jk-easy{border:1px solid #9fd3c1;border-radius:12px;background:#f6fbf9;padding:14px 16px 12px}
+.jk-easy h4{display:flex;align-items:center;gap:8px}
+.jk-ebadge{background:#2f9e82;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px}
+.jk-elead{font-size:11.5px;line-height:1.9;color:#4a554f;margin:0 0 10px}
+.jk-eset{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;align-items:flex-end}
+.jk-etbl td{vertical-align:middle}
+.jk-etbl input,.jk-etbl select{width:100%;background:#f2fbf7;border:1px solid #9fd3c1;border-radius:6px;font-size:13px;padding:5px 7px}
+.jk-etbl input.r{text-align:right}
+.jk-edel{background:#fff;border:1px solid #cfd8d3;border-radius:6px;color:#a2453d;cursor:pointer;font-size:12px;font-weight:800;padding:3px 8px}
+.jk-edel:hover{border-color:#c4554d;background:#fbeeec}
+.jk-ea{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.jk-ea button{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:6px 15px;font-size:12px;font-weight:700;color:#5c6b77;cursor:pointer}
+.jk-ea button:hover{border-color:#9fd3c1;color:#16302b}
+.jk-ea span{font-size:11px;color:#8a938e;line-height:1.7;flex:1;min-width:220px}
+.jk-eout{margin-top:14px}
+.jk-eplan{font-size:11.5px;color:#4a554f;line-height:1.9;background:#fff;border:1px solid #cfe0d9;border-radius:8px;padding:9px 12px;margin-top:10px}
+.jk-eplan b{color:#16302b}
+.jk-ewarn{font-size:11.5px;color:#8a6a22;background:#fbf6ea;border:1px solid #ecdcb4;border-radius:8px;padding:9px 12px;margin-top:10px;line-height:1.9}
+.jk-eempty{font-size:12px;color:#8a938e;padding:14px 0;text-align:center}
+.jk-etbl2 .c{font-weight:700;color:#16302b}
+.jk-etbl2 .sub{display:block;font-size:10.5px;color:#8a938e;font-weight:400}
+.jk-etbl2 tr.tot td{background:#ddf0e9;font-weight:800;color:#16302b}
+@media(max-width:640px){.jk-eset .jk-f{max-width:none!important;min-width:100%}.jk-ea button{flex:1;min-width:100%}}
+
 /* ===== 会社案内・採用パンフレット ギャラリー ===== */
 .pm-row{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x proximity}
 .pm-row figure{margin:0;flex:0 0 auto;width:430px;scroll-snap-align:start}
@@ -416,6 +441,35 @@
         </div>
       </div>
 
+      <div class="jk-sec jk-easy" id="jk-easy">
+        <h4>■ かんたん試算 ― 職種ごとの人数を入れるだけ<span class="jk-ebadge">おすすめ</span></h4>
+        <p class="jk-elead"><b>2026年8月3日の要件追加</b>により、研修内容が<b>受講者の職務に沿った専門知識・技能であること</b>がより厳しく見られるようになりました。労働局への確認では<b>職種ごとに分けて実施するのが最も安全</b>という回答です。ここに職種別の人数を入れると、<b>職種ごとに助成額がいちばん大きくなるコースの組み方</b>を自動で提案します。研修時間は<b>最低の10時間</b>、1名あたりの費用は<b>経費助成の上限にちょうど届く金額(助成MAX)</b>を自動で設定します。</p>
+        <div class="jk-eset">
+          <div class="jk-f" style="max-width:190px"><label>研修時間 <span class="u">1名あたり h・最低10時間</span></label><input type="number" id="jk-e-h" min="10" step="1" value="10"></div>
+          <div class="jk-f" style="max-width:250px"><label>1名あたりの研修費用 <span class="u">税込</span></label>
+            <div class="jk-seg" id="jk-e-mode"><button type="button" data-jk-emode="max" class="on">助成MAX(自動)</button><button type="button" data-jk-emode="man">手入力</button></div>
+          </div>
+          <div class="jk-f" id="jk-e-pw" style="max-width:190px;display:none"><label>研修費用 <span class="u">税込 円/名</span></label><input type="number" id="jk-e-price" min="0" step="1000" value="400000"></div>
+        </div>
+        <div style="overflow-x:auto">
+        <table class="jk-bd jk-etbl" style="min-width:520px">
+          <thead><tr><th style="min-width:110px">職種・部門</th><th class="r" style="width:80px">人数</th><th class="r" style="width:100px">うち45歳以上</th><th style="width:150px">雇用形態</th><th style="min-width:190px">研修内容</th><th style="width:40px"></th></tr></thead>
+          <tbody id="jk-e-rows"></tbody>
+        </table>
+        </div>
+        <div class="jk-ea">
+          <button type="button" id="jk-e-add">＋ 職種を追加</button>
+          <button type="button" id="jk-e-sample">入力例に戻す</button>
+          <span><b>研修内容</b>で「DX・GX・新規事業」を選べる職種は、助成率がいちばん高い⑦事業展開等リスキリング支援コースが使えます。それ以外の職種は①〜④にフォールバックするため、<b>結果として複数コースを組み合わせた計画</b>になります。役員・経営者など雇用保険の被保険者でない方は雇用形態で「対象外」を選んでください。</span>
+        </div>
+        <div id="jk-e-out"></div>
+      </div>
+
+      <div class="jk-sec">
+        <h4>■ 詳細シミュレーション ― コースを自分で選んで試算する</h4>
+        <p class="jk-elead">コース・人数・時間・費用を自分で指定して試算します。2つのコースを組み合わせることもできます。</p>
+      </div>
+
       <div class="jk-plan" id="jk-plan-a">
         <div class="jk-plan-h">
           <span class="jk-tag" id="jk-tag-a">コースA</span>
@@ -549,7 +603,7 @@
           <li><b>1事業所が1年度に受給できる助成額にも上限</b>があります。人材育成支援コース(①〜⑤)は<b>1,000万円</b>、定額制訓練を含む人への投資促進コースは<b>2,500万円</b>、事業展開等リスキリング支援コースは<b>1億円</b>です(いずれも支給申請日を基準に4月1日〜翌年3月31日)。<b>同じコース群の助成額は合算して判定</b>されるため、2コースを組み合わせる場合はご注意ください。</li>
           <li>助成対象となる<b>訓練の受講回数は1労働者につき1年度3回まで</b>です(令和8年8月3日以降の計画届によるeラーニングは1年度1回まで、有期実習型訓練は同一労働者に1回まで)。また、賃金助成の対象となる実訓練時間は<b>1人1訓練あたり1,200時間</b>が上限です。</li>
           <li><b>2つのコースを組み合わせる場合</b>、計画届・支給申請は<b>コースごとに別々</b>に行います。同一の受講者・同一の訓練に対して、複数コースから重複して助成を受けることはできません。組み合わせの可否は必ず社会保険労務士・労働局にご確認ください。</li>
-          <li>研修カリキュラムは、受講者の職務にとって専門知識・技能の習得であることが必要です。</li>
+          <li><b>研修カリキュラムは、受講者の職務にとって専門知識・技能の習得であることが必要です。</b>令和8年8月3日にこの要件が追加され、労働局は<b>職種ごとに分けて実施すること</b>を推奨しています(職種が異なる受講者を一括りにすると、審査の過程で職務との関連性について疑義照会を受ける場合があります)。なお<b>事業展開等リスキリング支援コース以外</b>は、<b>総訓練時間の半数未満</b>であれば職種を問わない汎用的な内容を含めても差し支えないという特例があります。審査は研修終了後に行われるため、判断に迷う場合は必ず事前に社会保険労務士・労働局にご確認ください。</li>
           <li>計画届と異なるカリキュラム(日程・時間・場所・講師・経費額等)を実施した場合、その対象部分は助成金対象外となります。</li>
           <li>支給申請までの間、会社都合退職者を出さないようご注意ください。</li>
           <li>受講者ごとに研修時間の8割を満たしていない場合、その受講者分の助成金は支給されません。8割以上でも一部欠席がある場合は、その時間分の賃金助成が減額されます(出勤簿・日報で確認します)。</li>
@@ -1885,9 +1939,214 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     }
   }
 
+
+  /* ============================================================
+     かんたん試算(職種別・自動提案)
+     2026/8/3の要件追加で「受講者の職務に沿った内容」が厳格化されたため、
+     職種ごとに分けて、それぞれ助成額が最大になるコースを割り当てる。
+     ============================================================ */
+  var EASY_MIN_H = 10;                     /* 研修の最低時間 */
+  var EASY_SAMPLE = [
+    {job:'営業',        n:5, sr:1, emp:'sei', dx:'y'},
+    {job:'広報',        n:3, sr:1, emp:'sei', dx:'y'},
+    {job:'設計',        n:3, sr:1, emp:'sei', dx:'y'},
+    {job:'工務',        n:2, sr:1, emp:'sei', dx:'y'},
+    {job:'事務',        n:2, sr:1, emp:'sei', dx:'n'},
+    {job:'経営者・役員', n:1, sr:1, emp:'gai', dx:'n'}
+  ];
+  var EASY_EMP = [{k:'sei', n:'正社員'}, {k:'yuk', n:'有期社員'}, {k:'gai', n:'対象外(役員など)'}];
+  var EASY_DX  = [{k:'y', n:'DX・GX・新規事業'}, {k:'n', n:'職務の専門知識・技能'}];
+  function easyClone(){ return EASY_SAMPLE.map(function(r){ return {job:r.job, n:r.n, sr:r.sr, emp:r.emp, dx:r.dx}; }); }
+  var easyRows = easyClone();
+  var easyMode = 'max';                    /* max = 助成MAXの単価を自動 / man = 手入力 */
+
+  /* かんたん試算で使えるコース(85時間必要な大臣認定・サブスク前提の定額制は除外) */
+  function easyCands(senior, emp, dx){
+    var out = [];
+    COURSES.forEach(function(c){
+      if(c.k === 'nintei' || c.k === 'itnintei' || c.k === 'teigaku') return;
+      if(c.k === 'reskill'  && dx !== 'y') return;   /* ⑦はDX・GX・新規事業に伴う訓練が要件 */
+      if(c.k === 'jinzai'   && emp !== 'sei') return;
+      if(c.k === 'jakunen'  && (emp !== 'yuk' || senior)) return;
+      if(c.k === 'yuki'     && emp !== 'yuk') return;
+      if(c.k === 'chukonen' && !senior) return;
+      out.push(c);
+    });
+    return out;
+  }
+  /* 1名あたりの助成額が最大になるコースを選ぶ */
+  function easyBest(senior, emp, dx, baseH, manPrice){
+    var best = null;
+    easyCands(senior, emp, dx).forEach(function(c){
+      var h = Math.max(baseH, c.minh);
+      var cap = c.cap ? c.cap[size][band(h)] : null;
+      var rate = c.r[size] / 100;
+      var price = (easyMode === 'max' && cap != null && rate > 0)
+                ? Math.ceil(cap / rate / 1000) * 1000     /* 経費助成の上限にちょうど届く額 */
+                : manPrice;
+      var exp1 = price * rate;
+      if(cap != null && exp1 > cap) exp1 = cap;
+      var wage1 = c.w[size] * Math.min(h, WAGE_H_MAX);
+      var o = {c:c, h:h, cap:cap, rate:rate, price:price, exp1:exp1, wage1:wage1, ojt1:c.o[size]};
+      o.g1 = o.exp1 + o.wage1 + o.ojt1;
+      if(!best || o.g1 > best.g1) best = o;
+    });
+    return best;
+  }
+  function easyCalc(){
+    var baseH = Math.max(EASY_MIN_H, Math.round(num('jk-e-h') || EASY_MIN_H));
+    var manPrice = Math.max(0, num('jk-e-price'));
+    var gs = [], excluded = 0, people = 0;
+    easyRows.forEach(function(r){
+      var n = Math.max(0, Math.round(r.n));
+      var sr = Math.max(0, Math.min(n, Math.round(r.sr)));
+      if(!n) return;
+      if(r.emp === 'gai'){ excluded += n; return; }
+      var subs = [];
+      [[sr, true], [n - sr, false]].forEach(function(pr){
+        if(!pr[0]) return;
+        var b = easyBest(pr[1], r.emp, r.dx, baseH, manPrice);
+        if(!b) return;
+        subs.push({senior:pr[1], n:pr[0], b:b});
+      });
+      /* 45歳以上と45歳未満で同じコース・同じ条件になるなら、分ける意味がないので1グループにまとめる */
+      if(subs.length === 2 && subs[0].b.c.k === subs[1].b.c.k
+         && subs[0].b.h === subs[1].b.h && subs[0].b.price === subs[1].b.price){
+        subs = [{senior:null, sr:subs[0].n, n:subs[0].n + subs[1].n, b:subs[0].b}];
+      }
+      subs.forEach(function(s){
+        people += s.n;
+        gs.push({job:r.job, senior:s.senior, sr:s.sr || 0, emp:r.emp, dx:r.dx, n:s.n, b:s.b,
+                 grant:s.b.g1 * s.n, cost:s.b.price * s.n});
+      });
+    });
+    /* 1事業所1年度の支給限度額をコース群ごとに適用 */
+    var useCap = q('jk-cap') ? q('jk-cap').checked : true;
+    var byG = {}, order = [], gross = 0, cost = 0;
+    gs.forEach(function(g){
+      var k = g.b.c.grp;
+      if(!byG[k]){ byG[k] = {g:k, n:GRP[k].n, lim:GRP[k].lim, sum:0}; order.push(k); }
+      byG[k].sum += g.grant;
+      gross += g.grant; cost += g.cost;
+    });
+    var paid = 0, over = [];
+    order.forEach(function(k){
+      var o = byG[k];
+      o.paid = (useCap && o.sum > o.lim) ? o.lim : o.sum;
+      if(o.sum > o.lim) over.push(o);
+      paid += o.paid;
+    });
+    return {gs:gs, excluded:excluded, people:people, baseH:baseH,
+            gross:gross, paid:paid, cost:cost, over:over, groups:order.map(function(k){ return byG[k]; })};
+  }
+  function easyAgeLabel(g){
+    if(g.senior === null) return g.sr ? ('全年齢(45歳以上' + g.sr + '名を含む)') : '全年齢';
+    return g.senior ? '45歳以上' : '45歳未満';
+  }
+  function easyRowsRender(){
+    var tb = q('jk-e-rows');
+    if(!tb) return;
+    var html = '';
+    easyRows.forEach(function(r, i){
+      html += '<tr>'
+           +  '<td><input type="text" data-jk-er="' + i + '" data-jk-ef="job" value="' + String(r.job).replace(/"/g, '&quot;') + '"></td>'
+           +  '<td><input type="number" class="r" min="0" step="1" data-jk-er="' + i + '" data-jk-ef="n" value="' + r.n + '"></td>'
+           +  '<td><input type="number" class="r" min="0" step="1" data-jk-er="' + i + '" data-jk-ef="sr" value="' + r.sr + '"></td>'
+           +  '<td><select data-jk-er="' + i + '" data-jk-ef="emp">'
+           +  EASY_EMP.map(function(e){ return '<option value="' + e.k + '"' + (e.k === r.emp ? ' selected' : '') + '>' + e.n + '</option>'; }).join('')
+           +  '</select></td>'
+           +  '<td><select data-jk-er="' + i + '" data-jk-ef="dx"' + (r.emp === 'gai' ? ' disabled' : '') + '>'
+           +  EASY_DX.map(function(e){ return '<option value="' + e.k + '"' + (e.k === r.dx ? ' selected' : '') + '>' + e.n + '</option>'; }).join('')
+           +  '</select></td>'
+           +  '<td><button type="button" class="jk-edel" data-jk-edel="' + i + '">×</button></td>'
+           +  '</tr>';
+    });
+    tb.innerHTML = html || '<tr><td colspan="6" class="jk-eempty">職種を追加してください。</td></tr>';
+  }
+  function easyRender(){
+    var out = q('jk-e-out');
+    if(!out) return;
+    var r = easyCalc();
+    if(!r.gs.length){
+      out.innerHTML = '<div class="jk-eempty">助成の対象になる受講者がいません。人数と雇用形態をご確認ください。</div>';
+      return;
+    }
+    var net = r.cost - r.paid;
+    var off = r.cost > 0 ? Math.round(r.paid / r.cost * 1000) / 10 : 0;
+    var kinds = {}; r.gs.forEach(function(g){ kinds[g.b.c.k] = 1; });
+    var nKind = 0; for(var kk in kinds){ if(kinds.hasOwnProperty(kk)) nKind++; }
+
+    var h = '<div class="jk-eout">';
+    h += '<div class="jk-res">'
+      +  '<div class="jk-card hl"><div class="l">助成金 想定額(合計)</div><div class="v">' + yen(r.paid) + '</div><div class="s">対象 ' + r.people + '名 / ' + r.gs.length + 'グループ / ' + nKind + 'コース</div></div>'
+      +  '<div class="jk-card"><div class="l">研修費用(税込)</div><div class="v">' + yen(r.cost) + '</div><div class="s">1名あたりの費用 × 人数</div></div>'
+      +  '<div class="jk-card net"><div class="l">実質負担額</div><div class="v">' + yen(net) + '</div><div class="s">研修費用 − 助成金想定額</div></div>'
+      +  '<div class="jk-card"><div class="l">実質OFF率</div><div class="v">' + off + '%</div><div class="s">研修費用に対する軽減率</div></div>'
+      +  '</div>';
+
+    h += '<div style="overflow-x:auto"><table class="jk-bd jk-etbl2" style="margin-top:12px;min-width:700px">'
+      +  '<thead><tr><th style="min-width:130px">グループ</th><th style="min-width:190px">割り当てるコース</th>'
+      +  '<th class="r">人数</th><th class="r">時間</th><th class="r">1名単価(税込)</th><th class="r">1名あたり助成</th><th class="r">助成額 小計</th></tr></thead><tbody>';
+    r.gs.forEach(function(g){
+      h += '<tr>'
+        +  '<td><span class="c">' + g.job + '</span><span class="sub">' + easyAgeLabel(g) + ' / ' + (g.emp === 'sei' ? '正社員' : '有期社員') + ' / ' + (g.dx === 'y' ? 'DX・GX・新規事業' : '職務の専門知識') + '</span></td>'
+        +  '<td>' + g.b.c.n + '<span class="sub">経費' + Math.round(g.b.rate * 100) + '%(上限' + (g.b.cap != null ? man(g.b.cap) : '—') + ') / 賃金' + g.b.c.w[size] + '円/h'
+        +  (g.b.ojt1 ? ' / OJT' + man(g.b.ojt1) : '') + '</span></td>'
+        +  '<td class="r">' + g.n + '名</td><td class="r">' + g.b.h + 'h</td>'
+        +  '<td class="r">' + yen(g.b.price) + '</td><td class="r">' + yen(g.b.g1) + '</td>'
+        +  '<td class="r"><b>' + yen(g.grant) + '</b></td></tr>';
+    });
+    h += '<tr class="tot"><td colspan="2">合計</td><td class="r">' + r.people + '名</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">' + yen(r.gross) + '</td></tr>';
+    h += '</tbody></table></div>';
+
+    if(r.over.length){
+      h += '<div class="jk-ewarn">⚠️ 1事業所が1年度に受給できる限度額を超えています。'
+        +  r.over.map(function(o){ return o.n + ' は上限 ' + oku(o.lim) + '(試算 ' + yen(o.sum) + ')'; }).join(' / ')
+        +  '。上限適用後の助成額は <b>' + yen(r.paid) + '</b> です。年度をまたいで実施するなどの調整をご検討ください。</div>';
+    }
+
+    var top = r.gs.slice().sort(function(a, b){ return b.grant - a.grant; })[0];
+    h += '<div class="jk-eplan"><b>この組み方の考え方</b><br>'
+      +  '職種ごとに分けたうえで、それぞれ<b>1名あたりの助成額がいちばん大きくなるコース</b>を割り当てています。'
+      +  '研修時間は' + r.baseH + '時間(コースの最低時間がこれを上回る場合はその時間)、'
+      +  (easyMode === 'max'
+          ? '1名あたりの費用は<b>経費助成の上限にちょうど届く金額</b>を自動で設定しています。これ以上費用を上げても助成額は増えません。'
+          : '1名あたりの費用は手入力の金額で計算しています。')
+      +  '<br>最も助成額が大きいのは <b>' + top.job + 'の' + top.n + '名 → ' + top.b.c.n + '</b> で ' + yen(top.grant) + ' です。'
+      +  (r.excluded ? '<br>役員・経営者など<b>' + r.excluded + '名</b>は雇用保険の被保険者ではないため対象外として除いています。' : '')
+      +  '</div>';
+
+    h += '<div class="jk-ewarn">⚠️ <b>⑦事業展開等リスキリング支援コース</b>は助成率がいちばん高い一方で、'
+      +  '<b>DX・GX・新規事業など事業展開に伴う新たな知識技能の習得</b>であること、'
+      +  'かつ<b>受講者全員の職種がそろっていること</b>が前提です(令和8年8月3日の要件追加)。'
+      +  'それ以外のコースは<b>総訓練時間の半数未満</b>であれば職種を問わない汎用的な内容を含められます。'
+      +  '実際の可否は研修終了後の審査で決まるため、カリキュラムは必ず事前に社会保険労務士・労働局にご確認ください。</div>';
+    h += '</div>';
+    out.innerHTML = h;
+  }
+  function easySetMode(m){
+    easyMode = m;
+    var bs = document.querySelectorAll('#jk-e-mode button');
+    for(var i = 0; i < bs.length; i++) bs[i].className = (bs[i].getAttribute('data-jk-emode') === m ? 'on' : '');
+    var pw = q('jk-e-pw');
+    if(pw) pw.style.display = (m === 'man') ? '' : 'none';
+    easyRender();
+  }
+
+  var _jkCalc0 = calc;
+  calc = function(){ _jkCalc0(); easyRender(); };
+
   function route(e){
     if(!e.target.closest || !e.target.closest('#jk-sim')) return;
     var id = e.target.id, isChange = e.type === 'change';
+    var er = e.target.getAttribute && e.target.getAttribute('data-jk-er');
+    if(er != null){
+      var row = easyRows[+er], f = e.target.getAttribute('data-jk-ef');
+      if(row){ row[f] = (f === 'job' || f === 'emp' || f === 'dx') ? e.target.value : Math.max(0, parseFloat(e.target.value) || 0); }
+      if(f === 'emp'){ easyRowsRender(); }
+      easyRender(); return;
+    }
+    if(id === 'jk-e-h' || id === 'jk-e-price'){ easyRender(); return; }
     if(id === 'jk-ind' || id === 'jk-emp' || id === 'jk-capital'){ judge(true); return; }
     if(id === 'jk-course-a'){ applyDefaults('a'); return; }
     if(id === 'jk-course-b'){ applyDefaults('b'); return; }
@@ -1912,6 +2171,13 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
   document.addEventListener('click', function(e){
     var t = e.target;
     if(!t.closest || !t.closest('#jk-sim')) return;
+
+    var em = t.closest('[data-jk-emode]');
+    if(em){ easySetMode(em.getAttribute('data-jk-emode')); return; }
+    var ed = t.closest('[data-jk-edel]');
+    if(ed){ easyRows.splice(+ed.getAttribute('data-jk-edel'), 1); easyRowsRender(); easyRender(); return; }
+    if(t.closest('#jk-e-add')){ easyRows.push({job:'新しい職種', n:3, sr:0, emp:'sei', dx:'y'}); easyRowsRender(); easyRender(); return; }
+    if(t.closest('#jk-e-sample')){ easyRows = easyClone(); easyRowsRender(); easyRender(); return; }
 
     if(t.closest('#jk-sr-reset')){ srAuto = true; calc(); return; }
     if(t.closest('#jk-age')){ setAge(!ageMode); return; }
@@ -1974,6 +2240,10 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       if(pb2) pb2.style.display = 'none';
       if(aw2) aw2.style.display = '';
       buildOnce(el);
+      easyMode = 'max';
+      easyRows = easyClone();
+      easyRowsRender();
+      easySetMode('max');
       chk();
     }
   }, 250);
