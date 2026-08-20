@@ -164,6 +164,9 @@
 .jk-etbl2 .c{font-weight:700;color:#16302b}
 .jk-etbl2 .sub{display:block;font-size:10.5px;color:#8a938e;font-weight:400}
 .jk-etbl2 tr.tot td{background:#ddf0e9;font-weight:800;color:#16302b}
+.jk-eojt{display:flex;align-items:flex-start;gap:6px;font-size:12.5px;font-weight:700;color:#4a554f;background:#fff;border:1px solid #cfd8d3;border-radius:8px;padding:7px 10px;cursor:pointer;line-height:1.4}
+.jk-eojt input{width:14px;height:14px;padding:0;margin:1px 0 0;flex-shrink:0;accent-color:#2f9e82}
+.jk-eojt span{display:block;font-size:10.5px;color:#8a938e;font-weight:600;line-height:1.6}
 .jk-htbl{margin-top:12px}
 .jk-htbl tr.on td{background:#ddf0e9;font-weight:800}
 .jk-htbl tr.min td{box-shadow:inset 0 0 0 1.5px #2f9e82}
@@ -468,6 +471,9 @@
           <div class="jk-f" id="jk-e-pw" style="max-width:190px;display:none"><label>研修費用 <span class="u">税込 円/名</span></label><input type="number" id="jk-e-price" min="0" step="1000" value="400000"></div>
           <div class="jk-f" style="max-width:300px"><label>申請代行(社労士)費用の件数 <span class="u">計画届・支給申請の単位</span></label>
             <div class="jk-seg" id="jk-e-srmode"><button type="button" data-jk-srmode="grp" class="on">研修ごと</button><button type="button" data-jk-srmode="course">コースごと</button></div>
+          </div>
+          <div class="jk-f" style="max-width:280px"><label>OJT(実地訓練)ありのコース <span class="u">③有期実習型・④中高年齢者実習型</span></label>
+            <label class="jk-eojt"><input type="checkbox" id="jk-e-ojt" checked>使う<span>OJT加算1名10万円がつく代わりに、総訓練時間2か月・142時間以上が必要</span></label>
           </div>
         </div>
         <div style="overflow-x:auto">
@@ -1977,6 +1983,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
   var easyRows = easyClone();
   var easyMode = 'max';                    /* max = 助成MAXの単価を自動 / zero = 実質0円 / man = 手入力 */
   var easySrMode = 'grp';                  /* 社労士費用の件数 grp = 研修ごと / course = コースごと */
+  var easyUseOjt = true;                   /* OJT(実地訓練)ありのコース(③④)を候補に入れるか */
 
   /* かんたん試算で使えるコース(85時間必要な大臣認定・サブスク前提の定額制は除外) */
   function easyCands(senior, emp, dx){
@@ -1984,6 +1991,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     COURSES.forEach(function(c){
       if(c.k === 'nintei' || c.k === 'itnintei' || c.k === 'teigaku') return;
       if(c.k === 'reskill'  && dx !== 'y') return;   /* ⑦はDX・GX・新規事業に伴う訓練が要件 */
+      if((c.k === 'yuki' || c.k === 'chukonen') && !easyUseOjt) return;   /* OJTを実施できない会社は外す */
       if(c.k === 'jinzai'   && emp !== 'sei') return;
       if(c.k === 'jakunen'  && (emp !== 'yuk' || senior)) return;
       if(c.k === 'yuki'     && emp !== 'yuk') return;
@@ -2277,6 +2285,16 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       +  '<b>あくまで想定額であり、実際の金額は社会保険労務士のお見積りによります</b>(詳細シミュレーションでは手入力で上書きできます)。'
       +  '</div>';
 
+    var ojtGs = r.gs.filter(function(g){ return g.b.ojt1 > 0; });
+    if(ojtGs.length){
+      var ojtN = ojtGs.reduce(function(a, g){ return a + g.n; }, 0);
+      h += '<div class="jk-ewarn">⚠️ <b>OJT(実地訓練)が前提のコースが ' + ojtGs.length + 'グループ(' + ojtN + '名)に入っています</b>'
+        +  '(③有期実習型訓練・④中高年齢者実習型訓練)。<b>OJT加算 1名あたり' + man(ojtGs[0].b.ojt1) + '</b>が助成に含まれていますが、'
+        +  'その代わり<b>OFF-JT(座学)に加えてOJTの実施が必須</b>で、'
+        +  '<b>OJTを含む総訓練時間が2か月以上・142時間以上</b>必要です。OJTの実施計画書と日報も求められます。'
+        +  '<br>座学だけで完結させたい場合は、上の<b>「OJT(実地訓練)ありのコース」のチェックを外して</b>ください。'
+        +  '⑦や①で組み直します。</div>';
+    }
     h += '<div class="jk-ewarn">⚠️ <b>⑦事業展開等リスキリング支援コース</b>は助成率がいちばん高い一方で、'
       +  '<b>DX・GX・新規事業など事業展開に伴う新たな知識技能の習得</b>であること、'
       +  'かつ<b>受講者全員の職種がそろっていること</b>が前提です(令和8年8月3日の要件追加)。'
@@ -2314,6 +2332,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       easyRender(); return;
     }
     if(id === 'jk-e-h' || id === 'jk-e-price'){ easyRender(); return; }
+    if(id === 'jk-e-ojt'){ easyUseOjt = !!e.target.checked; easyRender(); return; }
     if(id === 'jk-ind' || id === 'jk-emp' || id === 'jk-capital'){ judge(true); return; }
     if(id === 'jk-course-a'){ applyDefaults('a'); return; }
     if(id === 'jk-course-b'){ applyDefaults('b'); return; }
@@ -2430,6 +2449,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       buildOnce(el);
       easyMode = 'max';
       easySrMode = 'grp';
+      easyUseOjt = true;
+      var ojtBox = el.querySelector('#jk-e-ojt');
+      if(ojtBox) ojtBox.checked = true;
       easyRows = easyClone();
       var dv0 = el.querySelector('#jk-detail'), bt0 = el.querySelector('#jk-detail-t');
       if(dv0) dv0.style.display = 'none';
