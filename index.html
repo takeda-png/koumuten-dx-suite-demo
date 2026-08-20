@@ -412,15 +412,6 @@
     </div>
     <div class="jk-body">
 
-      <div class="jk-preset">
-        <span>入力例:</span>
-        <button type="button" data-jk-preset="a">AI・DX研修 20名(リスキリング支援コース)</button>
-        <button type="button" data-jk-preset="b">中高年齢者実習型 20名(OJT付き)</button>
-        <button type="button" data-jk-preset="c">新入社員研修 5名(人材育成支援コース)</button>
-        <button type="button" data-jk-preset="d">同じ研修を年齢で分ける:45歳以上5名 + それ以外15名</button>
-        <button type="button" data-jk-preset="e">別の研修を2本:新入社員5名 + AI・DX研修20名</button>
-      </div>
-
       <div class="jk-co">
         <div class="jk-co-h">会社情報を入れると、企業区分と受講者数が自動で入ります</div>
         <div class="jk-grid">
@@ -441,6 +432,23 @@
           <button type="button" data-jk-size="0" class="on">中小企業</button>
           <button type="button" data-jk-size="1">大企業</button>
         </div>
+      </div>
+
+      <div class="jk-sec">
+        <h4>■ まず確認 ― 申請前チェック(1つでも当てはまると対象外になります)</h4>
+        <p class="jk-elead">下の項目に<b>1つでも当てはまると、金額に関わらず助成金の対象外</b>になります。試算の前にご確認ください。</p>
+        <div class="jk-chk" id="jk-chklist">
+          <label><input type="checkbox" data-jk-chk>過去半年間で、雇用保険被保険者を事業主都合により離職させている</label>
+          <label><input type="checkbox" data-jk-chk>労働保険料の未払い・滞納がある</label>
+          <label><input type="checkbox" data-jk-chk>過去3年間に雇用保険事業の助成金等で不正受給を行ったことがある</label>
+          <label><input type="checkbox" data-jk-chk>過去1年間に、労働関係法令違反により送検処分を受けている(是正勧告・是正指導は対象外)</label>
+          <label><input type="checkbox" data-jk-chk>風俗営業等関係事業主である</label>
+          <label><input type="checkbox" data-jk-chk>事業主・団体・役員等が暴力団または暴力団員である</label>
+          <label><input type="checkbox" data-jk-chk>従業員への残業代未払いがある、または最低賃金を下回っている</label>
+          <label><input type="checkbox" data-jk-chk>就業時間外に研修を行っている(就業規則で定められた休憩時間は対象外)</label>
+          <label><input type="checkbox" data-jk-chk>申請する訓練と受講者の職務との関連性を論理的に説明できない</label>
+        </div>
+        <div id="jk-chk-msg" class="jk-ok">現時点で該当なし。申請要件の入口はクリアしています(最終判断は社労士・労働局)。</div>
       </div>
 
       <div class="jk-sec jk-easy" id="jk-easy">
@@ -474,6 +482,15 @@
       </div>
 
       <div id="jk-detail" style="display:none">
+
+      <div class="jk-preset">
+        <span>入力例:</span>
+        <button type="button" data-jk-preset="a">AI・DX研修 20名(リスキリング支援コース)</button>
+        <button type="button" data-jk-preset="b">中高年齢者実習型 20名(OJT付き)</button>
+        <button type="button" data-jk-preset="c">新入社員研修 5名(人材育成支援コース)</button>
+        <button type="button" data-jk-preset="d">同じ研修を年齢で分ける:45歳以上5名 + それ以外15名</button>
+        <button type="button" data-jk-preset="e">別の研修を2本:新入社員5名 + AI・DX研修20名</button>
+      </div>
 
       <div class="jk-plan" id="jk-plan-a">
         <div class="jk-plan-h">
@@ -573,22 +590,6 @@
         <div id="jk-msg"></div>
       </div>
 
-      </div>
-
-      <div class="jk-sec">
-        <h4>■ 申請前チェック(1つでも当てはまると対象外になります)</h4>
-        <div class="jk-chk" id="jk-chklist">
-          <label><input type="checkbox" data-jk-chk>過去半年間で、雇用保険被保険者を事業主都合により離職させている</label>
-          <label><input type="checkbox" data-jk-chk>労働保険料の未払い・滞納がある</label>
-          <label><input type="checkbox" data-jk-chk>過去3年間に雇用保険事業の助成金等で不正受給を行ったことがある</label>
-          <label><input type="checkbox" data-jk-chk>過去1年間に、労働関係法令違反により送検処分を受けている(是正勧告・是正指導は対象外)</label>
-          <label><input type="checkbox" data-jk-chk>風俗営業等関係事業主である</label>
-          <label><input type="checkbox" data-jk-chk>事業主・団体・役員等が暴力団または暴力団員である</label>
-          <label><input type="checkbox" data-jk-chk>従業員への残業代未払いがある、または最低賃金を下回っている</label>
-          <label><input type="checkbox" data-jk-chk>就業時間外に研修を行っている(就業規則で定められた休憩時間は対象外)</label>
-          <label><input type="checkbox" data-jk-chk>申請する訓練と受講者の職務との関連性を論理的に説明できない</label>
-        </div>
-        <div id="jk-chk-msg" class="jk-ok">現時点で該当なし。申請要件の入口はクリアしています(最終判断は社労士・労働局)。</div>
       </div>
 
       <div class="jk-sec">
