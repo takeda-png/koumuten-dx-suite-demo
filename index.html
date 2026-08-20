@@ -466,6 +466,9 @@
             <div class="jk-seg" id="jk-e-mode"><button type="button" data-jk-emode="max" class="on">助成MAX(自動)</button><button type="button" data-jk-emode="zero">実質0円(自動)</button><button type="button" data-jk-emode="man">手入力</button></div>
           </div>
           <div class="jk-f" id="jk-e-pw" style="max-width:190px;display:none"><label>研修費用 <span class="u">税込 円/名</span></label><input type="number" id="jk-e-price" min="0" step="1000" value="400000"></div>
+          <div class="jk-f" style="max-width:300px"><label>申請代行(社労士)費用の件数 <span class="u">計画届・支給申請の単位</span></label>
+            <div class="jk-seg" id="jk-e-srmode"><button type="button" data-jk-srmode="grp" class="on">研修ごと</button><button type="button" data-jk-srmode="course">コースごと</button></div>
+          </div>
         </div>
         <div style="overflow-x:auto">
         <table class="jk-bd jk-etbl" style="min-width:520px">
@@ -1972,7 +1975,8 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
   var EASY_DX  = [{k:'y', n:'DX・GX・新規事業'}, {k:'n', n:'職務の専門知識・技能'}];
   function easyClone(){ return EASY_SAMPLE.map(function(r){ return {job:r.job, n:r.n, sr:r.sr, emp:r.emp, dx:r.dx}; }); }
   var easyRows = easyClone();
-  var easyMode = 'max';                    /* max = 助成MAXの単価を自動 / man = 手入力 */
+  var easyMode = 'max';                    /* max = 助成MAXの単価を自動 / zero = 実質0円 / man = 手入力 */
+  var easySrMode = 'grp';                  /* 社労士費用の件数 grp = 研修ごと / course = コースごと */
 
   /* かんたん試算で使えるコース(85時間必要な大臣認定・サブスク前提の定額制は除外) */
   function easyCands(senior, emp, dx){
@@ -1999,18 +2003,30 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     return Math.max(0, Math.floor(p / 100) * 100);                  /* 100円単位に切り下げ(手出しが出ない側に丸める) */
   }
 
-  /* 申請代行(社労士)費用の目安 = コース種類ごとに1件として 初期20万円 + 1名あたり1万円
-     (計画届・支給申請はコースごとに別々に行うため。大臣認定は初期25万+1名3万) */
+  /* 申請代行(社労士)費用の目安。1件あたり 初期20万円 + 1名あたり1万円(大臣認定は25万+3万)。
+     計画届・支給申請は訓練ごとに行うため、職種別に研修を分けるなら「研修ごと」が件数になる。
+     同じコースをまとめて1件で受けられる場合は「コースごと」に切り替える。 */
   function easySrFee(gs){
-    var byC = {}, total = 0, count = 0;
-    gs.forEach(function(g){ var k = g.b.c.k; byC[k] = (byC[k] || 0) + g.n; });
-    for(var k in byC){
-      if(!byC.hasOwnProperty(k)) continue;
-      var nin = (k === 'nintei' || k === 'itnintei');
-      total += (nin ? 250000 : 200000) + (nin ? 30000 : 10000) * byC[k];
-      count++;
+    var units = [], total = 0, people = 0, init = 0, per = 0;
+    if(easySrMode === 'course'){
+      var byC = {}, order = [];
+      gs.forEach(function(g){
+        var k = g.b.c.k;
+        if(!byC.hasOwnProperty(k)){ byC[k] = {k:k, n:0}; order.push(k); }
+        byC[k].n += g.n;
+      });
+      units = order.map(function(k){ return byC[k]; });
+    } else {
+      units = gs.map(function(g){ return {k:g.b.c.k, n:g.n}; });
     }
-    return {total:total, count:count};
+    units.forEach(function(u){
+      var nin = (u.k === 'nintei' || u.k === 'itnintei');
+      init += (nin ? 250000 : 200000);
+      per  += (nin ? 30000 : 10000) * u.n;
+      people += u.n;
+    });
+    total = init + per;
+    return {total:total, count:units.length, init:init, per:per, people:people};
   }
 
   /* 1名あたりの助成額が最大になるコースを選ぶ */
@@ -2177,7 +2193,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       +  '<div class="jk-card hl"><div class="l">助成金 想定額(合計)</div><div class="v">' + yen(r.paid) + '</div><div class="s">対象 ' + r.people + '名 / ' + r.gs.length + 'グループ / ' + nKind + 'コース</div></div>'
       +  '<div class="jk-card"><div class="l">研修費用(税込)</div><div class="v">' + yen(r.cost) + '</div><div class="s">1名あたりの費用 × 人数</div></div>'
       +  '<div class="jk-card"><div class="l">申請代行(社労士)費用</div><div class="v">' + yen(r.sr.total) + '</div><div class="s">'
-      +  r.sr.count + '件 × (初期20万円 + 1名1万円)</div></div>'
+      +  '初期20万円 × ' + r.sr.count + '件(' + (easySrMode === 'grp' ? '研修ごと' : 'コースごと') + ') + 1名1万円 × ' + r.sr.people + '名</div></div>'
       +  '<div class="jk-card net"><div class="l">実質負担額</div><div class="v">' + (net <= 0 ? '0円' : yen(net)) + '</div><div class="s">'
       +  (net < 0 ? '助成金が ' + yen(-net) + ' 上回ります' : '研修費用 + 社労士費用 − 助成金') + '</div></div>'
       +  '<div class="jk-card"><div class="l">実質OFF率</div><div class="v">' + off + '%</div><div class="s">研修費用+社労士費用に対する軽減率</div></div>'
@@ -2251,8 +2267,13 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
           : '1名あたりの費用は手入力の金額で計算しています。')
       +  '<br>最も助成額が大きいのは <b>' + top.job + 'の' + top.n + '名 → ' + top.b.c.n + '</b> で ' + yen(top.grant) + ' です。'
       +  (r.excluded ? '<br>役員・経営者など<b>' + r.excluded + '名</b>は雇用保険の被保険者ではないため対象外として除いています。' : '')
-      +  '<br><b>申請代行(社労士)費用 ' + yen(r.sr.total) + '</b> は、計画届・支給申請が<b>コースごとに別々</b>になるため'
-      +  r.sr.count + '件分（1件あたり初期20万円＋1名1万円）で計上しています。'
+      +  '<br><b>申請代行(社労士)費用 ' + yen(r.sr.total) + '</b> は<b>変動制</b>で、'
+      +  '<b>1件あたり 初期20万円 ＋ 1名あたり1万円</b>（大臣認定コースは初期25万円＋1名3万円）で計算しています'
+      +  '＝ 初期20万円 × ' + r.sr.count + '件 ＝ ' + yen(r.sr.init) + ' ／ 1名1万円 × ' + r.sr.people + '名 ＝ ' + yen(r.sr.per) + '。'
+      +  '<b>企業規模では変わりません。</b>'
+      +  '<br>🔴<b>件数の数え方は要確認です。</b>計画届・支給申請は<b>訓練ごと</b>に行うため、'
+      +  '職種別に研修を分けるなら<b>研修ごと(いまは' + r.gs.length + '件)</b>になります。'
+      +  '同じコースをまとめて1件で受けられる場合は「コースごと」に切り替えてください。'
       +  '<b>あくまで想定額であり、実際の金額は社会保険労務士のお見積りによります</b>(詳細シミュレーションでは手入力で上書きできます)。'
       +  '</div>';
 
@@ -2263,6 +2284,12 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       +  '実際の可否は研修終了後の審査で決まるため、カリキュラムは必ず事前に社会保険労務士・労働局にご確認ください。</div>';
     h += '</div>';
     out.innerHTML = h;
+  }
+  function easySetSrMode(m){
+    easySrMode = m;
+    var bs = document.querySelectorAll('#jk-e-srmode button');
+    for(var i = 0; i < bs.length; i++) bs[i].className = (bs[i].getAttribute('data-jk-srmode') === m ? 'on' : '');
+    easyRender();
   }
   function easySetMode(m){
     easyMode = m;
@@ -2321,6 +2348,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       }
       return;
     }
+
+    var sm = t.closest('[data-jk-srmode]');
+    if(sm){ easySetSrMode(sm.getAttribute('data-jk-srmode')); return; }
 
     var eh = t.closest('[data-jk-eh]');
     if(eh){
@@ -2399,6 +2429,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       if(aw2) aw2.style.display = '';
       buildOnce(el);
       easyMode = 'max';
+      easySrMode = 'grp';
       easyRows = easyClone();
       var dv0 = el.querySelector('#jk-detail'), bt0 = el.querySelector('#jk-detail-t');
       if(dv0) dv0.style.display = 'none';
