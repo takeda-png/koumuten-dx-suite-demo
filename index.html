@@ -164,7 +164,9 @@
 .jk-etbl2 .c{font-weight:700;color:#16302b}
 .jk-etbl2 .sub{display:block;font-size:10.5px;color:#8a938e;font-weight:400}
 .jk-etbl2 tr.tot td{background:#ddf0e9;font-weight:800;color:#16302b}
-@media(max-width:640px){.jk-eset .jk-f{max-width:none!important;min-width:100%}.jk-ea button{flex:1;min-width:100%}}
+.jk-dtoggle{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:8px 18px;font-size:12.5px;font-weight:700;color:#5c6b77;cursor:pointer}
+.jk-dtoggle:hover{border-color:#9fd3c1;color:#16302b}
+@media(max-width:640px){.jk-eset .jk-f{max-width:none!important;min-width:100%}.jk-ea button{flex:1;min-width:100%}.jk-dtoggle{width:100%}}
 
 /* ===== 会社案内・採用パンフレット ギャラリー ===== */
 .pm-row{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x proximity}
@@ -446,8 +448,8 @@
         <p class="jk-elead"><b>2026年8月3日の要件追加</b>により、研修内容が<b>受講者の職務に沿った専門知識・技能であること</b>がより厳しく見られるようになりました。労働局への確認では<b>職種ごとに分けて実施するのが最も安全</b>という回答です。ここに職種別の人数を入れると、<b>職種ごとに助成額がいちばん大きくなるコースの組み方</b>を自動で提案します。研修時間は<b>最低の10時間</b>、1名あたりの費用は<b>経費助成の上限にちょうど届く金額(助成MAX)</b>を自動で設定します。</p>
         <div class="jk-eset">
           <div class="jk-f" style="max-width:190px"><label>研修時間 <span class="u">1名あたり h・最低10時間</span></label><input type="number" id="jk-e-h" min="10" step="1" value="10"></div>
-          <div class="jk-f" style="max-width:250px"><label>1名あたりの研修費用 <span class="u">税込</span></label>
-            <div class="jk-seg" id="jk-e-mode"><button type="button" data-jk-emode="max" class="on">助成MAX(自動)</button><button type="button" data-jk-emode="man">手入力</button></div>
+          <div class="jk-f" style="max-width:330px"><label>1名あたりの研修費用 <span class="u">税込</span></label>
+            <div class="jk-seg" id="jk-e-mode"><button type="button" data-jk-emode="max" class="on">助成MAX(自動)</button><button type="button" data-jk-emode="zero">実質0円(自動)</button><button type="button" data-jk-emode="man">手入力</button></div>
           </div>
           <div class="jk-f" id="jk-e-pw" style="max-width:190px;display:none"><label>研修費用 <span class="u">税込 円/名</span></label><input type="number" id="jk-e-price" min="0" step="1000" value="400000"></div>
         </div>
@@ -467,8 +469,11 @@
 
       <div class="jk-sec">
         <h4>■ 詳細シミュレーション ― コースを自分で選んで試算する</h4>
-        <p class="jk-elead">コース・人数・時間・費用を自分で指定して試算します。2つのコースを組み合わせることもできます。</p>
+        <p class="jk-elead">コース・人数・時間・費用を自分で指定して試算します。<b>実質負担が±0円になる研修費用・研修時間の自動逆算</b>、<b>申請代行(社労士)費用まで含めた実質負担</b>、大臣認定コース(85時間)や定額制訓練の試算、助成率・賃金単価・OJTの手動上書きはこちらです。2つのコースを組み合わせることもできます。</p>
+        <button type="button" class="jk-dtoggle" id="jk-detail-t">詳細シミュレーションを開く ▼</button>
       </div>
+
+      <div id="jk-detail" style="display:none">
 
       <div class="jk-plan" id="jk-plan-a">
         <div class="jk-plan-h">
@@ -566,6 +571,8 @@
         </div>
         <div style="font-size:11px;color:#8a938e;margin-top:6px;line-height:1.8">申請代行費用は、社会保険労務士監修のシミュレーションシートの計算式（<b>通常のコースは初期20万円＋1名あたり1万円／大臣認定の認定実習併用職業訓練は初期25万円＋1名あたり3万円</b>）で自動計算しています。<b>あくまで想定額であり、実際の金額は大きく異なる可能性があります。詳細は社会保険労務士にご確認ください。</b>お見積り金額が分かる場合は上書きしてください（「目安に戻す」で自動計算に戻ります）。2コースを組み合わせる場合は<b>2件分</b>として計算しています。同時にご依頼して初期費用が1回になる場合は、手入力で調整してください。</div>
         <div id="jk-msg"></div>
+      </div>
+
       </div>
 
       <div class="jk-sec">
@@ -1974,6 +1981,15 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     });
     return out;
   }
+  /* 実質負担が±0円になる1名あたりの研修費用(税込)を逆算する */
+  function easyZeroPrice(c, h, cap, rate){
+    var fixed = c.w[size] * Math.min(h, WAGE_H_MAX) + c.o[size];   /* 助成のうち費用に比例しない分 */
+    if(rate >= 1) return cap != null ? cap + fixed : fixed;
+    var pA = fixed / (1 - rate);                                    /* 経費助成が上限に届かない場合 */
+    var p = (cap == null || pA * rate <= cap) ? pA : (cap + fixed);  /* 届く場合は上限に張り付く */
+    return Math.max(0, Math.floor(p / 100) * 100);                  /* 100円単位に切り下げ(手出しが出ない側に丸める) */
+  }
+
   /* 1名あたりの助成額が最大になるコースを選ぶ */
   function easyBest(senior, emp, dx, baseH, manPrice){
     var best = null;
@@ -1981,9 +1997,14 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       var h = Math.max(baseH, c.minh);
       var cap = c.cap ? c.cap[size][band(h)] : null;
       var rate = c.r[size] / 100;
-      var price = (easyMode === 'max' && cap != null && rate > 0)
-                ? Math.ceil(cap / rate / 1000) * 1000     /* 経費助成の上限にちょうど届く額 */
-                : manPrice;
+      var price;
+      if(easyMode === 'max'){
+        price = (cap != null && rate > 0) ? Math.ceil(cap / rate / 1000) * 1000 : manPrice;  /* 経費助成の上限にちょうど届く額 */
+      } else if(easyMode === 'zero'){
+        price = easyZeroPrice(c, h, cap, rate);           /* 実質負担が±0円になる額 */
+      } else {
+        price = manPrice;
+      }
       var exp1 = price * rate;
       if(cap != null && exp1 > cap) exp1 = cap;
       var wage1 = c.w[size] * Math.min(h, WAGE_H_MAX);
@@ -2080,7 +2101,8 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
     h += '<div class="jk-res">'
       +  '<div class="jk-card hl"><div class="l">助成金 想定額(合計)</div><div class="v">' + yen(r.paid) + '</div><div class="s">対象 ' + r.people + '名 / ' + r.gs.length + 'グループ / ' + nKind + 'コース</div></div>'
       +  '<div class="jk-card"><div class="l">研修費用(税込)</div><div class="v">' + yen(r.cost) + '</div><div class="s">1名あたりの費用 × 人数</div></div>'
-      +  '<div class="jk-card net"><div class="l">実質負担額</div><div class="v">' + yen(net) + '</div><div class="s">研修費用 − 助成金想定額</div></div>'
+      +  '<div class="jk-card net"><div class="l">実質負担額</div><div class="v">' + (net <= 0 ? '0円' : yen(net)) + '</div><div class="s">'
+      +  (net < 0 ? '助成金が研修費用を ' + yen(-net) + ' 上回ります' : '研修費用 − 助成金想定額') + '</div></div>'
       +  '<div class="jk-card"><div class="l">実質OFF率</div><div class="v">' + off + '%</div><div class="s">研修費用に対する軽減率</div></div>'
       +  '</div>';
 
@@ -2111,6 +2133,12 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       +  '研修時間は' + r.baseH + '時間(コースの最低時間がこれを上回る場合はその時間)、'
       +  (easyMode === 'max'
           ? '1名あたりの費用は<b>経費助成の上限にちょうど届く金額</b>を自動で設定しています。これ以上費用を上げても助成額は増えません。'
+          : easyMode === 'zero'
+          ? '1名あたりの費用は<b>助成金と研修費用がちょうど釣り合う金額</b>をコースごとに逆算しています＝<b>会社の手出しが0円</b>になる条件です。'
+            + '<br>🔴<b>研修時間を伸ばすほど、実質0円にできる研修費用は上がります</b>(賃金助成が時間に比例して増えるため)。'
+            + '例えば⑦事業展開等リスキリング支援コース(中小企業)なら、10時間で4万円／40時間で16万円／100時間で40万円の研修が実質0円になります。'
+            + '<br><b>45歳以上だけ単価が大きくなる</b>のは、④中高年齢者実習型訓練に<b>OJT加算(1名あたり10万円・中小企業)</b>があり、'
+            + '研修費用に比例しない助成が乗るぶん、実質0円にできる研修費用が大きくなるためです(その代わり最低15時間が必要です)。'
           : '1名あたりの費用は手入力の金額で計算しています。')
       +  '<br>最も助成額が大きいのは <b>' + top.job + 'の' + top.n + '名 → ' + top.b.c.n + '</b> で ' + yen(top.grant) + ' です。'
       +  (r.excluded ? '<br>役員・経営者など<b>' + r.excluded + '名</b>は雇用保険の被保険者ではないため対象外として除いています。' : '')
@@ -2171,6 +2199,16 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
   document.addEventListener('click', function(e){
     var t = e.target;
     if(!t.closest || !t.closest('#jk-sim')) return;
+
+    if(t.closest('#jk-detail-t')){
+      var dv = q('jk-detail'), bt = q('jk-detail-t');
+      if(dv){
+        var open = (dv.style.display === 'none');
+        dv.style.display = open ? '' : 'none';
+        if(bt) bt.textContent = open ? '詳細シミュレーションを閉じる ▲' : '詳細シミュレーションを開く ▼';
+      }
+      return;
+    }
 
     var em = t.closest('[data-jk-emode]');
     if(em){ easySetMode(em.getAttribute('data-jk-emode')); return; }
@@ -2242,6 +2280,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       buildOnce(el);
       easyMode = 'max';
       easyRows = easyClone();
+      var dv0 = el.querySelector('#jk-detail'), bt0 = el.querySelector('#jk-detail-t');
+      if(dv0) dv0.style.display = 'none';
+      if(bt0) bt0.textContent = '詳細シミュレーションを開く ▼';
       easyRowsRender();
       easySetMode('max');
       chk();
