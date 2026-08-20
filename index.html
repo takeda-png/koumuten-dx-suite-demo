@@ -469,6 +469,9 @@
             <div class="jk-seg" id="jk-e-mode"><button type="button" data-jk-emode="max" class="on">助成MAX(自動)</button><button type="button" data-jk-emode="zero">実質0円(自動)</button><button type="button" data-jk-emode="man">手入力</button></div>
           </div>
           <div class="jk-f" id="jk-e-pw" style="max-width:190px;display:none"><label>研修費用 <span class="u">税込 円/名</span></label><input type="number" id="jk-e-price" min="0" step="1000" value="400000"></div>
+          <div class="jk-f" style="max-width:330px"><label>コースを選ぶ基準 <span class="u">職種ごとにどれを優先して割り当てるか</span></label>
+            <div class="jk-seg" id="jk-e-obj"><button type="button" data-jk-eobj="net" class="on">会社の収支が最大</button><button type="button" data-jk-eobj="grant">助成額が最大</button></div>
+          </div>
           <div class="jk-f" style="max-width:300px"><label>申請代行(社労士)費用の件数 <span class="u">計画届・支給申請の単位</span></label>
             <div class="jk-seg" id="jk-e-srmode"><button type="button" data-jk-srmode="grp" class="on">研修ごと</button><button type="button" data-jk-srmode="course">コースごと</button></div>
           </div>
@@ -1984,6 +1987,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
   var easyMode = 'max';                    /* max = 助成MAXの単価を自動 / zero = 実質0円 / man = 手入力 */
   var easySrMode = 'grp';                  /* 社労士費用の件数 grp = 研修ごと / course = コースごと */
   var easyUseOjt = true;                   /* OJT(実地訓練)ありのコース(③④)を候補に入れるか */
+  var easyObj = 'net';                     /* コース選択の基準 net = 会社の収支(助成−単価) / grant = 助成額 */
 
   /* かんたん試算で使えるコース(85時間必要な大臣認定・サブスク前提の定額制は除外) */
   function easyCands(senior, emp, dx){
@@ -2057,7 +2061,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       var wage1 = c.w[size] * Math.min(h, WAGE_H_MAX);
       var o = {c:c, h:h, cap:cap, rate:rate, price:price, exp1:exp1, wage1:wage1, ojt1:c.o[size]};
       o.g1 = o.exp1 + o.wage1 + o.ojt1;
-      if(!best || o.g1 > best.g1) best = o;
+      /* 実質0円モードは全コースで収支0になるので、そこは助成額(=単価)の大きい方を採る */
+      o.score = (easyObj === 'net' && easyMode !== 'zero') ? (o.g1 - o.price) : o.g1;
+      if(!best || o.score > best.score) best = o;
     });
     return best;
   }
@@ -2268,7 +2274,13 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
 
     var top = r.gs.slice().sort(function(a, b){ return b.grant - a.grant; })[0];
     h += '<div class="jk-eplan"><b>この組み方の考え方</b><br>'
-      +  '職種ごとに分けたうえで、それぞれ<b>1名あたりの助成額がいちばん大きくなるコース</b>を割り当てています。'
+      +  (easyObj === 'net' && easyMode !== 'zero'
+          ? '職種ごとに分けたうえで、それぞれ<b>1名あたりの収支(助成 − 単価)がいちばん良くなるコース</b>を割り当てています。'
+            + '<br>🔴<b>助成額がいちばん大きいコースが、いちばん得なコースとは限りません。</b>'
+            + '⑦事業展開等リスキリング支援コースは助成額こそ大きいものの経費助成率が75%なので、単価を上げるほど収支はマイナスになります。'
+            + '一方<b>④中高年齢者実習型訓練はOJT加算(1名10万円)が単価に比例しない</b>ため、単価を抑えると<b>収支がプラス</b>になります。'
+            + '「助成額が最大」に切り替えると従来どおり助成額だけで選びます。'
+          : '職種ごとに分けたうえで、それぞれ<b>1名あたりの助成額がいちばん大きくなるコース</b>を割り当てています。')
       +  '研修時間は' + r.baseH + '時間(コースの最低時間がこれを上回る場合はその時間)、'
       +  (easyMode === 'max'
           ? '1名あたりの費用は<b>経費助成の上限にちょうど届く金額</b>を自動で設定しています。これ以上費用を上げても助成額は増えません。'
@@ -2315,6 +2327,12 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       +  '実際の可否は研修終了後の審査で決まるため、カリキュラムは必ず事前に社会保険労務士・労働局にご確認ください。</div>';
     h += '</div>';
     out.innerHTML = h;
+  }
+  function easySetObj(m){
+    easyObj = m;
+    var bs = document.querySelectorAll('#jk-e-obj button');
+    for(var i = 0; i < bs.length; i++) bs[i].className = (bs[i].getAttribute('data-jk-eobj') === m ? 'on' : '');
+    easyRender();
   }
   function easySetSrMode(m){
     easySrMode = m;
@@ -2380,6 +2398,9 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       }
       return;
     }
+
+    var eo = t.closest('[data-jk-eobj]');
+    if(eo){ easySetObj(eo.getAttribute('data-jk-eobj')); return; }
 
     var sm = t.closest('[data-jk-srmode]');
     if(sm){ easySetSrMode(sm.getAttribute('data-jk-srmode')); return; }
@@ -2463,6 +2484,7 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
       easyMode = 'max';
       easySrMode = 'grp';
       easyUseOjt = true;
+      easyObj = 'net';
       var ojtBox = el.querySelector('#jk-e-ojt');
       if(ojtBox) ojtBox.checked = true;
       easyRows = easyClone();
