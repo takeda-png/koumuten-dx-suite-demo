@@ -164,6 +164,12 @@
 .jk-etbl2 .c{font-weight:700;color:#16302b}
 .jk-etbl2 .sub{display:block;font-size:10.5px;color:#8a938e;font-weight:400}
 .jk-etbl2 tr.tot td{background:#ddf0e9;font-weight:800;color:#16302b}
+.jk-htbl{margin-top:12px}
+.jk-htbl tr.on td{background:#ddf0e9;font-weight:800}
+.jk-htbl tr.min td{box-shadow:inset 0 0 0 1.5px #2f9e82}
+.jk-hbtn{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:3px 12px;font-size:11.5px;font-weight:700;color:#5c6b77;cursor:pointer;white-space:nowrap}
+.jk-hbtn:hover{border-color:#2f9e82;color:#16302b}
+.jk-hnow{font-size:11.5px;color:#8a938e;font-weight:700}
 .jk-dtoggle{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:8px 18px;font-size:12.5px;font-weight:700;color:#5c6b77;cursor:pointer}
 .jk-dtoggle:hover{border-color:#9fd3c1;color:#16302b}
 @media(max-width:640px){.jk-eset .jk-f{max-width:none!important;min-width:100%}.jk-ea button{flex:1;min-width:100%}.jk-dtoggle{width:100%}}
@@ -453,9 +459,9 @@
 
       <div class="jk-sec jk-easy" id="jk-easy">
         <h4>■ かんたん試算 ― 職種ごとの人数を入れるだけ<span class="jk-ebadge">おすすめ</span></h4>
-        <p class="jk-elead"><b>2026年8月3日の要件追加</b>により、研修内容が<b>受講者の職務に沿った専門知識・技能であること</b>がより厳しく見られるようになりました。労働局への確認では<b>職種ごとに分けて実施するのが最も安全</b>という回答です。ここに職種別の人数を入れると、<b>職種ごとに助成額がいちばん大きくなるコースの組み方</b>を自動で提案します。研修時間は<b>最低の10時間</b>、1名あたりの費用は<b>経費助成の上限にちょうど届く金額(助成MAX)</b>を自動で設定します。</p>
+        <p class="jk-elead"><b>2026年8月3日の要件追加</b>により、研修内容が<b>受講者の職務に沿った専門知識・技能であること</b>がより厳しく見られるようになりました。労働局への確認では<b>職種ごとに分けて実施するのが最も安全</b>という回答です。ここに職種別の人数を入れると、<b>職種ごとに助成額がいちばん大きくなるコースの組み方</b>を自動で提案します。1名あたりの費用は<b>経費助成の上限にちょうど届く金額(助成MAX)</b>を自動で設定します。研修時間は<b>最低10時間</b>ですが、<b>時間を伸ばすほど賃金助成が増えて実質負担が下がる</b>ため、下の早見表で「何時間やるか」を決められます。</p>
         <div class="jk-eset">
-          <div class="jk-f" style="max-width:190px"><label>研修時間 <span class="u">1名あたり h・最低10時間</span></label><input type="number" id="jk-e-h" min="10" step="1" value="10"></div>
+          <div class="jk-f" style="max-width:190px"><label>研修時間 <span class="u">1名あたり h・最低10時間</span></label><input type="number" id="jk-e-h" min="10" step="1" value="20"></div>
           <div class="jk-f" style="max-width:330px"><label>1名あたりの研修費用 <span class="u">税込</span></label>
             <div class="jk-seg" id="jk-e-mode"><button type="button" data-jk-emode="max" class="on">助成MAX(自動)</button><button type="button" data-jk-emode="zero">実質0円(自動)</button><button type="button" data-jk-emode="man">手入力</button></div>
           </div>
@@ -2103,6 +2109,23 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
             groups:order.map(function(k){ return byG[k]; })};
   }
 
+  /* 研修時間ごとの実質負担(社労士費用込み)の早見表。構成とモードはそのまま、時間だけ変えて比べる */
+  function easyHourTable(){
+    var cur = Math.max(EASY_MIN_H, Math.round(num('jk-e-h') || EASY_MIN_H));
+    var hs = [10, 15, 20, 30, 40, 60, 99];
+    if(hs.indexOf(cur) < 0){ hs.push(cur); }
+    hs.sort(function(a, b){ return a - b; });
+    var rows = hs.map(function(h){
+      var r = easyCalc(h);
+      return {h:h, grant:r.paid, cost:r.cost, sr:r.sr.total, net:r.netAll,
+              per:r.people ? Math.round(r.netAll / r.people) : 0, cur:(h === cur)};
+    });
+    var min = null;
+    rows.forEach(function(x){ if(min === null || x.net < min) min = x.net; });
+    rows.forEach(function(x){ x.min = (x.net === min); });
+    return rows;
+  }
+
   /* 社労士費用まで含めて手出し0円が成立する、最短の研修時間を探す */
   function easyMinZeroH(){
     for(var h = EASY_MIN_H; h <= 200; h++){
@@ -2190,6 +2213,25 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
                 : '<br>研修時間を200時間まで伸ばしても成立しないため、受講人数を増やすかコース構成の見直しが必要です。')
         +  '</div>';
     }
+    var ht = easyHourTable();
+    h += '<div style="overflow-x:auto"><table class="jk-bd jk-htbl" style="min-width:620px">'
+      +  '<thead><tr><th style="min-width:110px">研修時間</th><th class="r">助成金</th><th class="r">研修費用</th>'
+      +  '<th class="r">社労士費用</th><th class="r">実質負担(合計)</th><th class="r">1名あたり負担</th><th style="width:100px"></th></tr></thead><tbody>';
+    ht.forEach(function(x){
+      h += '<tr class="' + (x.cur ? 'on ' : '') + (x.min ? 'min' : '') + '">'
+        +  '<td>' + x.h + '時間' + (x.cur ? ' <span class="jk-hnow">(いま)</span>' : '') + (x.min && !x.cur ? ' <span class="jk-hnow">最小</span>' : '') + '</td>'
+        +  '<td class="r">' + yen(x.grant) + '</td><td class="r">' + yen(x.cost) + '</td><td class="r">' + yen(x.sr) + '</td>'
+        +  '<td class="r"><b>' + (x.net <= 0 ? '0円' : yen(x.net)) + '</b></td>'
+        +  '<td class="r">' + (x.per <= 0 ? '0円' : yen(x.per)) + '</td>'
+        +  '<td>' + (x.cur ? '' : '<button type="button" class="jk-hbtn" data-jk-eh="' + x.h + '">この時間にする</button>') + '</td></tr>';
+    });
+    h += '</tbody></table></div>';
+    h += '<div class="jk-eplan"><b>研修時間の決め方</b><br>'
+      +  '1名あたりの単価を助成の上限に張り付けたまま、<b>研修時間を伸ばすと賃金助成だけが増える</b>ので実質負担は下がります。'
+      +  '経費助成の上限は<b>100時間・200時間で切り替わる</b>ため、<b>100時間の手前がいちばん効率が良い</b>のが制度上の特徴です'
+      +  '(⑦事業展開等リスキリング支援コースなら99時間で1名あたりの負担がほぼ0円になります)。'
+      +  '<br>ただし研修時間はそのまま受講者の拘束時間です。現場が止まらない範囲で決めてください。</div>';
+
     var top = r.gs.slice().sort(function(a, b){ return b.grant - a.grant; })[0];
     h += '<div class="jk-eplan"><b>この組み方の考え方</b><br>'
       +  '職種ごとに分けたうえで、それぞれ<b>1名あたりの助成額がいちばん大きくなるコース</b>を割り当てています。'
@@ -2277,6 +2319,14 @@ ${l[t].tags}`),f(t)},children:c===t?"✓ コピー済":"コピー"})]}),(0,eO.js
         dv.style.display = open ? '' : 'none';
         if(bt) bt.textContent = open ? '詳細シミュレーションを閉じる ▲' : '詳細シミュレーションを開く ▼';
       }
+      return;
+    }
+
+    var eh = t.closest('[data-jk-eh]');
+    if(eh){
+      var hin = q('jk-e-h');
+      if(hin){ hin.value = eh.getAttribute('data-jk-eh'); }
+      easyRender();
       return;
     }
 
