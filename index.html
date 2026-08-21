@@ -147,6 +147,10 @@
 .jk-ebadge{background:#2f9e82;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px}
 .jk-elead{font-size:11.5px;line-height:1.9;color:#4a554f;margin:0 0 10px}
 .jk-eset{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;align-items:flex-end}
+#jk-e-split{flex-wrap:wrap}
+@media(min-width:641px){.jk-fsplit{min-width:250px}}
+#jk-e-split button{padding:7px 11px}
+.jk-mgb{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#2f9e82;color:#fff;font-size:10px;font-weight:800;vertical-align:middle}
 .jk-etbl td{vertical-align:middle}
 .jk-etbl input,.jk-etbl select{width:100%;background:#f2fbf7;border:1px solid #9fd3c1;border-radius:6px;font-size:13px;padding:5px 7px}
 .jk-etbl input.r{text-align:right}
@@ -462,13 +466,16 @@
 
       <div class="jk-sec jk-easy" id="jk-easy">
         <h4>■ かんたん試算 ― 職種ごとの人数を入れるだけ<span class="jk-ebadge">おすすめ</span></h4>
-        <p class="jk-elead"><b>2026年8月3日の要件追加</b>により、研修内容が<b>受講者の職務に沿った専門知識・技能であること</b>がより厳しく見られるようになりました。労働局への確認では<b>職種ごとに分けて実施するのが最も安全</b>という回答です。ここに職種別の人数を入れると、<b>職種ごとに助成額がいちばん大きくなるコースの組み方</b>を自動で提案します。1名あたりの費用は<b>経費助成の上限にちょうど届く金額(助成MAX)</b>を自動で設定します。研修時間は<b>最低10時間</b>ですが、<b>時間を伸ばすほど賃金助成が増えて実質負担が下がる</b>ため、下の早見表で「何時間やるか」を決められます。</p>
+        <p class="jk-elead"><b>2026年8月3日の要件追加</b>により、研修内容が<b>受講者の職務に沿った専門知識・技能であること</b>がより厳しく見られるようになりました。労働局への確認では<b>職種ごとに分けて実施するのが最も安全</b>という回答です（<b>東京・大阪労働局</b>は、雇用契約書に職務として<b>DX推進業務</b>と記載されていれば職種が異なる受講者をまとめられるという回答だったため、下の<b>研修の分け方</b>で切り替えて比べられます）。ここに職種別の人数を入れると、<b>職種ごとに助成額がいちばん大きくなるコースの組み方</b>を自動で提案します。1名あたりの費用は<b>経費助成の上限にちょうど届く金額(助成MAX)</b>を自動で設定します。研修時間は<b>最低10時間</b>ですが、<b>時間を伸ばすほど賃金助成が増えて実質負担が下がる</b>ため、下の早見表で「何時間やるか」を決められます。</p>
         <div class="jk-eset">
           <div class="jk-f" style="max-width:190px"><label>研修時間 <span class="u">1名あたり h・最低10時間</span></label><input type="number" id="jk-e-h" min="10" step="1" value="20"></div>
           <div class="jk-f" style="max-width:330px"><label>1名あたりの研修費用 <span class="u">税込</span></label>
             <div class="jk-seg" id="jk-e-mode"><button type="button" data-jk-emode="max" class="on">助成MAX(自動)</button><button type="button" data-jk-emode="zero">実質0円(自動)</button><button type="button" data-jk-emode="man">手入力</button></div>
           </div>
           <div class="jk-f" id="jk-e-pw" style="max-width:190px;display:none"><label>研修費用 <span class="u">税込 円/名</span></label><input type="number" id="jk-e-price" min="0" step="1000" value="400000"></div>
+          <div class="jk-f jk-fsplit" style="max-width:360px"><label>研修の分け方 <span class="u">東京・大阪は「まとめる」も選べます</span></label>
+            <div class="jk-seg" id="jk-e-split"><button type="button" data-jk-esplit="job" class="on">職種ごとに分ける</button><button type="button" data-jk-esplit="merge">職種をまとめる</button></div>
+          </div>
           <div class="jk-f" style="max-width:330px"><label>コースを選ぶ基準 <span class="u">職種ごとにどれを優先して割り当てるか</span></label>
             <div class="jk-seg" id="jk-e-obj"><button type="button" data-jk-eobj="net" class="on">会社の収支が最大</button><button type="button" data-jk-eobj="grant">助成額が最大</button></div>
           </div>
@@ -629,7 +636,7 @@
           <li><b>1事業所が1年度に受給できる助成額にも上限</b>があります。人材育成支援コース(①〜⑤)は<b>1,000万円</b>、定額制訓練を含む人への投資促進コースは<b>2,500万円</b>、事業展開等リスキリング支援コースは<b>1億円</b>です(いずれも支給申請日を基準に4月1日〜翌年3月31日)。<b>同じコース群の助成額は合算して判定</b>されるため、2コースを組み合わせる場合はご注意ください。</li>
           <li>助成対象となる<b>訓練の受講回数は1労働者につき1年度3回まで</b>です(令和8年8月3日以降の計画届によるeラーニングは1年度1回まで、有期実習型訓練は同一労働者に1回まで)。また、賃金助成の対象となる実訓練時間は<b>1人1訓練あたり1,200時間</b>が上限です。</li>
           <li><b>2つのコースを組み合わせる場合</b>、計画届・支給申請は<b>コースごとに別々</b>に行います。同一の受講者・同一の訓練に対して、複数コースから重複して助成を受けることはできません。組み合わせの可否は必ず社会保険労務士・労働局にご確認ください。</li>
-          <li><b>研修カリキュラムは、受講者の職務にとって専門知識・技能の習得であることが必要です。</b>令和8年8月3日にこの要件が追加され、労働局は<b>職種ごとに分けて実施すること</b>を推奨しています(職種が異なる受講者を一括りにすると、審査の過程で職務との関連性について疑義照会を受ける場合があります)。なお<b>事業展開等リスキリング支援コース以外</b>は、<b>総訓練時間の半数未満</b>であれば職種を問わない汎用的な内容を含めても差し支えないという特例があります。審査は研修終了後に行われるため、判断に迷う場合は必ず事前に社会保険労務士・労働局にご確認ください。</li>
+          <li><b>研修カリキュラムは、受講者の職務にとって専門知識・技能の習得であることが必要です。</b>令和8年8月3日にこの要件が追加され、労働局は<b>職種ごとに分けて実施すること</b>を推奨しています(職種が異なる受講者を一括りにすると、審査の過程で職務との関連性について疑義照会を受ける場合があります)。<b>東京・大阪労働局</b>は要件追加の直後の確認では「雇用契約書に<b>DX推進業務</b>と職務が記載されていれば、職種が異なる受講者が同じDX研修を受けても職務に沿った訓練に該当する」という回答でしたが、<b>後日あらためて東京労働局に確認したところ「従業員数に対しDX推進者の割合が高い場合は疑義として審査の過程で確認し、審査で決定する」と回答が変わっています</b>（雇用契約書の「業務内容欄」に職務が明確に記載されていることが前提で、「その他業務」のような曖昧な記載は不可です）。なお<b>事業展開等リスキリング支援コース以外</b>は、<b>総訓練時間の半数未満</b>であれば職種を問わない汎用的な内容を含めても差し支えないという特例があります。審査は研修終了後に行われるため、判断に迷う場合は必ず事前に社会保険労務士・労働局にご確認ください。</li>
           <li>計画届と異なるカリキュラム(日程・時間・場所・講師・経費額等)を実施した場合、その対象部分は助成金対象外となります。</li>
           <li>支給申請までの間、会社都合退職者を出さないようご注意ください。</li>
           <li>受講者ごとに研修時間の8割を満たしていない場合、その受講者分の助成金は支給されません。8割以上でも一部欠席がある場合は、その時間分の賃金助成が減額されます(出勤簿・日報で確認します)。</li>
@@ -3414,6 +3421,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
   var easySrMode = 'grp';                  /* 社労士費用の件数 grp = 研修ごと / course = コースごと */
   var easyUseOjt = true;                   /* OJT(実地訓練)ありのコース(③④)を候補に入れるか */
   var easyObj = 'net';                     /* コース選択の基準 net = 会社の収支(助成−単価) / grant = 助成額 */
+  var easySplit = 'job';                   /* 研修の分け方 job = 職種ごとに分ける / merge = 職種をまとめる(東京・大阪) */
 
   /* かんたん試算で使えるコース(85時間必要な大臣認定・サブスク前提の定額制は除外) */
   function easyCands(senior, emp, dx){
@@ -3516,10 +3524,16 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       }
       subs.forEach(function(s){
         people += s.n;
-        gs.push({job:r.job, senior:s.senior, sr:s.sr || 0, emp:r.emp, dx:r.dx, n:s.n, b:s.b,
+        /* このグループに含まれる45歳以上の人数(まとめたときの内訳表示に使う) */
+        var srN = (s.senior === true) ? s.n : (s.senior === null ? (s.sr || 0) : 0);
+        gs.push({job:r.job, jobs:[r.job], senior:s.senior, sr:srN, emp:r.emp, dx:r.dx,
+                 emps:[r.emp], dxs:[r.dx], n:s.n, b:s.b,
                  grant:s.b.g1 * s.n, cost:s.b.price * s.n});
       });
     });
+    /* 東京・大阪前提の「職種をまとめる」では、同じコース・同じ時間・同じ単価のグループを1本の研修に統合する */
+    if(easySplit === 'merge') gs = easyMergeGroups(gs);
+
     /* 申請代行(社労士)費用。実質0円モードでは、これも含めて手出しが0円になる単価に引き直す */
     var sr = easySrFee(gs);
     var zeroNG = false;
@@ -3590,6 +3604,56 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     }
     return null;
   }
+  /* --- 研修の分け方 ------------------------------------------------
+     既定は「職種ごとに分ける」(令和8年8月3日の要件追加に対していちばん安全)。
+     東京・大阪労働局は「雇用契約書に職務としてDX推進業務と記載されていれば、
+     職種が異なっても同じDX研修を受けられる」という回答だったため、切り替えで比べられるようにする。
+     統合しても1名あたりの助成額と単価は変わらない。変わるのは研修の本数＝申請の件数。 */
+  function easyUniq(a){
+    var o = [], seen = {};
+    (a || []).forEach(function(x){ if(!seen.hasOwnProperty(x)){ seen[x] = 1; o.push(x); } });
+    return o;
+  }
+  function easyJobLabel(jobs){
+    var u = easyUniq(jobs);
+    if(u.length <= 4) return u.join('・');
+    return u.slice(0, 3).join('・') + ' ほか' + (u.length - 3) + '職種';
+  }
+  function easyEmpLabel(g){
+    return easyUniq(g.emps || [g.emp]).map(function(k){ return k === 'sei' ? '正社員' : '有期社員'; }).join('＋');
+  }
+  function easyDxLabel(g){
+    return easyUniq(g.dxs || [g.dx]).map(function(k){ return k === 'y' ? 'DX・GX・新規事業' : '職務の専門知識'; }).join('＋');
+  }
+  function easyMergeGroups(gs){
+    var byK = {}, order = [];
+    gs.forEach(function(g){
+      var k = g.b.c.k + '|' + g.b.h + '|' + g.b.price;
+      if(!byK.hasOwnProperty(k)){ byK[k] = g; order.push(k); return; }
+      var t = byK[k];
+      t.merged = true;
+      t.jobs  = t.jobs.concat(g.jobs);
+      t.emps  = t.emps.concat(g.emps);
+      t.dxs   = t.dxs.concat(g.dxs);
+      t.n    += g.n;
+      t.sr   += g.sr;
+      t.grant += g.grant;
+      t.cost  += g.cost;
+      if(t.senior !== g.senior) t.senior = null;   /* 45歳以上と未満が混ざったら全年齢扱い */
+    });
+    return order.map(function(k){
+      var g = byK[k];
+      if(g.merged) g.job = easyJobLabel(g.jobs);
+      return g;
+    });
+  }
+  /* もう一方の分け方でも試算して比較表を作る */
+  function easyAlt(split){
+    var save = easySplit, r;
+    easySplit = split;
+    try { r = easyCalc(); } finally { easySplit = save; }
+    return r;
+  }
   function easyAgeLabel(g){
     if(g.senior === null) return g.sr ? ('全年齢(45歳以上' + g.sr + '名を含む)') : '全年齢';
     return g.senior ? '45歳以上' : '45歳未満';
@@ -3646,7 +3710,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       +  '<th class="r">助成額 小計</th></tr></thead><tbody>';
     r.gs.forEach(function(g){
       h += '<tr>'
-        +  '<td><span class="c">' + g.job + '</span><span class="sub">' + easyAgeLabel(g) + ' / ' + (g.emp === 'sei' ? '正社員' : '有期社員') + ' / ' + (g.dx === 'y' ? 'DX・GX・新規事業' : '職務の専門知識') + '</span></td>'
+        +  '<td><span class="c">' + g.job + (g.merged ? ' <span class="jk-mgb">まとめ</span>' : '') + '</span><span class="sub">' + easyAgeLabel(g) + ' / ' + easyEmpLabel(g) + ' / ' + easyDxLabel(g) + '</span></td>'
         +  '<td>' + g.b.c.n + '<span class="sub">経費' + Math.round(g.b.rate * 100) + '%(上限' + (g.b.cap != null ? man(g.b.cap) : '—') + ') / 賃金' + g.b.c.w[size] + '円/h'
         +  (g.b.ojt1 ? ' / OJT' + man(g.b.ojt1) : '') + '</span></td>'
         +  '<td class="r">' + g.n + '名</td><td class="r">' + g.b.h + 'h</td>'
@@ -3678,6 +3742,65 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
                 : '<br>研修時間を200時間まで伸ばしても成立しないため、受講人数を増やすかコース構成の見直しが必要です。')
         +  '</div>';
     }
+    /* --- 研修の分け方の比較 --- */
+    var alt  = easyAlt(easySplit === 'merge' ? 'job' : 'merge');
+    var cJob = (easySplit === 'merge') ? alt : r;
+    var cMrg = (easySplit === 'merge') ? r : alt;
+    h += '<div style="overflow-x:auto"><table class="jk-bd" style="margin-top:12px;min-width:560px">'
+      +  '<thead><tr><th style="min-width:170px">研修の分け方</th>'
+      +  '<th class="r">職種ごとに分ける' + (easySplit === 'job' ? ' <span class="jk-hnow">(いま)</span>' : '') + '</th>'
+      +  '<th class="r">職種をまとめる' + (easySplit === 'merge' ? ' <span class="jk-hnow">(いま)</span>' : '') + '</th>'
+      +  '<th class="r" style="width:110px">まとめた場合の差</th></tr></thead><tbody>';
+    [{l:'研修の本数(＝申請の件数)', a:cJob.gs.length, b:cMrg.gs.length, u:'本'},
+     {l:'助成金 想定額',        a:cJob.paid,     b:cMrg.paid,     up:true},
+     {l:'研修費用(税込)',        a:cJob.cost,     b:cMrg.cost},
+     {l:'申請代行(社労士)費用', a:cJob.sr.total, b:cMrg.sr.total},
+     {l:'実質負担額',            a:cJob.netAll,   b:cMrg.netAll}
+    ].forEach(function(x){
+      var d = x.b - x.a, good = x.up ? (d > 0) : (d < 0);
+      h += '<tr><td>' + x.l + '</td>'
+        +  '<td class="r">' + (x.u ? x.a + x.u : yen(x.a)) + '</td>'
+        +  '<td class="r"><b>' + (x.u ? x.b + x.u : yen(x.b)) + '</b></td>'
+        +  '<td class="r" style="font-weight:800;color:' + (d === 0 ? '#8a938e' : (good ? '#1e7a62' : '#c4554d')) + '">'
+        +  (d === 0 ? '—' : (d > 0 ? '+' : '−') + (x.u ? Math.abs(d) + x.u : yen(Math.abs(d)))) + '</td></tr>';
+    });
+    h += '</tbody></table></div>';
+    h += '<div class="jk-eplan"><b>分け方で何が変わるのか</b><br>'
+      +  '1名あたりの助成額と単価は、分け方を変えても変わりません。'
+      +  '変わるのは<b>研修を何本に分けるか＝計画届・支給申請の件数</b>と、それに比例する'
+      +  '<b>申請代行(社労士)費用の初期20万円×件数</b>です'
+      +  (easySrMode === 'course'
+          ? '（いまは社労士費用の件数を「コースごと」で数えているため、まとめても件数は変わりません。'
+            + '「研修ごと」に切り替えると差が出ます）'
+          : '')
+      +  '。実質0円モードのときだけは、1名あたりの社労士費用が変わるぶん、逆算する単価も動きます。'
+      +  '<br>金額以上に大きいのは<b>研修の開催回数そのものが減る</b>ことです。'
+      +  '講師の稼働・日程調整・現場を空ける回数がそのまま少なくなります。</div>';
+    if(easySplit === 'merge'){
+      h += '<div class="jk-ewarn">⚠️ <b>「職種をまとめる」は、そのまま使えるとは限りません。</b>'
+        +  '<br>根拠は、令和8年8月3日の要件追加の<b>直後</b>に東京・大阪労働局へ確認したときの回答です'
+        +  '（「職務として<b>DX推進業務</b>と雇用契約書に記載されていたら、'
+        +  '職種が異なっていてもDX推進担当向け研修は職務を全うするのに該当する」）。'
+        +  '<br>🔴<b>ただし、その後あらためて東京労働局に確認したところ回答が変わっています。</b>'
+        +  '「雇用契約書にDX推進業務と記載されていたとしても、仮に従業員全員がDX推進者というのは疑問なので、'
+        +  '<b>従業員数に対しDX推進者の割合が高い場合においては疑義として審査の過程で確認し審査にて決定します</b>」。'
+        +  '<br>🔴<b>審査は研修が終わったあとです。</b>'
+        +  'ここで否認されると助成金は入らず、研修費用は全額自社負担になります。'
+        +  '<br>前提として、<b>雇用契約書または労働条件通知書の「業務内容欄」に職務が明確に書かれていること</b>が必要です'
+        +  '（「その他業務」のような曖昧な記載は認められません）。'
+        +  '<br>いちばん安全なのは<b>「職種ごとに分ける」</b>です。'
+        +  'まとめて申請する場合は、必ず事前に社会保険労務士・所轄の労働局に確認してください。</div>';
+    } else {
+      h += '<div class="jk-eplan"><b>東京・大阪はまとめられる可能性があります。</b>'
+        +  '要件追加の直後に東京・大阪労働局へ確認したところ、'
+        +  '<b>雇用契約書に「DX推進業務」と職務が記載されていれば、職種が異なる受講者が同じDX研修を受けても職務に沿った訓練に該当する</b>'
+        +  'という回答でした。上の<b>研修の分け方</b>で<b>職種をまとめる</b>に切り替えると、その前提で試算できます'
+        +  '（ただし東京労働局は後日<b>「DX推進者の割合が高い場合は審査で判断する」と回答を変えています</b>。切り替えると注意点を表示します）。'
+        +  '<br>また⑦事業展開等リスキリング支援コース以外なら、<b>総訓練時間の半数未満</b>であれば職種を問わない汎用的な内容を含められる特例があるため、'
+        +  '<b>前半は全職種そろって受講し、後半を職種別に分ける</b>という組み方も可能です'
+        +  '（このハイブリッド型の試算はこの画面では行っていません。社会保険労務士とご相談ください）。</div>';
+    }
+
     var ht = easyHourTable();
     h += '<div style="overflow-x:auto"><table class="jk-bd jk-htbl" style="min-width:620px">'
       +  '<thead><tr><th style="min-width:110px">研修時間</th><th class="r">助成金</th><th class="r">研修費用</th>'
@@ -3699,14 +3822,17 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       +  '<br>ただし研修時間はそのまま受講者の拘束時間です。現場が止まらない範囲で決めてください。</div>';
 
     var top = r.gs.slice().sort(function(a, b){ return b.grant - a.grant; })[0];
+    var splitLead = (easySplit === 'merge')
+      ? '職種ごとに最適なコースを選んだうえで、<b>同じコース・同じ時間・同じ単価になったグループを1本の研修にまとめて</b>います(東京・大阪労働局の回答を前提にしたモードです)。コースは'
+      : '職種ごとに分けたうえで、';
     h += '<div class="jk-eplan"><b>この組み方の考え方</b><br>'
       +  (easyObj === 'net' && easyMode !== 'zero'
-          ? '職種ごとに分けたうえで、それぞれ<b>1名あたりの収支(助成 − 単価)がいちばん良くなるコース</b>を割り当てています。'
+          ? splitLead + 'それぞれ<b>1名あたりの収支(助成 − 単価)がいちばん良くなるコース</b>を割り当てています。'
             + '<br>🔴<b>助成額がいちばん大きいコースが、いちばん得なコースとは限りません。</b>'
             + '⑦事業展開等リスキリング支援コースは助成額こそ大きいものの経費助成率が75%なので、単価を上げるほど収支はマイナスになります。'
             + '一方<b>④中高年齢者実習型訓練はOJT加算(1名10万円)が単価に比例しない</b>ため、単価を抑えると<b>収支がプラス</b>になります。'
             + '「助成額が最大」に切り替えると従来どおり助成額だけで選びます。'
-          : '職種ごとに分けたうえで、それぞれ<b>1名あたりの助成額がいちばん大きくなるコース</b>を割り当てています。')
+          : splitLead + 'それぞれ<b>1名あたりの助成額がいちばん大きくなるコース</b>を割り当てています。')
       +  '研修時間は' + r.baseH + '時間(コースの最低時間がこれを上回る場合はその時間)、'
       +  (easyMode === 'max'
           ? '1名あたりの費用は<b>経費助成の上限にちょうど届く金額</b>を自動で設定しています。これ以上費用を上げても助成額は増えません。'
@@ -3749,6 +3875,8 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     h += '<div class="jk-ewarn">⚠️ <b>⑦事業展開等リスキリング支援コース</b>は助成率がいちばん高い一方で、'
       +  '<b>DX・GX・新規事業など事業展開に伴う新たな知識技能の習得</b>であること、'
       +  'かつ<b>受講者全員の職種がそろっていること</b>が前提です(令和8年8月3日の要件追加)。'
+      +  '東京・大阪労働局は「雇用契約書に職務としてDX推進業務と記載があれば職種が異なっても可」という回答でしたが、'
+      +  '<b>東京労働局は後日「従業員数に対するDX推進者の割合が高い場合は審査の過程で確認し審査で決定する」と回答を変えています</b>。'
       +  'それ以外のコースは<b>総訓練時間の半数未満</b>であれば職種を問わない汎用的な内容を含められます。'
       +  '実際の可否は研修終了後の審査で決まるため、カリキュラムは必ず事前に社会保険労務士・労働局にご確認ください。</div>';
     h += '</div>';
@@ -3758,6 +3886,12 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     easyObj = m;
     var bs = document.querySelectorAll('#jk-e-obj button');
     for(var i = 0; i < bs.length; i++) bs[i].className = (bs[i].getAttribute('data-jk-eobj') === m ? 'on' : '');
+    easyRender();
+  }
+  function easySetSplit(m){
+    easySplit = m;
+    var bs = document.querySelectorAll('#jk-e-split button');
+    for(var i = 0; i < bs.length; i++) bs[i].className = (bs[i].getAttribute('data-jk-esplit') === m ? 'on' : '');
     easyRender();
   }
   function easySetSrMode(m){
@@ -3827,6 +3961,9 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
 
     var eo = t.closest('[data-jk-eobj]');
     if(eo){ easySetObj(eo.getAttribute('data-jk-eobj')); return; }
+
+    var es = t.closest('[data-jk-esplit]');
+    if(es){ easySetSplit(es.getAttribute('data-jk-esplit')); return; }
 
     var sm = t.closest('[data-jk-srmode]');
     if(sm){ easySetSrMode(sm.getAttribute('data-jk-srmode')); return; }
