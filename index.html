@@ -1332,8 +1332,451 @@ h("div",{className:"hint"},"期末の2ヶ月に慌てて値引きで受注する
 )},group:"経営"},
 {key:"budget",label:"実行予算・進捗",icon:"🧮",comp:function(){let{projects:e,updateProjects:t}=eG(),[r,n]=(0,ew.useState)(e[0].id),[a,i]=(0,ew.useState)(!1),[l,o]=(0,ew.useState)({name:"",contract:3e3,costRate:76}),s=e.find(e=>e.id===r)??e[0],u=s.rows.reduce((e,t)=>e+t.budget,0),c=s.rows.reduce((e,t)=>e+t.ordered,0),f=s.rows.reduce((e,t)=>e+t.paid,0),d=c+.98*Math.max(u-c,0),h=s.contract>0?Math.round((s.contract-Math.max(d,c))/s.contract*1e3)/10:0;return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"実行予算・進捗管理"}),(0,eO.jsx)("p",{children:"工種別に「予算→発注→支払」を追跡。発注時点で予算超過を検知し、赤字を引渡し前に見つけます。"})]}),(0,eO.jsx)("div",{className:"proj-tabs",children:e.map(e=>(0,eO.jsx)("button",{className:`proj-tab ${e.id===r?"on":""}`,onClick:()=>n(e.id),children:e.name},e.id))}),(0,eO.jsx)("div",{style:{margin:"10px 0"},children:a?(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"flex-end",flexWrap:"wrap"},children:[(0,eO.jsxs)("label",{style:{fontSize:12},children:["お施主様名",(0,eO.jsx)("br",{}),(0,eO.jsx)("input",{value:l.name,onChange:e=>o({...l,name:e.target.value}),placeholder:"例:渡辺"})]}),(0,eO.jsxs)("label",{style:{fontSize:12},children:["請負金額(万円)",(0,eO.jsx)("br",{}),(0,eO.jsx)("input",{type:"number",value:l.contract,onChange:e=>o({...l,contract:+e.target.value})})]}),(0,eO.jsxs)("label",{style:{fontSize:12},children:["目標原価率(%)",(0,eO.jsx)("br",{}),(0,eO.jsx)("input",{type:"number",value:l.costRate,onChange:e=>o({...l,costRate:+e.target.value})})]}),(0,eO.jsx)("button",{className:"gen-btn",style:{width:"auto",margin:0,padding:"9px 16px"},onClick:()=>{if(!l.name)return;let r=1e4*l.contract*(l.costRate/100),a=`P-${2100+e.length}`;t([...e,{id:a,name:`${l.name}\u{90B8}`,contract:1e4*l.contract,progress:0,handover:"未定",rows:[["仮設工事",.026],["基礎工事",.1],["木工事(構造材・プレカット)",.275],["屋根・板金工事",.057],["サッシ・建具",.086],["電気設備工事",.055],["給排水設備工事",.066],["内装仕上工事",.116],["住宅設備機器",.111],["外構工事",.059],["諸経費・現場管理",.049]].map(([e,t])=>({category:e,budget:1e3*Math.round(r*t/1e3),ordered:0,paid:0}))}],"実行予算モジュール","api"),n(a),i(!1),o({name:"",contract:3e3,costRate:76})},children:"標準配分で作成"}),(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>i(!1),children:"キャンセル"}),(0,eO.jsx)("span",{className:"hint",style:{margin:0,flexBasis:"100%"},children:"標準の工種別原価比率で自動配分します。見積書モジュールからの変換でも作成できます。"})]}):(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>i(!0),children:"+ 新規実行予算を作成"})}),(0,eO.jsxs)("div",{className:"kpi-grid",children:[(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"請負金額"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[s.contract.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("div",{className:"kpi-sub",children:["引渡予定 ",s.handover]})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"実行予算 / 発注済"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[Math.round(c/Math.max(u,1)*100),"%"]}),(0,eO.jsxs)("div",{className:"kpi-sub",children:[c.toLocaleString("ja-JP")," / ",u.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"支払済"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[f.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("div",{className:"kpi-sub",children:["出来高進捗 ",s.progress,"%"]})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"着地予測粗利"}),(0,eO.jsxs)("div",{className:"kpi-value",style:h<22?{color:"#C4554D"}:void 0,children:[h,"%"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"未発注分は予算通り想定の簡易予測"})]})]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"工種別内訳"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"工種"}),(0,eO.jsx)("th",{className:"r",children:"実行予算"}),(0,eO.jsx)("th",{className:"r",children:"発注済"}),(0,eO.jsx)("th",{className:"r",children:"支払済"}),(0,eO.jsx)("th",{className:"r",children:"予算差異"})]})}),(0,eO.jsx)("tbody",{children:s.rows.map(e=>{let t=e.budget-e.ordered,r=e.ordered>e.budget;return(0,eO.jsxs)("tr",{style:r?{background:"#FBF0EC"}:void 0,children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.category})}),(0,eO.jsx)("td",{className:"r",children:e.budget.toLocaleString("ja-JP")}),(0,eO.jsx)("td",{className:"r",children:e.ordered?e.ordered.toLocaleString("ja-JP"):"—"}),(0,eO.jsx)("td",{className:"r",children:e.paid?e.paid.toLocaleString("ja-JP"):"—"}),(0,eO.jsx)("td",{className:"r",style:{color:r?"#C4554D":"#2F9E82",fontWeight:r?800:500},children:0===e.ordered?"未発注":(t>=0?"+":"")+t.toLocaleString("ja-JP")})]},e.category)})})]}),(0,eO.jsx)("div",{className:"hint",children:"発注入力は「発注したら当日中に金額1つ」だけ。超過は入力した瞬間にダッシュボードのアラートへ連動します。"})]})]})},group:"経営"},
 {key:"report",label:"月次報告書(1冊出力)",icon:"📕",comp:function(){let{projects:e,monthlyPL:t,cashflow13w:r}=eG(),n=t[t.length-1],a=n.ly?Math.round((n.sales-n.ly)/n.ly*1e3)/10:0,i=Math.min(...r.map(e=>e.balance)),l=e.flatMap(e=>e.rows.filter(e=>e.ordered>e.budget).map(t=>({p:e.name,cat:t.category,over:t.ordered-t.budget}))),o=e.map(e=>{let t=e.rows.reduce((e,t)=>e+t.budget,0),r=e.rows.reduce((e,t)=>e+t.ordered,0),n=r+.98*Math.max(t-r,0),a=e.contract>0?Math.round((e.contract-Math.max(n,r))/e.contract*1e3)/10:0;return{name:e.name,progress:e.progress,gross:a}}),s=eP.flatMap(e=>e.items.filter(e=>e.consumed>=70).map(e=>`${e.type}(\u{6D88}\u{5316}${e.consumed}%)`));return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"月次報告書(1冊出力)"}),(0,eO.jsx)("p",{children:"全モジュールのデータを1冊のレポートに自動編集します。月次会議の資料作成時間をゼロにするためのモジュールです。"})]}),(0,eO.jsx)("button",{className:"gen-btn ghost",style:{width:"auto",padding:"9px 18px",marginBottom:14},onClick:()=>window.print(),children:"🖨 この報告書を印刷 / PDF保存"}),(0,eO.jsxs)("div",{className:"plan-sheet report-book",children:[(0,eO.jsxs)("div",{className:"rb-cover",children:[(0,eO.jsx)("div",{className:"rb-co",children:"彩の国ホーム 株式会社"}),(0,eO.jsx)("div",{className:"rb-title",children:"月次経営報告書"}),(0,eO.jsxs)("div",{className:"rb-ym",children:[bZ,"度"]}),(0,eO.jsx)("div",{className:"rb-toc",children:"目次:1. 経営サマリー ／ 2. 営業・追客 ／ 3. 工事進捗 ／ 4. 実行予算・粗利着地 ／ 5. 資金繰り ／ 6. 補助金トピック ／ 7. アフター・OB ／ 8. 来月の重点"})]}),(0,eO.jsx)("div",{className:"ps-sec",children:"1. 経営サマリー"}),(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"当月売上"}),(0,eO.jsxs)("td",{className:"r",children:[(0,eO.jsxs)("b",{children:[n.sales.toLocaleString("ja-JP"),"万円"]}),"(前年同月比 ",a>0?"+":"",a,"%)"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"当月粗利率"}),(0,eO.jsxs)("td",{className:"r",children:[(0,eO.jsxs)("b",{children:[n.rate,"%"]}),"(前年同月 ",n.lyRate,"%)"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"受注残"}),(0,eO.jsx)("td",{className:"r",children:"2億1,300万円(契約済・着工待ち7棟)"})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"13週資金残高(最小予測)"}),(0,eO.jsxs)("td",{className:"r",style:{color:i<2e3?"#C4554D":void 0},children:[i.toLocaleString("ja-JP"),"万円",i<2e3&&" ⚠安全水準割れ"]})]})]})}),(0,eO.jsx)("div",{className:"ps-sec",children:"2. 営業・追客"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"指標"}),(0,eO.jsx)("th",{className:"r",children:"当月"}),(0,eO.jsx)("th",{className:"r",children:"前年同月"}),(0,eO.jsx)("th",{className:"r",children:"増減"})]})}),(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"新規反響"}),(0,eO.jsx)("td",{className:"r",children:"34件"}),(0,eO.jsx)("td",{className:"r",children:"26件"}),(0,eO.jsx)("td",{className:"r",style:{color:"#2F9E82"},children:"+8件"})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"初回商談"}),(0,eO.jsx)("td",{className:"r",children:"18件"}),(0,eO.jsx)("td",{className:"r",children:"15件"}),(0,eO.jsx)("td",{className:"r",style:{color:"#2F9E82"},children:"+3件"})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"受注(契約)"}),(0,eO.jsx)("td",{className:"r",children:"3棟"}),(0,eO.jsx)("td",{className:"r",children:"2棟"}),(0,eO.jsx)("td",{className:"r",style:{color:"#2F9E82"},children:"+1棟"})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"追客中(A/B/C)"}),(0,eO.jsx)("td",{className:"r",colSpan:3,children:"28件(A:8 / B:11 / C:9)・放置アラート3件は今週中に対応"})]})]})]}),(0,eO.jsxs)("div",{className:"ps-note",children:["パイプライン:",eE.map(e=>`${e.stage}${e.count}\u{4EF6}`).join(" → "),"。初回商談→資金計画提示の転換率61%。"]}),(0,eO.jsxs)("div",{className:"ps-sec",children:["3. 工事進捗(全",e.length,"案件)"]}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"案件"}),(0,eO.jsx)("th",{className:"r",children:"出来高"}),(0,eO.jsx)("th",{children:"状況"})]})}),(0,eO.jsx)("tbody",{children:e.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:e.name}),(0,eO.jsxs)("td",{className:"r",children:[e.progress,"%"]}),(0,eO.jsx)("td",{children:e.progress>=90?"引渡し準備":e.progress>=40?"施工中(オンスケ〜軽微遅延)":"序盤・工程注意"})]},e.id))})]}),(0,eO.jsx)("div",{className:"ps-note",children:"遅延:鈴木様邸+2日(板金・雨天)。雨リスクアラート運用により後続への波及は職人へ通知済み。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"4. 実行予算・粗利着地予測"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"案件"}),(0,eO.jsx)("th",{className:"r",children:"出来高"}),(0,eO.jsx)("th",{className:"r",children:"着地粗利予測"})]})}),(0,eO.jsx)("tbody",{children:o.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:e.name}),(0,eO.jsxs)("td",{className:"r",children:[e.progress,"%"]}),(0,eO.jsxs)("td",{className:"r",style:{color:e.gross<22?"#C4554D":void 0},children:[e.gross,"%"]})]},e.name))})]}),l.length>0&&(0,eO.jsxs)("div",{className:"ps-note",style:{color:"#A2453D"},children:["⚠ 予算超過:",l.map(e=>`${e.p}\u{300C}${e.cat}\u{300D}+${e.over.toLocaleString("ja-JP")}\u{5186}`).join(" / ")," — 発注時点で検知済み、是正協議中。"]}),(0,eO.jsx)("div",{className:"ps-sec",children:"5. 資金繰り(13週予測)"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsx)("tr",{children:r.slice(0,7).map(e=>(0,eO.jsx)("th",{className:"r",children:e.week},e.week))})}),(0,eO.jsx)("tbody",{children:(0,eO.jsx)("tr",{children:r.slice(0,7).map(e=>(0,eO.jsx)("td",{className:"r",style:{color:e.balance<2e3?"#C4554D":void 0},children:e.balance.toLocaleString("ja-JP")},e.week))})})]}),(0,eO.jsx)("div",{className:"ps-note",children:"単位:万円。安全水準2,000万円。中間金入金と職人支払いの山を週次で管理。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"6. 補助金トピック"}),(0,eO.jsxs)("div",{className:"ps-note",children:["残枠注意:",s.length>0?s.join(" / "):"特になし","。ZEH水準(注文新築)第2期は9/30締切・上限到達次第終了。対象見込みの追客顧客には早期案内を実施(追客管理と連動)。"]}),(0,eO.jsx)("div",{className:"ps-sec",children:"7. アフター・OB"}),(0,eO.jsx)("div",{className:"ps-note",children:"点検予定(60日以内)9件/期限超過1件(近藤様・是正同時訪問で調整中)。OB紹介は年初来7件・成約3件。点検時のレビュー取得を継続(HUGKUMI掲載2件追加)。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"8. 来月の重点"}),(0,eO.jsx)("div",{className:"ps-note",children:"① ZEH枠締切(9/30)前の対象顧客クロージング ② 鈴木様邸の工程回復と上棟 ③ 引渡し集中月の入金・職人支払い平準化 ④ 完成見学会(伊藤様邸 8/23-24)からの新規反響獲得とWORKS掲載。"}),(0,eO.jsxs)("div",{className:"ps-meta",style:{marginTop:14,textAlign:"right"},children:["本報告書はスイート各モジュールのデータから自動生成 ｜ 出力日 ",bW.toLocaleDateString("ja-JP")]})]})]})},group:"経営"},
-{key:"leads",label:"追客管理",icon:"📇",comp:function(){let[e,t]=(0,ew.useState)(C0),[r,n]=(0,ew.useState)("all"),[a,i]=(0,ew.useState)(null),l=(0,ew.useRef)(null),o=(0,ew.useMemo)(()=>e.filter(e=>"all"===r||e.grade===r),[e,r]),s=e.filter(e=>e.last>=("A"===e.grade?7:"B"===e.grade?14:30)),u=async r=>{if(r)try{let n=CJ(await r.arrayBuffer(),{type:"array"}),a=C$(n.Sheets[n.SheetNames[0]],{header:1,raw:!1,defval:null}),o=(a[0]||[]).map(e=>String(e??""));if(!o[0]?.includes("お客様"))return void i({ok:!1,t:"ヘッダー形式を認識できません。テンプレートCSVの列構成でアップロードしてください。"});let s=a.slice(1).filter(e=>e&&e[0]).map((e,t)=>({id:`L-I${String(t+1).padStart(2,"0")}`,name:String(e[0]),grade:["A","B","C"].includes(String(e[1]))?String(e[1]):"C",src:String(e[2]??"インポート"),land:String(e[3]??"土地なし"),budget:Number(String(e[4]??"0").replace(/[,、]/g,""))||0,last:Number(e[5]??0)||0,next:String(e[6]??"初回接触"),nextDate:String(e[7]??"未定"),note:String(e[8]??"")})),u=[...e.filter(e=>!s.some(t=>t.name===e.name)),...s];t(u),i({ok:!0,t:`${s.length}\u{4EF6}\u{3092}\u{53D6}\u{308A}\u{8FBC}\u{307F}\u{307E}\u{3057}\u{305F}(\u{540C}\u{540D}\u{306F}\u{4E0A}\u{66F8}\u{304D})\u{3002}\u{65E2}\u{5B58}\u{306E}Excel\u{8FFD}\u{5BA2}\u{30EA}\u{30B9}\u{30C8}\u{304B}\u{3089}\u{305D}\u{306E}\u{307E}\u{307E}\u{79FB}\u{884C}\u{3067}\u{304D}\u{307E}\u{3059}\u{3002}`}),l.current&&(l.current.value="")}catch{i({ok:!1,t:"読み取りに失敗しました。CSV / xlsx / xls 形式かご確認ください。"})}};return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"追客管理(見込み客)"}),(0,eO.jsx)("p",{children:"パイプラインの数字の裏側にある個票です。温度感別の放置日数アラートと次回アクションの予約で、追客を営業個人の記憶から仕組みに移します。"})]}),(0,eO.jsxs)("div",{className:"kpi-grid",children:[(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"新規反響(当月)"}),(0,eO.jsx)("div",{className:"kpi-value",children:"34件"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"前年同月比 +30.8%(前年26件)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"追客中"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[e.length+22,"件"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"A:8 / B:11 / C:9(表示は抜粋)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"今月の受注"}),(0,eO.jsx)("div",{className:"kpi-value",children:"3棟"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"前年同月 2棟 / 累計18棟(前年比+20%)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"反響→契約 転換率"}),(0,eO.jsx)("div",{className:"kpi-value",children:"8.8%"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"初回商談化率 52.9% / 商談→契約 16.7%"})]})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>{let t="\uFEFF"+[["お客様名","温度(A/B/C)","経路","土地(あり/土地なし)","予算(万円)","最終接触(日前)","次回アクション","予定日","メモ"],...e.map(e=>[e.name,e.grade,e.src,e.land,e.budget,e.last,e.next,e.nextDate,e.note])].map(e=>e.join(",")).join("\n"),r=document.createElement("a");r.href=URL.createObjectURL(new Blob([t],{type:"text/csv"})),r.download="追客リスト.csv",r.click()},children:"📥 テンプレCSVをダウンロード(現データ入り)"}),(0,eO.jsxs)("label",{className:"tpl-btn",style:{cursor:"pointer"},children:["📤 Excel / CSV から取り込む",(0,eO.jsx)("input",{ref:l,type:"file",accept:".csv,.xlsx,.xls",style:{display:"none"},onChange:e=>u(e.target.files?.[0])})]}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"いまお使いの追客Excelをそのまま移行できます。列:お客様名/温度/経路/土地/予算/最終接触/次回アクション/予定日/メモ"}),a&&(0,eO.jsx)("div",{className:`imp-msg ${a.ok?"ok":"ng"}`,style:{flexBasis:"100%"},children:a.t})]}),s.length>0&&(0,eO.jsxs)("div",{className:"alert-center",style:{borderLeftColor:"#D98E32"},children:[(0,eO.jsxs)("div",{className:"alert-title",children:["⏰ 放置アラート(",s.length,"件)— 基準: A=7日 / B=14日 / C=30日"]}),s.map(e=>(0,eO.jsxs)("div",{className:"alert-line amber",children:[(0,eO.jsx)("span",{children:"👤"}),(0,eO.jsxs)("span",{className:"alert-text",children:[e.name,"(",e.grade,"ランク)最終接触から",e.last,"日経過"]}),(0,eO.jsxs)("span",{className:"alert-to",children:["→ ",e.next]})]},e.id))]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("div",{className:"proj-tabs",style:{marginBottom:12},children:["all","A","B","C"].map(t=>(0,eO.jsx)("button",{className:`proj-tab ${r===t?"on":""}`,onClick:()=>n(t),children:"all"===t?`\u{5168}\u{4EF6}(${e.length})`:`${t}\u{30E9}\u{30F3}\u{30AF}(${e.filter(e=>e.grade===t).length})`},t))}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"お客様"}),(0,eO.jsx)("th",{children:"温度"}),(0,eO.jsx)("th",{children:"経路"}),(0,eO.jsx)("th",{children:"土地"}),(0,eO.jsx)("th",{className:"r",children:"予算"}),(0,eO.jsx)("th",{className:"r",children:"最終接触"}),(0,eO.jsx)("th",{children:"次回アクション(予定日)"}),(0,eO.jsx)("th",{children:"メモ"})]})}),(0,eO.jsx)("tbody",{children:o.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.name})}),(0,eO.jsx)("td",{children:(0,eO.jsx)("span",{className:"badge",style:{background:`${C1[e.grade]}22`,color:C1[e.grade]},children:e.grade})}),(0,eO.jsx)("td",{children:e.src}),(0,eO.jsx)("td",{children:e.land}),(0,eO.jsxs)("td",{className:"r",children:[e.budget.toLocaleString(),"万円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:e.last>=14?"#C4554D":void 0,fontWeight:e.last>=14?800:400},children:[e.last,"日前"]}),(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.nextDate})," ",e.next]}),(0,eO.jsx)("td",{style:{fontSize:12,color:"#5C6B77"},children:e.note})]},e.id))})]}),(0,eO.jsx)("div",{className:"hint",children:"スイート連携:資金計画書・設計AIプレゼン・図面アーカイブの類似案・補助金の残枠アラートが、そのまま追客の「接触する口実」になります。"})]})]})},group:"営業"},
-{key:"fp",label:"資金計画・FP",icon:"🏦",comp:function(){let[e,t]=(0,ew.useState)("sim"),[r,n]=(0,ew.useState)(1200),[a,i]=(0,ew.useState)(2450),[l,o]=(0,ew.useState)(500),[s,u]=(0,ew.useState)("kosodate"),[c,f]=(0,ew.useState)("chouki"),[d,h]=(0,ew.useState)(!1),[p,g]=(0,ew.useState)(.9),[m,v]=(0,ew.useState)(35),[b,y]=(0,ew.useState)(650),[x,j]=(0,ew.useState)(2),[O,w]=(0,ew.useState)(""),[C,I]=(0,ew.useState)(34),[k,A]=(0,ew.useState)(82e3),[S,E]=(0,ew.useState)(26e3),[P,T]=(0,ew.useState)(18e3),N=Math.round((r+a)*.08),_=(0,ew.useMemo)(()=>{let e="other"!==s,t=0,r="対象なし";"gx"===c?(t=110,r="GX志向型 110万円(全世帯)"):"chouki"===c&&e?(t=80,r="長期優良 80万円"):"zeh"===c&&e&&(t=40,r="ZEH水準 40万円(第2期 9/30締切)");let n=t;return t>0&&d&&"gx"!==c&&(n+=20,r+=" + 解体加算20万円"),{total:n,label:r}},[s,c,d]),M=r+a+N,D=1e4*Math.max(M-l-_.total,0),G=C3(D,p,m),L=C3(D,p+.5,m),W=G*m*12,Z=(0,ew.useMemo)(()=>{let e=[],t=300;for(let r=0;r<=30;r++)t+=b*(r<25?1+.01*r:.55)-(260+x*(r>3&&r<22?45+55*(r>12):20))-(r<m?12*G/1e4:0),e.push({age:`${34+r}\u{6B73}`,savings:Math.round(t)});return e},[b,x,G,m]),B=Math.min(...Z.map(e=>e.savings)),R="gx"===c?.45:"chouki"===c?.35:"zeh"===c?.3:.1,F=Math.round(S*(1-R)),Y=k+S+P,z=Math.round(G)+F+P,X=z-Y;return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"資金計画・FPツール"}),(0,eO.jsx)("p",{children:"商談中にその場で資金計画。補助金の対象判定(みらいエコ住宅2026)と金利上昇シナリオ、35年のライフプランまで1画面で見せられます。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"sim"===e?"on":""}`,onClick:()=>t("sim"),children:"シミュレーション"}),(0,eO.jsx)("button",{className:`proj-tab ${"sheet"===e?"on":""}`,onClick:()=>t("sheet"),children:"資金計画・返済計画書(印刷)"})]}),"sheet"===e&&(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"計画書 追加入力"}),(0,eO.jsxs)("div",{className:"form-grid",children:[(0,eO.jsxs)("label",{children:["お施主様名",(0,eO.jsx)("input",{value:O,onChange:e=>w(e.target.value),placeholder:"例:原"})]}),(0,eO.jsxs)("label",{children:["ご本人年齢",(0,eO.jsx)("input",{type:"number",value:C,onChange:e=>I(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["現在の家賃(円/月)",(0,eO.jsx)("input",{type:"number",value:k,onChange:e=>A(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["現在の水道光熱費(円/月)",(0,eO.jsx)("input",{type:"number",value:S,onChange:e=>E(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["その他固定費(円/月)",(0,eO.jsx)("input",{type:"number",value:P,onChange:e=>T(+e.target.value)})]})]}),(0,eO.jsx)("button",{className:"gen-btn ghost",style:{width:"auto",padding:"9px 18px"},onClick:()=>window.print(),children:"🖨 この計画書を印刷 / PDF保存"})]}),(0,eO.jsxs)("div",{className:"plan-sheet",children:[(0,eO.jsxs)("div",{className:"ps-header",children:[(0,eO.jsxs)("div",{className:"ps-title",children:[O||"___","様 資金計画・返済計画書"]}),(0,eO.jsxs)("div",{className:"ps-meta",children:["作成日 ",new Date().toLocaleDateString("ja-JP")," ｜ 担当:彩の国ホーム"]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"一次エネルギー消費量計算を根拠にランニングコストを考えた提案資料です。※本書式はシミュレーションであり、生活スタイルや経済状況により実際と異なる場合があります。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報①)家族構成と資産"}),(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"家族構成"}),(0,eO.jsxs)("td",{children:["ご本人(",C,"歳)・配偶者・お子様",x,"人"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"世帯年収"}),(0,eO.jsxs)("td",{children:[b.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"自己資金(貯蓄より充当)"}),(0,eO.jsxs)("td",{children:[l.toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報②)毎月支出の比較 — 現在のお住まい vs 新築後"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"項目"}),(0,eO.jsx)("th",{className:"r",children:"現在"}),(0,eO.jsx)("th",{className:"r",children:"新築後"}),(0,eO.jsx)("th",{className:"r",children:"差額"})]})}),(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"家賃 → 住宅ローン返済"}),(0,eO.jsxs)("td",{className:"r",children:[k.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(G).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[(Math.round(G)-k).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["水道光熱費(断熱性能により▲",Math.round(100*R),"%)"]}),(0,eO.jsxs)("td",{className:"r",children:[S.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[F.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:["▲",(S-F).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"その他固定費"}),(0,eO.jsxs)("td",{className:"r",children:[P.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[P.toLocaleString("ja-JP"),"円"]}),(0,eO.jsx)("td",{className:"r",children:"0円"})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"毎月合計"}),(0,eO.jsxs)("td",{className:"r",children:[Y.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[z.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:X<=0?"#2F9E82":"#C4554D"},children:[X<=0?"▲":"+",Math.abs(X).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"35年間の総額比較"}),(0,eO.jsxs)("td",{className:"r",children:[(420*Y).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[(420*z).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{fontWeight:800,color:X<=0?"#2F9E82":"#C4554D"},children:[X<=0?"▲":"+",Math.abs(420*X).toLocaleString("ja-JP"),"円"]})]})]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"現在の暮らしをこのまま35年続けた場合と、高断熱の新築で35年暮らした場合の比較です。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報③)予算とローン計画"}),(0,eO.jsxs)("div",{className:"ps-cols",children:[(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"1 土地価格"}),(0,eO.jsxs)("td",{className:"r",children:[r.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"2 建物価格(外構・太陽光含む)"}),(0,eO.jsxs)("td",{className:"r",children:[a.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"3 諸費用・その他"}),(0,eO.jsxs)("td",{className:"r",children:[N.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["4 補助金(",_.label,")"]}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:["▲",_.total,"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"5 自己資金"}),(0,eO.jsxs)("td",{className:"r",children:["▲",l.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"借入金額"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(D/1e4).toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"返済期間"}),(0,eO.jsxs)("td",{className:"r",children:[m,"年"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"適用金利(変動想定)"}),(0,eO.jsxs)("td",{className:"r",children:[p,"%"]})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"毎月支払い"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(G).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"ボーナス加算"}),(0,eO.jsx)("td",{className:"r",children:"0円"})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"金利+0.5%時の毎月支払い"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(L).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総返済額(概算)"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(W/1e4).toLocaleString("ja-JP"),"万円"]})]})]})})]}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報④)返済計画 — 5年ごとのローン残高と繰上返済プラン"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"経過"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsxs)("th",{className:"r",children:[e,"年後(",C+e,"歳)"]},e))]})}),(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"ローン残高(概算)"}),[5,10,15,20,25,30,35].map(e=>{let t,r,n;return(0,eO.jsxs)("td",{className:"r",children:[Math.round((t=p/100/12,r=12*m,((n=12*e)>=r?0:0===t?D*(1-n/r):(Math.pow(1+t,r)-Math.pow(1+t,n))/(Math.pow(1+t,r)-1)*D)/1e4)).toLocaleString("ja-JP"),"万円"]},e)})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"繰上返済(ご相談)"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsx)("td",{className:"r",style:{color:"#B9C2BD"},children:"円"},e))]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"光熱費節約分の累計"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:[Math.round((S-F)*12*e/1e4).toLocaleString("ja-JP"),"万円"]},e))]})]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"光熱費の節約分を繰上返済に回すことで完済時期の前倒しが可能です。住宅ローン控除・繰上返済のご判断はお施主様ご自身で行っていただき、金融商品の推奨は行いません。"})]})]}),"sim"===e&&(0,eO.jsxs)(eO.Fragment,{children:[(0,eO.jsxs)("div",{className:"panel-row",children:[(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:300},children:[(0,eO.jsx)("h3",{children:"入力"}),(0,eO.jsxs)("div",{className:"form-grid",children:[(0,eO.jsxs)("label",{children:["土地(万円)",(0,eO.jsx)("input",{type:"number",value:r,onChange:e=>n(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["建物(万円)",(0,eO.jsx)("input",{type:"number",value:a,onChange:e=>i(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["自己資金(万円)",(0,eO.jsx)("input",{type:"number",value:l,onChange:e=>o(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["世帯年収(万円)",(0,eO.jsx)("input",{type:"number",value:b,onChange:e=>y(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["お子様の人数",(0,eO.jsx)("input",{type:"number",min:0,max:4,value:x,onChange:e=>j(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["世帯タイプ",(0,eO.jsxs)("select",{value:s,onChange:e=>u(e.target.value),children:[(0,eO.jsx)("option",{value:"kosodate",children:"子育て世帯(18歳未満の子)"}),(0,eO.jsx)("option",{value:"wakamono",children:"若者夫婦世帯(39歳以下)"}),(0,eO.jsx)("option",{value:"other",children:"その他"})]})]}),(0,eO.jsxs)("label",{children:["住宅性能",(0,eO.jsxs)("select",{value:c,onChange:e=>f(e.target.value),children:[(0,eO.jsx)("option",{value:"gx",children:"GX志向型"}),(0,eO.jsx)("option",{value:"chouki",children:"長期優良住宅"}),(0,eO.jsx)("option",{value:"zeh",children:"ZEH水準"}),(0,eO.jsx)("option",{value:"sonota",children:"その他"})]})]}),(0,eO.jsxs)("label",{children:["金利(%)",(0,eO.jsx)("input",{type:"number",step:.1,value:p,onChange:e=>g(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["返済期間(年)",(0,eO.jsx)("input",{type:"number",value:m,onChange:e=>v(+e.target.value)})]})]}),(0,eO.jsxs)("label",{className:"chk",children:[(0,eO.jsx)("input",{type:"checkbox",checked:d,onChange:e=>h(e.target.checked)})," 建て替え(旧居解体あり)"]})]}),(0,eO.jsxs)("div",{className:"panel",style:{flex:1.3,minWidth:320},children:[(0,eO.jsx)("h3",{children:"資金計画(概算)"}),(0,eO.jsx)("table",{className:"tbl slim",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総額(土地+建物+諸費用8%)"}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[M.toLocaleString("ja-JP"),"万円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"補助金判定"}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82",fontWeight:700},children:[_.label," → ▲",_.total,"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"借入金額"}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[Math.round(D/1e4).toLocaleString("ja-JP"),"万円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["毎月返済(金利",p,"%)"]}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[Math.round(G).toLocaleString("ja-JP"),"円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"金利+0.5%なら"}),(0,eO.jsxs)("td",{className:"r",style:{color:"#C4554D"},children:[Math.round(L).toLocaleString("ja-JP"),"円(+",Math.round(L-G).toLocaleString("ja-JP"),"円)"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総返済額"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(W/1e4).toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("div",{className:"hint",children:"補助金は2026年度みらいエコ住宅の簡易判定(デモ)。申請可否は公式要件で最終確認します。"})]})]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"ライフプラン簡易シミュレーション(30年・貯蓄残高)"}),(0,eO.jsx)(iO,{width:"100%",height:220,children:(0,eO.jsxs)(C4,{data:Z,margin:{top:10,right:10,left:0,bottom:0},children:[(0,eO.jsx)(mC,{stroke:"#E5E2D8",vertical:!1}),(0,eO.jsx)(bI,{dataKey:"age",tick:{fontSize:11},interval:4}),(0,eO.jsx)(bG,{tick:{fontSize:11}}),(0,eO.jsx)(bu,{}),(0,eO.jsx)(vT,{y:0,stroke:"#C4554D",strokeDasharray:"4 4"}),(0,eO.jsx)(vw,{dataKey:"savings",name:"貯蓄残高(万円)",stroke:"#2F9E82",strokeWidth:2.5,dot:!1})]})}),(0,eO.jsxs)("div",{className:"hint",children:["最小貯蓄額:",B.toLocaleString("ja-JP"),"万円",B<0&&" ⚠ 教育費ピークで赤字。借入額・期間の調整を推奨","。教育費・収入カーブは簡易モデルです。"]})]})]})]})},group:"営業"},
+{key:"action",label:"改善アクション管理",icon:"✅",comp:function(){
+const h=ew.createElement;
+const PILLAR={1:"棟数ではなく、1棟の粗利を守る",2:"新規広告より、OBと紹介を太くする",3:"現場を止めない。是正を残して引渡さない",0:"その他・環境整備"};
+const PCOLOR={1:"#2f9e82",2:"#3f7fa6",3:"#d98e32",0:"#8a938e"};
+const SEED=[
+{p:1,pri:"◎",t:"見積提出前の粗利チェックを全案件で必須にする",plan:"見積書モジュールの想定粗利率が28%未満なら、提出前に社長承認を通す運用にする",who:"大西",d:-12,kpi:"全社 粗利率 30.0%",st:"進行中"},
+{p:1,pri:"◎",t:"追加変更を必ず合意書にして請求する",plan:"仕様決定・変更管理AIで確定にしたものは、その週のうちに合意書を出して署名をもらう",who:"高木",d:6,kpi:"変更合意書の締結率 100%",st:"進行中"},
+{p:1,pri:"○",t:"着工前に実行予算の超過を検知する",plan:"工事着手会議の資料に実行予算・進捗の予実差を必ず添付する",who:"中原",d:20,kpi:"予算超過のまま着工 0件",st:"未着手"},
+{p:1,pri:"○",t:"協力業者の単価を年1回まとめて見直す",plan:"木工事・基礎・住設の3業種から着手。値上げ分は見積単価に反映する",who:"社長",d:41,kpi:"主要3業種の単価改定 完了",st:"未着手"},
+{p:2,pri:"◎",t:"完成見学会・構造見学会を毎月開く",plan:"引渡し予定から逆算して年間の開催カレンダーを先に埋める。施主交渉は着工時に行う",who:"白石",d:-4,kpi:"年間の開催数 12回",st:"進行中"},
+{p:2,pri:"◎",t:"定期点検を期日どおりに回す",plan:"アフター点検の期日60日前に自動でリスト化し、月初に訪問日を確定させる",who:"中原",d:13,kpi:"定期点検の実施率 95%",st:"未着手"},
+{p:2,pri:"○",t:"引渡し時に必ず口コミをお願いする",plan:"引渡し書類にQRコードを同封し、その場でお願いする流れを標準化する",who:"井上",d:27,kpi:"Google口コミ 累計60件",st:"未着手"},
+{p:2,pri:"◎",t:"OB様への年賀・点検ハガキを再開する",plan:"OB名簿を整理して年2回の接点を作る。紹介は接点の数に比例する",who:"白石",d:-21,kpi:"OB接点 年2回×全戸",st:"完了"},
+{p:2,pri:"○",t:"協力業者からの紹介ルートを作る",plan:"協力業者会で紹介制度を案内し、紹介カードを配る",who:"社長",d:55,kpi:"協力業者紹介 年6件",st:"未着手"},
+{p:3,pri:"◎",t:"全案件を1本の工程表で運用する",plan:"工程×職人手配に一本化し、個人の手帳・LINEでの日程調整をやめる",who:"中原",d:-33,kpi:"工程表の運用率 100%",st:"完了"},
+{p:3,pri:"◎",t:"引渡し日に是正を残さない",plan:"施主検査を引渡しの10日前に前倒しし、是正の時間を確保する",who:"中原",d:9,kpi:"是正を残して引渡した棟数 0棟",st:"進行中"},
+{p:3,pri:"○",t:"協力業者の是正スピードを数字で見る",plan:"検査・是正管理の品質スコアを月次で共有し、期限内是正率を業者会で開示する",who:"高木",d:34,kpi:"期限内 是正率 95%",st:"未着手"},
+{p:3,pri:"◎",t:"申請・補助金の期限を落とさない",plan:"補助金 申請書類管理のアラートを毎週月曜に確認する当番を決める",who:"白石",d:2,kpi:"期限超過した申請 0件",st:"進行中"},
+{p:0,pri:"○",t:"見積の標準単価を年1回更新する",plan:"直近12ヶ月の実行予算の実績値から標準テンプレの単価を作り直す",who:"大西",d:69,kpi:"標準単価の更新 完了",st:"未着手"},
+{p:0,pri:"○",t:"図面と写真の保存場所を1か所にまとめる",plan:"図面アーカイブと現場写真に集約し、個人PCとUSBでの保管をやめる",who:"高木",d:-7,kpi:"個人保管 0件",st:"進行中"},
+{p:0,pri:"—",t:"月次の会議資料を自動で作る",plan:"月次報告書(1冊出力)に切り替え、手作りの資料をやめる",who:"社長",d:48,kpi:"会議準備 3時間→30分",st:"未着手"},
+{p:0,pri:"◎",t:"新人の商談ロープレを週1回行う",plan:"資金計画の説明とプラン提示の2場面に絞って、毎週水曜の朝に30分",who:"井上",d:-2,kpi:"新人の受注率 6.5%→10%",st:"進行中"},
+{p:0,pri:"—",t:"協力業者の安全書類を電子化する",plan:"紙で回している安全書類をクラウドに移す。年度更新の抜けを防ぐ",who:"中原",d:83,kpi:"電子化率 100%",st:"未着手"}];
+const MEMO=`【8月 経営会議 議事録】\n・粗利率が28.9%で目標の30%に届いていない。見積提出前に粗利をチェックする仕組みを作る。担当は大西、9月末までに。\n・紹介からの受注が伸びている。OB様への点検ハガキを年2回に増やす。白石さんが10月末までに名簿を整理する。\n・現場の是正が引渡しに食い込んでいる。施主検査を10日前倒しする。中原さん、来月から。\n・新人の受注率が6.5%と低い。井上さんが週1回ロープレを行う。目標は10%。\n・広告費のうち看板が効いていない。次の更新で切るかどうかを社長が判断する。11月まで。`;
+const[list,setList]=(0,ew.useState)(SEED.map((a,i)=>({...a,no:i+1})));
+const[fSt,setFSt]=(0,ew.useState)("すべて");
+const[fWho,setFWho]=(0,ew.useState)("すべて");
+const[memo,setMemo]=(0,ew.useState)(MEMO);
+const[msg,setMsg]=(0,ew.useState)("");
+const today=new Date();
+const dateOf=d=>{const x=new Date(today.getTime()+864e5*d);return`${x.getMonth()+1}/${x.getDate()}`};
+const NEXT={未着手:"進行中",進行中:"完了",完了:"未着手"};
+const step=no=>setList(l=>l.map(a=>a.no===no?{...a,st:NEXT[a.st]}:a));
+const whos=["すべて",...Array.from(new Set(list.map(a=>a.who)))];
+const done=list.filter(a=>"完了"===a.st).length;
+const over=list.filter(a=>"完了"!==a.st&&a.d<0);
+const week=list.filter(a=>"完了"!==a.st&&a.d>=0&&a.d<=7);
+const mustDo=list.filter(a=>"完了"!==a.st&&"◎"===a.pri);
+const shown=list.filter(a=>("すべて"===fSt||a.st===fSt)&&("すべて"===fWho||a.who===fWho));
+const alerts=[];
+if(over.length>0)alerts.push({lv:"red",t:`期限を過ぎたまま終わっていないアクションが ${over.length}件(${over.slice(0,3).map(a=>a.t).join("・")}${over.length>3?" ほか":""})`,to:"担当者に確認"});
+if(week.length>0)alerts.push({lv:"amber",t:`今週が期限のアクションが ${week.length}件。会議の冒頭で状況だけ確認してください`,to:"今週の確認"});
+if(mustDo.length>0)alerts.push({lv:"amber",t:`優先度◎で未完了が ${mustDo.length}件。方針を達成できるかはこの ${mustDo.length}件で決まります`,to:"今期方針"});
+const parse=()=>{
+const lines=(memo||"").split("\n").map(s=>s.trim()).filter(s=>s.length>6&&!/^【/.test(s));
+const NAMES=["社長","井上","大西","森","高木","中原","白石"];
+const add=[];
+lines.forEach(s=>{
+const body=s.replace(/^[・\-‐\*\s]+/,"");
+const sents=body.split("。").map(x=>x.trim()).filter(x=>x.length>3);
+const act=sents.filter(x=>/(する|行う|作る|やめる|見直す|増やす|減らす|整理|前倒し|切る|渡す|決める|まとめる|変える)$/.test(x));
+if(0===act.length)return;
+let who="社長";
+NAMES.forEach(n=>{if(body.indexOf(n)>=0)who=n});
+let d=41;
+const m=body.match(/([0-9]{1,2})月(末|中)?/);
+if(m){
+const mm=+m[1]-1;
+const y=today.getFullYear()+(mm<today.getMonth()?1:0);
+d=Math.round((new Date(y,mm,"末"===m[2]?28:15).getTime()-today.getTime())/864e5)}
+else if(/来月/.test(body))d=30;
+else if(/今月/.test(body))d=12;
+const U="(?:%|件|棟|組|回|名|万円|時間)";
+const kg=body.match(new RegExp("目標[はもの]?\\s*([0-9]+(?:\\.[0-9]+)?\\s*"+U+")"));
+const k2=body.match(new RegExp("([0-9]+(?:\\.[0-9]+)?\\s*"+U+")(?:に|へ|まで)?(?:増やす|上げる|する)"));
+const pri=/(必ず|徹底|最優先|決まる|届いていない|低い)/.test(body)?"◎":"○";
+add.push({p:0,pri,t:act[0].slice(0,44),plan:body,who,d,kpi:kg?`目標 ${kg[1]}`:k2?`目標 ${k2[1]}`:"数値目標を入れてください",st:"未着手"})});
+if(0===add.length){setMsg("アクションらしい行が見つかりませんでした。「〜する」で終わる文を入れてみてください。");return}
+setList(l=>[...add.map((a,i)=>({...a,no:l.length+i+1})),...l]);
+setMsg(`議事録から ${add.length}件 のアクションを起こしました。担当と期限は文中から推定しています(見つからない場合は社長・約1ヶ月後)。数値目標は必ず入れ直してください。`)};
+const bg=st=>"完了"===st?"#f4f8f5":"進行中"===st?"#fffdf5":"#fff";
+return h("div",null,
+h("div",{className:"module-head"},h("h2",null,"改善アクション管理"),
+h("p",null,"会議で決めたことが、次の会議までに実行されたかどうかを追う表です。方針は立つのに数字が動かない会社は、たいてい決定と実行の間が空いています。「誰が・いつまでに・どの数字を」まで書いて初めてアクションになります。")),
+alerts.length>0&&h("div",{className:"alert-center"},
+h("div",{className:"alert-title"},`⚡ 実行のアラート(${alerts.length})`),
+alerts.map((a,i)=>h("div",{className:`alert-line ${a.lv}`,key:i},
+h("span",null,"red"===a.lv?"🚨":"⏳"),
+h("span",{className:"alert-text"},a.t),
+h("span",{className:"alert-to"},`→ ${a.to}`)))),
+h("div",{className:"kpi-grid"},
+h(bL,{label:"アクション",value:`${list.length}件`,sub:`未着手 ${list.filter(a=>"未着手"===a.st).length} ／ 進行中 ${list.filter(a=>"進行中"===a.st).length} ／ 完了 ${done}`}),
+h(bL,{label:"完了率",value:`${Math.round(done/Math.max(1,list.length)*1000)/10}%`,sub:"決めたことのうち終わった割合"}),
+h(bL,{label:"期限超過",value:`${over.length}件`,sub:"期限を過ぎて未完了",alert:over.length>0}),
+h(bL,{label:"今週が期限",value:`${week.length}件`,sub:"7日以内に期限を迎えるもの"}),
+h(bL,{label:"優先度◎の未完了",value:`${mustDo.length}件`,sub:"方針の達成に直結するもの",alert:mustDo.length>3})),
+h("div",{className:"panel"},
+h("h3",null,"議事録からアクションを起こす"),
+h("p",{className:"hint",style:{margin:"0 0 8px"}},"会議のメモを貼って読み取らせると、決定事項を担当・期限つきのアクションに分解します。会議のあとに書き起こす手間がなくなるので、この表は続きます。続かない仕組みは、たいてい入力が面倒なだけです。"),
+h("textarea",{value:memo,onChange:e=>setMemo(e.target.value),style:{width:"100%",minHeight:150,fontSize:12.5,lineHeight:1.7,padding:10,border:"1px solid #cfd8d3",borderRadius:6,fontFamily:"inherit"}}),
+h("div",{style:{display:"flex",gap:8,marginTop:8,flexWrap:"wrap"}},
+h("button",{className:"tpl-btn",onClick:parse},"議事録を読み取ってアクションにする"),
+h("button",{className:"tpl-btn",onClick:()=>{setList(SEED.map((a,i)=>({...a,no:i+1})));setMsg("最初の状態に戻しました。")}},"元に戻す")),
+msg&&h("div",{className:"imp-msg ok",style:{marginTop:10}},msg)),
+h("div",{className:"panel"},
+h("div",{style:{display:"flex",gap:10,flexWrap:"wrap",alignItems:"center",marginBottom:10}},
+h("h3",{style:{margin:0,flex:"1 1 auto"}},"やることリスト"),
+h("select",{value:fSt,onChange:e=>setFSt(e.target.value)},["すべて","未着手","進行中","完了"].map(s=>h("option",{key:s,value:s},s))),
+h("select",{value:fWho,onChange:e=>setFWho(e.target.value)},whos.map(s=>h("option",{key:s,value:s},"すべて"===s?"担当:すべて":`担当:${s}`)))),
+h("div",{style:{overflowX:"auto"}},
+h("table",{className:"tbl slim",style:{minWidth:1040}},
+h("thead",null,h("tr",null,["優先","内容","対策・詳細","方針","担当","期限","数値目標","状態",""].map((t,i)=>h("th",{key:i},t)))),
+h("tbody",null,shown.map(a=>h("tr",{key:a.no,style:{background:bg(a.st)}},
+h("td",{style:{textAlign:"center",fontWeight:800,color:"◎"===a.pri?"#c4554d":"○"===a.pri?"#d98e32":"#8a938e"}},a.pri),
+h("td",{style:{minWidth:210,fontWeight:600,textDecoration:"完了"===a.st?"line-through":void 0}},a.t),
+h("td",{style:{minWidth:250,fontSize:11.5,color:"#6b6459"}},a.plan),
+h("td",null,h("span",{style:{display:"inline-block",width:8,height:8,borderRadius:2,background:PCOLOR[a.p],marginRight:6}}),h("span",{style:{fontSize:11}},a.p?`方針${a.p}`:"その他")),
+h("td",null,a.who),
+h("td",{style:{whiteSpace:"nowrap",color:"完了"!==a.st&&a.d<0?"#c4554d":void 0,fontWeight:"完了"!==a.st&&a.d<0?800:400}},dateOf(a.d),"完了"!==a.st&&a.d<0?`(${-a.d}日超過)`:""),
+h("td",{style:{fontSize:11.5}},a.kpi),
+h("td",null,h("span",{className:`badge ${"完了"===a.st?"green":"進行中"===a.st?"amber":""}`},a.st)),
+h("td",null,h("button",{className:"tpl-btn",style:{fontSize:11,padding:"3px 8px",whiteSpace:"nowrap"},onClick:()=>step(a.no)},"完了"===a.st?"戻す":"進める"))))))),
+h("div",{className:"hint"},"状態は「進める」で 未着手 → 進行中 → 完了 と動きます。会議中にその場で押していくと、議事録を別に作る必要がなくなります。")),
+h("div",{className:"panel"},
+h("h3",null,"方針ごとの進み方"),
+h("div",{style:{overflowX:"auto"}},
+h("table",{className:"tbl slim",style:{minWidth:620}},
+h("thead",null,h("tr",null,["重点方針","アクション","完了","進行中","未着手","完了率"].map((t,i)=>h("th",{key:i,className:i>1?"r":""},t)))),
+h("tbody",null,[1,2,3,0].map(p=>{
+const g=list.filter(a=>a.p===p);
+const dn=g.filter(a=>"完了"===a.st).length;
+return h("tr",{key:p},
+h("td",null,h("span",{style:{display:"inline-block",width:8,height:8,borderRadius:2,background:PCOLOR[p],marginRight:7}}),PILLAR[p]),
+h("td",{className:"r"},`${g.length}件`),
+h("td",{className:"r"},dn),
+h("td",{className:"r"},g.filter(a=>"進行中"===a.st).length),
+h("td",{className:"r"},g.filter(a=>"未着手"===a.st).length),
+h("td",{className:"r",style:{fontWeight:800}},h("span",{className:`badge ${g.length&&dn===g.length?"green":"amber"}`},`${Math.round(dn/Math.max(1,g.length)*1000)/10}%`)))})))),
+h("div",{className:"hint"},"今期方針の重点方針3本と紐づけてあります。どの方針の実行が止まっているかが分かると、次の会議で何を話すべきかが決まります。")))}
+,group:"経営"},{key:"roles",label:"役割分担マップ",icon:"🧩",comp:function(){
+const h=ew.createElement;
+const MEM=[
+{n:"社長",r:"経営"},
+{n:"専務",r:"管理"},
+{n:"井上",r:"営業"},
+{n:"大西",r:"営業"},
+{n:"森",r:"営業"},
+{n:"高木",r:"設計"},
+{n:"中原",r:"工務"},
+{n:"白石",r:"事務"}];
+const TASK=[
+{n:"経営計画・資金繰り",hr:6,v:[3,1,0,0,0,0,0,0],to:"専務へ。まず月次の数字づくりから渡す"},
+{n:"銀行対応・資金調達",hr:3,v:[3,0,0,0,0,0,0,0],to:"専務に同席してもらい、2〜3年かけて引き継ぐ"},
+{n:"集客・広告の判断",hr:4,v:[3,0,0,0,0,0,0,2],to:"白石へ。判断基準を数字(CPA・来場単価)で決めておく"},
+{n:"反響対応・追客",hr:12,v:[0,0,2,3,2,0,0,2],to:"営業3名で当番制にする"},
+{n:"商談・プラン提案",hr:20,v:[2,0,3,3,1,2,0,0],to:"井上・大西で分担し、森を同席で育てる"},
+{n:"資金計画・住宅ローン",hr:8,v:[2,2,3,2,1,0,0,0],to:"井上を主担当に、専務がバックアップ"},
+{n:"見積作成・積算",hr:14,v:[3,0,0,2,0,1,1,0],to:"大西へ。標準単価を整えてから渡す"},
+{n:"実施設計・確認申請",hr:16,v:[1,0,0,0,0,3,0,0],to:"設計の増員、または外部設計事務所と組む"},
+{n:"仕様打合せ・色決め",hr:10,v:[0,0,2,2,1,3,0,0],to:"高木を主担当に、仕様決定AIで手順を残す"},
+{n:"発注・業者手配",hr:12,v:[3,0,0,0,0,0,2,1],to:"中原へ。発注先と単価表を先に文書化する"},
+{n:"現場管理・工程",hr:24,v:[2,0,0,0,0,1,3,0],to:"中原へ集約。工程表の運用で属人性を下げる"},
+{n:"検査・是正対応",hr:8,v:[1,0,0,0,0,2,3,0],to:"中原・高木の2名体制にする"},
+{n:"アフター点検・OB対応",hr:6,v:[0,2,0,0,0,0,3,1],to:"白石が窓口、中原が現場対応"},
+{n:"経理・請求・支払",hr:10,v:[1,3,0,0,0,0,0,2],to:"専務・白石の2名体制を維持する"},
+{n:"採用・教育",hr:4,v:[3,2,1,0,0,0,0,1],to:"専務へ。求人の運用は外部に任せる"}];
+const MARK={0:"",1:"△",2:"○",3:"◎"};
+const COL={0:"#fff",1:"#fbfaf6",2:"#f2f7f4",3:"#e4f0ea"};
+const[m,setM]=(0,ew.useState)(TASK.map(t=>t.v.slice()));
+const[msg,setMsg]=(0,ew.useState)("");
+const cyc=(i,j)=>setM(a=>a.map((row,x)=>x===i?row.map((v,y)=>y===j?(v+1)%4:v):row));
+const main=i=>m[i].map((v,j)=>3===v?j:-1).filter(j=>j>=0);
+const sub=i=>m[i].map((v,j)=>2===v?j:-1).filter(j=>j>=0);
+const able=i=>main(i).length+sub(i).length;
+const load=MEM.map((_,j)=>{
+let s=0;
+TASK.forEach((t,i)=>{
+const M=main(i),S=sub(i);
+if(M.indexOf(j)>=0)s+=t.hr*(S.length?.7:1)/M.length;
+else if(S.indexOf(j)>=0)s+=t.hr*(M.length?.3:1)/S.length});
+return Math.round(s*10)/10});
+const risk=TASK.map((t,i)=>({...t,i,able:able(i),main:main(i),sub:sub(i)})).filter(t=>t.able<=1);
+const soloBoss=TASK.map((t,i)=>({...t,i,main:main(i),sub:sub(i)})).filter(t=>1===t.main.length&&0===t.main[0]&&0===t.sub.length);
+const bossMain=TASK.filter((t,i)=>main(i).indexOf(0)>=0).length;
+const over=load.map((v,j)=>({j,v})).filter(x=>x.v>40);
+const noOne=TASK.map((t,i)=>({...t,i,able:able(i)})).filter(t=>0===t.able);
+const alerts=[];
+if(soloBoss.length>0)alerts.push({lv:"red",t:`社長しか対応できない業務が ${soloBoss.length}件(${soloBoss.map(t=>t.n).join("・")})。社長が1週間動けなくなると、この業務は止まります`,to:"引き継ぎ計画"});
+if(over.length>0)alerts.push({lv:"red",t:`週の想定工数が40時間を超えている人が ${over.length}名(${over.map(x=>`${MEM[x.j].n} ${x.v}h`).join("・")})。役割を減らさない限り、新しい取り組みは載りません`,to:"工数の内訳"});
+if(risk.length>0)alerts.push({lv:"amber",t:`対応できるのが1人以下の業務が ${risk.length}件。人が辞める・休むと止まる箇所です`,to:"属人化リスク"});
+if(noOne.length>0)alerts.push({lv:"amber",t:`担当者が決まっていない業務が ${noOne.length}件(${noOne.map(t=>t.n).join("・")})`,to:"役割分担マップ"});
+const cand=t=>{
+const tri=m[t.i].map((v,j)=>1===v&&j>0?j:-1).filter(j=>j>=0);
+if(tri.length>0)return`${MEM[tri[0]].n}(現在△)を主担当に育てる`;
+return t.to||"外注または採用で受け皿を作る"};
+const send=()=>setMsg(`引き継ぎ計画 ${risk.length}件 を改善アクション管理へ登録しました(担当・期限つき)。実行されたかどうかはあちらの表で追えます。`);
+const totalHr=Math.round(load.reduce((a,b)=>a+b,0)*10)/10;
+return h("div",null,
+h("div",{className:"module-head"},h("h2",null,"役割分担マップ"),
+h("p",null,"誰がどの業務を持っているかを1枚にします。工務店で人が増えないのは募集していないからではなく、社長の頭の中にしか手順がない業務が多いからです。まず「1人しかできない業務」を見つけて、そこから外していきます。表のマスを押すと ◎ → △ → ○ → 空 と切り替わります。")),
+alerts.length>0&&h("div",{className:"alert-center"},
+h("div",{className:"alert-title"},`⚡ 組織のアラート(${alerts.length})`),
+alerts.map((a,i)=>h("div",{className:`alert-line ${a.lv}`,key:i},
+h("span",null,"red"===a.lv?"🚨":"⏳"),
+h("span",{className:"alert-text"},a.t),
+h("span",{className:"alert-to"},`→ ${a.to}`)))),
+h("div",{className:"kpi-grid"},
+h(bL,{label:"社長が主担当の業務",value:`${bossMain}件`,sub:`全${TASK.length}業務のうち ｜ 週 ${load[0]}時間`,alert:bossMain>=5}),
+h(bL,{label:"社長が抜けると止まる業務",value:`${soloBoss.length}件`,sub:"社長だけが◎で、対応できる人が他にいない",alert:soloBoss.length>0}),
+h(bL,{label:"属人化リスク",value:`${risk.length}件`,sub:"対応できるのが1人以下の業務"}),
+h(bL,{label:"社長の週工数",value:`${load[0]}時間`,sub:"週40時間を超えると、新しいことは何も載りません",alert:load[0]>40}),
+h(bL,{label:"社内の総工数",value:`${totalHr}時間/週`,sub:`${MEM.length}名 ｜ 1人平均 ${Math.round(totalHr/MEM.length*10)/10}時間`})),
+h("div",{className:"panel"},
+h("h3",null,"誰が何を持っているか"),
+h("div",{style:{overflowX:"auto"}},
+h("table",{className:"tbl slim",style:{minWidth:940}},
+h("thead",null,
+h("tr",null,
+h("th",{style:{minWidth:170}},"業務"),
+h("th",{className:"r"},"週工数"),
+MEM.map((p,j)=>h("th",{key:j,className:"r",style:{minWidth:62}},h("div",null,p.n),h("div",{style:{fontSize:10,color:"#8a938e",fontWeight:400}},p.r))),
+h("th",{className:"r"},"対応可"))),
+h("tbody",null,TASK.map((t,i)=>{
+const a=able(i);
+return h("tr",{key:i,style:{background:a<=1?"#fdf3f2":void 0}},
+h("td",{style:{fontWeight:a<=1?800:400}},t.n),
+h("td",{className:"r",style:{color:"#8a938e"}},`${t.hr}h`),
+m[i].map((v,j)=>h("td",{key:j,className:"r",onClick:()=>cyc(i,j),
+style:{cursor:"pointer",textAlign:"center",fontWeight:800,fontSize:14,background:COL[v],color:3===v?"#1e7a63":2===v?"#3f7fa6":"#b9a06a",userSelect:"none"}},MARK[v])),
+h("td",{className:"r",style:{fontWeight:800,color:a<=1?"#c4554d":void 0}},`${a}名`))}),
+h("tr",{style:{background:"#fafaf7"}},
+h("td",{style:{fontWeight:800}},"週の想定工数"),
+h("td",{className:"r",style:{fontWeight:800}},`${TASK.reduce((a,t)=>a+t.hr,0)}h`),
+load.map((v,j)=>h("td",{key:j,className:"r",style:{fontWeight:800,color:v>40?"#c4554d":void 0}},`${v}h`)),
+h("td",null,""))))),
+h("div",{className:"hint"},"◎主担当 ／ ○対応できる ／ △手伝える(要サポート)。工数は業務ごとの週あたり時間を、主担当7割・対応可3割で割ったおおよその配分です。")),
+h("div",{className:"panel"},
+h("h3",null,`引き継ぎ計画(属人化 ${risk.length}件)`),
+risk.length>0?h("div",null,
+h("div",{style:{overflowX:"auto"}},
+h("table",{className:"tbl slim",style:{minWidth:760}},
+h("thead",null,h("tr",null,["業務","いまの担当","週工数","次に渡す先(案)","着手の目安"].map((t,i)=>h("th",{key:i,className:2===i?"r":""},t)))),
+h("tbody",null,risk.map((t,i)=>h("tr",{key:i},
+h("td",{style:{fontWeight:600}},t.n),
+h("td",null,t.main.length?t.main.map(j=>MEM[j].n).join("・"):h("span",{style:{color:"#c4554d"}},"担当なし")),
+h("td",{className:"r"},`${t.hr}h`),
+h("td",{style:{fontSize:12}},cand(t)),
+h("td",null,i<2?"3ヶ月以内":i<4?"半年以内":"1年以内"))))))
+,h("div",{style:{marginTop:10}},
+h("button",{className:"tpl-btn",onClick:send},"引き継ぎ計画を改善アクション管理へ登録する")),
+msg&&h("div",{className:"imp-msg ok",style:{marginTop:10}},msg))
+:h("p",{className:"hint",style:{margin:0}},"1人しかできない業務はありません。この状態なら、誰かが休んでも現場は止まりません。"),
+h("div",{className:"hint"},"全部を一度に手放すことはできません。工数が大きく、かつ社長でなくてもできる業務(見積作成・発注・現場管理)から順に渡すのが定石です。経営判断と銀行対応は最後まで残ります。")),
+h("div",{className:"panel"},
+h("h3",null,"3ヶ年計画とのつながり"),
+h("p",{className:"hint",style:{margin:0}},"3ヶ年経営計画では棟数を増やすと必要人数が自動で増えますが、増えた人がすぐ戦力になるわけではありません。この表で「渡せる業務」を先に決めておくと、採用したときに何を任せるかが決まっている状態になります。逆に、ここが埋まっていないまま人を増やすと、社長の仕事は減らずに人件費だけが増えます。")))}
+,group:"経営"},{key:"leads",label:"追客管理",icon:"📇",comp:function(){let[e,t]=(0,ew.useState)(C0),[r,n]=(0,ew.useState)("all"),[a,i]=(0,ew.useState)(null),l=(0,ew.useRef)(null),o=(0,ew.useMemo)(()=>e.filter(e=>"all"===r||e.grade===r),[e,r]),s=e.filter(e=>e.last>=("A"===e.grade?7:"B"===e.grade?14:30)),u=async r=>{if(r)try{let n=CJ(await r.arrayBuffer(),{type:"array"}),a=C$(n.Sheets[n.SheetNames[0]],{header:1,raw:!1,defval:null}),o=(a[0]||[]).map(e=>String(e??""));if(!o[0]?.includes("お客様"))return void i({ok:!1,t:"ヘッダー形式を認識できません。テンプレートCSVの列構成でアップロードしてください。"});let s=a.slice(1).filter(e=>e&&e[0]).map((e,t)=>({id:`L-I${String(t+1).padStart(2,"0")}`,name:String(e[0]),grade:["A","B","C"].includes(String(e[1]))?String(e[1]):"C",src:String(e[2]??"インポート"),land:String(e[3]??"土地なし"),budget:Number(String(e[4]??"0").replace(/[,、]/g,""))||0,last:Number(e[5]??0)||0,next:String(e[6]??"初回接触"),nextDate:String(e[7]??"未定"),note:String(e[8]??"")})),u=[...e.filter(e=>!s.some(t=>t.name===e.name)),...s];t(u),i({ok:!0,t:`${s.length}\u{4EF6}\u{3092}\u{53D6}\u{308A}\u{8FBC}\u{307F}\u{307E}\u{3057}\u{305F}(\u{540C}\u{540D}\u{306F}\u{4E0A}\u{66F8}\u{304D})\u{3002}\u{65E2}\u{5B58}\u{306E}Excel\u{8FFD}\u{5BA2}\u{30EA}\u{30B9}\u{30C8}\u{304B}\u{3089}\u{305D}\u{306E}\u{307E}\u{307E}\u{79FB}\u{884C}\u{3067}\u{304D}\u{307E}\u{3059}\u{3002}`}),l.current&&(l.current.value="")}catch{i({ok:!1,t:"読み取りに失敗しました。CSV / xlsx / xls 形式かご確認ください。"})}};return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"追客管理(見込み客)"}),(0,eO.jsx)("p",{children:"パイプラインの数字の裏側にある個票です。温度感別の放置日数アラートと次回アクションの予約で、追客を営業個人の記憶から仕組みに移します。"})]}),(0,eO.jsxs)("div",{className:"kpi-grid",children:[(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"新規反響(当月)"}),(0,eO.jsx)("div",{className:"kpi-value",children:"34件"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"前年同月比 +30.8%(前年26件)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"追客中"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[e.length+22,"件"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"A:8 / B:11 / C:9(表示は抜粋)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"今月の受注"}),(0,eO.jsx)("div",{className:"kpi-value",children:"3棟"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"前年同月 2棟 / 累計18棟(前年比+20%)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"反響→契約 転換率"}),(0,eO.jsx)("div",{className:"kpi-value",children:"8.8%"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"初回商談化率 52.9% / 商談→契約 16.7%"})]})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>{let t="\uFEFF"+[["お客様名","温度(A/B/C)","経路","土地(あり/土地なし)","予算(万円)","最終接触(日前)","次回アクション","予定日","メモ"],...e.map(e=>[e.name,e.grade,e.src,e.land,e.budget,e.last,e.next,e.nextDate,e.note])].map(e=>e.join(",")).join("\n"),r=document.createElement("a");r.href=URL.createObjectURL(new Blob([t],{type:"text/csv"})),r.download="追客リスト.csv",r.click()},children:"📥 テンプレCSVをダウンロード(現データ入り)"}),(0,eO.jsxs)("label",{className:"tpl-btn",style:{cursor:"pointer"},children:["📤 Excel / CSV から取り込む",(0,eO.jsx)("input",{ref:l,type:"file",accept:".csv,.xlsx,.xls",style:{display:"none"},onChange:e=>u(e.target.files?.[0])})]}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"いまお使いの追客Excelをそのまま移行できます。列:お客様名/温度/経路/土地/予算/最終接触/次回アクション/予定日/メモ"}),a&&(0,eO.jsx)("div",{className:`imp-msg ${a.ok?"ok":"ng"}`,style:{flexBasis:"100%"},children:a.t})]}),s.length>0&&(0,eO.jsxs)("div",{className:"alert-center",style:{borderLeftColor:"#D98E32"},children:[(0,eO.jsxs)("div",{className:"alert-title",children:["⏰ 放置アラート(",s.length,"件)— 基準: A=7日 / B=14日 / C=30日"]}),s.map(e=>(0,eO.jsxs)("div",{className:"alert-line amber",children:[(0,eO.jsx)("span",{children:"👤"}),(0,eO.jsxs)("span",{className:"alert-text",children:[e.name,"(",e.grade,"ランク)最終接触から",e.last,"日経過"]}),(0,eO.jsxs)("span",{className:"alert-to",children:["→ ",e.next]})]},e.id))]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("div",{className:"proj-tabs",style:{marginBottom:12},children:["all","A","B","C"].map(t=>(0,eO.jsx)("button",{className:`proj-tab ${r===t?"on":""}`,onClick:()=>n(t),children:"all"===t?`\u{5168}\u{4EF6}(${e.length})`:`${t}\u{30E9}\u{30F3}\u{30AF}(${e.filter(e=>e.grade===t).length})`},t))}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"お客様"}),(0,eO.jsx)("th",{children:"温度"}),(0,eO.jsx)("th",{children:"経路"}),(0,eO.jsx)("th",{children:"土地"}),(0,eO.jsx)("th",{className:"r",children:"予算"}),(0,eO.jsx)("th",{className:"r",children:"最終接触"}),(0,eO.jsx)("th",{children:"次回アクション(予定日)"}),(0,eO.jsx)("th",{children:"メモ"})]})}),(0,eO.jsx)("tbody",{children:o.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.name})}),(0,eO.jsx)("td",{children:(0,eO.jsx)("span",{className:"badge",style:{background:`${C1[e.grade]}22`,color:C1[e.grade]},children:e.grade})}),(0,eO.jsx)("td",{children:e.src}),(0,eO.jsx)("td",{children:e.land}),(0,eO.jsxs)("td",{className:"r",children:[e.budget.toLocaleString(),"万円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:e.last>=14?"#C4554D":void 0,fontWeight:e.last>=14?800:400},children:[e.last,"日前"]}),(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.nextDate})," ",e.next]}),(0,eO.jsx)("td",{style:{fontSize:12,color:"#5C6B77"},children:e.note})]},e.id))})]}),(0,eO.jsx)("div",{className:"hint",children:"スイート連携:資金計画書・設計AIプレゼン・図面アーカイブの類似案・補助金の残枠アラートが、そのまま追客の「接触する口実」になります。"})]})]})},group:"営業"},
+{key:"process",label:"営業プロセス分析",icon:"🔍",comp:function(){
+const h=ew.createElement;
+const num=(v,on,step,w)=>h("input",{type:"number",step:step||1,value:v,onChange:e=>on(+e.target.value||0),style:{width:w||72,textAlign:"right"}});
+const man=n=>`${Math.round(n).toLocaleString("ja-JP")}万円`;
+const PRICE=4048;
+const GPR=24.5;
+const STEPS=[
+{k:"lead",n:"集客(問合せ)",ad:250,ref:56},
+{k:"visit",n:"初回接客(来場・面談)",ad:170,ref:52},
+{k:"fp",n:"資金計画(FP面談)",ad:88,ref:33},
+{k:"plan",n:"プラン提示",ad:47,ref:21},
+{k:"est",n:"見積提示",ad:27,ref:14},
+{k:"deal",n:"契約",ad:15,ref:8}];
+const SRC=[
+{n:"HP(資料請求・イベント予約)",kind:"広告",lead:112,deal:7},
+{n:"Instagram",kind:"広告",lead:46,deal:3},
+{n:"SUUMO・住宅ポータル",kind:"広告",lead:46,deal:2},
+{n:"Google・Yahoo!・LINE",kind:"広告",lead:46,deal:3},
+{n:"OB・オーナー様紹介",kind:"広告外",lead:28,deal:5},
+{n:"協力業者様紹介",kind:"広告外",lead:11,deal:2},
+{n:"電話・その他",kind:"広告外",lead:17,deal:1}];
+const REPS=[
+{n:"井上(11年目)",visit:84,deal:11,days:104},
+{n:"大西(6年目)",visit:76,deal:8,days:130},
+{n:"森(2年目)",visit:62,deal:4,days:142}];
+const CASES=[
+{n:"A様",kind:"新築",src:"OB紹介",who:"井上",d:[0,6,19,34,58,74],res:"受注"},
+{n:"B様",kind:"建替",src:"HP",who:"大西",d:[0,21,49,88,121,148],res:"受注"},
+{n:"C様",kind:"新築",src:"Instagram",who:"井上",d:[0,17,44,79,110,136],res:"受注"},
+{n:"D様",kind:"新築",src:"協力業者紹介",who:"井上",d:[0,9,24,41,63,81],res:"受注"},
+{n:"E様",kind:"建替",src:"SUUMO",who:"大西",d:[0,26,57,96,132,161],res:"受注"},
+{n:"F様",kind:"新築",src:"OB紹介",who:"森",d:[0,11,28,52,80,99],res:"受注"},
+{n:"G様",kind:"新築",src:"HP",who:"大西",d:[0,23,52,91,124,null],res:"追客中"},
+{n:"H様",kind:"新築",src:"Instagram",who:"森",d:[0,19,46,84,null,null],res:"追客中"},
+{n:"I様",kind:"建替",src:"HP",who:"井上",d:[0,14,38,66,null,null],res:"追客中"},
+{n:"J様",kind:"新築",src:"Google",who:"森",d:[0,28,61,null,null,null],res:"追客中"},
+{n:"K様",kind:"新築",src:"SUUMO",who:"大西",d:[0,31,68,null,null,null],res:"追客中"},
+{n:"L様",kind:"新築",src:"HP",who:"森",d:[0,24,null,null,null,null],res:"追客中"},
+{n:"M様",kind:"建替",src:"電話・その他",who:"井上",d:[0,18,null,null,null,null],res:"追客中"},
+{n:"N様",kind:"新築",src:"Instagram",who:"森",d:[0,12,null,null,null,null],res:"追客中"},
+{n:"O様",kind:"新築",src:"HP",who:"大西",d:[0,35,72,118,151,null],res:"失注"},
+{n:"P様",kind:"新築",src:"SUUMO",who:"森",d:[0,27,59,102,null,null],res:"失注"},
+{n:"Q様",kind:"建替",src:"Google",who:"大西",d:[0,22,48,null,null,null],res:"失注"},
+{n:"R様",kind:"新築",src:"HP",who:"森",d:[0,16,41,null,null,null],res:"失注"}];
+const LOST=[
+{r:"他社と相見積で価格が合わなかった",c:6},
+{r:"土地が見つからず計画が止まった",c:4},
+{r:"資金計画で予算が届かなかった",c:3},
+{r:"打合せの間隔が空いて熱が冷めた",c:3},
+{r:"ご家族の反対・時期の見送り",c:2}];
+const[simStep,setSimStep]=(0,ew.useState)(1);
+const[simUp,setSimUp]=(0,ew.useState)(10);
+const[tab,setTab]=(0,ew.useState)("src");
+const tot=s=>s.ad+s.ref;
+const rate=(a,b)=>b>0?Math.round(a/b*1000)/10:0;
+const rows=STEPS.map((s,i)=>{
+const p=i>0?STEPS[i-1]:null;
+return{...s,all:tot(s),
+thruAll:p?rate(tot(s),tot(p)):100,
+thruAd:p?rate(s.ad,p.ad):100,
+thruRef:p?rate(s.ref,p.ref):100}});
+const deal=STEPS[5],lead=STEPS[0],visit=STEPS[1];
+const dealAll=tot(deal);
+const cvLead=rate(dealAll,tot(lead));
+const cvVisit=rate(dealAll,tot(visit));
+const refShare=rate(deal.ref,dealAll);
+const cvAd=rate(deal.ad,lead.ad);
+const cvRef=rate(deal.ref,lead.ref);
+const ratioRef=cvAd>0?Math.round(cvRef/cvAd*10)/10:0;
+const daysAll=Math.round(REPS.reduce((a,r)=>a+r.deal*r.days,0)/Math.max(1,REPS.reduce((a,r)=>a+r.deal,0)));
+const trans=rows.slice(1).map((r,i)=>({i:i+1,n:`${STEPS[i].n} → ${r.n}`,v:r.thruAll}));
+const worst=trans.reduce((a,b)=>b.v<a.v?b:a,trans[0]);
+const goalDeal=22;
+const base=rows.map(r=>r.thruAll);
+const simRates=base.map((v,i)=>i===simStep?Math.min(100,v+simUp):v);
+const simDeal=simRates.slice(1).reduce((a,v)=>a*v/100,tot(lead));
+const addDeal=Math.round((simDeal-dealAll)*10)/10;
+const addSales=Math.round(addDeal*PRICE);
+const addGp=Math.round(addSales*GPR/100);
+const alerts=[];
+alerts.push({lv:"red",t:`いちばん落ちているのは「${worst.n}」の ${worst.v}%。ここを10pt上げるだけで年間の契約が増えます`,to:"改善シミュレーション"});
+alerts.push({lv:"amber",t:`紹介・OBの受注率 ${cvRef}% に対し、広告経由は ${cvAd}%。同じ1件の問合せでも ${ratioRef}倍 決まり方が違います`,to:"アフター点検・OB管理"});
+const low=REPS.reduce((a,b)=>rate(b.deal,b.visit)<rate(a.deal,a.visit)?b:a,REPS[0]);
+alerts.push({lv:"amber",t:`${low.n} の受注率が ${rate(low.deal,low.visit)}%(社内平均 ${cvVisit}%)。案件ではなく商談の進め方に差が出ています`,to:"営業KPI・ロープレ"});
+const stuck=CASES.filter(c=>"追客中"===c.res).map(c=>{
+const last=c.d.reduce((a,v,i)=>null!==v?i:a,0);
+return{...c,last,gap:180-c.d[last]}}).filter(c=>c.d[c.last]<=60&&c.last<=2);
+const badge=r=>"受注"===r?"green":"失注"===r?"red":"amber";
+return h("div",null,
+h("div",{className:"module-head"},h("h2",null,"営業プロセス分析"),
+h("p",null,"追客管理が1件ずつの個票なら、こちらはその集合です。新築・建替部門の1年分を「集客 → 初回接客 → 資金計画 → プラン提示 → 見積提示 → 契約」の6段で並べ、どの段で何%落ちているかを見ます。受注率が低いのは営業の頑張りが足りないからではなく、たいてい特定の1段だけが詰まっています。")),
+alerts.length>0&&h("div",{className:"alert-center"},
+h("div",{className:"alert-title"},`⚡ プロセスのアラート(${alerts.length})`),
+alerts.map((a,i)=>h("div",{className:`alert-line ${a.lv}`,key:i},
+h("span",null,"red"===a.lv?"🚨":"⏳"),
+h("span",{className:"alert-text"},a.t),
+h("span",{className:"alert-to"},`→ ${a.to}`)))),
+h("div",{className:"kpi-grid"},
+h(bL,{label:"契約(年間)",value:`${dealAll}件`,sub:`今期方針の必要件数 ${goalDeal}件(新築11+建替11)｜ ${dealAll>=goalDeal?"達成":"未達"}`,alert:dealAll<goalDeal}),
+h(bL,{label:"受注率(集客ベース)",value:`${cvLead}%`,sub:`問合せ ${tot(lead)}件 → 契約 ${dealAll}件`}),
+h(bL,{label:"受注率(初回接客ベース)",value:`${cvVisit}%`,sub:`来場・面談 ${tot(visit)}組 → 契約 ${dealAll}件`}),
+h(bL,{label:"平均受注期間",value:`${daysAll}日`,sub:"初回接点から契約まで ｜ 紹介は短く、広告経由は長い"}),
+h(bL,{label:"紹介・OB比率",value:`${refShare}%`,sub:`契約 ${dealAll}件のうち ${deal.ref}件 ｜ 今期方針の重点方針2`}),
+h(bL,{label:"最大のボトルネック",value:`${worst.v}%`,sub:worst.n,alert:true})),
+h("div",{className:"panel"},
+h("h3",null,"歩留まり(ファネル)"),
+h("div",{style:{overflowX:"auto"}},
+h("table",{className:"tbl slim",style:{minWidth:900}},
+h("thead",null,h("tr",null,["ステップ","件数","前段からの通過率","広告経由","通過率","紹介・OB","通過率"].map((t,i)=>h("th",{key:i,className:i>0?"r":""},t)))),
+h("tbody",null,rows.map((r,i)=>h("tr",{key:r.k,style:{background:i>0&&r.thruAll===worst.v?"#fdf3f2":void 0}},
+h("td",null,
+h("span",{style:{display:"inline-block",width:`${Math.max(6,Math.round(r.all/rows[0].all*90))}px`,height:8,borderRadius:2,background:5===i?"#2f9e82":"#8fb8ad",marginRight:8,verticalAlign:"middle"}}),
+h("span",{style:{fontWeight:5===i?800:400}},r.n)),
+h("td",{className:"r",style:{fontWeight:800}},`${r.all}${5===i?"件":0===i?"件":"組"}`),
+h("td",{className:"r",style:{fontWeight:i>0&&r.thruAll===worst.v?800:400,color:i>0&&r.thruAll===worst.v?"#c4554d":void 0}},0===i?"—":`${r.thruAll}%`),
+h("td",{className:"r"},r.ad),
+h("td",{className:"r"},0===i?"—":`${r.thruAd}%`),
+h("td",{className:"r"},r.ref),
+h("td",{className:"r"},0===i?"—":`${r.thruRef}%`)))))),
+h("div",{className:"hint"},"広告経由と紹介・OBを分けて見るのが要点です。同じファネルに混ぜると、紹介の高い決定率が広告の低さを隠してしまい、広告費の判断を誤ります。")),
+h("div",{className:"panel"},
+h("h3",null,"改善シミュレーション"),
+h("div",{style:{display:"flex",gap:10,flexWrap:"wrap",alignItems:"center",marginBottom:10}},
+h("select",{value:simStep,onChange:e=>setSimStep(+e.target.value)},
+trans.map(t=>h("option",{key:t.i,value:t.i},`${t.n}(現在 ${t.v}%)`))),
+h("span",{style:{fontSize:12}},"の通過率を"),
+num(simUp,setSimUp,1,64),
+h("span",{style:{fontSize:12}},"pt 上げる")),
+h("div",{className:"kpi-grid"},
+h(bL,{label:"契約数",value:`${Math.round(simDeal*10)/10}件`,sub:`現在 ${dealAll}件 → ${addDeal>=0?"+":""}${addDeal}件`}),
+h(bL,{label:"売上インパクト",value:man(addSales),sub:`平均単価 ${man(PRICE)} で換算`}),
+h(bL,{label:"粗利インパクト",value:man(addGp),sub:`粗利率 ${GPR}% で換算`})),
+h("div",{className:"hint"},"広告を増やして問合せを増やすより、途中の1段を10pt上げるほうが安く効くことがあります。どちらが得かは、この2つを並べて初めて判断できます。")),
+h("div",{className:"panel"},
+h("div",{style:{display:"flex",gap:6,flexWrap:"wrap",marginBottom:10}},
+[["src","きっかけ別"],["rep","担当者別"],["case","案件の個票"],["lost","失注理由"]].map(t=>
+h("button",{key:t[0],className:"tpl-btn",style:{background:tab===t[0]?"#2f9e82":void 0,color:tab===t[0]?"#fff":void 0},onClick:()=>setTab(t[0])},t[1]))),
+"src"===tab&&h("div",{style:{overflowX:"auto"}},
+h("table",{className:"tbl slim",style:{minWidth:660}},
+h("thead",null,h("tr",null,["きっかけ","区分","集客","契約","受注率"].map((t,i)=>h("th",{key:i,className:i>1?"r":""},t)))),
+h("tbody",null,SRC.map((s,i)=>h("tr",{key:i},
+h("td",null,s.n),
+h("td",null,h("span",{className:`badge ${"広告外"===s.kind?"green":""}`},s.kind)),
+h("td",{className:"r"},`${s.lead}件`),
+h("td",{className:"r",style:{fontWeight:700}},`${s.deal}件`),
+h("td",{className:"r",style:{fontWeight:800,color:rate(s.deal,s.lead)>=10?"#1e7a63":void 0}},`${rate(s.deal,s.lead)}%`))),
+h("tr",{style:{background:"#fafaf7"}},
+h("td",{style:{fontWeight:800}},"合計"),
+h("td",null,""),
+h("td",{className:"r",style:{fontWeight:800}},`${tot(lead)}件`),
+h("td",{className:"r",style:{fontWeight:800}},`${dealAll}件`),
+h("td",{className:"r",style:{fontWeight:800}},`${cvLead}%`))))),
+"rep"===tab&&h("div",{style:{overflowX:"auto"}},
+h("table",{className:"tbl slim",style:{minWidth:700}},
+h("thead",null,h("tr",null,["担当","初回接客","契約","受注率","平均受注期間","年間受注高"].map((t,i)=>h("th",{key:i,className:i>0?"r":""},t)))),
+h("tbody",null,REPS.map((r,i)=>h("tr",{key:i},
+h("td",null,r.n),
+h("td",{className:"r"},`${r.visit}組`),
+h("td",{className:"r",style:{fontWeight:700}},`${r.deal}件`),
+h("td",{className:"r",style:{fontWeight:800,color:rate(r.deal,r.visit)<cvVisit?"#c4554d":"#1e7a63"}},`${rate(r.deal,r.visit)}%`),
+h("td",{className:"r"},`${r.days}日`),
+h("td",{className:"r"},man(r.deal*PRICE)))),
+h("tr",{style:{background:"#fafaf7"}},
+h("td",{style:{fontWeight:800}},"合計・平均"),
+h("td",{className:"r",style:{fontWeight:800}},`${tot(visit)}組`),
+h("td",{className:"r",style:{fontWeight:800}},`${dealAll}件`),
+h("td",{className:"r",style:{fontWeight:800}},`${cvVisit}%`),
+h("td",{className:"r",style:{fontWeight:800}},`${daysAll}日`),
+h("td",{className:"r",style:{fontWeight:800}},man(dealAll*PRICE)))))),
+"case"===tab&&h("div",null,
+stuck.length>0&&h("div",{className:"imp-msg ok",style:{marginBottom:10}},`⏳ 初回接客の直後で止まっている案件が ${stuck.length}件 あります(${stuck.map(c=>c.n).join("・")})。資金計画に進めるかどうかが分かれ目です。`),
+h("div",{style:{overflowX:"auto"}},
+h("table",{className:"tbl slim",style:{minWidth:900}},
+h("thead",null,h("tr",null,["お客様","区分","きっかけ","担当","初回接客","資金計画","プラン","見積","契約","結果"].map((t,i)=>h("th",{key:i,className:i>3?"r":""},t)))),
+h("tbody",null,CASES.map((c,i)=>h("tr",{key:i},
+h("td",null,c.n),
+h("td",null,c.kind),
+h("td",null,c.src),
+h("td",null,c.who),
+c.d.slice(1).map((v,j)=>h("td",{key:j,className:"r",style:{color:null===v?"#c7cdc9":void 0}},null===v?"—":`${v}日`)),
+h("td",{className:"r"},h("span",{className:`badge ${badge(c.res)}`},c.res))))))),
+h("div",{className:"hint"},"日数は初回接点からの経過日数です。受注した案件は前半の間隔が短く、失注した案件はどこかで必ず間隔が開いています。追客管理の「最終接触からの日数」と合わせて見ます。")),
+"lost"===tab&&h("div",null,
+h("div",{style:{overflowX:"auto"}},
+h("table",{className:"tbl slim",style:{minWidth:520}},
+h("thead",null,h("tr",null,["失注理由","件数","構成比",""].map((t,i)=>h("th",{key:i,className:1===i||2===i?"r":""},t)))),
+h("tbody",null,LOST.map((l,i)=>{
+const s=LOST.reduce((a,b)=>a+b.c,0);
+return h("tr",{key:i},
+h("td",null,l.r),
+h("td",{className:"r",style:{fontWeight:700}},`${l.c}件`),
+h("td",{className:"r"},`${rate(l.c,s)}%`),
+h("td",null,h("span",{style:{display:"inline-block",width:`${Math.round(l.c/s*160)}px`,height:8,borderRadius:2,background:"#d98e32"}})))})))),
+h("div",{className:"hint"},"「価格が合わなかった」は最も多く出てくる理由ですが、その半分は価格そのものではなく、資金計画の順番の問題です。先に総予算を握れていれば、見積を出した時点で差は生まれません。"))),
+h("div",{className:"panel"},
+h("h3",null,"この画面の使い方"),
+h("p",{className:"hint",style:{margin:0}},"月に1度、受注・失注が確定した案件をこの6段に流し込むだけで十分です。数字が揃うと、営業会議の議題が「今月どうだった」から「どの段を上げるか」に変わります。決めた打ち手は改善アクション管理に登録すると、実行されたかどうかまで追えます。")))}
+,group:"営業"},{key:"fp",label:"資金計画・FP",icon:"🏦",comp:function(){let[e,t]=(0,ew.useState)("sim"),[r,n]=(0,ew.useState)(1200),[a,i]=(0,ew.useState)(2450),[l,o]=(0,ew.useState)(500),[s,u]=(0,ew.useState)("kosodate"),[c,f]=(0,ew.useState)("chouki"),[d,h]=(0,ew.useState)(!1),[p,g]=(0,ew.useState)(.9),[m,v]=(0,ew.useState)(35),[b,y]=(0,ew.useState)(650),[x,j]=(0,ew.useState)(2),[O,w]=(0,ew.useState)(""),[C,I]=(0,ew.useState)(34),[k,A]=(0,ew.useState)(82e3),[S,E]=(0,ew.useState)(26e3),[P,T]=(0,ew.useState)(18e3),N=Math.round((r+a)*.08),_=(0,ew.useMemo)(()=>{let e="other"!==s,t=0,r="対象なし";"gx"===c?(t=110,r="GX志向型 110万円(全世帯)"):"chouki"===c&&e?(t=80,r="長期優良 80万円"):"zeh"===c&&e&&(t=40,r="ZEH水準 40万円(第2期 9/30締切)");let n=t;return t>0&&d&&"gx"!==c&&(n+=20,r+=" + 解体加算20万円"),{total:n,label:r}},[s,c,d]),M=r+a+N,D=1e4*Math.max(M-l-_.total,0),G=C3(D,p,m),L=C3(D,p+.5,m),W=G*m*12,Z=(0,ew.useMemo)(()=>{let e=[],t=300;for(let r=0;r<=30;r++)t+=b*(r<25?1+.01*r:.55)-(260+x*(r>3&&r<22?45+55*(r>12):20))-(r<m?12*G/1e4:0),e.push({age:`${34+r}\u{6B73}`,savings:Math.round(t)});return e},[b,x,G,m]),B=Math.min(...Z.map(e=>e.savings)),R="gx"===c?.45:"chouki"===c?.35:"zeh"===c?.3:.1,F=Math.round(S*(1-R)),Y=k+S+P,z=Math.round(G)+F+P,X=z-Y;return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"資金計画・FPツール"}),(0,eO.jsx)("p",{children:"商談中にその場で資金計画。補助金の対象判定(みらいエコ住宅2026)と金利上昇シナリオ、35年のライフプランまで1画面で見せられます。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"sim"===e?"on":""}`,onClick:()=>t("sim"),children:"シミュレーション"}),(0,eO.jsx)("button",{className:`proj-tab ${"sheet"===e?"on":""}`,onClick:()=>t("sheet"),children:"資金計画・返済計画書(印刷)"})]}),"sheet"===e&&(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"計画書 追加入力"}),(0,eO.jsxs)("div",{className:"form-grid",children:[(0,eO.jsxs)("label",{children:["お施主様名",(0,eO.jsx)("input",{value:O,onChange:e=>w(e.target.value),placeholder:"例:原"})]}),(0,eO.jsxs)("label",{children:["ご本人年齢",(0,eO.jsx)("input",{type:"number",value:C,onChange:e=>I(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["現在の家賃(円/月)",(0,eO.jsx)("input",{type:"number",value:k,onChange:e=>A(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["現在の水道光熱費(円/月)",(0,eO.jsx)("input",{type:"number",value:S,onChange:e=>E(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["その他固定費(円/月)",(0,eO.jsx)("input",{type:"number",value:P,onChange:e=>T(+e.target.value)})]})]}),(0,eO.jsx)("button",{className:"gen-btn ghost",style:{width:"auto",padding:"9px 18px"},onClick:()=>window.print(),children:"🖨 この計画書を印刷 / PDF保存"})]}),(0,eO.jsxs)("div",{className:"plan-sheet",children:[(0,eO.jsxs)("div",{className:"ps-header",children:[(0,eO.jsxs)("div",{className:"ps-title",children:[O||"___","様 資金計画・返済計画書"]}),(0,eO.jsxs)("div",{className:"ps-meta",children:["作成日 ",new Date().toLocaleDateString("ja-JP")," ｜ 担当:彩の国ホーム"]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"一次エネルギー消費量計算を根拠にランニングコストを考えた提案資料です。※本書式はシミュレーションであり、生活スタイルや経済状況により実際と異なる場合があります。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報①)家族構成と資産"}),(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"家族構成"}),(0,eO.jsxs)("td",{children:["ご本人(",C,"歳)・配偶者・お子様",x,"人"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"世帯年収"}),(0,eO.jsxs)("td",{children:[b.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"自己資金(貯蓄より充当)"}),(0,eO.jsxs)("td",{children:[l.toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報②)毎月支出の比較 — 現在のお住まい vs 新築後"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"項目"}),(0,eO.jsx)("th",{className:"r",children:"現在"}),(0,eO.jsx)("th",{className:"r",children:"新築後"}),(0,eO.jsx)("th",{className:"r",children:"差額"})]})}),(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"家賃 → 住宅ローン返済"}),(0,eO.jsxs)("td",{className:"r",children:[k.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(G).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[(Math.round(G)-k).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["水道光熱費(断熱性能により▲",Math.round(100*R),"%)"]}),(0,eO.jsxs)("td",{className:"r",children:[S.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[F.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:["▲",(S-F).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"その他固定費"}),(0,eO.jsxs)("td",{className:"r",children:[P.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[P.toLocaleString("ja-JP"),"円"]}),(0,eO.jsx)("td",{className:"r",children:"0円"})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"毎月合計"}),(0,eO.jsxs)("td",{className:"r",children:[Y.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[z.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:X<=0?"#2F9E82":"#C4554D"},children:[X<=0?"▲":"+",Math.abs(X).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"35年間の総額比較"}),(0,eO.jsxs)("td",{className:"r",children:[(420*Y).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[(420*z).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{fontWeight:800,color:X<=0?"#2F9E82":"#C4554D"},children:[X<=0?"▲":"+",Math.abs(420*X).toLocaleString("ja-JP"),"円"]})]})]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"現在の暮らしをこのまま35年続けた場合と、高断熱の新築で35年暮らした場合の比較です。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報③)予算とローン計画"}),(0,eO.jsxs)("div",{className:"ps-cols",children:[(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"1 土地価格"}),(0,eO.jsxs)("td",{className:"r",children:[r.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"2 建物価格(外構・太陽光含む)"}),(0,eO.jsxs)("td",{className:"r",children:[a.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"3 諸費用・その他"}),(0,eO.jsxs)("td",{className:"r",children:[N.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["4 補助金(",_.label,")"]}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:["▲",_.total,"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"5 自己資金"}),(0,eO.jsxs)("td",{className:"r",children:["▲",l.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"借入金額"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(D/1e4).toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"返済期間"}),(0,eO.jsxs)("td",{className:"r",children:[m,"年"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"適用金利(変動想定)"}),(0,eO.jsxs)("td",{className:"r",children:[p,"%"]})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"毎月支払い"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(G).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"ボーナス加算"}),(0,eO.jsx)("td",{className:"r",children:"0円"})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"金利+0.5%時の毎月支払い"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(L).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総返済額(概算)"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(W/1e4).toLocaleString("ja-JP"),"万円"]})]})]})})]}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報④)返済計画 — 5年ごとのローン残高と繰上返済プラン"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"経過"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsxs)("th",{className:"r",children:[e,"年後(",C+e,"歳)"]},e))]})}),(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"ローン残高(概算)"}),[5,10,15,20,25,30,35].map(e=>{let t,r,n;return(0,eO.jsxs)("td",{className:"r",children:[Math.round((t=p/100/12,r=12*m,((n=12*e)>=r?0:0===t?D*(1-n/r):(Math.pow(1+t,r)-Math.pow(1+t,n))/(Math.pow(1+t,r)-1)*D)/1e4)).toLocaleString("ja-JP"),"万円"]},e)})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"繰上返済(ご相談)"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsx)("td",{className:"r",style:{color:"#B9C2BD"},children:"円"},e))]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"光熱費節約分の累計"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:[Math.round((S-F)*12*e/1e4).toLocaleString("ja-JP"),"万円"]},e))]})]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"光熱費の節約分を繰上返済に回すことで完済時期の前倒しが可能です。住宅ローン控除・繰上返済のご判断はお施主様ご自身で行っていただき、金融商品の推奨は行いません。"})]})]}),"sim"===e&&(0,eO.jsxs)(eO.Fragment,{children:[(0,eO.jsxs)("div",{className:"panel-row",children:[(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:300},children:[(0,eO.jsx)("h3",{children:"入力"}),(0,eO.jsxs)("div",{className:"form-grid",children:[(0,eO.jsxs)("label",{children:["土地(万円)",(0,eO.jsx)("input",{type:"number",value:r,onChange:e=>n(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["建物(万円)",(0,eO.jsx)("input",{type:"number",value:a,onChange:e=>i(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["自己資金(万円)",(0,eO.jsx)("input",{type:"number",value:l,onChange:e=>o(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["世帯年収(万円)",(0,eO.jsx)("input",{type:"number",value:b,onChange:e=>y(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["お子様の人数",(0,eO.jsx)("input",{type:"number",min:0,max:4,value:x,onChange:e=>j(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["世帯タイプ",(0,eO.jsxs)("select",{value:s,onChange:e=>u(e.target.value),children:[(0,eO.jsx)("option",{value:"kosodate",children:"子育て世帯(18歳未満の子)"}),(0,eO.jsx)("option",{value:"wakamono",children:"若者夫婦世帯(39歳以下)"}),(0,eO.jsx)("option",{value:"other",children:"その他"})]})]}),(0,eO.jsxs)("label",{children:["住宅性能",(0,eO.jsxs)("select",{value:c,onChange:e=>f(e.target.value),children:[(0,eO.jsx)("option",{value:"gx",children:"GX志向型"}),(0,eO.jsx)("option",{value:"chouki",children:"長期優良住宅"}),(0,eO.jsx)("option",{value:"zeh",children:"ZEH水準"}),(0,eO.jsx)("option",{value:"sonota",children:"その他"})]})]}),(0,eO.jsxs)("label",{children:["金利(%)",(0,eO.jsx)("input",{type:"number",step:.1,value:p,onChange:e=>g(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["返済期間(年)",(0,eO.jsx)("input",{type:"number",value:m,onChange:e=>v(+e.target.value)})]})]}),(0,eO.jsxs)("label",{className:"chk",children:[(0,eO.jsx)("input",{type:"checkbox",checked:d,onChange:e=>h(e.target.checked)})," 建て替え(旧居解体あり)"]})]}),(0,eO.jsxs)("div",{className:"panel",style:{flex:1.3,minWidth:320},children:[(0,eO.jsx)("h3",{children:"資金計画(概算)"}),(0,eO.jsx)("table",{className:"tbl slim",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総額(土地+建物+諸費用8%)"}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[M.toLocaleString("ja-JP"),"万円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"補助金判定"}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82",fontWeight:700},children:[_.label," → ▲",_.total,"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"借入金額"}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[Math.round(D/1e4).toLocaleString("ja-JP"),"万円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["毎月返済(金利",p,"%)"]}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[Math.round(G).toLocaleString("ja-JP"),"円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"金利+0.5%なら"}),(0,eO.jsxs)("td",{className:"r",style:{color:"#C4554D"},children:[Math.round(L).toLocaleString("ja-JP"),"円(+",Math.round(L-G).toLocaleString("ja-JP"),"円)"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総返済額"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(W/1e4).toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("div",{className:"hint",children:"補助金は2026年度みらいエコ住宅の簡易判定(デモ)。申請可否は公式要件で最終確認します。"})]})]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"ライフプラン簡易シミュレーション(30年・貯蓄残高)"}),(0,eO.jsx)(iO,{width:"100%",height:220,children:(0,eO.jsxs)(C4,{data:Z,margin:{top:10,right:10,left:0,bottom:0},children:[(0,eO.jsx)(mC,{stroke:"#E5E2D8",vertical:!1}),(0,eO.jsx)(bI,{dataKey:"age",tick:{fontSize:11},interval:4}),(0,eO.jsx)(bG,{tick:{fontSize:11}}),(0,eO.jsx)(bu,{}),(0,eO.jsx)(vT,{y:0,stroke:"#C4554D",strokeDasharray:"4 4"}),(0,eO.jsx)(vw,{dataKey:"savings",name:"貯蓄残高(万円)",stroke:"#2F9E82",strokeWidth:2.5,dot:!1})]})}),(0,eO.jsxs)("div",{className:"hint",children:["最小貯蓄額:",B.toLocaleString("ja-JP"),"万円",B<0&&" ⚠ 教育費ピークで赤字。借入額・期間の調整を推奨","。教育費・収入カーブは簡易モデルです。"]})]})]})]})},group:"営業"},
 {key:"estimate",label:"見積書",icon:"📄",comp:function(){let{projects:e,updateProjects:t}=eG(),[r,n]=(0,ew.useState)("S様"),[a,i]=(0,ew.useState)(C5),[l,o]=(0,ew.useState)(""),[ar,setAr]=(0,ew.useState)(112.4),[iq,setIq]=(0,ew.useState)(""),[im,setIm]=(0,ew.useState)(""),[ih,setIh]=(0,ew.useState)([]),[isnap,setIsnap]=(0,ew.useState)(null),s=(e,t,r)=>i(n=>n.map((n,a)=>a===e?{...n,[t]:"number"==typeof n[t]?+r:r}:n)),u=e=>{i(e?[{name:"工事項目",detail:"",qty:1,unit:"式",price:0,cost:0}]:C5.map(e=>({...e}))),o("")},c=a.reduce((e,t)=>e+t.qty*t.price,0),f=Math.round(.1*c),d=Math.round((c+f)*.1),h=a.reduce((e,t)=>e+t.qty*t.cost,0),p=c+f>0?Math.round((c+f-h)/(c+f)*1e3)/10:0,tsb=ar>0?Math.round(ar/3.305785*10)/10:0,m2p=ar>0?Math.round((c+f)/ar):0,tbp=tsb>0?Math.round((c+f)/tsb):0,H=ew.createElement,KW=[["仮設",["仮設","足場"]],["基礎",["鉄筋","コンクリート","生コン","基礎","土間"]],["木",["木材","材木","構造材","プレカット","柱","梁","木工"]],["屋根",["屋根","ガルバ","瓦","板金"]],["サッシ",["サッシ","窓","アルミ","ガラス"]],["断熱",["断熱","ウレタン","グラスウール","気密"]],["電気",["電気","配線","照明","太陽光"]],["給排水",["給排水","水道","配管","ガス","衛生"]],["住設",["住設","キッチン","ユニットバス","UB","洗面","トイレ","浴室"]],["内装",["内装","クロス","石膏","ボード","建具","床","フローリング"]]],tgt=function(q){if(/全体|全部|全項目|一律|すべて|全て|総額/.test(q))return a.map(function(x,k){return k});var r=[];a.forEach(function(row,k){var nm=row.name||"",b=nm.replace(/工事|設備|仕上|費/g,""),ok=!1;if(nm&&q.indexOf(nm)>=0)ok=!0;if(!ok&&b.length>=2&&q.indexOf(b)>=0)ok=!0;if(!ok)KW.forEach(function(kw){if(nm.indexOf(kw[0])>=0&&kw[1].some(function(w){return q.indexOf(w)>=0}))ok=!0});if(ok)r.push(k)});return r},doInstr=function(){var q=(iq||"").trim();if(!q){setIm("指示を入力してください。");return}var mp=q.match(/([0-9]+(?:\.[0-9]+)?)\s*[%％]/),my=q.match(/([0-9]+(?:\.[0-9]+)?)\s*(万円|万|円)/);if(!mp&&!my){setIm("変更幅が読み取れませんでした。「8%上げて」「5万円下げて」のように書いてください。");return}var sg=/下げ|値下|ダウン|減額|減らし|マイナス|▲/.test(q)?-1:1,fld=/原価だけ|原価のみ|仕入だけ|仕入れだけ/.test(q)?"cost":/単価だけ|単価のみ|売価だけ|見積だけ/.test(q)?"price":"both",idx=tgt(q);if(!idx.length){setIm("対象の工事項目を特定できませんでした。「木工事」のように項目名を入れるか、「全体」と書いてください。");return}var pct=mp?parseFloat(mp[1]):0,yen=my?parseFloat(my[1])*("円"===my[2]?1:1e4):0,conv=function(v){return mp?Math.max(0,Math.round(v*(1+sg*pct/100))):Math.max(0,Math.round(v+sg*yen))},bt=c+f,bg=p,nx=a.map(function(row,k){return idx.indexOf(k)<0?row:Object.assign({},row,{price:"cost"===fld?row.price:conv(row.price),cost:"price"===fld?row.cost:conv(row.cost)})}),nc=nx.reduce(function(x,row){return x+row.qty*row.price},0),nf=Math.round(.1*nc),nh=nx.reduce(function(x,row){return x+row.qty*row.cost},0),ng=nc+nf>0?Math.round((nc+nf-nh)/(nc+nf)*1e3)/10:0,dd=nc+nf-bt;setIsnap(a.map(function(row){return Object.assign({},row)}));i(nx);setIm((idx.length===a.length?"全項目":idx.map(function(k){return a[k].name}).join("・"))+"の"+("cost"===fld?"原価":"price"===fld?"単価":"単価と原価")+"を"+(mp?pct+"%":"円"===my[2]?yen.toLocaleString("ja-JP")+"円":my[1]+"万円")+(sg>0?"引き上げました。":"引き下げました。")+" 本体価格 "+bt.toLocaleString("ja-JP")+"円 → "+(nc+nf).toLocaleString("ja-JP")+"円("+(dd>=0?"+":"")+dd.toLocaleString("ja-JP")+"円)"+" / 粗利率 "+bg+"% → "+ng+"%"+(ng<bg?"(-"+Math.round(10*(bg-ng))/10+"pt)":""));setIh([{q:q,d:dd,g:ng}].concat(ih).slice(0,8))};return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"見積書"}),(0,eO.jsx)("p",{children:"明細を編集すると即時再計算。延床面積を入れれば㎡単価・坪単価も同時に出ます。資材の値上がりは文章で指示すればまとめて改定できます。原価も持っているので、見積の時点で粗利が見えます。"})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"flex-end",flexWrap:"wrap"},children:[(0,eO.jsxs)("label",{style:{fontSize:12},children:["お施主様名",(0,eO.jsx)("br",{}),(0,eO.jsx)("input",{value:r,onChange:e=>n(e.target.value)})]}),(0,eO.jsxs)("label",{style:{fontSize:12},children:["延床面積(㎡)",(0,eO.jsx)("br",{}),(0,eO.jsx)("input",{type:"number",step:"0.01",min:"0",value:ar,onChange:e=>setAr(+e.target.value||0),style:{width:86,textAlign:"right"}})]}),(0,eO.jsxs)("label",{style:{fontSize:12},children:["延床面積(坪)",(0,eO.jsx)("br",{}),(0,eO.jsx)("input",{type:"number",step:"0.1",min:"0",value:tsb,onChange:e=>setAr(Math.round(330.5785*(+e.target.value||0))/100),style:{width:74,textAlign:"right"}})]}),(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>u(!1),children:"+ 新規作成(標準テンプレ)"}),(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>u(!0),children:"+ 新規作成(白紙)"}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"標準テンプレは延床112.4㎡(34坪)・2階建ての標準単価。㎡単価・坪単価は税抜の本体価格(小計+諸経費)÷延床面積です。自社の実績見積を取り込めば単価は置き換わります。"})]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsxs)("h3",{children:[r,"邸 御見積内訳"]}),(0,eO.jsxs)("table",{className:"tbl est-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"工事項目"}),(0,eO.jsx)("th",{children:"仕様・摘要"}),(0,eO.jsx)("th",{className:"r",children:"数量"}),(0,eO.jsx)("th",{children:"単位"}),(0,eO.jsx)("th",{className:"r",children:"単価"}),(0,eO.jsx)("th",{className:"r",children:"金額"}),(0,eO.jsx)("th",{})]})}),(0,eO.jsx)("tbody",{children:a.map((e,t)=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("input",{value:e.name,onChange:e=>s(t,"name",e.target.value),style:{width:110}})}),(0,eO.jsx)("td",{children:(0,eO.jsx)("input",{value:e.detail,onChange:e=>s(t,"detail",e.target.value),style:{width:190}})}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsx)("input",{type:"number",value:e.qty,onChange:e=>s(t,"qty",e.target.value),style:{width:60,textAlign:"right"}})}),(0,eO.jsx)("td",{children:(0,eO.jsx)("input",{value:e.unit,onChange:e=>s(t,"unit",e.target.value),style:{width:42}})}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsx)("input",{type:"number",value:e.price,onChange:e=>s(t,"price",e.target.value),style:{width:96,textAlign:"right"}})}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsx)("b",{children:(e.qty*e.price).toLocaleString("ja-JP")})}),(0,eO.jsx)("td",{children:(0,eO.jsx)("button",{className:"delay-btn",onClick:()=>i(e=>e.filter((e,r)=>r!==t)),title:"行を削除",children:"×"})})]},t))})]}),(0,eO.jsx)("button",{className:"tpl-btn",style:{marginTop:8},onClick:()=>i(e=>[...e,{name:"追加工事",detail:"",qty:1,unit:"式",price:0,cost:0}]),children:"+ 行を追加"}),(0,eO.jsxs)("div",{className:"est-grand",children:[(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"小計"}),(0,eO.jsxs)("b",{children:[c.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"諸経費(10%)"}),(0,eO.jsxs)("b",{children:[f.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"消費税(10%)"}),(0,eO.jsxs)("b",{children:[d.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{className:"grand",children:[(0,eO.jsx)("span",{children:"御見積合計"}),(0,eO.jsxs)("b",{children:[(c+f+d).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"㎡単価(税抜)"}),(0,eO.jsxs)("b",{children:[m2p.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"坪単価(税抜)"}),(0,eO.jsxs)("b",{children:[tbp.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"想定粗利率"}),(0,eO.jsxs)("b",{style:{color:p<22?"#C4554D":"#2F9E82"},children:[p,"%"]})]})]})]}),H("div",{className:"panel"},H("h3",null,"🤖 指示で単価を改定する"),H("p",{className:"hint",style:{margin:"0 0 8px"}},"資材が値上がりしたときは、明細を1行ずつ直さずに文章で指示できます。「木材が値上がりしたので木工事を8%上げて」のように書くと、該当する明細の単価と原価をまとめて改定します。「原価だけ」と書けば原価だけが上がるので、値上げ分をお客様に転嫁しなかったときに粗利がどれだけ削られるかが分かります。"),H("div",{style:{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center"}},H("input",{value:iq,onChange:function(e){setIq(e.target.value)},onKeyDown:function(e){"Enter"===e.key&&doInstr()},placeholder:"例) 木材が値上がりしたので木工事を8%上げて",style:{flex:"1 1 320px",minWidth:200}}),H("button",{className:"tpl-btn",onClick:doInstr},"指示を反映する"),H("button",{className:"tpl-btn",disabled:!isnap,style:{opacity:isnap?1:.45},onClick:function(){isnap&&(i(isnap),setIsnap(null),setIm("直前の改定を取り消しました。"))}},"元に戻す")),H("div",{style:{display:"flex",gap:6,flexWrap:"wrap",marginTop:8}},["木材が値上がりしたので木工事を8%上げて","全体を3%値上げして","サッシ工事の原価だけ5万円上げて","住設設備を12万円下げて"].map(function(t,k){return H("button",{key:k,className:"tpl-btn",style:{fontSize:11,padding:"4px 8px"},onClick:function(){setIq(t)}},t)})),im?H("div",{className:"imp-msg ok",style:{marginTop:10}},im):null,ih.length?H("div",{style:{marginTop:10}},H("div",{className:"hint",style:{margin:"0 0 4px"}},"改定履歴(新しい順)"),H("ul",{style:{margin:0,paddingLeft:18,fontSize:12,lineHeight:1.9}},ih.map(function(r,k){return H("li",{key:k},r.q," → 本体 ",(r.d>=0?"+":"")+r.d.toLocaleString("ja-JP"),"円 / 粗利率 ",r.g,"%")}))):null),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",alignItems:"center",gap:12,flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"gen-btn",style:{width:"auto",margin:0,padding:"10px 18px"},onClick:()=>{let n=`P-${2200+e.length}`;t([...e,{id:n,name:`${r}\u{90B8}(\u{898B}\u{7A4D}\u{9023}\u{643A})`,contract:c+f,progress:0,handover:"未定",rows:a.map(e=>({category:e.name,budget:e.qty*e.cost,ordered:0,paid:0}))}],"見積書モジュール","api"),o(`\u{5B9F}\u{884C}\u{4E88}\u{7B97}\u{306B}\u{767B}\u{9332}\u{3057}\u{307E}\u{3057}\u{305F}(\u{6848}\u{4EF6}ID: ${n})\u{3002}\u{300C}\u{5B9F}\u{884C}\u{4E88}\u{7B97}\u{30FB}\u{9032}\u{6357}\u{300D}\u{3067}\u{767A}\u{6CE8}\u{7BA1}\u{7406}\u{3092}\u{958B}\u{59CB}\u{3067}\u{304D}\u{307E}\u{3059}\u{3002}\u{540C}\u{3058}\u{6570}\u{5B57}\u{3092}2\u{5EA6}\u{6253}\u{305F}\u{306A}\u{3044}\u{3001}\u{304C}\u{5B9F}\u{73FE}\u{3055}\u{308C}\u{3066}\u{3044}\u{307E}\u{3059}\u{3002}`)},children:"✓ この見積を確定して実行予算に登録"}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"販売価格→請負金額、原価→工種別実行予算として案件が自動作成されます。"})]}),l&&(0,eO.jsx)("div",{className:"imp-msg ok",style:{marginTop:10},children:l})]})},group:"営業"},
 {key:"subsidy",label:"補助金情報",icon:"📡",comp:function(){return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"補助金インテリジェンス"}),(0,eO.jsx)("p",{children:"国・県・市の制度をAIが毎朝巡回し、変更点と予算消化ペースを自動でキャッチ。「早く決めないと枠が消える」を営業の武器にします。"})]}),eP.map(e=>(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:e.name}),(0,eO.jsx)("div",{className:"kpi-sub",style:{marginBottom:10},children:e.scope}),e.items.map(e=>(0,eO.jsxs)("div",{className:"sub-row",children:[(0,eO.jsxs)("div",{className:"sub-name",children:[(0,eO.jsx)("b",{children:e.type}),(0,eO.jsxs)("span",{children:[e.amount," ｜ ",e.target]})]}),(0,eO.jsx)("div",{className:"sub-bar-wrap",children:(0,eO.jsx)("div",{className:"sub-bar",style:{width:`${e.consumed}%`,background:e.consumed>=75?"#C4554D":e.consumed>=50?"#D98E32":"#2F9E82"}})}),(0,eO.jsxs)("div",{className:"sub-pct",style:{color:e.consumed>=75?"#C4554D":void 0},children:["消化 ",e.consumed,"%",e.consumed>=75&&" ⚠残枠僅少"]})]},e.type))]},e.name)),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"AI巡回フィード(毎朝6時 自動更新)"}),(0,eO.jsx)("div",{className:"feed",children:eT.map((e,t)=>(0,eO.jsxs)("div",{className:"feed-item",children:[(0,eO.jsx)("span",{className:"feed-date",children:e.date}),(0,eO.jsx)("span",{className:"badge green",children:"自動"}),(0,eO.jsxs)("span",{children:[(0,eO.jsx)("b",{children:e.src})," — ",e.msg]})]},t))}),(0,eO.jsx)("div",{className:"hint",children:"一次情報URL付きでChatworkに週次配信。申請判断時は必ず公式サイトで最終確認します。数値はデモ値です。"})]})]})},group:"営業"},
 {key:"subsidyapp",label:"補助金 申請書類管理",icon:"🗂",comp:function(){
