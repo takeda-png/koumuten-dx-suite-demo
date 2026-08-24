@@ -81,6 +81,41 @@ footer{background:#16302b;color:#9db5aa;padding:18px;font-size:11px;line-height:
 footer>b{color:#e8efea;font-size:12.5px;display:block;margin-bottom:4px}
 .note{font-size:11px;color:#8a938e;line-height:1.8;margin-top:10px}
 .hidden{display:none}
+.doc-sub{font-size:10.5px;color:#8a938e;line-height:1.5;margin-top:2px}
+.doc-who{display:inline-block;font-size:9.5px;font-weight:700;border-radius:999px;padding:1px 7px;margin-right:5px}
+.doc-who.self{color:#1e7a62;background:#ddf0e9}
+.doc-who.third{color:#5c6b77;background:#eef1ee}
+.sh{background:#fff;border:1px solid #e0ded3;border-radius:10px;padding:16px 14px;margin:-3px 0 9px}
+.sh-h{text-align:center;font-size:15px;font-weight:800;letter-spacing:.1em;padding-bottom:9px;border-bottom:2px solid #16302b;margin-bottom:12px}
+.sh-lead{font-size:11.5px;line-height:1.95;color:#4a554f;margin-bottom:12px}
+.sh-tbl{width:100%;border-collapse:collapse;font-size:11.5px;margin-bottom:12px}
+.sh-tbl th{width:33%;text-align:left;background:#fafaf7;border:1px solid #e5e2d8;padding:6px 7px;color:#5c6b77;font-weight:600;vertical-align:top}
+.sh-tbl td{border:1px solid #e5e2d8;padding:6px 7px;vertical-align:top;word-break:break-word}
+.sh-scroll{overflow-x:auto;margin-bottom:12px}
+.sh-t{width:100%;border-collapse:collapse;font-size:11px;min-width:310px}
+.sh-t th{background:#fafaf7;border:1px solid #e5e2d8;padding:5px 6px;text-align:left;color:#5c6b77;font-weight:600;white-space:nowrap}
+.sh-t td{border:1px solid #e5e2d8;padding:5px 6px;vertical-align:top}
+.sh-t td.c{text-align:center;white-space:nowrap}
+.sh-t td.end{color:#8a938e}
+.sh-sec{font-size:12px;font-weight:800;margin:14px 0 7px;padding-left:8px;border-left:3px solid #2f9e82}
+.sh-c{margin-bottom:10px}
+.sh-c>b{display:block;font-size:12px;margin-bottom:2px}
+.sh-c p{font-size:11px;line-height:1.95;color:#4a554f;text-indent:1em}
+.sh-c p.li{padding-left:1.7em;text-indent:-1.7em}
+.sh-sign{margin-top:14px;border-top:1px solid #e5e2d8;padding-top:10px;font-size:11px;line-height:1.95}
+.sh-seal{float:right;width:50px;height:50px;border:1px dashed #cfd8d3;border-radius:4px;color:#c2c9c3;font-size:17px;display:flex;align-items:center;justify-content:center;margin-left:10px}
+.sh-note{background:#fdf7ea;border:1px solid #e8ddc0;border-radius:7px;padding:8px 10px;font-size:10.5px;line-height:1.8;color:#7d6a3f;margin-top:10px}
+.sh-file{background:#f6faf8;border:1px dashed #b9ccc4;border-radius:8px;padding:14px;text-align:center;font-size:11.5px;color:#5c6b77;line-height:1.9}
+.sh-act{margin-top:12px;text-align:right}
+#printArea{display:none}
+@media print{
+ body{background:#fff}
+ .wrap{display:none}
+ #printArea{display:block;padding:0;font-size:11pt;color:#000}
+ #printArea .sh{border:none;border-radius:0;padding:0;margin:0}
+ #printArea .sh-act,#printArea .sh-note{display:none}
+ @page{size:A4;margin:16mm}
+}
 </style>
 </head>
 <body>
@@ -94,6 +129,7 @@ footer>b{color:#e8efea;font-size:12.5px;display:block;margin-bottom:4px}
 <div class="chips" id="chips"></div>
 <nav id="nav"></nav>
 <main id="main"></main>
+<div id="printArea"></div>
 <footer>
   <b>彩の国ホーム　アフターサービス係</b>
   お電話：048-000-0000（平日 9:00-18:00 / 土 9:00-17:00(日祝休)）<br>
@@ -107,15 +143,13 @@ footer>b{color:#e8efea;font-size:12.5px;display:block;margin-bottom:4px}
 const OW_WARR=[{"n":"構造躯体(基本構造部分)","y":10,"by":"住宅瑕疵担保責任保険","kind":"法定","opt":false},{"n":"雨水の浸入防止(防水)","y":10,"by":"住宅瑕疵担保責任保険","kind":"法定","opt":false},{"n":"地盤保証","y":20,"by":"地盤保証(第三者機関)","kind":"第三者","opt":false},{"n":"防蟻(シロアリ)保証","y":5,"by":"施工会社 + 薬剤メーカー","kind":"更新型","opt":false},{"n":"建具・内装の初期不良","y":2,"by":"自社アフター保証","kind":"自社","opt":false},{"n":"住宅設備 延長保証パック","y":10,"by":"延長保証サービス","kind":"任意加入","opt":true}];
 const OW_EQ={"kyuto":{"cat":"給湯","n":"エコキュート 460L","mk":"メーカーA","mo":"HP-K46-2","wy":2,"ext":10,"con":null,"ci":0,"off":0},"dish":{"cat":"キッチン","n":"食器洗い乾燥機(深型)","mk":"メーカーB","mo":"DW-45S","wy":1,"ext":5,"con":null,"ci":0,"off":0},"ih":{"cat":"キッチン","n":"IHクッキングヒーター 3口","mk":"メーカーB","mo":"IH-30GT","wy":1,"ext":5,"con":null,"ci":0,"off":0},"hood":{"cat":"キッチン","n":"レンジフード(同時給排)","mk":"メーカーB","mo":"RF-90SD","wy":1,"ext":null,"con":"整流板・フィルター清掃","ci":3,"off":0},"bath":{"cat":"浴室","n":"浴室換気暖房乾燥機","mk":"メーカーC","mo":"BD-16V","wy":2,"ext":5,"con":"乾燥機フィルター清掃","ci":2,"off":20},"toilet":{"cat":"トイレ","n":"温水洗浄便座(タンクレス)","mk":"メーカーC","mo":"TL-2200","wy":1,"ext":5,"con":"脱臭カートリッジ","ci":12,"off":45},"kanki":{"cat":"換気","n":"第一種換気システム(熱交換)","mk":"メーカーD","mo":"VK-1H","wy":2,"ext":null,"con":"給気フィルター交換","ci":6,"off":10},"solar":{"cat":"太陽光","n":"太陽光パネル 5.6kW","mk":"メーカーE","mo":"PV-280","wy":25,"ext":null,"con":null,"ci":0,"off":0},"pcs":{"cat":"太陽光","n":"パワーコンディショナ","mk":"メーカーE","mo":"PCS-55","wy":10,"ext":null,"con":null,"ci":0,"off":0},"batt":{"cat":"蓄電池","n":"蓄電池 6.5kWh","mk":"メーカーE","mo":"BT-65","wy":10,"ext":null,"con":null,"ci":0,"off":0},"lock":{"cat":"玄関","n":"玄関ドア 電気錠","mk":"メーカーF","mo":"EL-700","wy":2,"ext":null,"con":"電池交換","ci":12,"off":70},"alarm":{"cat":"防災","n":"住宅用火災警報器 ×5","mk":"メーカーF","mo":"FA-10","wy":5,"ext":null,"con":"本体交換(電池内蔵10年)","ci":120,"off":5}};
 const OW_HOMES=[{"id":"tanaka","label":"田中様邸","owner":"田中","hand":"2023-09-15","plan":"新築 木造2階","area":"32.5坪","staff":"設計:佐藤 / 工事:鈴木","issued":true,"line":true,"ext":true,"eq":["kyuto","dish","ih","hood","bath","toilet","kanki","solar","pcs","batt","lock","alarm"],"conLast":{"hood":-125,"kanki":-200},"views":[{"d":2,"w":"取扱説明書(食器洗い乾燥機)"},{"d":2,"w":"取扱説明書(食器洗い乾燥機)"},{"d":3,"w":"設備台帳(型番の確認)"},{"d":11,"w":"保証書(構造躯体)"}],"note":"説明書を2日で3回開いている。食洗機で困っている可能性 → 先回りで連絡"},{"id":"inoue","label":"井上様邸","owner":"井上","hand":"2025-08-20","plan":"新築 木造2階","area":"29.8坪","staff":"設計:大西 / 工事:鈴木","issued":true,"line":true,"ext":true,"eq":["kyuto","dish","ih","hood","bath","toilet","kanki","solar","pcs","batt","lock","alarm"],"conLast":{},"views":[{"d":6,"w":"点検履歴(1年点検の日程)"},{"d":19,"w":"保証書一覧"}],"note":"1年点検の予約待ち。設備の初期不良保証(2年)が残っているうちに全数確認"},{"id":"kondo","label":"近藤様邸","owner":"近藤","hand":"2024-06-10","plan":"新築 木造2階","area":"34.1坪","staff":"設計:佐藤 / 工事:森","issued":true,"line":false,"ext":false,"eq":["kyuto","dish","ih","hood","bath","toilet","kanki","lock","alarm"],"conLast":{"bath":-95},"views":[{"d":34,"w":"不具合の報告(クロスの隙間)"}],"note":"⚠ LINE未連携。2年点検が超過中。不具合報告がページから届いている"},{"id":"fujii","label":"藤井様邸","owner":"藤井","hand":"2021-11-05","plan":"新築 木造2階","area":"31.2坪","staff":"設計:大西 / 工事:鈴木","issued":false,"line":true,"ext":true,"eq":["kyuto","dish","ih","hood","bath","toilet","kanki","lock","alarm"],"conLast":{"lock":-400},"views":[],"note":"マイページ未発行。5年点検＝防蟻保証の更新時期が近い"},{"id":"okada","label":"岡田様邸","owner":"岡田","hand":"2016-10-12","plan":"新築 木造2階","area":"36.4坪","staff":"設計:佐藤 / 工事:森","issued":false,"line":false,"ext":false,"eq":["kyuto","dish","ih","hood","bath","toilet","kanki","lock","alarm"],"conLast":{},"views":[],"note":"マイページ未発行。10年保証の満了が目前。延長の判断を要案内"}];
-const OW_INSP={"tanaka":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"クロス補修1件(是正済)"},{"m":24,"k":"2年点検","r":"建具調整2件(是正済)"},{"m":36,"k":"3年点検","r":"ご予定"}],"inoue":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"日程を調整中"},{"m":24,"k":"2年点検","r":"ご予定"}],"kondo":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"是正なし"},{"m":24,"k":"2年点検","r":"⚠ 未実施(期限を超過)"}],"fujii":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"是正なし"},{"m":24,"k":"2年点検","r":"是正なし"},{"m":60,"k":"5年点検","r":"ご予定"}],"okada":[{"m":12,"k":"1年点検","r":"是正なし"},{"m":24,"k":"2年点検","r":"是正なし"},{"m":60,"k":"5年点検","r":"外壁コーキング打替(有償)"},{"m":120,"k":"10年点検","r":"ご予定"}]};
-const OW_DOCS=[{"n":"住宅瑕疵担保責任保険 付保証明書","t":"保証","pg":2},{"n":"地盤調査報告書・地盤保証書","t":"保証","pg":8},{"n":"防蟻工事 施工証明書","t":"保証","pg":1},{"n":"竣工図面一式(平面・立面・電気・給排水)","t":"図面","pg":14},{"n":"仕様書(標準仕様＋変更合意書)","t":"仕様","pg":11},{"n":"設備 取扱説明書(まとめ)","t":"説明書","pg":96},{"n":"長期優良住宅 認定通知書","t":"認定","pg":3},{"n":"建築確認済証・検査済証","t":"法定","pg":4}]; を data.py の内容で埋める。
+const OW_INSP={"tanaka":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"クロス補修1件(是正済)"},{"m":24,"k":"2年点検","r":"建具調整2件(是正済)"},{"m":36,"k":"3年点検","r":"ご予定"}],"inoue":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"日程を調整中"},{"m":24,"k":"2年点検","r":"ご予定"}],"kondo":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"是正なし"},{"m":24,"k":"2年点検","r":"⚠ 未実施(期限を超過)"}],"fujii":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"是正なし"},{"m":24,"k":"2年点検","r":"是正なし"},{"m":60,"k":"5年点検","r":"ご予定"}],"okada":[{"m":12,"k":"1年点検","r":"是正なし"},{"m":24,"k":"2年点検","r":"是正なし"},{"m":60,"k":"5年点検","r":"外壁コーキング打替(有償)"},{"m":120,"k":"10年点検","r":"ご予定"}]}; を data.py の内容で埋める。
    const 宣言だけなので、関数の中(モジュール)でもスクリプト直下(owner.html)でも動く。 */
 const OW_CO="彩の国ホーム",OW_TEL="048-000-0000",OW_MAIL="after@example.com",OW_HOURS="平日 9:00-18:00 / 土 9:00-17:00(日祝休)";
 const OW_WARR=[{"n":"構造躯体(基本構造部分)","y":10,"by":"住宅瑕疵担保責任保険","kind":"法定","opt":false},{"n":"雨水の浸入防止(防水)","y":10,"by":"住宅瑕疵担保責任保険","kind":"法定","opt":false},{"n":"地盤保証","y":20,"by":"地盤保証(第三者機関)","kind":"第三者","opt":false},{"n":"防蟻(シロアリ)保証","y":5,"by":"施工会社 + 薬剤メーカー","kind":"更新型","opt":false},{"n":"建具・内装の初期不良","y":2,"by":"自社アフター保証","kind":"自社","opt":false},{"n":"住宅設備 延長保証パック","y":10,"by":"延長保証サービス","kind":"任意加入","opt":true}];
 const OW_EQ={"kyuto":{"cat":"給湯","n":"エコキュート 460L","mk":"メーカーA","mo":"HP-K46-2","wy":2,"ext":10,"con":null,"ci":0,"off":0},"dish":{"cat":"キッチン","n":"食器洗い乾燥機(深型)","mk":"メーカーB","mo":"DW-45S","wy":1,"ext":5,"con":null,"ci":0,"off":0},"ih":{"cat":"キッチン","n":"IHクッキングヒーター 3口","mk":"メーカーB","mo":"IH-30GT","wy":1,"ext":5,"con":null,"ci":0,"off":0},"hood":{"cat":"キッチン","n":"レンジフード(同時給排)","mk":"メーカーB","mo":"RF-90SD","wy":1,"ext":null,"con":"整流板・フィルター清掃","ci":3,"off":0},"bath":{"cat":"浴室","n":"浴室換気暖房乾燥機","mk":"メーカーC","mo":"BD-16V","wy":2,"ext":5,"con":"乾燥機フィルター清掃","ci":2,"off":20},"toilet":{"cat":"トイレ","n":"温水洗浄便座(タンクレス)","mk":"メーカーC","mo":"TL-2200","wy":1,"ext":5,"con":"脱臭カートリッジ","ci":12,"off":45},"kanki":{"cat":"換気","n":"第一種換気システム(熱交換)","mk":"メーカーD","mo":"VK-1H","wy":2,"ext":null,"con":"給気フィルター交換","ci":6,"off":10},"solar":{"cat":"太陽光","n":"太陽光パネル 5.6kW","mk":"メーカーE","mo":"PV-280","wy":25,"ext":null,"con":null,"ci":0,"off":0},"pcs":{"cat":"太陽光","n":"パワーコンディショナ","mk":"メーカーE","mo":"PCS-55","wy":10,"ext":null,"con":null,"ci":0,"off":0},"batt":{"cat":"蓄電池","n":"蓄電池 6.5kWh","mk":"メーカーE","mo":"BT-65","wy":10,"ext":null,"con":null,"ci":0,"off":0},"lock":{"cat":"玄関","n":"玄関ドア 電気錠","mk":"メーカーF","mo":"EL-700","wy":2,"ext":null,"con":"電池交換","ci":12,"off":70},"alarm":{"cat":"防災","n":"住宅用火災警報器 ×5","mk":"メーカーF","mo":"FA-10","wy":5,"ext":null,"con":"本体交換(電池内蔵10年)","ci":120,"off":5}};
 const OW_HOMES=[{"id":"tanaka","label":"田中様邸","owner":"田中","hand":"2023-09-15","plan":"新築 木造2階","area":"32.5坪","staff":"設計:佐藤 / 工事:鈴木","issued":true,"line":true,"ext":true,"eq":["kyuto","dish","ih","hood","bath","toilet","kanki","solar","pcs","batt","lock","alarm"],"conLast":{"hood":-125,"kanki":-200},"views":[{"d":2,"w":"取扱説明書(食器洗い乾燥機)"},{"d":2,"w":"取扱説明書(食器洗い乾燥機)"},{"d":3,"w":"設備台帳(型番の確認)"},{"d":11,"w":"保証書(構造躯体)"}],"note":"説明書を2日で3回開いている。食洗機で困っている可能性 → 先回りで連絡"},{"id":"inoue","label":"井上様邸","owner":"井上","hand":"2025-08-20","plan":"新築 木造2階","area":"29.8坪","staff":"設計:大西 / 工事:鈴木","issued":true,"line":true,"ext":true,"eq":["kyuto","dish","ih","hood","bath","toilet","kanki","solar","pcs","batt","lock","alarm"],"conLast":{},"views":[{"d":6,"w":"点検履歴(1年点検の日程)"},{"d":19,"w":"保証書一覧"}],"note":"1年点検の予約待ち。設備の初期不良保証(2年)が残っているうちに全数確認"},{"id":"kondo","label":"近藤様邸","owner":"近藤","hand":"2024-06-10","plan":"新築 木造2階","area":"34.1坪","staff":"設計:佐藤 / 工事:森","issued":true,"line":false,"ext":false,"eq":["kyuto","dish","ih","hood","bath","toilet","kanki","lock","alarm"],"conLast":{"bath":-95},"views":[{"d":34,"w":"不具合の報告(クロスの隙間)"}],"note":"⚠ LINE未連携。2年点検が超過中。不具合報告がページから届いている"},{"id":"fujii","label":"藤井様邸","owner":"藤井","hand":"2021-11-05","plan":"新築 木造2階","area":"31.2坪","staff":"設計:大西 / 工事:鈴木","issued":false,"line":true,"ext":true,"eq":["kyuto","dish","ih","hood","bath","toilet","kanki","lock","alarm"],"conLast":{"lock":-400},"views":[],"note":"マイページ未発行。5年点検＝防蟻保証の更新時期が近い"},{"id":"okada","label":"岡田様邸","owner":"岡田","hand":"2016-10-12","plan":"新築 木造2階","area":"36.4坪","staff":"設計:佐藤 / 工事:森","issued":false,"line":false,"ext":false,"eq":["kyuto","dish","ih","hood","bath","toilet","kanki","lock","alarm"],"conLast":{},"views":[],"note":"マイページ未発行。10年保証の満了が目前。延長の判断を要案内"}];
 const OW_INSP={"tanaka":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"クロス補修1件(是正済)"},{"m":24,"k":"2年点検","r":"建具調整2件(是正済)"},{"m":36,"k":"3年点検","r":"ご予定"}],"inoue":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"日程を調整中"},{"m":24,"k":"2年点検","r":"ご予定"}],"kondo":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"是正なし"},{"m":24,"k":"2年点検","r":"⚠ 未実施(期限を超過)"}],"fujii":[{"m":3,"k":"3ヶ月点検","r":"是正なし"},{"m":12,"k":"1年点検","r":"是正なし"},{"m":24,"k":"2年点検","r":"是正なし"},{"m":60,"k":"5年点検","r":"ご予定"}],"okada":[{"m":12,"k":"1年点検","r":"是正なし"},{"m":24,"k":"2年点検","r":"是正なし"},{"m":60,"k":"5年点検","r":"外壁コーキング打替(有償)"},{"m":120,"k":"10年点検","r":"ご予定"}]};
-const OW_DOCS=[{"n":"住宅瑕疵担保責任保険 付保証明書","t":"保証","pg":2},{"n":"地盤調査報告書・地盤保証書","t":"保証","pg":8},{"n":"防蟻工事 施工証明書","t":"保証","pg":1},{"n":"竣工図面一式(平面・立面・電気・給排水)","t":"図面","pg":14},{"n":"仕様書(標準仕様＋変更合意書)","t":"仕様","pg":11},{"n":"設備 取扱説明書(まとめ)","t":"説明書","pg":96},{"n":"長期優良住宅 認定通知書","t":"認定","pg":3},{"n":"建築確認済証・検査済証","t":"法定","pg":4}];
 const OW_T=(function(){var t=new Date();return new Date(t.getFullYear(),t.getMonth(),t.getDate())})();
 const owD=s=>new Date(s+"T00:00:00");
 const owAddY=(s,y)=>{const d=owD(s);d.setFullYear(d.getFullYear()+y);return d};
@@ -187,6 +221,13 @@ const owAct=it=>{
   return "満了前に動作確認。延長保証に入れるかどうかをご案内";
 };
 
+const OW_DOCS=[{"id":"summary","mode":"sheet","n":"保証一覧証（保証の総括表）","t":"保証","who":"self","pg":1,"sub":"この住まいに付いている保証を1枚にまとめたもの"},{"id":"jisha","mode":"sheet","n":"アフターサービス保証書（自社保証）","t":"保証","who":"self","pg":2,"sub":"建具・内装・住宅設備の初期不良に対する当社の保証"},{"id":"bougi","mode":"sheet","n":"防蟻工事 施工証明書","t":"保証","who":"self","pg":1,"sub":"使用した薬剤・施工範囲・5年保証の条件"},{"id":"inspect","mode":"sheet","n":"定期点検 記録票","t":"点検","who":"self","pg":1,"sub":"実施した点検の記録と、次回のご案内"},{"id":"equip","mode":"sheet","n":"設備一覧（型番・保証・お手入れ）","t":"設備","who":"self","pg":1,"sub":"印刷して収納の扉裏に貼っておけます"},{"id":"shiyou","mode":"file","n":"仕様書（標準仕様＋変更合意書）","t":"仕様","who":"self","pg":11,"sub":"採用した仕様と、打合せで変更した内容"},{"id":"zumen","mode":"file","n":"竣工図面一式（平面・立面・電気・給排水）","t":"図面","who":"self","pg":14,"sub":"リフォームや売却のときに必要になります"},{"id":"hoken","mode":"file","n":"住宅瑕疵担保責任保険 付保証明書","t":"保証","who":"third","pg":2,"issuer":"住宅瑕疵担保責任保険法人","no":"デモ-0000-000000","sub":"構造耐力上主要な部分と雨水の浸入を防止する部分の10年保証","point":"法律で加入が義務づけられている保険です。万が一のときは、当社が補修します。当社が倒産などで補修できない場合は、お客様が保険法人へ直接請求できます。"},{"id":"jiban","mode":"file","n":"地盤調査報告書・地盤保証書","t":"保証","who":"third","pg":8,"issuer":"地盤保証会社","no":"デモ-JB-00000","sub":"地盤調査の結果と、不同沈下に対する20年保証","point":"建てる前に地盤を調べた結果と、その地盤が沈下した場合の保証です。地盤改良を行っている場合は、その工事内容も記載されています。"},{"id":"choki","mode":"file","n":"長期優良住宅 認定通知書","t":"認定","who":"third","pg":3,"issuer":"所管行政庁","no":"第デモ-000号","sub":"長期にわたり良好な状態で使用するための基準を満たした住宅","point":"住宅ローン控除や固定資産税、地震保険料の優遇を受けるときに使います。売却のときにも住宅の価値を示す書類になります。認定を受けた住宅は、定期点検などの維持保全計画を実行する義務があります。"},{"id":"kakunin","mode":"file","n":"建築確認済証・検査済証","t":"法定","who":"third","pg":4,"issuer":"指定確認検査機関","no":"第デモ-0000号","sub":"建築基準法に適合していることの確認と、完了検査の合格証","point":"増改築や売却のときに必ず求められます。再発行はできない書類なので、紛失した場合は台帳記載事項証明書を取得することになります。"},{"id":"torisetsu","mode":"file","n":"設備 取扱説明書（メーカー各社）","t":"説明書","who":"third","pg":96,"issuer":"各設備メーカー","no":"—","sub":"給湯・キッチン・浴室・トイレ・換気の取扱説明書","point":"型番ごとの説明書です。型番は「設備」タブで確認できます。"}];
+const OW_CI={"name":"彩の国ホーム 株式会社","addr":"（本社所在地を記載します）","rep":"代表取締役　（氏名）","lic":"建設業許可　（許可番号）","arch":"一級建築士事務所登録　（登録番号）"};
+const OW_JISHA_LEAD="当社は、下記の住宅について、次のとおりアフターサービス保証を行います。本書は大切に保管してください。紛失された場合も、オーナー様専用ページからいつでもご確認いただけます。";
+const OW_JISHA=[["第1条（保証の対象）",["本保証書は、末尾に記載する住宅（以下「本住宅」といいます）のうち、当社が施工した建具・内装仕上げ・住宅設備機器について適用します。"]],["第2条（保証の期間）",["保証期間は、本住宅の引渡日から2年間とします。","ただし、構造耐力上主要な部分および雨水の浸入を防止する部分については、住宅の品質確保の促進等に関する法律に基づき、引渡日から10年間の瑕疵担保責任を負い、その履行のために住宅瑕疵担保責任保険に加入しています。","住宅設備機器のうち、メーカー保証または延長保証が付帯するものは、その期間が優先して適用されます。"]],["第3条（保証する内容）",["保証期間中に、当社の施工に起因して通常の使用に支障のある不具合が生じた場合、当社の負担により補修または交換を行います。","補修の方法および範囲は、当社が現地を確認したうえで決定します。"]],["第4条（保証の対象外）",["次に掲げるものは保証の対象外とします。","(1) 経年変化または通常の使用に伴う摩耗・変色・汚れ・光沢の低下","(2) 木材の乾燥収縮に伴う軽微な隙間・割れ、および建具の調整で解消するもの","(3) 地震・台風・洪水・落雷・火災・積雪その他の自然災害または不可抗力によるもの","(4) お客様または第三者の故意もしくは過失、または通常でない使用方法によるもの","(5) 当社以外が行った工事・改造・修理に起因するもの","(6) 消耗品（フィルター・電池・パッキン・電球・カートリッジ等）の交換","(7) 設備機器のメーカー保証によって対応されるもの","(8) 第5条の維持管理を著しく怠ったことに起因して生じ、または拡大したもの"]],["第5条（維持管理のお願い）",["本住宅の性能を保つため、取扱説明書に沿った手入れ（フィルターの清掃・交換、シーリングの点検等）をお願いします。手入れの時期は、オーナー様専用ページの「設備」タブでご確認いただけます。","不具合に気づかれた場合は、被害の拡大を防ぐため、速やかに当社へご連絡ください。連絡が遅れたことにより拡大した部分については、保証の対象外となる場合があります。"]],["第6条（定期点検）",["当社は、引渡しから3ヶ月・1年・2年・5年・10年を目安に、無償の定期点検を行います。","定期点検の記録は、保証の適用を判断するうえで重要な資料となります。ご在宅の調整にご協力ください。"]],["第7条（保証の承継）",["本住宅を第三者へ譲渡される場合は、あらかじめ当社へご連絡ください。当社が承認した場合に限り、残存する保証期間を新しい所有者へ引き継ぐことができます。"]],["第8条（ご連絡の方法）",["不具合が生じた場合は、オーナー様専用ページの「ご相談」または末尾の連絡先へご連絡ください。状況を確認のうえ、訪問の日程を調整します。","水漏れ・停電・鍵のトラブルなど緊急を要する場合は、お電話でご連絡ください。"]],["第9条（紛争の解決）",["本保証に関して当社との間で解決が難しい問題が生じた場合、住宅瑕疵担保責任保険が付された住宅については、指定住宅紛争処理機関による紛争処理（あっせん・調停・仲裁）を利用できる場合があります。ご利用の可否や手続きについては、当社または保険法人へお問い合わせください。"]]];
+const OW_BOUGI={"lead":"下記のとおり、しろあり防除工事を施工したことを証明します。","rows":[["施工の範囲","床下（基礎内周部・束石・配管まわり）／土台・大引・根太／柱および間柱の地面から高さ1mまでの部分"],["使用薬剤","（実際に使用した薬剤名を記載します）　※デモ表記"],["有効成分・希釈","（成分名・希釈倍率を記載します）　※デモ表記"],["使用量の目安","土壌処理 3L/㎡　木部処理 300mL/㎡"],["施工者","しろあり防除施工士（登録番号は実物に記載）"],["保証期間","施工日から5年間"]],"warranty":["保証期間中に、施工した範囲でしろあり（イエシロアリ・ヤマトシロアリ）の食害が発生した場合、当社の負担で駆除を行い、食害を受けた部分の補修を行います。","次の場合は保証の対象外となります。","(1) 増築・改造・リフォームにより施工範囲に変更が生じた場合","(2) 雨漏りや漏水による木部の腐朽が原因となっている場合","(3) 床下の土壌を掘り返す、盛土をするなど、土壌を改変した場合","(4) 床下換気口をふさぐなど、床下の環境を著しく変えた場合"],"renew":"保証期間の満了前に再施工いただくことで、保証をさらに5年間延長できます（有償）。5年点検と同じ日にまとめると、ご在宅は1回で済みます。"};
+const OW_INSP_ITEMS=[["外部",["屋根・棟包み","外壁の割れ・浮き","シーリングの劣化","雨樋・軒天","基礎の割れ","外構・排水"]],["内部",["建具の建付け・開閉","床の沈み・きしみ","クロスの隙間・浮き","結露・カビの発生","小屋裏・床下"]],["設備",["給湯器の作動","換気システムの風量","水回りの漏水","住宅用火災警報器の作動","分電盤・コンセント"]]];
+const OW_INSP_JUDGE=["良","経過観察","要是正"];
 var q=(location.search.match(/[?&]id=([a-zA-Z0-9_-]+)/)||[])[1]||"tanaka";
 var o=OW_HOMES.filter(function(x){return x.id===q})[0]||OW_HOMES[0];
 var warr=owWarrOf(o),eqs=owEqOf(o),
@@ -282,18 +323,194 @@ function viewE(){
   s+='<div class="note">※ メーカー名・型番はデモ用の架空の値です。実際のページには、お住まいに入っている設備の実物の情報が入ります。</div>';
   return s;
 }
-function viewD(){
-  var s='<div class="sec-t">保証書・図面・取扱説明書</div>';
-  OW_DOCS.forEach(function(d,i){
-    var icon=d.t==="図面"?"▤":(d.t==="説明書"?"☰":"⛨");
-    s+='<button class="doc" data-doc="'+i+'"><div class="doc-i">'+icon+'</div>'
-     +'<div class="doc-b"><div class="doc-n">'+esc(d.n)+'</div><div class="doc-m">'+esc(d.t)+'　全'+d.pg+'ページ</div></div>'
-     +'<div class="doc-a">開く</div></button>'
-     +'<div class="sheet hidden" id="sh'+i+'"><b>'+esc(d.n)+'</b>'
-     +'このデモでは実際のPDFは入っていません。本番では、お引渡しのときにお渡しした書類をそのままPDFで開けるようにします（'+esc(o.label)+'／全'+d.pg+'ページ）。<br>'
-     +'紙の書類が見つからなくても、ここからいつでもご確認・印刷いただけます。</div>';
+function jd(d){return d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日"}
+function jdIso(iso){var a=iso.split("-");return a[0]+"年"+(+a[1])+"月"+(+a[2])+"日"}
+function shTbl(rows){
+  return '<table class="sh-tbl">'+rows.map(function(r){
+    return '<tr><th>'+esc(r[0])+'</th><td>'+r[1]+'</td></tr>';
+  }).join('')+'</table>';
+}
+function propRows(){
+  return [["お客様", esc(o.owner)+"　様"],
+          ["建物の所在地", '<span style="color:#8a938e">（実物にはご住所が入ります）</span>'],
+          ["建物の概要", esc(o.plan)+"　延床 "+esc(o.area)],
+          ["お引渡し日", esc(jdIso(o.hand))],
+          ["工事担当", esc(o.staff)]];
+}
+function signBlock(){
+  return '<div class="sh-sign"><div class="sh-seal">㊞</div>'
+   +'発行日　'+esc(jd(OW_T))+'<br>'
+   +'<b>'+esc(OW_CI.name)+'</b><br>'
+   +esc(OW_CI.addr)+'<br>電話　'+esc(OW_TEL)+'<br>'+esc(OW_CI.rep)
+   +'<div style="font-size:10px;color:#8a938e;margin-top:4px">'+esc(OW_CI.lic)+'　'+esc(OW_CI.arch)+'</div>'
+   +'<div style="clear:both"></div></div>';
+}
+function shHead(t){return '<div class="sh-h">'+esc(t)+'</div>'}
+function printBtn(id){return '<div class="sh-act"><button class="btn sm g" data-print="'+esc(id)+'">この書面を印刷する</button></div>'}
+
+/* ① 保証一覧証 — 「保証書をなくした」への最短の答え */
+function shSummary(){
+  var rows=ord2(warr).map(function(w){
+    return '<tr><td>'+esc(w.n)
+      +'<div style="color:#8a938e;font-size:10px">'+esc(w.by)+'</div></td>'
+      +'<td class="c">'+w.y+'年</td>'
+      +'<td class="c">'+esc(owFmt(w.end))+'</td>'
+      +'<td class="c'+(w.left<0?' end':'')+'">'+esc(owRest2(w.left,"保証"))+'</td></tr>';
+  }).join('');
+  return '<div class="sh" id="sh-summary">'+shHead("保 証 一 覧 証")
+   +'<div class="sh-lead">'+esc(o.label)+'に付いている保証を1枚にまとめたものです。'
+   +'それぞれの保証書の原本は、この「書類」タブからご覧いただけます。</div>'
+   +shTbl(propRows())
+   +'<div class="sh-sec">保証の一覧</div>'
+   +'<div class="sh-scroll"><table class="sh-t"><thead><tr><th>保証・発行元</th><th>期間</th><th>満了日</th><th>状態</th></tr></thead>'
+   +'<tbody>'+rows+'</tbody></table></div>'
+   +'<div class="sh-note">この表は '+esc(jd(OW_T))+' 時点の内容です。満了日はお引渡し日から計算しています。'
+   +'保証を延長できるものについては、満了の前に'+esc(OW_CO)+'からご案内します。</div>'
+   +signBlock()+printBtn("summary")+'</div>';
+}
+
+/* ② 自社アフター保証書 — 条項つき。本番のひな形として使える形 */
+function shJisha(){
+  var cs=OW_JISHA.map(function(c){
+    return '<div class="sh-c"><b>'+esc(c[0])+'</b>'
+      +c[1].map(function(t){
+        return '<p'+(t.charAt(0)==="(" ? ' class="li"' : '')+'>'+esc(t)+'</p>';
+      }).join('')+'</div>';
+  }).join('');
+  return '<div class="sh" id="sh-jisha">'+shHead("アフターサービス保証書")
+   +'<div class="sh-lead">'+esc(OW_JISHA_LEAD)+'</div>'
+   +shTbl(propRows().concat([["保証期間",
+       esc(jdIso(o.hand))+" 〜 "+esc(jd(owAddY(o.hand,2)))+"（2年間）"]]))
+   +cs+signBlock()+printBtn("jisha")+'</div>';
+}
+
+/* ③ 防蟻工事 施工証明書 */
+function shBougi(){
+  var w=warr.filter(function(x){return x.n.indexOf("防蟻")>=0})[0];
+  var rows=OW_BOUGI.rows.map(function(r){return [r[0], esc(r[1])]});
+  rows.unshift(["施工日", esc(jdIso(o.hand))+"（お引渡し前）"]);
+  if(w)rows.push(["保証の満了日", esc(owFmt(w.end))+"　"+esc(owRest2(w.left,"保証"))]);
+  return '<div class="sh" id="sh-bougi">'+shHead("防蟻工事 施工証明書")
+   +'<div class="sh-lead">'+esc(OW_BOUGI.lead)+'</div>'
+   +shTbl(propRows().slice(0,3).concat(rows))
+   +'<div class="sh-sec">保証の内容</div>'
+   +'<div class="sh-c">'+OW_BOUGI.warranty.map(function(t){
+       return '<p'+(t.charAt(0)==="(" ? ' class="li"' : '')+'>'+esc(t)+'</p>';
+     }).join('')+'</div>'
+   +'<div class="sh-note">'+esc(OW_BOUGI.renew)+'</div>'
+   +signBlock()+printBtn("bougi")+'</div>';
+}
+
+/* ④ 定期点検 記録票 — 記録済みの指摘を、該当する点検項目に反映する */
+function inspAct(r){
+  if(r.indexOf("是正済")>=0)return "是正を完了しました。";
+  if(r.indexOf("有償")>=0)return "有償工事として実施しました。";
+  if(r.indexOf("是正なし")>=0)return "指摘事項はありませんでした。";
+  return "—";
+}
+function shInspect(){
+  var done=insp.filter(function(x){return x.left<=0&&x.r.indexOf("未実施")<0&&x.r.indexOf("調整中")<0});
+  var rec=done.length?done[done.length-1]:null;
+  var KW=[["建具","建具の建付け・開閉"],["クロス","クロスの隙間・浮き"],["外壁","外壁の割れ・浮き"],
+          ["コーキング","シーリングの劣化"],["シーリング","シーリングの劣化"],["床","床の沈み・きしみ"]];
+  var flagged={};
+  if(rec)KW.forEach(function(k){if(rec.r.indexOf(k[0])>=0)flagged[k[1]]=1});
+  var body="";
+  OW_INSP_ITEMS.forEach(function(g){
+    g[1].forEach(function(it,i){
+      var bad=flagged[it];
+      body+='<tr>'+(i===0?'<td rowspan="'+g[1].length+'" class="c">'+esc(g[0])+'</td>':'')
+        +'<td>'+esc(it)+'</td>'
+        +OW_INSP_JUDGE.map(function(j){
+           var on=(j==="要是正")?bad:(j==="良"?!bad:false);
+           return '<td class="c">'+(on?"○":"")+'</td>';
+         }).join('')+'</tr>';
+    });
   });
-  s+='<div class="note">※ 書類は彩の国ホーム側で登録しています。追加や差し替えが必要なものがあれば、ご相談タブからお知らせください。</div>';
+  var rows=propRows().slice(0,4);
+  rows.push(["点検の種類", rec?esc(rec.k):'<span style="color:#8a938e">—</span>']);
+  rows.push(["点検日", rec?esc(owFmt(rec.date)):'<span style="color:#8a938e">—</span>']);
+  rows.push(["点検者", esc(o.staff.split("/").pop().trim())+"　ほか1名"]);
+  return '<div class="sh" id="sh-inspect">'+shHead("定期点検 記録票")
+   +shTbl(rows)
+   +'<div class="sh-sec">点検項目と判定</div>'
+   +'<div class="sh-scroll"><table class="sh-t"><thead><tr><th>区分</th><th>項目</th>'
+   +OW_INSP_JUDGE.map(function(j){return '<th style="text-align:center">'+esc(j)+'</th>'}).join('')
+   +'</tr></thead><tbody>'+body+'</tbody></table></div>'
+   +'<div class="sh-sec">指摘事項と対応</div>'
+   +shTbl([["指摘の内容", rec?esc(rec.r):'<span style="color:#8a938e">—</span>'],
+           ["対応", rec?inspAct(rec.r):"—"],
+           ["次回の点検", next?esc(next.k)+"（"+esc(owFmt(next.date))+"　"+esc(owRest(next.left))+"）":
+             (miss?'<span style="color:#a2453d">期限を超過しています。日程の調整をお願いします。</span>':"—")]])
+   +'<div class="sh-note">この記録票はお客様控えです。点検の記録は、保証を適用するかどうかを判断するときの'
+   +'資料になりますので、大切に保管してください（このページからいつでもご覧いただけます）。</div>'
+   +signBlock()+printBtn("inspect")+'</div>';
+}
+
+/* ⑤ 設備一覧 — 印刷して貼れる1枚 */
+function shEquip(){
+  var rows=ord2(eqs).map(function(q){
+    return '<tr><td>'+esc(q.n)
+      +'<div style="color:#8a938e;font-size:10px">'+esc(q.cat)+'</div></td>'
+      +'<td>'+esc(q.mk)+'<div class="mono" style="font-size:10.5px">'+esc(q.mo)+'</div></td>'
+      +'<td class="c'+(q.wleft<0?' end':'')+'">'+esc(owFmt(q.wend))+'</td>'
+      +'<td>'+(q.con?esc(q.con.name)+'<div style="color:#8a938e;font-size:10px">'+q.con.every+'ヶ月ごと／次回 '+esc(owFmt(q.con.next))+'</div>':'—')+'</td></tr>';
+  }).join('');
+  return '<div class="sh" id="sh-equip">'+shHead("設備一覧（型番・保証・お手入れ）")
+   +'<div class="sh-lead">'+esc(o.label)+'に設置されている設備の一覧です。'
+   +'フィルターや電池をご自分で購入されるときは、この型番でお探しください。</div>'
+   +shTbl(propRows().slice(0,4))
+   +'<div class="sh-scroll"><table class="sh-t"><thead><tr><th>品名・区分</th><th>メーカー・型番</th>'
+   +'<th>保証満了</th><th>お手入れ</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
+   +'<div class="sh-note">この1枚を印刷して、洗面台の扉裏や分電盤の近くに貼っておくと、'
+   +'いざというときにすぐ確認できます。メーカー名と型番はデモ用の架空の値です。</div>'
+   +printBtn("equip")+'</div>';
+}
+
+/* 原本を開くだけの書類（第三者発行 ＋ 図面・仕様書） */
+function shFile(d){
+  var rows=[["発行元", esc(d.issuer||OW_CI.name)]];
+  if(d.no)rows.push(["番号", esc(d.no)]);
+  rows.push(["ページ数", "全"+d.pg+"ページ"]);
+  rows.push(["保管", esc(OW_CO)+"が原本をお預かりしています"]);
+  return '<div class="sh" id="sh-'+esc(d.id)+'">'
+   +(d.point?'<div class="sh-lead">'+esc(d.point)+'</div>':'')
+   +shTbl(rows)
+   +'<div class="sh-file">原本（PDF）はこのデモには入っていません。<br>'
+   +'本番では、お引渡しのときにお渡しした書類をそのまま開けます。</div>'
+   +(d.who==="third"
+     ?'<div class="sh-note">この書類は'+esc(d.issuer)+'が発行したものです。'+esc(OW_CO)+'が発行することはできませんので、'
+      +'原本をお預かりして、このページからいつでもご覧いただけるようにしています。</div>'
+     :'')
+   +'</div>';
+}
+function ord2(a){
+  return a.filter(function(x){return (x.left!==undefined?x.left:x.wleft)>=0})
+    .concat(a.filter(function(x){return (x.left!==undefined?x.left:x.wleft)<0}).reverse());
+}
+function docBody(d){
+  if(d.mode!=="sheet")return shFile(d);
+  if(d.id==="summary")return shSummary();
+  if(d.id==="jisha")return shJisha();
+  if(d.id==="bougi")return shBougi();
+  if(d.id==="inspect")return shInspect();
+  if(d.id==="equip")return shEquip();
+  return shFile(d);
+}
+function viewD(){
+  var s='<div class="sec-t">保証書・図面・取扱説明書（'+OW_DOCS.length+'点）</div>';
+  OW_DOCS.forEach(function(d){
+    var icon=d.t==="図面"?"▤":(d.t==="説明書"?"☰":(d.t==="点検"?"✓":(d.t==="設備"?"⚙":"⛨")));
+    s+='<button class="doc" data-doc="'+esc(d.id)+'"><div class="doc-i">'+icon+'</div>'
+     +'<div class="doc-b"><div class="doc-n">'+esc(d.n)+'</div>'
+     +'<div class="doc-sub"><span class="doc-who '+d.who+'">'+(d.who==="self"?esc(OW_CO):"原本をお預かり")+'</span>'
+     +esc(d.sub)+'</div></div>'
+     +'<div class="doc-a">開く</div></button>'
+     +'<div class="hidden" id="wrap-'+esc(d.id)+'">'+docBody(d)+'</div>';
+  });
+  s+='<div class="note">※ 「'+esc(OW_CO)+'」と表示のある書類は当社が発行したものです。'
+   +'保険・地盤・行政の書類は発行元が別のため、当社が原本をお預かりしてここに置いています。<br>'
+   +'追加や差し替えが必要なものがあれば、ご相談タブからお知らせください。</div>';
   return s;
 }
 function viewI(){
@@ -335,7 +552,7 @@ function render(){
   if(window.scrollY>240)window.scrollTo(0,240);
 }
 document.addEventListener("click",function(e){
-  var t=(e.target&&e.target.closest)?e.target.closest("[data-t],[data-cp],[data-doc],[data-go]"):null;
+  var t=(e.target&&e.target.closest)?e.target.closest("[data-print],[data-t],[data-cp],[data-doc],[data-go]"):null;
   if(!t)return;
   if(t.hasAttribute("data-t")){cur=t.getAttribute("data-t");render();return}
   if(t.hasAttribute("data-go")){e.preventDefault();cur=t.getAttribute("data-go");render();return}
@@ -346,9 +563,19 @@ document.addEventListener("click",function(e){
     setTimeout(function(){t.textContent="コピー"},1600);
     return;
   }
+  if(t.hasAttribute("data-print")){
+    var src=el("sh-"+t.getAttribute("data-print"));
+    if(src){el("printArea").innerHTML=src.innerHTML;window.print();}
+    return;
+  }
   if(t.hasAttribute("data-doc")){
-    var sh=el("sh"+t.getAttribute("data-doc"));
-    if(sh)sh.className=(sh.className.indexOf("hidden")>=0)?"sheet":"sheet hidden";
+    var wr=el("wrap-"+t.getAttribute("data-doc"));
+    if(wr){
+      var open=wr.className.indexOf("hidden")<0;
+      wr.className=open?"hidden":"";
+      var a=t.querySelector(".doc-a");
+      if(a)a.textContent=open?"開く":"閉じる";
+    }
     return;
   }
 });
