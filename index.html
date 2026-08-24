@@ -466,17 +466,17 @@
 
       <div class="jk-sec jk-easy" id="jk-easy">
         <h4>■ かんたん試算 ― 職種ごとの人数を入れるだけ<span class="jk-ebadge">おすすめ</span></h4>
-        <p class="jk-elead"><b>2026年8月3日の要件追加</b>により、研修内容が<b>受講者の職務に沿った専門知識・技能であること</b>がより厳しく見られるようになりました。労働局への確認では<b>職種ごとに分けて実施するのが最も安全</b>という回答です（<b>東京・大阪労働局</b>は、雇用契約書に職務として<b>DX推進業務</b>と記載されていれば職種が異なる受講者をまとめられるという回答だったため、下の<b>研修の分け方</b>で切り替えて比べられます）。ここに職種別の人数を入れると、<b>職種ごとに助成額がいちばん大きくなるコースの組み方</b>を自動で提案します。1名あたりの費用は<b>経費助成の上限にちょうど届く金額(助成MAX)</b>を自動で設定します。研修時間は<b>最低10時間</b>ですが、<b>時間を伸ばすほど賃金助成が増えて実質負担が下がる</b>ため、下の早見表で「何時間やるか」を決められます。</p>
+        <p class="jk-elead"><b>2026年8月3日の要件追加</b>により、研修内容が<b>受講者の職務に沿った専門知識・技能であること</b>がより厳しく見られるようになりました。労働局への確認では<b>職種ごとに分けて実施するのが最も安全</b>という回答です（<b>東京・大阪労働局</b>は、雇用契約書に職務として<b>DX推進業務</b>と記載されていれば職種が異なる受講者をまとめられるという回答だったため、下の<b>研修の分け方</b>で切り替えて比べられます）。ここに職種別の人数を入れると、<b>職種ごとに助成額がいちばん大きくなるコースの組み方</b>を自動で提案します。<b>1名あたりの単価は全グループ共通の1つの金額</b>にそろえたうえで、<b>経費助成の上限にちょうど届く金額(助成MAX)</b>を自動で設定します。研修時間は<b>最低10時間</b>ですが、<b>時間を伸ばすほど賃金助成が増えて実質負担が下がる</b>ため、下の早見表で「何時間やるか」を決められます。</p>
         <div class="jk-eset">
           <div class="jk-f" style="max-width:190px"><label>研修時間 <span class="u">1名あたり h・最低10時間</span></label><input type="number" id="jk-e-h" min="10" step="1" value="20"></div>
-          <div class="jk-f" style="max-width:330px"><label>1名あたりの研修費用 <span class="u">税込</span></label>
+          <div class="jk-f" style="max-width:330px"><label>1名あたりの研修費用 <span class="u">税込・全グループ共通</span></label>
             <div class="jk-seg" id="jk-e-mode"><button type="button" data-jk-emode="max" class="on">助成MAX(自動)</button><button type="button" data-jk-emode="zero">実質0円(自動)</button><button type="button" data-jk-emode="man">手入力</button></div>
           </div>
           <div class="jk-f" id="jk-e-pw" style="max-width:190px;display:none"><label>研修費用 <span class="u">税込 円/名</span></label><input type="number" id="jk-e-price" min="0" step="1000" value="400000"></div>
           <div class="jk-f jk-fsplit" style="max-width:360px"><label>研修の分け方 <span class="u">東京・大阪は「まとめる」も選べます</span></label>
             <div class="jk-seg" id="jk-e-split"><button type="button" data-jk-esplit="job" class="on">職種ごとに分ける</button><button type="button" data-jk-esplit="merge">職種をまとめる</button></div>
           </div>
-          <div class="jk-f" style="max-width:330px"><label>コースを選ぶ基準 <span class="u">職種ごとにどれを優先して割り当てるか</span></label>
+          <div class="jk-f" style="max-width:330px"><label>コースを選ぶ基準 <span class="u">共通単価をいくらにするかの判断に使います</span></label>
             <div class="jk-seg" id="jk-e-obj"><button type="button" data-jk-eobj="net" class="on">会社の収支が最大</button><button type="button" data-jk-eobj="grant">助成額が最大</button></div>
           </div>
           <div class="jk-f" style="max-width:300px"><label>申請代行(社労士)費用の件数 <span class="u">計画届・支給申請の単位</span></label>
@@ -3722,17 +3722,6 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     });
     return out;
   }
-  /* 実質負担が±0円になる1名あたりの研修費用(税込)を逆算する */
-  function easyZeroPrice(c, h, cap, rate, sr1){
-    /* 助成のうち費用に比例しない分から、1名あたりの社労士費用を差し引く */
-    var fixed = c.w[size] * Math.min(h, WAGE_H_MAX) + c.o[size] - (sr1 || 0);
-    if(fixed <= 0) return 0;                                        /* 社労士費用が賃金助成+OJTを上回る=成立しない */
-    if(rate >= 1) return cap != null ? cap + fixed : fixed;
-    var pA = fixed / (1 - rate);                                    /* 経費助成が上限に届かない場合 */
-    var p = (cap == null || pA * rate <= cap) ? pA : (cap + fixed);  /* 届く場合は上限に張り付く */
-    return Math.max(0, Math.floor(p / 100) * 100);                  /* 100円単位に切り下げ(手出しが出ない側に丸める) */
-  }
-
   /* 申請代行(社労士)費用の目安。1件あたり 初期20万円 + 1名あたり1万円(大臣認定は25万+3万)。
      計画届・支給申請は訓練ごとに行うため、職種別に研修を分けるなら「研修ごと」が件数になる。
      同じコースをまとめて1件で受けられる場合は「コースごと」に切り替える。 */
@@ -3759,35 +3748,34 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     return {total:total, count:units.length, init:init, per:per, people:people};
   }
 
-  /* 1名あたりの助成額が最大になるコースを選ぶ */
-  function easyBest(senior, emp, dx, baseH, manPrice, sr1){
+  /* --- 1名単価は全グループ共通の1つの金額にする -----------------------
+     コースごとに経費助成の上限が違うので、コースごとに最適化すると単価が職種ごとにバラバラになる。
+     実務では同じ研修を同じ値段で見積もるため、単価は1つに固定し、その単価のもとで
+     コースを割り当てる。単価そのものは easyPickPrice で決める。
+     ※ 単価が全グループ共通なので、コースの優劣は「1名あたり助成」で並べても
+        「1名あたり収支(助成 − 単価)」で並べても順序は変わらない(単価が定数のため)。
+        選択基準(easyObj)は「共通単価をいくらにするか」の判断に使う。 */
+  function easyBest(senior, emp, dx, baseH, price){
     var best = null;
     easyCands(senior, emp, dx).forEach(function(c){
       var h = Math.max(baseH, c.minh);
       var cap = c.cap ? c.cap[size][band(h)] : null;
       var rate = c.r[size] / 100;
-      var price;
-      if(easyMode === 'max'){
-        price = (cap != null && rate > 0) ? Math.ceil(cap / rate / 1000) * 1000 : manPrice;  /* 経費助成の上限にちょうど届く額 */
-      } else if(easyMode === 'zero'){
-        price = easyZeroPrice(c, h, cap, rate, sr1);      /* 実質負担が±0円になる額 */
-      } else {
-        price = manPrice;
-      }
       var exp1 = price * rate;
       if(cap != null && exp1 > cap) exp1 = cap;
       var wage1 = c.w[size] * Math.min(h, WAGE_H_MAX);
       var o = {c:c, h:h, cap:cap, rate:rate, price:price, exp1:exp1, wage1:wage1, ojt1:c.o[size]};
-      o.g1 = o.exp1 + o.wage1 + o.ojt1;
-      /* 実質0円モードは全コースで収支0になるので、そこは助成額(=単価)の大きい方を採る */
-      o.score = (easyObj === 'net' && easyMode !== 'zero') ? (o.g1 - o.price) : o.g1;
+      o.g1   = o.exp1 + o.wage1 + o.ojt1;
+      o.full = (cap == null) || (price * rate >= cap);        /* 経費助成が上限に届いているか */
+      o.room = (cap == null) ? 0 : Math.max(0, cap - o.exp1); /* 上限まで使い切れていない額 */
+      o.score = o.g1 - o.price;
       if(!best || o.score > best.score) best = o;
     });
     return best;
   }
-  function easyCalc(hOver){
-    var baseH = (hOver != null) ? hOver : Math.max(EASY_MIN_H, Math.round(num('jk-e-h') || EASY_MIN_H));
-    var manPrice = Math.max(0, num('jk-e-price'));
+
+  /* 共通単価を固定して職種別のグループを組み立てる(単価の探索から何度も呼ぶので副作用を持たせない) */
+  function easyBuildGroups(baseH, price){
     var gs = [], excluded = 0, people = 0;
     easyRows.forEach(function(r){
       var n = Math.max(0, Math.round(r.n));
@@ -3797,13 +3785,12 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       var subs = [];
       [[sr, true], [n - sr, false]].forEach(function(pr){
         if(!pr[0]) return;
-        var b = easyBest(pr[1], r.emp, r.dx, baseH, manPrice, 0);
+        var b = easyBest(pr[1], r.emp, r.dx, baseH, price);
         if(!b) return;
         subs.push({senior:pr[1], n:pr[0], b:b});
       });
       /* 45歳以上と45歳未満で同じコース・同じ条件になるなら、分ける意味がないので1グループにまとめる */
-      if(subs.length === 2 && subs[0].b.c.k === subs[1].b.c.k
-         && subs[0].b.h === subs[1].b.h && subs[0].b.price === subs[1].b.price){
+      if(subs.length === 2 && subs[0].b.c.k === subs[1].b.c.k && subs[0].b.h === subs[1].b.h){
         subs = [{senior:null, sr:subs[0].n, n:subs[0].n + subs[1].n, b:subs[0].b}];
       }
       subs.forEach(function(s){
@@ -3815,34 +3802,15 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
                  grant:s.b.g1 * s.n, cost:s.b.price * s.n});
       });
     });
-    /* 東京・大阪前提の「職種をまとめる」では、同じコース・同じ時間・同じ単価のグループを1本の研修に統合する */
+    /* 東京・大阪前提の「職種をまとめる」では、同じコース・同じ時間のグループを1本の研修に統合する */
     if(easySplit === 'merge') gs = easyMergeGroups(gs);
+    return {gs:gs, excluded:excluded, people:people};
+  }
 
-    /* 申請代行(社労士)費用。実質0円モードでは、これも含めて手出しが0円になる単価に引き直す */
+  /* ある共通単価にしたときの試算結果(申請代行費用・1事業所1年度の支給限度額まで込み) */
+  function easyPlanAt(baseH, price){
+    var bg = easyBuildGroups(baseH, price), gs = bg.gs;
     var sr = easySrFee(gs);
-    var zeroNG = false;
-    if(easyMode === 'zero' && people > 0 && sr.total > 0){
-      var sr1 = sr.total / people;
-      /* 社労士費用まで吸収できるか。1グループでも解けないなら研修費用ベースに戻す
-         (そうしないと単価0円の行が並んでしまう) */
-      var solvable = gs.every(function(g){
-        return easyZeroPrice(g.b.c, g.b.h, g.b.cap, g.b.rate, sr1) > 0;
-      });
-      if(!solvable){ zeroNG = true; sr1 = 0; }
-      gs.forEach(function(g){
-        var c = g.b.c, h = g.b.h, cap = g.b.cap, rate = g.b.rate;
-        var price = easyZeroPrice(c, h, cap, rate, sr1);
-        var exp1 = price * rate;
-        if(cap != null && exp1 > cap) exp1 = cap;
-        var wage1 = c.w[size] * Math.min(h, WAGE_H_MAX);
-        g.b = {c:c, h:h, cap:cap, rate:rate, price:price, exp1:exp1, wage1:wage1, ojt1:c.o[size]};
-        g.b.g1 = exp1 + wage1 + g.b.ojt1;
-        g.grant = g.b.g1 * g.n;
-        g.cost  = price * g.n;
-      });
-    }
-
-    /* 1事業所1年度の支給限度額をコース群ごとに適用 */
     var useCap = q('jk-cap') ? q('jk-cap').checked : true;
     var byG = {}, order = [], gross = 0, cost = 0;
     gs.forEach(function(g){
@@ -3858,9 +3826,79 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       if(o.sum > o.lim) over.push(o);
       paid += o.paid;
     });
-    return {gs:gs, excluded:excluded, people:people, baseH:baseH, sr:sr, zeroNG:zeroNG,
+    return {gs:gs, excluded:bg.excluded, people:bg.people, baseH:baseH, price:price, sr:sr,
             gross:gross, paid:paid, cost:cost, netAll:cost + sr.total - paid, over:over,
             groups:order.map(function(k){ return byG[k]; })};
+  }
+
+  /* 共通単価の候補 = 各コースで経費助成がちょうど上限に届く単価。
+     これより上げても助成は増えず、下げると上限に届かないコースが出る。 */
+  function easyPriceCands(baseH){
+    var seen = {}, out = [];
+    easyRows.forEach(function(r){
+      var n = Math.max(0, Math.round(r.n));
+      if(!n || r.emp === 'gai') return;
+      var sr = Math.max(0, Math.min(n, Math.round(r.sr)));
+      [sr > 0, n - sr > 0].forEach(function(has, i){
+        if(!has) return;
+        easyCands(i === 0, r.emp, r.dx).forEach(function(c){
+          var h = Math.max(baseH, c.minh);
+          var cap = c.cap ? c.cap[size][band(h)] : null;
+          var rate = c.r[size] / 100;
+          if(cap == null || rate <= 0) return;
+          var p = Math.ceil(cap / rate / 1000) * 1000;
+          if(!seen.hasOwnProperty(p)){ seen[p] = 1; out.push(p); }
+        });
+      });
+    });
+    out.sort(function(a, b){ return a - b; });
+    return out;
+  }
+
+  /* 手出しが0円に収まる範囲でいちばん高い共通単価を二分探索で求める。
+     1名あたりの手出しは (単価 − 助成) で、経費助成率は100%未満なので単価に対して単調に増える。
+     withSr = false のときは申請代行(社労士)費用を除き、研修費用だけで釣り合う額を探す。 */
+  function easySolvePrice(baseH, withSr){
+    var base = easyPlanAt(baseH, 0);
+    if(!base.people) return 0;
+    if((withSr ? base.netAll : (base.cost - base.paid)) > 0.5) return null;   /* 単価0円でも手出しが出る */
+    var lo = 0, hi = 5000000;
+    for(var i = 0; i < 40 && hi - lo > 100; i++){
+      var mid = Math.round((lo + hi) / 200) * 100;
+      if(mid <= lo) mid = lo + 100;
+      if(mid >= hi) break;
+      var r = easyPlanAt(baseH, mid);
+      if((withSr ? r.netAll : (r.cost - r.paid)) > 0.5) hi = mid; else lo = mid;
+    }
+    return lo;
+  }
+
+  /* 全グループ共通の1名単価を決める */
+  function easyPickPrice(baseH){
+    if(easyMode === 'man') return Math.max(0, num('jk-e-price'));
+    if(easyMode === 'zero'){
+      var p = easySolvePrice(baseH, true);
+      if(p != null) return p;
+      p = easySolvePrice(baseH, false);   /* 社労士費用まで吸収できないときは研修費用だけで釣り合う額 */
+      return (p != null) ? p : 0;
+    }
+    /* 助成MAX = 候補の中から、選択基準(会社の収支 / 助成額)でいちばん良い1つを選ぶ */
+    var cands = easyPriceCands(baseH);
+    if(!cands.length) return Math.max(0, num('jk-e-price'));
+    var best = null;
+    cands.forEach(function(p){
+      var r = easyPlanAt(baseH, p);
+      var score = (easyObj === 'net') ? -r.netAll : r.paid;
+      if(!best || score > best.score || (score === best.score && p > best.p)) best = {p:p, score:score};
+    });
+    return best.p;
+  }
+
+  function easyCalc(hOver){
+    var baseH = (hOver != null) ? hOver : Math.max(EASY_MIN_H, Math.round(num('jk-e-h') || EASY_MIN_H));
+    var r = easyPlanAt(baseH, easyPickPrice(baseH));
+    r.zeroNG = (easyMode === 'zero' && r.netAll > 0.5);
+    return r;
   }
 
   /* 研修時間ごとの実質負担(社労士費用込み)の早見表。構成とモードはそのまま、時間だけ変えて比べる */
@@ -3871,7 +3909,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     hs.sort(function(a, b){ return a - b; });
     var rows = hs.map(function(h){
       var r = easyCalc(h);
-      return {h:h, grant:r.paid, cost:r.cost, sr:r.sr.total, net:r.netAll,
+      return {h:h, grant:r.paid, cost:r.cost, sr:r.sr.total, net:r.netAll, price:r.price,
               per:r.people ? Math.round(r.netAll / r.people) : 0, cur:(h === cur)};
     });
     var min = null;
@@ -3880,11 +3918,12 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     return rows;
   }
 
-  /* 社労士費用まで含めて手出し0円が成立する、最短の研修時間を探す */
+  /* 社労士費用まで含めて手出し0円が成立する、最短の研修時間を探す。
+     手出しは単価に対して単調に増えるので「単価0円でも手出しが出るか」を見れば成立可否が分かる
+     (単価を上げる余地があるかどうかは、そのあとの二分探索で決まる)。 */
   function easyMinZeroH(){
     for(var h = EASY_MIN_H; h <= 200; h++){
-      var r = easyCalc(h);
-      if(!r.zeroNG && r.netAll <= 0) return h;
+      if(easyPlanAt(h, 0).netAll <= 0.5) return h;
     }
     return null;
   }
@@ -3979,7 +4018,8 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     var h = '<div class="jk-eout">';
     h += '<div class="jk-res">'
       +  '<div class="jk-card hl"><div class="l">助成金 想定額(合計)</div><div class="v">' + yen(r.paid) + '</div><div class="s">対象 ' + r.people + '名 / ' + r.gs.length + 'グループ / ' + nKind + 'コース</div></div>'
-      +  '<div class="jk-card"><div class="l">研修費用(税込)</div><div class="v">' + yen(r.cost) + '</div><div class="s">1名あたりの費用 × 人数</div></div>'
+      +  '<div class="jk-card"><div class="l">1名あたりの単価(税込)</div><div class="v">' + yen(r.price) + '</div><div class="s">全グループ共通の1つの金額</div></div>'
+      +  '<div class="jk-card"><div class="l">研修費用(税込)</div><div class="v">' + yen(r.cost) + '</div><div class="s">' + yen(r.price) + ' × ' + r.people + '名</div></div>'
       +  '<div class="jk-card"><div class="l">申請代行(社労士)費用</div><div class="v">' + yen(r.sr.total) + '</div><div class="s">'
       +  '初期20万円 × ' + r.sr.count + '件(' + (easySrMode === 'grp' ? '研修ごと' : 'コースごと') + ') + 1名1万円 × ' + r.sr.people + '名</div></div>'
       +  '<div class="jk-card net"><div class="l">実質負担額</div><div class="v">' + (net <= 0 ? '0円' : yen(net)) + '</div><div class="s">'
@@ -3998,7 +4038,8 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
         +  '<td>' + g.b.c.n + '<span class="sub">経費' + Math.round(g.b.rate * 100) + '%(上限' + (g.b.cap != null ? man(g.b.cap) : '—') + ') / 賃金' + g.b.c.w[size] + '円/h'
         +  (g.b.ojt1 ? ' / OJT' + man(g.b.ojt1) : '') + '</span></td>'
         +  '<td class="r">' + g.n + '名</td><td class="r">' + g.b.h + 'h</td>'
-        +  '<td class="r">' + yen(g.b.price) + '</td><td class="r">' + yen(g.b.g1) + '</td>'
+        +  '<td class="r">' + yen(g.b.price) + '<span class="sub">' + (g.b.full ? '経費助成は上限に到達' : '経費助成 ' + yen(g.b.exp1) + '(上限まで' + yen(g.b.room) + ')') + '</span></td>'
+        +  '<td class="r">' + yen(g.b.g1) + '</td>'
         +  '<td class="r" style="color:' + (g.b.g1 - g.b.price >= 0 ? '#1e7a62' : '#c4554d') + ';font-weight:800">'
         +  (g.b.g1 - g.b.price >= 0 ? '+' : '−') + yen(Math.abs(g.b.g1 - g.b.price)) + '</td>'
         +  '<td class="r"><b>' + yen(g.grant) + '</b></td></tr>';
@@ -4026,6 +4067,12 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
                 : '<br>研修時間を200時間まで伸ばしても成立しないため、受講人数を増やすかコース構成の見直しが必要です。')
         +  '</div>';
     }
+    if(easyMode === 'zero' && !r.zeroNG && r.price < 50000){
+      h += '<div class="jk-ewarn">⚠️ <b>この条件で手出し0円にできるのは、1名あたり ' + yen(r.price) + ' の研修までです。</b>'
+        +  '助成金は「研修費用に比例する経費助成」＋「研修時間に比例する賃金助成」＋「OJT加算」の合計です。'
+        +  'そこから申請代行(社労士)費用 ' + yen(r.sr.total) + ' を先に差し引くと、残りで賄える研修費用がこの金額になります。'
+        +  '<br><b>研修時間を伸ばせば賃金助成が増えるので、手出し0円にできる単価も上がります。</b>下の早見表で比べてください。</div>';
+    }
     /* --- 研修の分け方の比較 --- */
     var alt  = easyAlt(easySplit === 'merge' ? 'job' : 'merge');
     var cJob = (easySplit === 'merge') ? alt : r;
@@ -4035,7 +4082,8 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       +  '<th class="r">職種ごとに分ける' + (easySplit === 'job' ? ' <span class="jk-hnow">(いま)</span>' : '') + '</th>'
       +  '<th class="r">職種をまとめる' + (easySplit === 'merge' ? ' <span class="jk-hnow">(いま)</span>' : '') + '</th>'
       +  '<th class="r" style="width:110px">まとめた場合の差</th></tr></thead><tbody>';
-    [{l:'研修の本数(＝申請の件数)', a:cJob.gs.length, b:cMrg.gs.length, u:'本'},
+    [{l:'1名あたりの単価(共通)',   a:cJob.price,    b:cMrg.price,    neu:true},
+     {l:'研修の本数(＝申請の件数)', a:cJob.gs.length, b:cMrg.gs.length, u:'本'},
      {l:'助成金 想定額',        a:cJob.paid,     b:cMrg.paid,     up:true},
      {l:'研修費用(税込)',        a:cJob.cost,     b:cMrg.cost},
      {l:'申請代行(社労士)費用', a:cJob.sr.total, b:cMrg.sr.total},
@@ -4045,19 +4093,19 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       h += '<tr><td>' + x.l + '</td>'
         +  '<td class="r">' + (x.u ? x.a + x.u : yen(x.a)) + '</td>'
         +  '<td class="r"><b>' + (x.u ? x.b + x.u : yen(x.b)) + '</b></td>'
-        +  '<td class="r" style="font-weight:800;color:' + (d === 0 ? '#8a938e' : (good ? '#1e7a62' : '#c4554d')) + '">'
+        +  '<td class="r" style="font-weight:800;color:' + ((d === 0 || x.neu) ? '#8a938e' : (good ? '#1e7a62' : '#c4554d')) + '">'
         +  (d === 0 ? '—' : (d > 0 ? '+' : '−') + (x.u ? Math.abs(d) + x.u : yen(Math.abs(d)))) + '</td></tr>';
     });
     h += '</tbody></table></div>';
     h += '<div class="jk-eplan"><b>分け方で何が変わるのか</b><br>'
-      +  '1名あたりの助成額と単価は、分け方を変えても変わりません。'
-      +  '変わるのは<b>研修を何本に分けるか＝計画届・支給申請の件数</b>と、それに比例する'
-      +  '<b>申請代行(社労士)費用の初期20万円×件数</b>です'
+      +  'いちばん大きく変わるのは<b>研修を何本に分けるか＝計画届・支給申請の件数</b>で、それに比例して'
+      +  '<b>申請代行(社労士)費用の初期20万円×件数</b>が変わります'
       +  (easySrMode === 'course'
           ? '（いまは社労士費用の件数を「コースごと」で数えているため、まとめても件数は変わりません。'
             + '「研修ごと」に切り替えると差が出ます）'
           : '')
-      +  '。実質0円モードのときだけは、1名あたりの社労士費用が変わるぶん、逆算する単価も動きます。'
+      +  '。<br>1名あたりの単価は<b>全グループ共通の1つの金額</b>ですが、'
+      +  '件数が変われば社労士費用も変わるので、<b>いちばん条件のよい共通単価も動くことがあります</b>（上の表で並べています）。'
       +  '<br>金額以上に大きいのは<b>研修の開催回数そのものが減る</b>ことです。'
       +  '講師の稼働・日程調整・現場を空ける回数がそのまま少なくなります。</div>';
     if(easySplit === 'merge'){
@@ -4086,12 +4134,13 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     }
 
     var ht = easyHourTable();
-    h += '<div style="overflow-x:auto"><table class="jk-bd jk-htbl" style="min-width:620px">'
-      +  '<thead><tr><th style="min-width:110px">研修時間</th><th class="r">助成金</th><th class="r">研修費用</th>'
+    h += '<div style="overflow-x:auto"><table class="jk-bd jk-htbl" style="min-width:700px">'
+      +  '<thead><tr><th style="min-width:110px">研修時間</th><th class="r">1名単価(共通)</th><th class="r">助成金</th><th class="r">研修費用</th>'
       +  '<th class="r">社労士費用</th><th class="r">実質負担(合計)</th><th class="r">1名あたり負担</th><th style="width:100px"></th></tr></thead><tbody>';
     ht.forEach(function(x){
       h += '<tr class="' + (x.cur ? 'on ' : '') + (x.min ? 'min' : '') + '">'
         +  '<td>' + x.h + '時間' + (x.cur ? ' <span class="jk-hnow">(いま)</span>' : '') + (x.min && !x.cur ? ' <span class="jk-hnow">最小</span>' : '') + '</td>'
+        +  '<td class="r"><b>' + yen(x.price) + '</b></td>'
         +  '<td class="r">' + yen(x.grant) + '</td><td class="r">' + yen(x.cost) + '</td><td class="r">' + yen(x.sr) + '</td>'
         +  '<td class="r"><b>' + (x.net <= 0 ? '0円' : yen(x.net)) + '</b></td>'
         +  '<td class="r" style="color:' + (x.per > 0 ? '#c4554d' : '#1e7a62') + '">'
@@ -4106,34 +4155,42 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       +  '<br>ただし研修時間はそのまま受講者の拘束時間です。現場が止まらない範囲で決めてください。</div>';
 
     var top = r.gs.slice().sort(function(a, b){ return b.grant - a.grant; })[0];
+    var notFull = r.gs.filter(function(g){ return !g.b.full; });
     var splitLead = (easySplit === 'merge')
-      ? '職種ごとに最適なコースを選んだうえで、<b>同じコース・同じ時間・同じ単価になったグループを1本の研修にまとめて</b>います(東京・大阪労働局の回答を前提にしたモードです)。コースは'
+      ? '職種ごとに最適なコースを選んだうえで、<b>同じコース・同じ時間になったグループを1本の研修にまとめて</b>います(東京・大阪労働局の回答を前提にしたモードです)。コースは'
       : '職種ごとに分けたうえで、';
     h += '<div class="jk-eplan"><b>この組み方の考え方</b><br>'
-      +  (easyObj === 'net' && easyMode !== 'zero'
-          ? splitLead + 'それぞれ<b>1名あたりの収支(助成 − 単価)がいちばん良くなるコース</b>を割り当てています。'
-            + '<br>🔴<b>助成額がいちばん大きいコースが、いちばん得なコースとは限りません。</b>'
-            + '⑦事業展開等リスキリング支援コースは助成額こそ大きいものの経費助成率が75%なので、単価を上げるほど収支はマイナスになります。'
-            + '一方<b>④中高年齢者実習型訓練はOJT加算(1名10万円)が単価に比例しない</b>ため、単価を抑えると<b>収支がプラス</b>になります。'
-            + '「助成額が最大」に切り替えると従来どおり助成額だけで選びます。'
-          : splitLead + 'それぞれ<b>1名あたりの助成額がいちばん大きくなるコース</b>を割り当てています。')
+      +  '<b>1名あたりの単価は全グループ共通で ' + yen(r.price) + ' です。</b>'
+      +  '同じ研修を職種ごとに違う値段で見積もるのは現実的ではないため、単価は1つに固定しています。'
+      +  '<br>' + splitLead + 'その単価のもとで<b>1名あたりの助成がいちばん大きくなるコース</b>を割り当てています'
+      +  '(単価が全グループ共通なので、コースの並びは「助成額が最大」でも「収支が最大」でも同じになります。'
+      +  '<b>選択基準は、共通単価をいくらにするかの判断に使っています</b>)。'
       +  '研修時間は' + r.baseH + '時間(コースの最低時間がこれを上回る場合はその時間)、'
       +  (easyMode === 'max'
-          ? '1名あたりの費用は<b>経費助成の上限にちょうど届く金額</b>を自動で設定しています。これ以上費用を上げても助成額は増えません。'
+          ? '単価は<b>各コースで経費助成が上限にちょうど届く金額</b>を候補にして、その中から'
+            + (easyObj === 'net' ? '<b>会社の収支がいちばん良くなるもの</b>' : '<b>助成金がいちばん大きくなるもの</b>')
+            + 'を1つ選んでいます。'
+            + '<br>🔴<b>共通単価にすると、経費助成の上限を使い切れないコースが出ます。</b>'
+            + 'コースごとに上限額が違うためで、'
+            + (notFull.length
+                ? '<b>いまは ' + notFull.length + 'グループ(' + easyJobLabel(notFull.map(function(g){ return g.job; })) + ')が上限に届いていません</b>（上の表の単価欄に不足額を出しています）。'
+                : 'いまの単価では<b>すべてのグループが上限に届いています</b>。')
+            + '単価を上げれば届きますが、上限を超えた分は助成されず全額が会社の持ち出しになります。'
             + '<br>🔴<b>助成MAXは「助成額を最大にする」モードであって、「会社の手出しをゼロにする」モードではありません。</b>'
-            + '単価を上げるほど助成も増えますが、経費助成率は100%ではないので<b>1名あたりの収支はマイナス（会社の持ち出し）</b>になります'
-            + '（下の表の「1名あたり収支」をご覧ください）。<b>手出しをなくしたいなら「実質0円(自動)」に切り替えてください。</b>'
+            + '経費助成率は100%ではないので<b>1名あたりの収支はマイナス（会社の持ち出し）</b>になります'
+            + '（上の表の「1名あたり収支」をご覧ください）。<b>手出しをなくしたいなら「実質0円(自動)」に切り替えてください。</b>'
           : easyMode === 'zero'
           ? (r.zeroNG
-             ? '1名あたりの費用は<b>助成金と研修費用がちょうど釣り合う金額</b>をコースごとに逆算しています。'
+             ? '単価は<b>助成金と研修費用がちょうど釣り合う共通の金額</b>を逆算しています。'
                + '<b>ただしこの条件では申請代行(社労士)費用まで吸収しきれないため、その分が手出しとして残ります</b>(下の⚠️をご覧ください)。'
-             : '1名あたりの費用は<b>助成金と「研修費用＋申請代行(社労士)費用」がちょうど釣り合う金額</b>をコースごとに逆算しています'
+             : '単価は<b>助成金と「研修費用＋申請代行(社労士)費用」がちょうど釣り合う共通の金額</b>を逆算しています'
                + '＝<b>社労士費用まで含めて会社の手出しが0円</b>になる条件です(1名あたり ' + yen(Math.round(r.sr.total / Math.max(1, r.people))) + ' の社労士費用を織り込み済み)。')
-            + '<br>🔴<b>研修時間を伸ばすほど、実質0円にできる研修費用は上がります</b>(賃金助成が時間に比例して増えるため)。'
-            + '例えば⑦事業展開等リスキリング支援コース(中小企業)なら、10時間で4万円／40時間で16万円／100時間で40万円の研修が実質0円になります。'
-            + '<br><b>45歳以上だけ単価が大きくなる</b>のは、④中高年齢者実習型訓練に<b>OJT加算(1名あたり10万円・中小企業)</b>があり、'
-            + '研修費用に比例しない助成が乗るぶん、実質0円にできる研修費用が大きくなるためです(その代わり最低15時間が必要です)。'
-          : '1名あたりの費用は手入力の金額で計算しています。')
+            + '<br>🔴<b>単価を共通にしているので、グループごとの収支はプラスとマイナスに分かれます。</b>'
+            + '④中高年齢者実習型訓練のようにOJT加算(1名10万円・中小企業)が付くグループはプラス、'
+            + '経費助成の上限が小さいグループはマイナスになりますが、<b>会社全体で合計するとちょうど0円</b>になる単価です。'
+            + '<br>🔴<b>研修時間を伸ばすほど、実質0円にできる単価は上がります</b>(賃金助成が時間に比例して増えるため)。'
+            + '下の早見表で時間ごとの単価を比べられます。'
+          : '単価は手入力の金額をそのまま全グループに使っています。')
       +  '<br>最も助成額が大きいのは <b>' + top.job + 'の' + top.n + '名 → ' + top.b.c.n + '</b> で ' + yen(top.grant) + ' です。'
       +  (r.excluded ? '<br>役員・経営者など<b>' + r.excluded + '名</b>は雇用保険の被保険者ではないため対象外として除いています。' : '')
       +  '<br><b>申請代行(社労士)費用 ' + yen(r.sr.total) + '</b> は<b>変動制</b>で、'
@@ -4332,6 +4389,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       easySrMode = 'grp';
       easyUseOjt = true;
       easyObj = 'net';
+      easySplit = 'job';   /* 再表示時にボタン(職種ごと)と変数がズレるのを防ぐ */
       var ojtBox = el.querySelector('#jk-e-ojt');
       if(ojtBox) ojtBox.checked = true;
       easyRows = easyClone();
