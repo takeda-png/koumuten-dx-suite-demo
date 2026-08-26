@@ -1124,7 +1124,164 @@ h("tbody",null,[
 h("div",{className:"ps-note",style:{marginTop:14}},"※ 本計画はスイート内の実績データと前提条件から自動計算したものです。前提条件を変えれば計画値も変わります。")),
 h("button",{className:"gen-btn",style:{marginTop:12},onClick:()=>window.print()},"この計画書を印刷 / PDF保存"),
 h("div",{className:"hint"},"毎月の実績は経営ダッシュボードに入ります。計画と実績の差が出たときに、棟数・単価・粗利率・反響数のどれがズレたのかが分かる形にしてあります。")))},group:"経営"},
-{key:"policy",label:"今期方針",icon:"🎯",comp:function(){
+{key:"share",label:"商圏シェア・競合",icon:"🗺",group:"経営",comp:function(){
+var H=ew.createElement;
+var CITY=[
+{n:"さいたま市",pop:134.2,st:1520,own:8,yoy:-1.8,min:10,memo:"大宮モデルハウス(常設)"},
+{n:"川口市",pop:60.5,st:640,own:2,yoy:-.9,min:30,memo:""},
+{n:"川越市",pop:35.3,st:448,own:3,yoy:-2.4,min:25,memo:"川越モデルハウス(常設)"},
+{n:"所沢市",pop:34.2,st:392,own:1,yoy:-2.1,min:45,memo:""},
+{n:"上尾市",pop:22.7,st:286,own:4,yoy:-1.5,min:0,memo:"本社所在地"},
+{n:"狭山市",pop:14.8,st:176,own:0,yoy:-3.2,min:50,memo:""},
+{n:"戸田市",pop:14.3,st:154,own:1,yoy:.6,min:35,memo:""},
+{n:"富士見市",pop:11.2,st:132,own:1,yoy:-1.2,min:35,memo:""},
+{n:"ふじみ野市",pop:11.4,st:128,own:1,yoy:-1.6,min:35,memo:"完成見学会 年1回"},
+{n:"坂戸市",pop:10,st:118,own:0,yoy:-3.5,min:40,memo:""},
+{n:"桶川市",pop:7.4,st:92,own:0,yoy:-2.2,min:20,memo:""},
+{n:"蕨市",pop:7.6,st:68,own:0,yoy:-.4,min:35,memo:""}];
+var MIX=[
+{k:"分譲・建売(パワービルダー中心)",p:45,c:"#b6bfc7",note:"土地込みの完成品。検討層そのものが違うので、ここは取りに行っていない"},
+{k:"大手ハウスメーカー",p:20.9,c:"#3f7fa6",note:"総合展示場とTVCMで認知を取る。価格帯は自社より上"},
+{k:"地域ビルダー(年50〜300棟)",p:14.85,c:"#8a6fb0",note:"規格住宅と大型見学会で数を取る。価格帯が最も近い"},
+{k:"地場工務店(年50棟まで・自社を含む)",p:19.25,c:"#2f9e82",note:"自社が実際に競っている土俵はここ"}];
+var COMP=[
+{cat:"分譲・建売",n:"パワービルダーA",sh:11.7,c:"#b6bfc7",memo:"土地情報の量が最大の武器。価格で真正面から戦わない"},
+{cat:"大手HM",n:"全国ハウスメーカーB",sh:5.1,c:"#3f7fa6",memo:"総合展示場に出展。初回接客の前に認知で先行される"},
+{cat:"大手HM",n:"全国ハウスメーカーC",sh:4,c:"#3f7fa6",memo:"高価格帯。ZEHと長期保証で訴求"},
+{cat:"地域ビルダー",n:"県内ビルダーD",sh:4.4,c:"#8a6fb0",memo:"規格住宅中心。年4回の大型見学会で集客"},
+{cat:"地域ビルダー",n:"県内ビルダーE",sh:2.9,c:"#8a6fb0",memo:"高性能訴求。SNSの露出量で競合"}];
+var BASES=[{k:"all",t:"商圏全体",r:1,d:"新設住宅着工(持家＋分譲一戸建)のすべて"},
+{k:"order",t:"注文住宅のみ",r:.55,d:"分譲・建売を除いた、注文で建てる層"},
+{k:"local",t:"地場工務店マーケット",r:.1925,d:"大手HM・地域ビルダー・建売を除いた、実際に競っている土俵"}];
+var s1=ew.useState(CITY.map(function(){return!0})),inc=s1[0],setInc=s1[1];
+var s2=ew.useState("local"),bk=s2[0],setBk=s2[1];
+var s3=ew.useState(-1.7),gr=s3[0],setGr=s3[1];
+var s4=ew.useState(28),goal=s4[0],setGoal=s4[1];
+function num(n){return Math.round(n).toLocaleString("ja-JP")}
+function f1(n){return(Math.round(n*10)/10).toFixed(1)}
+function f2(n){return(Math.round(n*100)/100).toFixed(2)}
+function sgn(n){return(n>0?"+":n<0?"▲":"")+f1(Math.abs(n))}
+var BASE=BASES.filter(function(b){return b.k===bk})[0];
+var sel=CITY.filter(function(c,i){return inc[i]});
+var TOT=sel.reduce(function(a,c){return a+c.st},0);
+var OWN=sel.reduce(function(a,c){return a+c.own},0);
+var YOY=TOT?sel.reduce(function(a,c){return a+c.st*c.yoy},0)/TOT:0;
+var DEN=TOT*BASE.r;
+var SHARE=DEN?OWN/DEN*100:0;
+var T3=TOT*Math.pow(1+gr/100,3),D3=T3*BASE.r;
+var keep=TOT?T3*(OWN/TOT):0;
+var need=D3?goal/D3*100:0;
+var localDen=TOT*.1925,localShare=localDen?OWN/localDen*100:0;
+var rows=sel.map(function(c){var d=c.st*BASE.r;return{c:c,den:d,sh:d?c.own/d*100:0,tgt:TOT?goal*(c.st/TOT):0}}).sort(function(a,b){return b.c.st-a.c.st});
+var best=rows.filter(function(r){return r.c.own>0}).sort(function(a,b){return b.sh-a.sh})[0];
+var gaps=rows.map(function(r){return{n:r.c.n,now:r.c.own,tgt:r.tgt,gap:r.tgt-r.c.own}}).sort(function(a,b){return b.gap-a.gap});
+function setOne(i,v){setInc(function(a){var n=a.slice();n[i]=v;return n})}
+function preset(k){setInc(CITY.map(function(c){return k==="all"?!0:k==="near"?c.min<=30:["さいたま市","上尾市","川越市"].indexOf(c.n)>=0}))}
+function kpi(l,v,s){return H("div",{className:"kpi"},H("div",{className:"kpi-label"},l),H("div",{className:"kpi-value"},v),H("div",{className:"kpi-sub"},s))}
+function bar(label,sub,val,pctv,color,strong){return H("div",{style:{padding:"9px 0",borderBottom:"1px dashed #efefe9"}},
+H("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"baseline",gap:"10px",fontSize:"12.5px"}},
+H("div",{style:{minWidth:"0",fontWeight:strong?700:400}},label),
+H("div",{style:{flexShrink:0,whiteSpace:"nowrap",fontWeight:700}},val,H("span",{style:{color:"#7e8b96",fontWeight:400}}," / "+f1(pctv)+"%"))),
+H("div",{style:{fontSize:"11px",color:"#7e8b96",lineHeight:"1.5",margin:"2px 0 6px"}},sub),
+H("div",{className:"pipe-bar-wrap"},H("div",{className:"pipe-bar",style:{width:Math.max(0,Math.min(100,pctv))+"%",background:color}})))}
+function nin(v,on,step,w){return H("input",{type:"number",value:v,step:step||1,style:{width:w||"92px"},onChange:function(e){var x=parseFloat(e.target.value);on(isNaN(x)?0:x)}})}
+return H("div",null,
+H("div",{className:"module-head"},H("h2",null,"商圏シェア・競合分析"),H("p",null,"商圏の市区町村ごとの着工棟数に対して、自社が何棟取れているか(シェア)を出します。市場が縮んでいく前提では、棟数を守るだけでもシェアを上げる必要があります。3ヶ年経営計画の目標棟数から、必要なシェアと、どの市に伸びしろが残っているかまで逆算します。")),
+H("div",{className:"kpi-grid"},
+kpi("商圏の年間着工",num(TOT)+"戸",sel.length+"市町村の合計(持家＋分譲一戸建)"),
+kpi("自社の着工棟数",OWN+"棟","同じ商圏での自社の実績"),
+kpi("シェア("+BASE.t+")",f2(SHARE)+"%","母数 "+num(DEN)+"戸 に対する自社"+OWN+"棟"),
+kpi("商圏の着工 前年比",sgn(YOY)+"%",YOY<0?"市場は縮小中。棟数維持でもシェア上昇が必要":"市場は横ばい〜微増")),
+H("div",{className:"panel"},H("h3",null,"母数の取り方"),
+H("div",{className:"jk-seg"},BASES.map(function(b){return H("button",{key:b.k,className:bk===b.k?"on":"",onClick:function(){setBk(b.k)}},b.t)})),
+H("div",{className:"hint",style:{marginTop:"10px"}},"いま選んでいるのは ",H("b",null,BASE.t),"（",BASE.d,"）。母数 ",H("b",null,num(DEN)+"戸")," に対して自社は ",H("b",null,OWN+"棟"),"＝",H("b",{style:{color:"#2f9e82"}},f2(SHARE)+"%"),"。",
+H("div",{style:{marginTop:"6px"}},"🔴 シェアは母数の取り方で何倍にも変わります。商圏全体で見ると小さく見えますが、建売と大手ハウスメーカーを除いた",H("b",null,"実際に競っている土俵"),"では ",H("b",null,f2(localShare)+"%"),"。どちらが正しいかではなく、",H("b",null,"打ち手を決められるのは後者"),"です。"))),
+H("div",{className:"panel"},H("h3",null,"市区町村別の着工とシェア"),
+H("div",{className:"arc-filters"},
+H("span",null,"商圏をまとめて選ぶ:"),
+H("button",{className:"tpl-btn",onClick:function(){preset("all")}},"12市町村すべて"),
+H("button",{className:"tpl-btn",onClick:function(){preset("near")}},"車で30分以内"),
+H("button",{className:"tpl-btn",onClick:function(){preset("core")}},"重点3市のみ"),
+H("span",{style:{marginLeft:"auto",color:"#7e8b96"}},"チェックを外すと、その市を除いて全体を計算し直します")),
+H("div",{style:{overflowX:"auto"}},H("table",{className:"tbl"},
+H("thead",null,H("tr",null,H("th",null,"商圏に含む"),H("th",null,"市区町村"),H("th",{className:"r"},"人口(万人)"),H("th",{className:"r"},"年間着工(戸)"),H("th",{className:"r"},"前年比"),H("th",{className:"r"},"母数("+BASE.t+")"),H("th",{className:"r"},"自社(棟)"),H("th",{className:"r"},"シェア"),H("th",{className:"r"},"本社から"),H("th",null,"拠点・接点"))),
+H("tbody",null,CITY.map(function(c,i){
+var d=c.st*BASE.r,sh=d?c.own/d*100:0,on=inc[i];
+return H("tr",{key:c.n,style:on?null:{opacity:.4}},
+H("td",null,H("input",{type:"checkbox",checked:on,onChange:function(e){setOne(i,e.target.checked)}})),
+H("td",{style:{fontWeight:700,whiteSpace:"nowrap"}},c.n),
+H("td",{className:"r"},f1(c.pop)),
+H("td",{className:"r"},num(c.st)),
+H("td",{className:"r",style:{color:c.yoy<0?"#a2453d":"#1e7a62"}},sgn(c.yoy)+"%"),
+H("td",{className:"r",style:{color:"#7e8b96"}},num(d)),
+H("td",{className:"r",style:{fontWeight:700}},c.own),
+H("td",{className:"r",style:{fontWeight:700,color:c.own?sh>=localShare?"#1e7a62":"#8a6a22":"#b6bfc7"}},c.own?f2(sh)+"%":"—"),
+H("td",{className:"r",style:{whiteSpace:"nowrap",color:"#7e8b96"}},c.min?"車"+c.min+"分":"本社"),
+H("td",{style:{fontSize:"11.5px",color:"#7e8b96"}},c.memo||"—"))})),
+H("tfoot",null,H("tr",null,H("td",null,""),H("td",{style:{fontWeight:700}},"合計("+sel.length+"市町村)"),H("td",{className:"r"},f1(sel.reduce(function(a,c){return a+c.pop},0))),H("td",{className:"r",style:{fontWeight:700}},num(TOT)),H("td",{className:"r"},sgn(YOY)+"%"),H("td",{className:"r"},num(DEN)),H("td",{className:"r",style:{fontWeight:700}},OWN),H("td",{className:"r",style:{fontWeight:700,color:"#2f9e82"}},f2(SHARE)+"%"),H("td",null,""),H("td",null,""))))),
+best?H("div",{className:"hint"},"いちばんシェアが高いのは ",H("b",null,best.c.n),"（",H("b",null,f2(best.sh)+"%"),"・",best.c.own,"棟）。",best.c.memo?"（"+best.c.memo+"）":"","ここで取れている率が、他の市でも取れる上限の目安になります。"):null),
+H("div",{className:"panel"},H("h3",null,"誰が取っているか(市場の構成)"),
+MIX.map(function(m){return H("div",{key:m.k},bar(m.k,m.note,num(TOT*m.p/100)+"戸",m.p,m.c,m.p===19.25))}),
+H("div",{className:"hint",style:{marginBottom:"14px"}},"商圏 ",H("b",null,num(TOT)+"戸")," のうち、自社が取りに行けるのは ",H("b",null,num(TOT*.1925)+"戸"),"。ここに ",H("b",null,OWN+"棟"),"＝",H("b",{style:{color:"#2f9e82"}},f2(localShare)+"%"),"。残りの約8割は、そもそも土俵が違う相手が取っています。"),
+H("div",{style:{overflowX:"auto"}},H("table",{className:"tbl slim"},
+H("thead",null,H("tr",null,H("th",null,"区分"),H("th",null,"社名(推定)"),H("th",{className:"r"},"商圏内 推定棟数"),H("th",{className:"r"},"商圏シェア"),H("th",null,"競合の仕方"))),
+H("tbody",null,
+COMP.map(function(x){return H("tr",{key:x.n},
+H("td",null,H("span",{className:"kind-chip",style:{background:x.c}},x.cat)),
+H("td",{style:{fontWeight:700,whiteSpace:"nowrap"}},x.n),
+H("td",{className:"r"},num(TOT*x.sh/100)+"棟"),
+H("td",{className:"r",style:{fontWeight:700}},f2(x.sh)+"%"),
+H("td",{style:{fontSize:"11.5px",color:"#7e8b96"}},x.memo))}),
+H("tr",{style:{background:"#f4faf7"}},
+H("td",null,H("span",{className:"kind-chip",style:{background:"#2f9e82"}},"自社")),
+H("td",{style:{fontWeight:700,whiteSpace:"nowrap"}},"彩の国ホーム"),
+H("td",{className:"r",style:{fontWeight:700}},OWN+"棟"),
+H("td",{className:"r",style:{fontWeight:700,color:"#2f9e82"}},f2(TOT?OWN/TOT*100:0)+"%"),
+H("td",{style:{fontSize:"11.5px",color:"#7e8b96"}},"見学会とOB紹介が入口。土地情報と認知量では負けている")),
+H("tr",null,
+H("td",null,H("span",{className:"kind-chip",style:{background:"#b6bfc7"}},"その他")),
+H("td",{style:{color:"#7e8b96"}},"上記以外のすべて"),
+H("td",{className:"r",style:{color:"#7e8b96"}},num(TOT-TOT*(COMP.reduce(function(a,x){return a+x.sh},0))/100-OWN)+"棟"),
+H("td",{className:"r",style:{color:"#7e8b96"}},f2(TOT?100-COMP.reduce(function(a,x){return a+x.sh},0)-OWN/TOT*100:0)+"%"),
+H("td",{style:{fontSize:"11.5px",color:"#7e8b96"}},"—"))))),
+H("div",{className:"hint"},"※ 個社の棟数は、建築確認・完了検査の公開情報と現地調査からの推定値です。実名は伏せています。")),
+H("div",{className:"panel"},H("h3",null,"3年後の逆算(3ヶ年経営計画とつなぐ)"),
+H("div",{className:"form-grid"},
+H("label",null,"商圏の市場成長率(%/年)",nin(gr,setGr,.1,"100%")),
+H("label",null,"3年後の目標棟数(棟)",nin(goal,setGoal,1,"100%"))),
+H("div",{className:"hint",style:{marginTop:"0",marginBottom:"14px"}},"初期値は、いまの商圏の前年比 ",H("b",null,sgn(YOY)+"%")," と、3ヶ年経営計画の標準シナリオ ",H("b",null,"28棟")," です。"),
+H("div",{className:"goal-row"},
+[{t:"3年後の商圏の着工",v:num(T3)+"戸",s:"いまの "+num(TOT)+"戸 から "+num(TOT-T3)+"戸 減る前提"},
+{t:"シェアが今のままなら",v:f1(keep)+"棟",s:keep<OWN?"いまの"+OWN+"棟から "+f1(OWN-keep)+"棟 減る":"いまの"+OWN+"棟を維持できる"},
+{t:goal+"棟に必要なシェア",v:f2(need)+"%",s:BASE.t+"で "+f2(SHARE)+"% → "+f2(need)+"%（"+sgn(need-SHARE)+"pt）"}].map(function(x){
+return H("div",{key:x.t,style:{flex:"1 1 220px",minWidth:"0",background:"#f7f8f5",border:"1px solid #e5e2d8",borderRadius:"10px",padding:"12px 14px"}},
+H("div",{style:{fontSize:"12px",color:"#7e8b96"}},x.t),
+H("div",{style:{fontSize:"24px",fontWeight:800,margin:"4px 0"}},x.v),
+H("div",{style:{fontSize:"11.5px",color:"#7e8b96",lineHeight:"1.6"}},x.s))})),
+H("div",{className:"hint"},keep<OWN?H("span",null,"🔴 いちばん大事なのはここです。",H("b",null,"何もしなければ棟数は減ります"),"。市場が年 ",H("b",null,f1(Math.abs(gr))+"%")," ずつ縮む前提では、シェアを ",H("b",null,f2(SHARE)+"%")," のまま保っても3年後は ",H("b",null,f1(keep)+"棟"),"。",goal,"棟にするには、",H("b",null,"シェアを "+sgn(need-SHARE)+"pt 上げる"),"必要があります。"):H("span",null,"市場が縮まない前提なので、",goal,"棟に必要なシェアは ",H("b",null,f2(need)+"%")," です。"))),
+H("div",{className:"panel"},H("h3",null,"どこに伸びしろが残っているか"),
+H("div",{style:{overflowX:"auto"}},H("table",{className:"tbl slim"},
+H("thead",null,H("tr",null,H("th",null,"市区町村"),H("th",{className:"r"},"年間着工(戸)"),H("th",{className:"r"},"いまの棟数"),H("th",{className:"r"},"いまのシェア"),H("th",{className:"r"},goal+"棟の配分"),H("th",{className:"r"},"差"),H("th",null,"読み方"))),
+H("tbody",null,rows.map(function(r){var g=r.tgt-r.c.own;
+return H("tr",{key:r.c.n},
+H("td",{style:{fontWeight:700,whiteSpace:"nowrap"}},r.c.n),
+H("td",{className:"r"},num(r.c.st)),
+H("td",{className:"r"},r.c.own),
+H("td",{className:"r"},r.c.own?f2(r.sh)+"%":"—"),
+H("td",{className:"r"},f1(r.tgt)),
+H("td",{className:"r",style:{fontWeight:700,color:g>.5?"#a2453d":g<-.5?"#1e7a62":"#7e8b96"}},Math.abs(g)<.05?"±0.0":(g>0?"+":"")+f1(g)),
+H("td",{style:{fontSize:"11.5px",color:"#7e8b96"}},g>.5?"市場の大きさに対して取れていない。ここが伸びしろ":g<-.5?"市場の大きさ以上に取れている。勝ちパターンがある":"ほぼ市場並み"))}))),
+),
+H("div",{className:"hint"},"※ 目標棟数を",H("b",null,"市場の大きさに比例して配分"),"した場合の目安です。",
+gaps.length&&gaps[0].gap>0?H("div",{style:{marginTop:"6px"}},"伸びしろが大きいのは ",H("b",null,gaps.slice(0,3).filter(function(x){return x.gap>0}).map(function(x){return x.n+"(+"+f1(x.gap)+"棟)"}).join("・")),"。",best?H("span",null,"いっぽう ",H("b",null,best.c.n)," は市場規模以上に取れています。",H("b",null,"ここで効いている入口(見学会・OB紹介・地元での認知)を、伸びしろの大きい市に移植する"),"のが最短です。"):null):null)),
+H("div",{className:"panel"},H("h3",null,"この画面の使い方"),
+H("div",{style:{fontSize:"12.5px",lineHeight:"2"}},
+H("div",null,"① ",H("b",null,"母数を「地場工務店マーケット」で見る"),"。商圏全体のシェアは、建売と大手を含むので打ち手に結びつきません"),
+H("div",null,"② ",H("b",null,"市場が縮む前提で棟数を置く"),"。横ばい前提の計画は、着工統計を見た瞬間に崩れます"),
+H("div",null,"③ ",H("b",null,"広げるより、取れている市を深く掘る"),"。商圏を広げると移動時間とアフターの負担が増え、1棟あたりの利益が落ちます"),
+H("div",null,"④ 伸びしろの大きい市を、",H("b",null,"集客管理表のエリア別目標"),"と",H("b",null,"イベント・見学会管理の開催地"),"に反映させます")),
+H("div",{className:"hint"},"※ 着工数・前年比・競合の棟数は",H("b",null,"すべてデモ値"),"です。本導入時は国土交通省「建築着工統計調査」(e-Stat)の市区町村別データを取り込み、毎年自動で更新します。自社の棟数は工程表・案件進行ボードから連携します。")))
+}},{key:"policy",label:"今期方針",icon:"🎯",comp:function(){
 const h=ew.createElement;
 const man=n=>{n=Math.round(n);const o=Math.floor(n/1e4),r=n%1e4;return o>0?(r>0?`${o}億${r.toLocaleString("ja-JP")}万円`:`${o}億円`):`${n.toLocaleString("ja-JP")}万円`};
 const DEPTS=[
