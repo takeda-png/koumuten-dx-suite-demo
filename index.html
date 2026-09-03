@@ -199,6 +199,34 @@
 #pm-lb .pm-close{position:absolute;top:14px;right:16px;border:0;background:#ffffff26;color:#fff;border-radius:50%;width:36px;height:36px;font-size:17px;cursor:pointer;line-height:1}
 #pm-lb .pm-close:hover{background:#ffffff40}
 @media(max-width:900px){.pm-row figure{width:300px}.pm-row figure.half{width:150px}}
+/* ===== 実践⑨:AI検索 順位マトリクス ===== */
+.ai-rank-wrap{overflow-x:auto;border:1px solid #e5e2d8;border-radius:10px;margin:12px 0 4px}
+.ai-rank{width:100%;min-width:300px;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+.ai-rank th,.ai-rank td{padding:5px 6px;text-align:center;border-bottom:1px solid #efefe9}
+.ai-rank thead th{background:#f6f5f0;color:#5c6b77;font-size:10.5px;font-weight:800;letter-spacing:.04em;white-space:nowrap;border-bottom:2px solid #e5e2d8;position:sticky;top:0}
+.ai-rank th.kw,.ai-rank td.kw{text-align:left}
+.ai-rank td.kw{color:#4a554f;line-height:1.5}
+.ai-rank td.o{background:#ddf0e9;color:#1e7a62;font-weight:800;font-size:11px;white-space:nowrap}
+.ai-rank td.x{color:#c3cac6}
+.ai-rank tr.grp td{background:#16302b;color:#dcefe8;text-align:left;font-size:11.5px;font-weight:800;letter-spacing:.04em;padding:7px 8px;border-bottom:0}
+.ai-rank tr.grp span{display:inline-block;margin-left:8px;font-size:10.5px;font-weight:700;color:#9dc9bb;letter-spacing:0}
+.ai-rank tfoot td{background:#f6f5f0;color:#16302b;font-weight:800;font-size:11.5px;border-bottom:0;border-top:2px solid #e5e2d8}
+.ai-rank tfoot td.tot{font-size:14px;color:#1e7a62}
+.ai-terr{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 0}
+.ai-terr>div{flex:1;min-width:260px;border-radius:10px;padding:11px 14px;font-size:12px;line-height:1.8}
+.ai-terr .win{background:#ddf0e9;border:1px solid #bfe3d6;color:#1e5c4b}
+.ai-terr .gap{background:#f6f5f0;border:1px solid #e5e2d8;color:#5c6b77}
+.ai-terr .th{font-size:10px;font-weight:800;letter-spacing:.15em;margin-bottom:6px}
+.ai-terr .win .th{color:#1e7a62}
+.ai-terr .gap .th{color:#8a938e}
+.ai-terr ul{margin:0;padding-left:15px}
+.ai-terr li{margin-bottom:4px}
+@media(max-width:560px){
+  .ai-rank{font-size:11px}
+  .ai-rank th,.ai-rank td{padding:4px 3px}
+  .ai-rank thead th{font-size:9.5px}
+  .ai-rank td.o{font-size:10px}
+}
 
 
 </style>
@@ -366,6 +394,99 @@
     <div class="kpi"><div class="kpi-label">改ざんサイトの全ファイル走査</div><div class="kpi-value">28,054件</div><div class="kpi-sub">マルウェア4件を検出・駆除/39分で完了</div></div>
     <div class="kpi"><div class="kpi-label">バックアップしたデータベース</div><div class="kpi-value">126,996行</div><div class="kpi-sub">22テーブル・72MB</div></div>
     <div class="kpi"><div class="kpi-label">内製した自動化スクリプト</div><div class="kpi-value">365本</div><div class="kpi-sub">記事投稿・分析・デプロイ・検証(+業務システム6件)</div></div><div class="kpi"><div class="kpi-label">検索エンジンにだけ別の内容を返す改ざん</div><div class="kpi-value">6ドメインを点検</div><div class="kpi-sub">うち1件で検出し、原因・経緯を報告書として納品(2026年8月)</div></div>
+  </div>
+</div>
+
+
+<div class="panel">
+  <h3>🔎 実践⑨:AI検索での自社の見え方を実測 — 30語×4エンジン<span class="sm-src">2026年8月実測</span></h3>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f">ChatGPT・Claude・Felo・Geminiに「埼玉で採用を強くしたい企業」が打つであろう<b>社名を含まないキーワード30語</b>を投げ、回答本文・引用元・推薦リストに自社が現れるかを実測しました（指名検索は対象外）。結果は<b>「ホームでは選ばれ、アウェイでは存在しない」偏り型</b>。勝っている土俵と、空いたままの土俵がはっきり分かったので、そこから打ち手を決めて実行しました。この診断は「AI検索 発見性診断」として支援先にも提供しています。</p>
+<div class="kpi-grid">
+<div class="kpi"><div class="kpi-label">ChatGPT</div><div class="kpi-value">28 / 30語</div><div class="kpi-sub">「埼玉 採用コンサル/採用代行/新卒」で1位推薦。社屋写真つきで表示</div></div>
+<div class="kpi"><div class="kpi-label">Felo</div><div class="kpi-value">21 / 30語</div><div class="kpi-sub">採用代行・新卒・内定者研修で筆頭推薦。県内No.1調査を引用</div></div>
+<div class="kpi"><div class="kpi-label">Claude</div><div class="kpi-value">12 / 30語</div><div class="kpi-sub">新卒系で筆頭推薦。sinmido.com を直接読み込んで回答</div></div>
+<div class="kpi"><div class="kpi-label">Gemini</div><div class="kpi-value">12 / 30語</div><div class="kpi-sub">新卒系のみ。地元密着型の筆頭として紹介</div></div>
+</div>
+<div class="ai-rank-wrap">
+<table class="ai-rank">
+<thead><tr><th class="kw">キーワード（社名を含まない“発見系”）</th><th>Claude</th><th>Felo</th><th>ChatGPT</th><th>Gemini</th></tr></thead>
+<tbody>
+<tr class="grp"><td colspan="5">地域 × 採用コンサル<span>9語 ― ChatGPT のみ登場</span></td></tr>
+<tr><td class="kw">埼玉 採用コンサルティング</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">さいたま市 採用コンサル</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 採用コンサル おすすめ</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">大宮 採用支援 会社</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 中途採用 コンサル</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 採用 相談 会社</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉県 採用コンサル 会社</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">大宮 採用コンサルティング</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 採用支援 コンサルタント</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr class="grp"><td colspan="5">採用代行・採用支援<span>7語 ― Felo・ChatGPT が登場</span></td></tr>
+<tr><td class="kw">埼玉 採用代行</td><td class="x">―</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 中小企業 採用支援</td><td class="x">―</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">さいたま市 採用代行 おすすめ</td><td class="x">―</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 採用アウトソーシング(RPO)</td><td class="x">―</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 採用代行 会社 おすすめ</td><td class="x">―</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">さいたま市 採用支援 会社</td><td class="x">―</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 採用アウトソーシング 中小企業</td><td class="x">―</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr class="grp"><td colspan="5">新卒採用<span>12語 ― 4エンジンすべてで筆頭圏</span></td></tr>
+<tr><td class="kw">埼玉 新卒採用 支援</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">埼玉 新卒採用 コンサル</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">さいたま市 新卒採用 支援</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">埼玉 インターンシップ支援 会社</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">埼玉 新卒採用 サポート 会社</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">埼玉 新卒採用支援 おすすめ</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">埼玉県 新卒採用 コンサルティング</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">さいたま市 新卒採用 コンサル</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">埼玉 新卒 母集団形成 支援</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">埼玉 インターンシップ 企画 支援</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">埼玉 新卒採用 代行</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr><td class="kw">埼玉 新卒 説明会 運営 支援</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td></tr>
+<tr class="grp"><td colspan="5">内定者研修・フォロー<span>2語 ― Felo のみ登場</span></td></tr>
+<tr><td class="kw">内定者研修 埼玉</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 内定者フォロー 研修</td><td class="x">―</td><td class="o">上位</td><td class="x">―</td><td class="x">―</td></tr>
+</tbody>
+<tfoot><tr><td class="kw">登場した語数（全30語中）</td><td class="tot">12</td><td class="tot">21</td><td class="tot">28</td><td class="tot">12</td></tr></tfoot>
+</table>
+</div>
+  <div class="ai-terr">
+    <div class="win">
+      <div class="th">勝っている土俵</div>
+      <ul>
+        <li><b>埼玉 × 新卒採用（12語）</b>― Claude・Felo・ChatGPT・Geminiの<b>4エンジンすべてが筆頭推薦</b>。Claudeは自社サイトを直接引用して回答しました。</li>
+        <li><b>埼玉 × 採用代行・中小企業（7語）</b>― Felo・ChatGPTが比較表でも1位。</li>
+        <li><b>埼玉 × 内定者研修（2語）</b>― Feloが研修の日程・参加費まで引用して筆頭推薦。</li>
+        <li>引用元はいずれも<b>自社サイト・No.1調査のリリース・埼玉県公式サイト</b>など、自社発の情報でした。</li>
+      </ul>
+    </div>
+    <div class="gap">
+      <div class="th">空いたままの土俵</div>
+      <ul>
+        <li><b>採用コンサル・採用代行</b>― Claude・Geminiが圏外。この語では両エンジンが比較メディア（「おすすめ◯選」系の記事）だけを引用し、そこに載っていない自社は出てきません。</li>
+        <li><b>工務店・住宅の採用支援</b>― 4エンジンとも圏外。住宅業界の支援実績はあるのに、業界特化を明示した直答ページが自社サイトに無いことが理由です。</li>
+        <li><b>研修・合同研修</b>― 県の合同研修会そのものはAIが引用するのに、運営している社名が出てこない「匿名露出」。</li>
+        <li><b>全国 × 新卒採用コンサル比較</b>― 4エンジンとも圏外。全国系の比較記事に不掲載。</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f;margin-top:12px">診断で出た打ち手のうち、<b>自社サイト側で完結するものは実行済みです。</b>No.1調査の表記（「新卒採用コンサル社数・県内内定者数 埼玉県内No.1」2026年6月期・日本マーケティングリサーチ機構調べ）をリリースだけでなく<b>サービスページ31本とコラム全記事に常設</b>。構造化データに受賞歴・法人番号・sameAs 11件（PR TIMES・マイナビ・埼玉県公式ほか）を追加し、robots.txtで<b>AIクローラー10種を明示的に許可</b>しました。さらに空白土俵に正面から答える<b>コラム10本</b>を書き下ろして公開しています。残る「比較メディアへの掲載」と「工務店・住宅特化の直答ページ」は準備中です。</p>
+  <div class="sm-flow">
+    <span class="step">AI検索で実測（30語×4エンジン）</span><span class="sep">▶</span>
+    <span class="step ai">No.1表記を全ページ常設</span><span class="sep">▶</span>
+    <span class="step ai">構造化データ・sameAsを拡充</span><span class="sep">▶</span>
+    <span class="step ai">AIクローラーを明示Allow</span><span class="sep">▶</span>
+    <span class="step ai">発見系コラム10本を公開</span><span class="sep">▶</span>
+    <span class="step">同じ30語で再測定</span>
+  </div>
+  <div class="sm-note">効果の再測定はこれからです。同じ30語を同じ条件で測り直して、圏外だった語がどう動いたかを確かめます。<b>この記録には、まだ確かめていないことは書きません。</b></div>
+  <div class="sm-footnote">
+    <ul>
+      <li>実測日:Felo・ChatGPT・Geminiは2026年8月1日、Claudeは2026年8月13日。</li>
+      <li>計測条件:ChatGPTは一時チャット、Claudeはシークレットチャット（いずれも記憶OFF）、Gemini・Feloは通常モード。過去の会話が結果に影響しない中立条件で計測しています。</li>
+      <li>判定:<b>上位</b>=筆頭〜3位で推薦、<b>―</b>=回答に登場せず。30語は4つの類型に分け、各類型の代表語を実際に検索した結果を同類型の語に適用しています。</li>
+      <li>対象外:指名検索（社名で調べる検索）、Perplexity・Copilot・Genspark。</li>
+      <li>AIの回答は時期・条件によって変動します。競合として挙がった社名は、AIが回答時点で引用したものであり各社の実態・優劣を示すものではないため、本ページには掲載していません。</li>
+    </ul>
   </div>
 </div>
 
