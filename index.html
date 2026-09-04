@@ -772,6 +772,308 @@
 </div>
 
     </template>
+<template id="aidm-html">
+<style>
+.aidm-wrap{border:1px solid #cfe0d9;border-radius:12px;background:#fff;overflow:hidden;margin-top:4px}
+.aidm-head{background:linear-gradient(135deg,#16302b,#2f9e82);color:#fff;padding:16px 22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.aidm-head .l{display:flex;gap:11px;align-items:center;min-width:200px}
+.aidm-head .mk{width:34px;height:34px;border-radius:9px;background:#ffffff26;border:1px solid #ffffff40;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.aidm-head h3{color:#fff;font-size:15.5px;margin:0 0 2px}
+.aidm-head p{font-size:11.5px;line-height:1.7;color:#dcefe8;margin:0}
+.aidm-head .q{display:flex;align-items:center;gap:7px;font-size:11.5px;color:#dcefe8}
+.aidm-head .q b{background:#ffffff26;border:1px solid #ffffff40;border-radius:999px;padding:2px 10px;font-size:12.5px;color:#fff;font-variant-numeric:tabular-nums}
+.aidm-head .q button{background:#0000;border:1px solid #ffffff4d;color:#dcefe8;border-radius:999px;padding:3px 11px;font-size:11px;font-weight:700;cursor:pointer}
+.aidm-head .q button:hover{background:#ffffff1f;color:#fff}
+.aidm-tabs{display:flex;flex-wrap:wrap;gap:2px;padding:0 14px;border-bottom:1px solid #e5e2d8;background:#fbfbf8}
+.aidm-tabs button{background:#0000;border:0;border-bottom:2px solid #0000;padding:10px 14px;font-size:12.5px;font-weight:700;color:#8a938e;cursor:pointer}
+.aidm-tabs button:hover{color:#16302b}
+.aidm-tabs button.on{color:#2f9e82;border-bottom-color:#2f9e82}
+.aidm-body{display:flex;flex-wrap:wrap}
+.aidm-conv{flex:1;min-width:280px;border-right:1px solid #e5e2d8}
+.aidm-thread{min-height:260px;max-height:440px;overflow-y:auto;padding:16px 16px 4px;display:flex;flex-direction:column;gap:14px;background:#fbfbf8}
+.aidm-u{align-self:flex-end;max-width:86%;background:#2f9e82;color:#fff;font-size:12.5px;line-height:1.8;border-radius:13px 13px 3px 13px;padding:9px 13px}
+.aidm-a{display:flex;gap:9px;align-items:flex-start}
+.aidm-a .av{width:26px;height:26px;border-radius:8px;background:#16302b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:2px}
+.aidm-a .bd{min-width:0;max-width:88%}
+.aidm-a .bb{background:#fff;border:1px solid #e5e2d8;border-radius:13px 13px 13px 3px;padding:10px 13px;font-size:12.5px;line-height:1.85;color:#1e2a27}
+.aidm-a .bb b{color:#16302b}
+.aidm-a .bb .w{color:#a8551a}
+.aidm-src{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:7px}
+.aidm-src .lb{font-size:10px;color:#8a938e}
+.aidm-src span.c{font-size:10px;color:#1f7a63;background:#f2fbf7;border:1px solid #9fd3c1;border-radius:5px;padding:1px 7px}
+.aidm-act{display:flex;gap:6px;margin-top:8px}
+.aidm-act button{background:#fff;border:1px solid #cfd8d3;border-radius:6px;padding:3px 9px;font-size:11px;color:#5c6b77;cursor:pointer}
+.aidm-act button:hover{background:#f2fbf7;border-color:#9fd3c1;color:#16302b}
+.aidm-act .done{font-size:11px;color:#1f7a63;background:#f2fbf7;border:1px solid #9fd3c1;border-radius:6px;padding:3px 9px}
+.aidm-bar{border-top:1px solid #e5e2d8;padding:10px 14px;display:flex;gap:8px;align-items:center;background:#fff}
+.aidm-bar .fake{flex:1;border:1px solid #e5e2d8;border-radius:8px;background:#fbfbf8;color:#a9b2ad;font-size:12px;padding:7px 11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aidm-bar .sb{width:32px;height:32px;border-radius:8px;background:#e9ece9;color:#a9b2ad;border:0;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.aidm-ask{width:250px;padding:14px 16px;flex-shrink:0}
+.aidm-ask .t{font-size:11px;font-weight:800;color:#4a554f;letter-spacing:.03em}
+.aidm-ask .p{font-size:10.5px;color:#a9b2ad;margin:2px 0 9px}
+.aidm-ask .qs{display:flex;flex-direction:column;gap:7px}
+.aidm-ask .qs button{text-align:left;font-size:11.5px;line-height:1.6;color:#3c4642;background:#fff;border:1px solid #e5e2d8;border-radius:8px;padding:7px 9px;cursor:pointer}
+.aidm-ask .qs button:hover:not(:disabled){border-color:#9fd3c1;background:#f2fbf7;color:#16302b}
+.aidm-ask .qs button:disabled{opacity:.42;cursor:default}
+.aidm-ask .n{margin-top:12px;padding-top:10px;border-top:1px solid #eee9dd;font-size:10.5px;line-height:1.8;color:#8a938e}
+.aidm-cmp{display:flex;flex-wrap:wrap;gap:12px}
+.aidm-cmp>div{flex:1;min-width:250px;border-radius:10px;padding:13px 15px}
+.aidm-cmp .g{border:1px solid #e5e2d8;background:#fbfbf8}
+.aidm-cmp .s{border:2px solid #9fd3c1;background:#f2fbf7}
+.aidm-cmp h4{font-size:11.5px;font-weight:800;margin:0 0 8px;display:flex;align-items:center;gap:6px}
+.aidm-cmp .g h4{color:#7e8b96}.aidm-cmp .s h4{color:#1f7a63}
+.aidm-cmp h4 i{width:7px;height:7px;border-radius:50%;display:inline-block}
+.aidm-cmp .g h4 i{background:#a9b2ad}.aidm-cmp .s h4 i{background:#2f9e82}
+.aidm-cmp p{font-size:12.5px;line-height:1.85;margin:0;color:#3c4642}
+.aidm-cmp .g p{color:#5c6b77}
+.aidm-cmp .no{margin-top:10px;padding-top:9px;border-top:1px solid #e5e2d8;font-size:11px;color:#7e8b96}
+.aidm-pt{margin-top:13px;background:#fbfbf8;border-left:4px solid #2f9e82;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;line-height:1.85;color:#1e2a27}
+.aidm-l3{display:flex;flex-wrap:wrap;gap:11px}
+.aidm-l3>div{flex:1;min-width:210px;border:1px solid #e5e2d8;border-radius:10px;padding:13px 15px}
+.aidm-l3 .em{border:2px solid #9fd3c1;background:#f2fbf7}
+.aidm-l3 h4{font-size:11.5px;font-weight:800;color:#1f7a63;margin:0 0 5px}
+.aidm-l3 p{font-size:12.5px;line-height:1.85;margin:0;color:#3c4642}
+.aidm-l3 .lo{margin-top:8px;font-size:11px;font-weight:700;color:#2f9e82}
+.aidm-ul{display:flex;flex-wrap:wrap;gap:8px 20px;margin:13px 0 0;padding:0;list-style:none}
+.aidm-ul li{flex:1;min-width:210px;font-size:12px;line-height:1.8;color:#5c6b77;padding-left:14px;position:relative}
+.aidm-ul li:before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:#9fd3c1}
+.aidm-step{display:flex;flex-wrap:wrap;gap:9px}
+.aidm-step>div{flex:1;min-width:150px;border:1px solid #e5e2d8;border-radius:10px;background:#fbfbf8;padding:11px 13px}
+.aidm-step .em{border:1px solid #9fd3c1;background:#f2fbf7}
+.aidm-step .n{font-size:9.5px;font-weight:800;color:#a9b2ad;letter-spacing:.08em;display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+.aidm-step .em .n{color:#2f9e82}
+.aidm-step .n em{font-style:normal;font-weight:600;color:#8a938e;font-size:10.5px}
+.aidm-step h5{font-size:13px;font-weight:800;color:#16302b;margin:3px 0 4px}
+.aidm-step p{font-size:11px;line-height:1.75;color:#7e8b96;margin:0}
+.aidm-grow{display:flex;flex-wrap:wrap;gap:20px;margin-top:16px}
+.aidm-grow .ch{flex:1;min-width:290px}
+.aidm-grow .hi{flex:1.15;min-width:290px}
+.aidm-cap{font-size:12.5px;font-weight:800;color:#16302b}
+.aidm-sub{font-size:10.5px;color:#8a938e;margin:2px 0 7px}
+.aidm-kpi3{display:flex;gap:8px;margin-top:10px}
+.aidm-kpi3>div{flex:1;border:1px solid #e5e2d8;border-radius:9px;padding:8px 10px}
+.aidm-kpi3 .k{font-size:10px;color:#8a938e}
+.aidm-kpi3 .v{font-size:16px;font-weight:800;color:#16302b;font-variant-numeric:tabular-nums;line-height:1.35}
+.aidm-kpi3 .v em{font-style:normal;font-size:10.5px;font-weight:600;color:#8a938e;margin-left:2px}
+.aidm-kpi3 .v.g{color:#2f9e82}
+.aidm-tw{overflow-x:auto;border:1px solid #e5e2d8;border-radius:9px}
+table.aidm-t{width:100%;border-collapse:collapse;font-size:11.5px;min-width:400px}
+table.aidm-t th{background:#fbfbf8;color:#8a938e;font-weight:600;text-align:left;padding:7px 10px;white-space:nowrap;border-bottom:1px solid #e5e2d8}
+table.aidm-t td{padding:7px 10px;border-bottom:1px solid #f0ece2;color:#3c4642;line-height:1.6}
+table.aidm-t tr:last-child td{border-bottom:0}
+table.aidm-t td.d{color:#8a938e;font-variant-numeric:tabular-nums;white-space:nowrap}
+.aidm-tag{display:inline-block;border-radius:5px;padding:1px 7px;font-size:10px;border:1px solid;white-space:nowrap}
+.aidm-tag.a{background:#fdf6e8;border-color:#f0dcae;color:#8a5a12}
+.aidm-tag.r{background:#fdeeed;border-color:#f2c8c4;color:#a03f38}
+.aidm-tag.n{background:#fbfbf8;border-color:#e5e2d8;color:#5c6b77}
+.aidm-note{margin-top:11px;background:#fdf6e8;border:1px solid #f0dcae;border-radius:9px;padding:10px 13px;font-size:12px;line-height:1.85;color:#5a4520}
+.aidm-note b{color:#8a5a12}
+.aidm-half{display:flex;flex-wrap:wrap;gap:18px}
+.aidm-half>div{flex:1;min-width:270px}
+.aidm-price{display:flex;gap:11px;flex-wrap:wrap}
+.aidm-price>div{flex:1;min-width:150px;border:1px solid #e5e2d8;border-radius:10px;padding:13px 15px}
+.aidm-price .em{border:2px solid #9fd3c1;background:#f2fbf7}
+.aidm-price .k{font-size:10.5px;color:#8a938e}
+.aidm-price .em .k{color:#1f7a63}
+.aidm-price .v{font-size:20px;font-weight:800;color:#16302b;font-variant-numeric:tabular-nums;line-height:1.35}
+.aidm-price .v em{font-style:normal;font-size:11px;font-weight:600;color:#8a938e;margin-left:2px}
+.aidm-price ul{margin:8px 0 0;padding-left:15px;font-size:10.5px;line-height:1.85;color:#5c6b77}
+.aidm-sec{display:flex;flex-wrap:wrap;gap:9px}
+.aidm-sec>div{flex:1;min-width:200px;border:1px solid #e5e2d8;border-radius:9px;padding:11px 13px}
+.aidm-sec h5{font-size:12.5px;font-weight:800;color:#16302b;margin:0 0 4px}
+.aidm-sec p{font-size:11.5px;line-height:1.8;color:#5c6b77;margin:0}
+@media(max-width:760px){.aidm-conv{border-right:0;border-bottom:1px solid #e5e2d8}.aidm-ask{width:100%}}
+</style>
+
+<div class="module-head">
+  <h2>専用AI アシスタント</h2>
+  <p>御社の商品・施工事例・社内ルール・過去の対応履歴を学習源にした、御社専用のAIです。このスイートに溜まった見積・工程・ヒヤリハット・点検履歴をそのまま知識にするため、これまでベテランに聞かないと分からなかったことを、新人でも「会社の答え」で引き出せます。使うほど回答が会社に近づき、人が辞めても知識は会社に残ります。</p>
+</div>
+
+<div class="panel">
+  <h3>触ってみる ― 役割を選んで質問する</h3>
+  <div class="aidm-wrap" id="aidm-app">
+    <div class="aidm-head">
+      <div class="l">
+        <div class="mk">🤖</div>
+        <div>
+          <h3>彩の国ホーム 専用AI</h3>
+          <p>蓄積ナレッジ 342項目 ／ 最終更新 2026-09-11</p>
+        </div>
+      </div>
+      <div class="q">学習キュー <b id="aidm-q">3</b>
+        <button type="button" id="aidm-reset">最初から</button>
+      </div>
+    </div>
+    <div class="aidm-tabs" id="aidm-tabs"></div>
+    <div class="aidm-body">
+      <div class="aidm-conv">
+        <div class="aidm-thread" id="aidm-thread"></div>
+        <div class="aidm-bar">
+          <div class="fake">右の「よくある質問」から選んでください</div>
+          <div class="sb">➤</div>
+        </div>
+      </div>
+      <div class="aidm-ask">
+        <div class="t">よくある質問</div>
+        <div class="p" id="aidm-persona"></div>
+        <div class="qs" id="aidm-qs"></div>
+        <div class="n">回答の下の 👍 / 👎 がそのまま学習キューに入り、翌月のナレッジ更新に反映されます。</div>
+      </div>
+    </div>
+  </div>
+  <div class="hint">回答に付く「参照」は、このスイートのどのモジュールのデータを見て答えたかを示しています。ヒヤリハット・見積書・アフター点検などのタブを開けば、AIが根拠にした記録が実際に入っています。</div>
+</div>
+
+<div class="panel">
+  <h3>同じ質問を、汎用AIと専用AIに聞くと</h3>
+  <div class="aidm-cmp">
+    <div class="g">
+      <h4><i></i>汎用AI（一般のチャットAI）</h4>
+      <p>平屋の坪単価は一般に60〜100万円程度とされ、地域・仕様・延床面積によって変動します。決め手はご家族の価値観によりますので、詳しくは施工会社にご確認ください。</p>
+      <div class="no">→ 一般論。御社の事例も単価も決め手も知らない。</div>
+    </div>
+    <div class="s">
+      <h4><i></i>彩の国ホーム 専用AI</h4>
+      <p>直近3年で川越市の平屋は<b>4件</b>。坪単価は<b>78〜92万円（平均85万円）</b>。決め手として記録が多いのは「回遊動線」と「太陽光＋蓄電池の提案」です。最新事例：2025年11月引渡・28坪の川越市H様邸。</p>
+      <div class="aidm-src"><span class="lb">参照：</span><span class="c">施工事例WORKS</span><span class="c">見積書</span><span class="c">追客管理</span></div>
+    </div>
+  </div>
+  <div class="aidm-pt">質問は「川越市で建てた平屋の事例、坪単価と施主の決め手を教えて」。違いは<b>「賢さ」ではなく「何を知っているか」</b>です。汎用AIに御社の知識を接続します。</div>
+</div>
+
+<div class="panel">
+  <h3>仕組み ― 御社の知識を3層で接続する</h3>
+  <div class="aidm-l3">
+    <div>
+      <h4>① 会社の頭脳（静的知識）</h4>
+      <p>商品・価格・施工事例・営業トーク・社内ルール・NG事項。御社が「こう答えてほしい」内容をAIの前提として固定します。</p>
+    </div>
+    <div>
+      <h4>② 蓄積データ（動的知識）</h4>
+      <p>日々の質問と回答、案件情報、ヒヤリハット、クレーム対応。<b>このスイートに溜まっていくデータがそのまま②になります。</b></p>
+    </div>
+    <div class="em">
+      <h4>③ 育つ仕組み（フィードバック）</h4>
+      <p>回答への評価、月次のログ分析、ナレッジ更新。「よく聞かれること」「間違えたこと」を翌月には正しく答えます。</p>
+      <div class="lo">↻ ①と②へ毎月書き戻す</div>
+    </div>
+  </div>
+  <ul class="aidm-ul">
+    <li>AI自体を作り直すのではなく知識を「接続」するため、導入も更新も早い</li>
+    <li>御社のデータはAIの学習には使われず、御社専用の領域に保管</li>
+    <li>知識は文書として残るため、AIを止めても資産として手元に残る</li>
+  </ul>
+</div>
+
+<div class="panel">
+  <h3>「育つ」を数字で確認する</h3>
+  <div class="aidm-step">
+    <div><div class="n">STEP 1</div><h5>使う</h5><p>社員が日常業務で質問。回答に👍👎と一言コメント。</p></div>
+    <div><div class="n">STEP 2</div><h5>集める</h5><p>質問・回答・評価・添付を自動で蓄積。</p></div>
+    <div><div class="n">STEP 3</div><h5>分析する</h5><p>月次でログを分析。頻出質問・低評価回答・新しい知見を抽出。</p></div>
+    <div class="em"><div class="n">STEP 4</div><h5>確認する</h5><p>更新案を御社担当者がレビュー（30分程度）。採否を判断。</p></div>
+    <div><div class="n">STEP 5</div><h5>反映する</h5><p>承認された内容を翌月からの「会社の頭脳」に反映。</p></div>
+  </div>
+
+  <div class="aidm-grow">
+    <div class="ch">
+      <div class="aidm-cap">月あたりの質問数</div>
+      <div class="aidm-sub">2026年4月〜9月・単位：件</div>
+      <svg viewBox="0 0 420 150" style="width:100%;height:auto" role="img" aria-label="月あたりの質問数。4月41件、5月68件、6月84件、7月97件、8月112件、9月128件。">
+        <line x1="20" y1="120" x2="400" y2="120" stroke="#e5e2d8" stroke-width="1"></line>
+        <path d="M30 120 L30 90.7 Q30 86.7 34 86.7 L66 86.7 Q70 86.7 70 90.7 L70 120 Z" fill="#9fd3c1"></path>
+        <path d="M94 120 L94 68.75 Q94 64.75 98 64.75 L130 64.75 Q134 64.75 134 68.75 L134 120 Z" fill="#9fd3c1"></path>
+        <path d="M158 120 L158 55.75 Q158 51.75 162 51.75 L194 51.75 Q198 51.75 198 55.75 L198 120 Z" fill="#9fd3c1"></path>
+        <path d="M222 120 L222 45.2 Q222 41.2 226 41.2 L258 41.2 Q262 41.2 262 45.2 L262 120 Z" fill="#9fd3c1"></path>
+        <path d="M286 120 L286 33 Q286 29 290 29 L322 29 Q326 29 326 33 L326 120 Z" fill="#9fd3c1"></path>
+        <path d="M350 120 L350 20 Q350 16 354 16 L386 16 Q390 16 390 20 L390 120 Z" fill="#2f9e82"></path>
+        <g font-size="11" fill="#8a938e" text-anchor="middle" style="font-variant-numeric:tabular-nums">
+          <text x="50" y="80.7">41</text><text x="114" y="58.75">68</text><text x="178" y="45.75">84</text>
+          <text x="242" y="35.2">97</text><text x="306" y="23">112</text>
+          <text x="370" y="10" fill="#1f7a63" font-weight="700">128</text>
+        </g>
+        <g font-size="11" fill="#a9b2ad" text-anchor="middle">
+          <text x="50" y="136">4月</text><text x="114" y="136">5月</text><text x="178" y="136">6月</text>
+          <text x="242" y="136">7月</text><text x="306" y="136">8月</text>
+          <text x="370" y="136" fill="#1f7a63" font-weight="700">9月</text>
+        </g>
+      </svg>
+      <div class="aidm-kpi3">
+        <div><div class="k">蓄積ナレッジ</div><div class="v">342<em>項目</em></div></div>
+        <div><div class="k">回答への👍率</div><div class="v g">92<em>%</em></div></div>
+        <div><div class="k">今月の学習</div><div class="v g">17<em>件</em></div></div>
+      </div>
+    </div>
+    <div class="hi">
+      <div class="aidm-cap">今月のナレッジ更新履歴</div>
+      <div class="aidm-sub">何がきっかけで、何が書き換わったか</div>
+      <div class="aidm-tw">
+        <table class="aidm-t">
+          <thead><tr><th>更新日</th><th>更新内容</th><th>きっかけ</th></tr></thead>
+          <tbody>
+            <tr><td class="d">09-02</td><td>引渡し前チェックに「全室歩行での床鳴り確認」を追加</td><td><span class="aidm-tag a">クレーム 1件</span></td></tr>
+            <tr><td class="d">09-05</td><td>長期優良住宅の申請手順を2026-04改定版に差し替え</td><td><span class="aidm-tag r">👎 3件</span></td></tr>
+            <tr><td class="d">09-08</td><td>川越エリアの坪単価レンジを更新（78〜92万円）</td><td><span class="aidm-tag n">新規引渡 1件</span></td></tr>
+            <tr><td class="d">09-11</td><td>値引き上限の決裁ラインを明文化</td><td><span class="aidm-tag a">頻出質問 42件</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="aidm-note"><b>4行目が「育つ」の本質です。</b>「原価の判断基準」が先月42件も聞かれ、しかも回答の評価が低かった ― これは<b>AIの問題ではなく、社内基準が曖昧だったという発見</b>です。AIが会社の弱点を数字で見つけ、明文化につながりました。</div>
+    </div>
+  </div>
+  <div class="hint">管理画面で「今月学習した項目」「ナレッジ更新履歴」「質問数の推移」を確認できます。AIがどれだけ育ったかを、経営者が数字で把握できる状態を作ります。</div>
+</div>
+
+<div class="panel">
+  <h3>導入ステップと料金</h3>
+  <div class="aidm-step">
+    <div><div class="n">STEP 1<em>2〜3週間</em></div><h5>ナレッジ整理</h5><p>商品・事例・ルール・過去資料の棚卸し。御社にヒアリングし、弊社が文書化します。</p></div>
+    <div><div class="n">STEP 2<em>1〜2週間</em></div><h5>構築</h5><p>AIへの接続、検索データベース構築、御社ロゴ・画面の設定。</p></div>
+    <div><div class="n">STEP 3<em>2週間</em></div><h5>試験運用</h5><p>選抜メンバー5名程度で利用。回答のズレを集中的に修正します。</p></div>
+    <div class="em"><div class="n">STEP 4<em>以降継続</em></div><h5>本運用</h5><p>全社展開。月次ナレッジ更新と効果レポートを継続提供します。</p></div>
+  </div>
+  <div class="hint" style="margin-bottom:14px">御社にお願いすること：STEP1でのヒアリング（計3〜4時間）と、STEP3以降の月次レビュー（月30分程度）。約2ヶ月で本運用に入れます。</div>
+  <div class="aidm-price">
+    <div>
+      <div class="k">初期費用</div><div class="v">300,000<em>円〜</em></div>
+      <ul><li>ナレッジ整理・文書化</li><li>AI構築・検索データベース設定</li><li>試験運用と初期チューニング</li><li>利用マニュアル・説明会</li></ul>
+    </div>
+    <div class="em">
+      <div class="k">月額費用</div><div class="v">50,000<em>円〜</em></div>
+      <ul><li>AI利用料（20名まで）</li><li>月次ナレッジ更新</li><li>効果レポート</li><li>サポート窓口（メール・チャット）</li></ul>
+    </div>
+  </div>
+  <div class="hint">※ 利用人数・ナレッジ量により変動します。21名以上は10名ごとに月額20,000円を追加。図面・写真など画像の読み取りは別途ご相談ください。詳細はお見積りにて。</div>
+</div>
+
+<div class="panel">
+  <h3>データの取り扱いと、次のステップ</h3>
+  <div class="aidm-half">
+    <div>
+      <div class="aidm-cap">「社内の情報を入れて大丈夫か」への回答</div>
+      <div class="aidm-sub">&nbsp;</div>
+      <div class="aidm-sec">
+        <div><h5>AIの学習に使われません</h5><p>御社のデータは、AI提供元のモデル学習には利用されない契約形態（API利用）で運用します。</p></div>
+        <div><h5>御社専用の領域に保管</h5><p>データベースは会社ごとに分離。他社の情報と混ざることはありません。</p></div>
+        <div><h5>アクセス権限の管理</h5><p>ID・パスワードによるログイン。部署や役職に応じて閲覧できる情報を制御できます。</p></div>
+        <div><h5>データは御社の資産</h5><p>整理したナレッジ文書・蓄積データはいつでもお渡し可能。契約終了後も御社に残ります。</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="aidm-cap">次のステップ</div>
+      <div class="aidm-sub">まずは無料デモで、御社の資料が「答えるAI」に変わる様子をご覧ください。</div>
+      <div class="aidm-step" style="flex-direction:column">
+        <div class="em"><div class="n">01</div><h5>デモ体験（無料・30分）</h5><p>御社の商品資料を3点お預かりし、その場で専用AIの試作をお見せします。</p></div>
+        <div><div class="n">02</div><h5>ナレッジ棚卸しヒアリング</h5><p>何をAIに覚えさせるべきかを一緒に整理。導入範囲と見積を確定します。</p></div>
+        <div><div class="n">03</div><h5>試験運用スタート</h5><p>選抜メンバーで2週間。効果を確認してから全社展開を判断できます。</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="hint">このモジュールの会社名・邸名・案件・金額・利用状況はすべてデモ用のサンプルです。実在の顧客データではありません。</div>
+</div>
+</template>
+
 <template id="column-html">
 <style>
 .cl-wrap{border:1px solid #cfe0d9;border-radius:12px;background:#fff;overflow:hidden;margin-top:4px}
@@ -3471,7 +3773,7 @@ P("⑧ 書類の中身と、誰が発行するか",
 
 );
 },group:"集客"},
-{key:"flow",label:"案件進行ボード",icon:"🧾",comp:function(){
+{key:"aidm",label:"専用AI アシスタント",icon:"🤖",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("aidm-html").innerHTML}})},group:"基盤"},{key:"flow",label:"案件進行ボード",icon:"🧾",comp:function(){
 const h=ew.createElement;
 const today=new Date();
 const fmt=d=>`${d.getMonth()+1}/${d.getDate()}`;
@@ -5191,6 +5493,174 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     if(el && !el.getAttribute('data-cl-ready')){
       el.setAttribute('data-cl-ready', '1');
       buildOnce(el);
+    }
+  }, 250);
+})();
+</script>
+<script>
+/* 専用AI アシスタント(aidm) ― テンプレート内の script タグは実行されないのでトップレベルに置く。
+   Reactがタブ切替のたびにノードを作り直すため、setIntervalで出現を検知し
+   ノード側のdata-aidm-readyで初期化済みかを持つ(外部変数に持つと再描画後に初期化されない)。 */
+(function(){
+  function q(id){ return document.getElementById(id); }
+
+  var ROLES = [
+    { id:'sales', label:'営業', persona:'営業担当・入社1年目 が聞いています', turns:[
+      { q:'川越市で建てた平屋の事例、坪単価と施主の決め手を教えて',
+        a:'直近3年で川越市の平屋は<b>4件</b>です。坪単価は<b>78〜92万円（平均85万円）</b>。決め手として記録が多いのは「回遊動線」と「太陽光＋蓄電池の提案」です。<br><br>最新事例：2025年11月引渡・28坪の<b>川越市H様邸</b>。見積書と提案資料が案件に紐づいています。',
+        s:['施工事例WORKS','見積書','追客管理'] },
+      { q:'その事例で使った提案資料をベースに、今回の施主向けにトーク案を出して',
+        a:'川越市H様邸の提案書をもとに、今回の施主（ご夫婦＋お子様2人・土地42坪）向けに3点整理しました。<br><br><b>① 回遊動線</b>：前回の施主が最も評価した点。「洗う→干す→しまう」を一直線に。<br><b>② 太陽光＋蓄電池</b>：4人世帯の光熱費を試算（前回実績：月▲1.4万円）。<br><b>③ 予算の伝え方</b>：坪単価85万円×32坪＝2,720万円を先に置き、オプションを積み上げる順。前回はこの順序で契約に至っています。<br><br>提案書のドラフトを作成しますか？',
+        s:['見積書','資金計画・FP','施工事例WORKS'] } ] },
+
+    { id:'genba', label:'現場', persona:'工事監督・2年目 が聞いています', turns:[
+      { q:'足場での工具の落下、過去にヒヤリハットある？',
+        a:'<b>1件あります。</b><br><br>2026年8月12日・<b>草加市T様邸（上棟後）</b>。足場3段目からインパクトドライバーが落下し、直下に大工がいました。原因は腰袋ホルダーの劣化と落下防止コード未装着。当日中に全現場へ注意喚起し、負傷はありません。<br><br><span class="w">⚠️ 再発防止策「高所作業時の工具落下防止コード装着を協力業者含め義務化」は、まだ仕組み化されていません</span>（9月の安全協議会で規程化を提案予定）。',
+        s:['ヒヤリハット・クレーム','現場写真・報告書'] },
+      { q:'他に、仕組み化が済んでいない再発防止策は？',
+        a:'<b>2件あります。</b><br><br>・工具落下防止コードの義務化 ― 草加市T様邸／<b>検討中</b><br>・仕様変更時の発注書を設計・工務の2名承認にする ― 春日部市S様邸／<b>未着手</b><br><br><span class="w">さらに1件、2026年7月22日のOB客A様（外構追加工事の見積説明が不足し金額トラブル）は、対応も再発防止策も未記入のままです。</span>優先度が高いのはこちらです。',
+        s:['ヒヤリハット・クレーム','案件進行ボード'] } ] },
+
+    { id:'shinjin', label:'事務・新人', persona:'事務／入社2ヶ月 が聞いています', turns:[
+      { q:'長期優良住宅の申請、うちの会社の手順を最初から教えて',
+        a:'御社の手順は<b>5ステップ</b>です。<br><br>① 設計図書の確認（担当：設計）<br>② 評価機関へ事前審査（所要<b>約10営業日</b>）<br>③ 認定申請（市役所 建築指導課）<br>④ 補正対応（指摘があれば設計へ差し戻し）<br>⑤ 認定通知の受領・原本保管<br><br>申請書のテンプレートは共有フォルダ「申請書式＞長期優良」にあります。<b>よくあるミスは「壁量計算書の添付漏れ」</b>です。',
+        s:['導入・運用ガイド','補助金 申請書類管理','データ連携ハブ'] },
+      { q:'テンプレを開いて、記入例も見せて',
+        a:'共有フォルダ「申請書式＞長期優良」の最新版（<b>2026-04改定</b>）を開きます。<br><br>記入例は直近の認定案件の申請書を参照しています。添付漏れが起きやすい第3面の下に印を付けました。<br><br>不明点は、過去5件を担当している設計担当が回答できます。',
+        s:['補助金 申請書類管理','図面アーカイブ'] } ] },
+
+    { id:'keiei', label:'経営', persona:'代表取締役 が聞いています', turns:[
+      { q:'先月、社員がAIに一番多く聞いた質問は？',
+        a:'<b>上位3件</b>です。<br><br>① 原価の判断基準 ― <b>42件</b><br>② 補助金の最新要件 ― 31件<br>③ クレーム初動の対応手順 ― 19件<br><br><span class="w">①は回答の評価が低く、社内基準が曖昧な可能性があります。</span>基準の明文化をおすすめします。',
+        s:['利用ログ 2026-08','回答評価データ'] },
+      { q:'①の質問内容を一覧にして、来週の会議資料にまとめて',
+        a:'42件を5つの論点に整理しました。<br><br>・値引き上限の決裁ライン ― 14件<br>・追加工事の原価計上タイミング ― 11件<br>・協力業者の単価改定の反映 ― 8件<br>・仕入値上がり分の見積反映 ― 6件<br>・値引きと粗利率の下限 ― 3件<br><br>会議資料（A4・1枚）のドラフトを作成しました。ダウンロードしますか？',
+        s:['利用ログ 2026-08','見積書','実行予算・進捗'] } ] }
+  ];
+
+  var cur = 0, step = 0, queue = 3, busy = false;
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e){}
+
+  function el(tag, cls, html){
+    var n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(html != null) n.innerHTML = html;
+    return n;
+  }
+  function toEnd(){ var t = q('aidm-thread'); if(t) t.scrollTop = t.scrollHeight; }
+
+  function addUser(text){
+    var t = q('aidm-thread'); if(!t) return;
+    t.appendChild(el('div','aidm-u', text));
+    toEnd();
+  }
+
+  function addAnswer(turn, after){
+    var t = q('aidm-thread'); if(!t) return;
+    var row = el('div','aidm-a');
+    row.appendChild(el('span','av','🤖'));
+    var bd = el('div','bd');
+    var bb = el('div','bb','<span style="color:#a9b2ad">回答を作成しています…</span>');
+    bd.appendChild(bb); row.appendChild(bd); t.appendChild(row); toEnd();
+
+    function finish(){
+      bb.innerHTML = turn.a;
+      var src = el('div','aidm-src','<span class="lb">参照：</span>');
+      turn.s.forEach(function(x){ src.appendChild(el('span','c', x)); });
+      bd.appendChild(src);
+
+      var act = el('div','aidm-act');
+      var up = el('button', null, '👍 役に立った');
+      var dn = el('button', null, '👎 違う');
+      up.type = 'button'; dn.type = 'button';
+      act.appendChild(up); act.appendChild(dn); bd.appendChild(act);
+
+      function rate(mark){
+        queue += 1;
+        var qe = q('aidm-q'); if(qe) qe.textContent = String(queue);
+        act.innerHTML = '';
+        act.appendChild(el('span','done', mark + ' 学習キューに追加しました（翌月のナレッジ更新で反映）'));
+        toEnd();
+      }
+      up.onclick = function(){ rate('👍'); };
+      dn.onclick = function(){ rate('👎'); };
+      toEnd();
+      if(after) after();
+    }
+    if(reduce){ finish(); return; }
+    setTimeout(finish, 620);
+  }
+
+  function renderQs(){
+    var box = q('aidm-qs'), p = q('aidm-persona');
+    if(!box) return;
+    var role = ROLES[cur];
+    if(p) p.textContent = role.persona;
+    box.innerHTML = '';
+    role.turns.forEach(function(t, i){
+      var b = el('button', null, (i < step ? '✓ ' : '') + t.q);
+      b.type = 'button';
+      if(i !== step) b.disabled = true;
+      else b.setAttribute('data-aidm-ask', String(i));
+      box.appendChild(b);
+    });
+    if(step >= role.turns.length){
+      box.appendChild(el('div', null,
+        '<span style="font-size:10.5px;color:#a9b2ad;line-height:1.8">他の役割のタブも切り替えてお試しください。</span>'));
+    }
+  }
+
+  function renderTabs(){
+    var tb = q('aidm-tabs'); if(!tb) return;
+    tb.innerHTML = '';
+    ROLES.forEach(function(r, i){
+      var b = el('button', i === cur ? 'on' : '', r.label);
+      b.type = 'button';
+      b.setAttribute('data-aidm-role', String(i));
+      tb.appendChild(b);
+    });
+  }
+
+  function load(i){
+    cur = i; step = 0; busy = false;
+    var t = q('aidm-thread'); if(t) t.innerHTML = '';
+    renderTabs();
+    /* 初期表示：1往復ぶんを最初から見えている状態にする */
+    var saved = reduce; reduce = true;
+    addUser(ROLES[cur].turns[0].q);
+    addAnswer(ROLES[cur].turns[0]);
+    reduce = saved;
+    step = 1;
+    renderQs();
+    if(t) t.scrollTop = 0;
+  }
+
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(!t || !t.closest || !t.closest('#aidm-app')) return;
+    var rb = t.closest('[data-aidm-role]');
+    if(rb){ load(+rb.getAttribute('data-aidm-role')); return; }
+    if(t.closest('#aidm-reset')){ load(cur); return; }
+    var ab = t.closest('[data-aidm-ask]');
+    if(ab && !busy){
+      busy = true;
+      var i = +ab.getAttribute('data-aidm-ask');
+      var turn = ROLES[cur].turns[i];
+      addUser(turn.q);
+      step = i + 1;
+      renderQs();
+      addAnswer(turn, function(){ busy = false; renderQs(); });
+    }
+  });
+
+  setInterval(function(){
+    var el2 = q('aidm-app');
+    if(el2 && !el2.getAttribute('data-aidm-ready')){
+      el2.setAttribute('data-aidm-ready', '1');
+      cur = 0; queue = 3;
+      var qe = q('aidm-q'); if(qe) qe.textContent = '3';
+      load(0);
     }
   }, 250);
 })();
