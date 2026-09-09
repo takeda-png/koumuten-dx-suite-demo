@@ -2622,7 +2622,403 @@ h("div",{className:"hint"},"「価格が合わなかった」は最も多く出�
 h("div",{className:"panel"},
 h("h3",null,"この画面の使い方"),
 h("p",{className:"hint",style:{margin:0}},"月に1度、受注・失注が確定した案件をこの6段に流し込むだけで十分です。数字が揃うと、営業会議の議題が「今月どうだった」から「どの段を上げるか」に変わります。決めた打ち手は改善アクション管理に登録すると、実行されたかどうかまで追えます。")))}
-,group:"営業"},{key:"fp",label:"資金計画・FP",icon:"🏦",comp:function(){let[e,t]=(0,ew.useState)("sim"),[r,n]=(0,ew.useState)(1200),[a,i]=(0,ew.useState)(2450),[l,o]=(0,ew.useState)(500),[s,u]=(0,ew.useState)("kosodate"),[c,f]=(0,ew.useState)("chouki"),[d,h]=(0,ew.useState)(!1),[p,g]=(0,ew.useState)(.9),[m,v]=(0,ew.useState)(35),[b,y]=(0,ew.useState)(650),[x,j]=(0,ew.useState)(2),[O,w]=(0,ew.useState)(""),[C,I]=(0,ew.useState)(34),[k,A]=(0,ew.useState)(82e3),[S,E]=(0,ew.useState)(26e3),[P,T]=(0,ew.useState)(18e3),N=Math.round((r+a)*.08),_=(0,ew.useMemo)(()=>{let e="other"!==s,t=0,r="対象なし";"gx"===c?(t=110,r="GX志向型 110万円(全世帯)"):"chouki"===c&&e?(t=80,r="長期優良 80万円"):"zeh"===c&&e&&(t=40,r="ZEH水準 40万円(第2期 9/30締切)");let n=t;return t>0&&d&&"gx"!==c&&(n+=20,r+=" + 解体加算20万円"),{total:n,label:r}},[s,c,d]),M=r+a+N,D=1e4*Math.max(M-l-_.total,0),G=C3(D,p,m),L=C3(D,p+.5,m),W=G*m*12,Z=(0,ew.useMemo)(()=>{let e=[],t=300;for(let r=0;r<=30;r++)t+=b*(r<25?1+.01*r:.55)-(260+x*(r>3&&r<22?45+55*(r>12):20))-(r<m?12*G/1e4:0),e.push({age:`${34+r}\u{6B73}`,savings:Math.round(t)});return e},[b,x,G,m]),B=Math.min(...Z.map(e=>e.savings)),R="gx"===c?.45:"chouki"===c?.35:"zeh"===c?.3:.1,F=Math.round(S*(1-R)),Y=k+S+P,z=Math.round(G)+F+P,X=z-Y;return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"資金計画・FPツール"}),(0,eO.jsx)("p",{children:"商談中にその場で資金計画。補助金の対象判定(みらいエコ住宅2026)と金利上昇シナリオ、35年のライフプランまで1画面で見せられます。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"sim"===e?"on":""}`,onClick:()=>t("sim"),children:"シミュレーション"}),(0,eO.jsx)("button",{className:`proj-tab ${"sheet"===e?"on":""}`,onClick:()=>t("sheet"),children:"資金計画・返済計画書(印刷)"})]}),"sheet"===e&&(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"計画書 追加入力"}),(0,eO.jsxs)("div",{className:"form-grid",children:[(0,eO.jsxs)("label",{children:["お施主様名",(0,eO.jsx)("input",{value:O,onChange:e=>w(e.target.value),placeholder:"例:原"})]}),(0,eO.jsxs)("label",{children:["ご本人年齢",(0,eO.jsx)("input",{type:"number",value:C,onChange:e=>I(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["現在の家賃(円/月)",(0,eO.jsx)("input",{type:"number",value:k,onChange:e=>A(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["現在の水道光熱費(円/月)",(0,eO.jsx)("input",{type:"number",value:S,onChange:e=>E(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["その他固定費(円/月)",(0,eO.jsx)("input",{type:"number",value:P,onChange:e=>T(+e.target.value)})]})]}),(0,eO.jsx)("button",{className:"gen-btn ghost",style:{width:"auto",padding:"9px 18px"},onClick:()=>window.print(),children:"🖨 この計画書を印刷 / PDF保存"})]}),(0,eO.jsxs)("div",{className:"plan-sheet",children:[(0,eO.jsxs)("div",{className:"ps-header",children:[(0,eO.jsxs)("div",{className:"ps-title",children:[O||"___","様 資金計画・返済計画書"]}),(0,eO.jsxs)("div",{className:"ps-meta",children:["作成日 ",new Date().toLocaleDateString("ja-JP")," ｜ 担当:彩の国ホーム"]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"一次エネルギー消費量計算を根拠にランニングコストを考えた提案資料です。※本書式はシミュレーションであり、生活スタイルや経済状況により実際と異なる場合があります。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報①)家族構成と資産"}),(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"家族構成"}),(0,eO.jsxs)("td",{children:["ご本人(",C,"歳)・配偶者・お子様",x,"人"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"世帯年収"}),(0,eO.jsxs)("td",{children:[b.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"自己資金(貯蓄より充当)"}),(0,eO.jsxs)("td",{children:[l.toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報②)毎月支出の比較 — 現在のお住まい vs 新築後"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"項目"}),(0,eO.jsx)("th",{className:"r",children:"現在"}),(0,eO.jsx)("th",{className:"r",children:"新築後"}),(0,eO.jsx)("th",{className:"r",children:"差額"})]})}),(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"家賃 → 住宅ローン返済"}),(0,eO.jsxs)("td",{className:"r",children:[k.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(G).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[(Math.round(G)-k).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["水道光熱費(断熱性能により▲",Math.round(100*R),"%)"]}),(0,eO.jsxs)("td",{className:"r",children:[S.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[F.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:["▲",(S-F).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"その他固定費"}),(0,eO.jsxs)("td",{className:"r",children:[P.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[P.toLocaleString("ja-JP"),"円"]}),(0,eO.jsx)("td",{className:"r",children:"0円"})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"毎月合計"}),(0,eO.jsxs)("td",{className:"r",children:[Y.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[z.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:X<=0?"#2F9E82":"#C4554D"},children:[X<=0?"▲":"+",Math.abs(X).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"35年間の総額比較"}),(0,eO.jsxs)("td",{className:"r",children:[(420*Y).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[(420*z).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{fontWeight:800,color:X<=0?"#2F9E82":"#C4554D"},children:[X<=0?"▲":"+",Math.abs(420*X).toLocaleString("ja-JP"),"円"]})]})]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"現在の暮らしをこのまま35年続けた場合と、高断熱の新築で35年暮らした場合の比較です。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報③)予算とローン計画"}),(0,eO.jsxs)("div",{className:"ps-cols",children:[(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"1 土地価格"}),(0,eO.jsxs)("td",{className:"r",children:[r.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"2 建物価格(外構・太陽光含む)"}),(0,eO.jsxs)("td",{className:"r",children:[a.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"3 諸費用・その他"}),(0,eO.jsxs)("td",{className:"r",children:[N.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["4 補助金(",_.label,")"]}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:["▲",_.total,"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"5 自己資金"}),(0,eO.jsxs)("td",{className:"r",children:["▲",l.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"借入金額"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(D/1e4).toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"返済期間"}),(0,eO.jsxs)("td",{className:"r",children:[m,"年"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"適用金利(変動想定)"}),(0,eO.jsxs)("td",{className:"r",children:[p,"%"]})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"毎月支払い"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(G).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"ボーナス加算"}),(0,eO.jsx)("td",{className:"r",children:"0円"})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"金利+0.5%時の毎月支払い"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(L).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総返済額(概算)"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(W/1e4).toLocaleString("ja-JP"),"万円"]})]})]})})]}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報④)返済計画 — 5年ごとのローン残高と繰上返済プラン"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"経過"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsxs)("th",{className:"r",children:[e,"年後(",C+e,"歳)"]},e))]})}),(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"ローン残高(概算)"}),[5,10,15,20,25,30,35].map(e=>{let t,r,n;return(0,eO.jsxs)("td",{className:"r",children:[Math.round((t=p/100/12,r=12*m,((n=12*e)>=r?0:0===t?D*(1-n/r):(Math.pow(1+t,r)-Math.pow(1+t,n))/(Math.pow(1+t,r)-1)*D)/1e4)).toLocaleString("ja-JP"),"万円"]},e)})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"繰上返済(ご相談)"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsx)("td",{className:"r",style:{color:"#B9C2BD"},children:"円"},e))]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"光熱費節約分の累計"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:[Math.round((S-F)*12*e/1e4).toLocaleString("ja-JP"),"万円"]},e))]})]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"光熱費の節約分を繰上返済に回すことで完済時期の前倒しが可能です。住宅ローン控除・繰上返済のご判断はお施主様ご自身で行っていただき、金融商品の推奨は行いません。"})]})]}),"sim"===e&&(0,eO.jsxs)(eO.Fragment,{children:[(0,eO.jsxs)("div",{className:"panel-row",children:[(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:300},children:[(0,eO.jsx)("h3",{children:"入力"}),(0,eO.jsxs)("div",{className:"form-grid",children:[(0,eO.jsxs)("label",{children:["土地(万円)",(0,eO.jsx)("input",{type:"number",value:r,onChange:e=>n(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["建物(万円)",(0,eO.jsx)("input",{type:"number",value:a,onChange:e=>i(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["自己資金(万円)",(0,eO.jsx)("input",{type:"number",value:l,onChange:e=>o(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["世帯年収(万円)",(0,eO.jsx)("input",{type:"number",value:b,onChange:e=>y(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["お子様の人数",(0,eO.jsx)("input",{type:"number",min:0,max:4,value:x,onChange:e=>j(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["世帯タイプ",(0,eO.jsxs)("select",{value:s,onChange:e=>u(e.target.value),children:[(0,eO.jsx)("option",{value:"kosodate",children:"子育て世帯(18歳未満の子)"}),(0,eO.jsx)("option",{value:"wakamono",children:"若者夫婦世帯(39歳以下)"}),(0,eO.jsx)("option",{value:"other",children:"その他"})]})]}),(0,eO.jsxs)("label",{children:["住宅性能",(0,eO.jsxs)("select",{value:c,onChange:e=>f(e.target.value),children:[(0,eO.jsx)("option",{value:"gx",children:"GX志向型"}),(0,eO.jsx)("option",{value:"chouki",children:"長期優良住宅"}),(0,eO.jsx)("option",{value:"zeh",children:"ZEH水準"}),(0,eO.jsx)("option",{value:"sonota",children:"その他"})]})]}),(0,eO.jsxs)("label",{children:["金利(%)",(0,eO.jsx)("input",{type:"number",step:.1,value:p,onChange:e=>g(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["返済期間(年)",(0,eO.jsx)("input",{type:"number",value:m,onChange:e=>v(+e.target.value)})]})]}),(0,eO.jsxs)("label",{className:"chk",children:[(0,eO.jsx)("input",{type:"checkbox",checked:d,onChange:e=>h(e.target.checked)})," 建て替え(旧居解体あり)"]})]}),(0,eO.jsxs)("div",{className:"panel",style:{flex:1.3,minWidth:320},children:[(0,eO.jsx)("h3",{children:"資金計画(概算)"}),(0,eO.jsx)("table",{className:"tbl slim",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総額(土地+建物+諸費用8%)"}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[M.toLocaleString("ja-JP"),"万円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"補助金判定"}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82",fontWeight:700},children:[_.label," → ▲",_.total,"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"借入金額"}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[Math.round(D/1e4).toLocaleString("ja-JP"),"万円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["毎月返済(金利",p,"%)"]}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[Math.round(G).toLocaleString("ja-JP"),"円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"金利+0.5%なら"}),(0,eO.jsxs)("td",{className:"r",style:{color:"#C4554D"},children:[Math.round(L).toLocaleString("ja-JP"),"円(+",Math.round(L-G).toLocaleString("ja-JP"),"円)"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総返済額"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(W/1e4).toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("div",{className:"hint",children:"補助金は2026年度みらいエコ住宅の簡易判定(デモ)。申請可否は公式要件で最終確認します。"})]})]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"ライフプラン簡易シミュレーション(30年・貯蓄残高)"}),(0,eO.jsx)(iO,{width:"100%",height:220,children:(0,eO.jsxs)(C4,{data:Z,margin:{top:10,right:10,left:0,bottom:0},children:[(0,eO.jsx)(mC,{stroke:"#E5E2D8",vertical:!1}),(0,eO.jsx)(bI,{dataKey:"age",tick:{fontSize:11},interval:4}),(0,eO.jsx)(bG,{tick:{fontSize:11}}),(0,eO.jsx)(bu,{}),(0,eO.jsx)(vT,{y:0,stroke:"#C4554D",strokeDasharray:"4 4"}),(0,eO.jsx)(vw,{dataKey:"savings",name:"貯蓄残高(万円)",stroke:"#2F9E82",strokeWidth:2.5,dot:!1})]})}),(0,eO.jsxs)("div",{className:"hint",children:["最小貯蓄額:",B.toLocaleString("ja-JP"),"万円",B<0&&" ⚠ 教育費ピークで赤字。借入額・期間の調整を推奨","。教育費・収入カーブは簡易モデルです。"]})]})]})]})},group:"営業"},
+,group:"営業"},{key:"assist",label:"営業アシスタントAI",icon:"🗂️",comp:function(){
+const h=ew.createElement;
+const TODAY=new Date();
+const WD=["日","月","火","水","木","金","土"];
+const dOf=n=>new Date(TODAY.getTime()+864e5*n);
+const fmt=n=>{const d=dOf(n);return `${d.getMonth()+1}/${d.getDate()}`;};
+const fmtW=n=>{const d=dOf(n);return `${d.getMonth()+1}/${d.getDate()}(${WD[d.getDay()]})`;};
+const CO="彩の国ホーム";
+
+const CASES=[
+{k:"yoshikawa",n:"吉川様邸",to:"吉川様",stage:"契約直前",who:"井上",amt:3900,
+ loan:"事前審査OK → 本審査の準備中",next:"工事請負契約",nextD:5,
+ note:"最終見積を提示済み。契約日を調整中。契約書類とローン本審査の書類が同時に走る、いちばん事務が重い局面。"},
+{k:"aoki",n:"青木様邸",to:"青木様",stage:"プラン申込済",who:"大西",amt:3200,
+ loan:"事前審査の書類を回収中",next:"設計契約",nextD:7,
+ note:"OB田中様のご紹介。土地あり。賃貸12万円との比較が効いている。事前審査の書類が3日遅れている。"},
+{k:"nakamura",n:"中村様邸",to:"中村様",stage:"着工中",who:"井上",amt:4150,
+ loan:"実行済(つなぎ融資中)",next:"上棟",nextD:9,
+ note:"子育てエコホームの交付申請が期限超過。中間金のご請求と上棟式の日程調整も残っている。"},
+{k:"ogawa",n:"小川様",to:"小川様",stage:"商談中",who:"森",amt:3400,
+ loan:"未着手",next:"プラン提示",nextD:8,
+ note:"和モダン希望・二世帯寄り。直近の打合せ議事録がまだ送れていない。次回アポも未確定。"},
+{k:"matsumoto",n:"松本様",to:"松本様",stage:"追客中",who:"森",amt:2900,
+ loan:"未着手",next:"土地情報の送付",nextD:3,
+ note:"土地なし・予算調整中。新着土地の自動配信に登録して、接触する口実を作る。"},
+{k:"murakami",n:"村上様",to:"村上様",stage:"追客中(比較検討)",who:"岸",amt:3000,
+ loan:"未着手",next:"保証内容の比較資料",nextD:5,
+ note:"他社2社と比較中。金額ではなく保証と点検体制で差をつける方針。"}];
+const cOf=k=>CASES.find(c=>c.k===k)||CASES[0];
+
+const KC={"契約":"#c4554d","ローン":"#2f9e82","申請":"#d98e32","連絡":"#5c6b77","議事録":"#8a938e","社内":"#7e8b96"};
+const T0=[
+{id:"T01",c:"nakamura",t:"子育てエコホーム 交付申請の書類そろえ",kind:"申請",who:"井上",d:-2,ai:1,st:1,min:240},
+{id:"T02",c:"ogawa",t:`${fmt(-4)}打合せの議事録をお送りする`,kind:"議事録",who:"森",d:-1,ai:1,st:1,min:50},
+{id:"T03",c:"aoki",t:"事前審査の必要書類(住民票・印鑑証明)の回収",kind:"ローン",who:"大西",d:-3,ai:1,st:0,min:150},
+{id:"T04",c:"ogawa",t:"次回打合せの日程調整のご連絡",kind:"連絡",who:"森",d:0,ai:1,st:1,min:20},
+{id:"T05",c:"nakamura",t:"中間金のご請求書を作成して送付",kind:"社内",who:"白石",d:1,ai:1,st:2,min:40},
+{id:"T06",c:"aoki",t:`${fmt(-2)}打合せの議事録をお送りする`,kind:"議事録",who:"大西",d:1,ai:1,st:1,min:50},
+{id:"T07",c:"ogawa",t:"和モダンの施工事例3件をお送りする",kind:"連絡",who:"森",d:2,ai:1,st:0,min:30},
+{id:"T08",c:"matsumoto",t:"エリア新着土地の自動配信に登録",kind:"社内",who:"森",d:3,ai:0,st:0,min:20},
+{id:"T09",c:"yoshikawa",t:"工事請負契約書の作成(建設業法19条の記載事項)",kind:"契約",who:"井上",d:5,ai:1,st:1,min:210},
+{id:"T10",c:"yoshikawa",t:"契約約款・設計図書・仕様書の製本",kind:"契約",who:"白石",d:5,ai:0,st:0,min:90},
+{id:"T11",c:"yoshikawa",t:"収入印紙の手配(契約金額に応じた額)",kind:"契約",who:"白石",d:5,ai:0,st:0,min:20},
+{id:"T12",c:"yoshikawa",t:"住宅ローン本審査の申込書を作成",kind:"ローン",who:"井上",d:6,ai:1,st:0,min:120},
+{id:"T13",c:"murakami",t:"保証内容の他社比較資料を作成",kind:"社内",who:"岸",d:5,ai:1,st:1,min:100},
+{id:"T14",c:"nakamura",t:"上棟式の日程調整とご案内",kind:"連絡",who:"井上",d:4,ai:1,st:1,min:30},
+{id:"T15",c:"matsumoto",t:"資金計画書(いまの家賃との比較版)を作成",kind:"社内",who:"森",d:6,ai:1,st:0,min:60},
+{id:"T16",c:"aoki",t:"設計業務委託契約書の作成",kind:"契約",who:"大西",d:7,ai:1,st:0,min:90},
+{id:"T17",c:"yoshikawa",t:"住宅瑕疵担保責任保険の申込",kind:"申請",who:"白石",d:9,ai:0,st:0,min:60},
+{id:"T18",c:"murakami",t:"9月の完成見学会のご案内",kind:"連絡",who:"岸",d:8,ai:1,st:0,min:25},
+{id:"T19",c:"yoshikawa",t:"火災保険の見積を代理店へ依頼",kind:"社内",who:"白石",d:10,ai:1,st:0,min:30},
+{id:"T20",c:"nakamura",t:"構造見学会の開催可否をご確認",kind:"連絡",who:"井上",d:6,ai:1,st:3,min:20}];
+const STL=["未着手","AI下書き済み","確認待ち","完了"];
+const STC=["#c4554d","#2f9e82","#d98e32","#8a938e"];
+
+const BD={
+keiyaku:{n:"工事請負契約の書類",items:[
+{n:"工事請負契約書",w:"自社",note:"建設業法19条の記載事項(工事内容・請負代金・工期・支払の時期と方法・変更時の扱いなど16項目)を満たすこと"},
+{n:"工事請負契約約款",w:"自社",note:"国土交通省の建設工事標準請負契約約款をもとに自社の特約を追記する"},
+{n:"設計図書(配置図・平面図・立面図)",w:"自社",note:"設計部から受領して契約書に添付する"},
+{n:"仕様書",w:"自社",note:"仕様決定・変更管理AIの確定版をそのまま使う"},
+{n:"見積書(最終)",w:"自社",note:"見積書モジュールの最終版。金額は契約書と1円単位でそろえる"},
+{n:"工程表",w:"自社",note:"工程×職人手配から出力。契約書に書く工期と食い違わせない"},
+{n:"収入印紙",w:"自社",note:"請負に関する契約書は課税文書。金額に応じた額を貼付し、軽減措置の適用は契約時点の税法で確認する"},
+{n:"建設業許可証の写し",w:"自社",note:"有効期限を毎年確認する"},
+{n:"住宅瑕疵担保責任保険の申込",w:"第三者",note:"保険法人へ。着工前の申込が必要"}]},
+loanH:{n:"住宅ローン(本審査)",items:[
+{n:"本審査の申込書",w:"自社",note:"金融機関ごとに書式が違う。事前審査で申告した内容と食い違わせない"},
+{n:"本人確認書類",w:"お客様",note:"運転免許証・マイナンバーカードなど"},
+{n:"収入を証明する書類",w:"お客様",note:"源泉徴収票。自営業の方は確定申告書3期分"},
+{n:"住民票(世帯全員・続柄記載)",w:"お客様",note:"発行から3か月以内のもの"},
+{n:"印鑑証明書",w:"お客様",note:"発行から3か月以内のもの"},
+{n:"他の借入の返済予定表",w:"お客様",note:"車・教育・カードローンなど。ここの申告漏れが減額と否決の一番の原因"},
+{n:"工事請負契約書の写し",w:"自社",note:"契約後すぐに提出する"},
+{n:"建築確認済証",w:"第三者",note:"指定確認検査機関から交付。着工前に必要"},
+{n:"土地の登記事項証明書・公図",w:"第三者",note:"法務局。土地をお持ちの場合"}]},
+loanP:{n:"住宅ローン(事前審査)",items:[
+{n:"事前審査の申込書",w:"自社",note:"金融機関の書式に記入する"},
+{n:"本人確認書類",w:"お客様",note:"運転免許証など"},
+{n:"収入を証明する書類",w:"お客様",note:"源泉徴収票(直近1年)"},
+{n:"健康保険証",w:"お客様",note:"勤続年数の確認に使われる"},
+{n:"他の借入の返済予定表",w:"お客様",note:"ここが後から出てくると本審査でひっくり返る"},
+{n:"物件の概算資料(概算見積・プラン)",w:"自社",note:"確定前でも概算で受け付ける金融機関が多い"}]},
+sekkei:{n:"設計契約の書類",items:[
+{n:"設計業務委託契約書",w:"自社",note:"業務の範囲と成果物をはっきり書く"},
+{n:"重要事項説明書(建築士法)",w:"自社",note:"建築士が記名し、契約前に説明する"},
+{n:"業務内容と報酬の内訳",w:"自社",note:"どこまでが設計料に含まれるかを明示する"},
+{n:"収入印紙",w:"自社",note:"契約金額に応じた額"}]},
+hojo:{n:"補助金の交付申請",items:[
+{n:"交付申請書",w:"自社",note:"補助金 申請書類管理と同じ案件を見ている"},
+{n:"工事請負契約書の写し",w:"自社",note:"契約日が交付申請の要件を満たしているか確認する"},
+{n:"建築確認済証の写し",w:"第三者",note:"—"},
+{n:"性能を証明する書類",w:"第三者",note:"BELS・住宅性能評価など。発行に日数がかかる"},
+{n:"着工前の写真",w:"自社",note:"現場写真・報告書から出力。撮り直しがきかないので着工前に必ず撮る"},
+{n:"共同事業実施規約",w:"お客様",note:"お客様の署名が必要"}]},
+shodan:{n:"商談を進めるための資料",items:[
+{n:"資金計画書",w:"自社",note:"資金計画・FPから出力"},
+{n:"ヒアリングシート(記入済)",w:"自社",note:"—"},
+{n:"敷地の情報(登記事項証明書・公図・現況写真)",w:"お客様",note:"土地をお持ちの場合"},
+{n:"ご要望のまとめ(議事録)",w:"自社",note:"この画面の議事録タブで作る"},
+{n:"施工事例・仕様の資料",w:"自社",note:"施工事例WORKSから選ぶ"}]}};
+
+const CDOC0={
+yoshikawa:{b:["keiyaku","loanH"],v:{keiyaku:[1,2,2,2,1,0,0,2,0],loanH:[0,2,2,1,0,0,0,1,2]}},
+aoki:{b:["sekkei","loanP"],v:{sekkei:[1,0,1,0],loanP:[2,2,2,2,0,2]}},
+nakamura:{b:["hojo"],v:{hojo:[1,2,2,1,2,0]}},
+ogawa:{b:["shodan"],v:{shodan:[1,2,0,0,2]}},
+matsumoto:{b:["shodan"],v:{shodan:[0,2,0,1,2]}},
+murakami:{b:["shodan"],v:{shodan:[2,2,2,2,1]}}};
+const SL={"自社":["未着手","作成中","完了"],"お客様":["未依頼","依頼中","受領済"],"第三者":["未手配","申請中","受領済"]};
+const SC3=["#c4554d","#d98e32","#1e7a62"];
+
+const SCENES=[
+{k:"s1",n:"初回来場のお礼",
+ s:c=>`【${CO}】ご来場ありがとうございました`,
+ b:c=>[`${c.to}`,``,`このたびは${CO}のモデルハウスにご来場いただき、誠にありがとうございました。担当の${c.who}です。`,``,`本日お伺いしたご要望を、こちらでいったん整理いたしました。ご認識と違うところがありましたらお知らせください。`,``,`次のステップとして、資金計画のご提案とプランのたたき台をご用意できればと考えております。ご都合のよい日時を2〜3ついただけますでしょうか。`,``,`引き続きよろしくお願いいたします。`].join("\n")},
+{k:"s2",n:"打合せのお礼＋議事録の送付",
+ s:c=>`【${CO}】本日のお打合せの内容をお送りします`,
+ b:c=>[`${c.to}`,``,`本日はお打合せのお時間をいただき、ありがとうございました。`,``,`決まったことと、続けて検討することを議事録にまとめましたので、添付をご確認ください。認識の違いがありましたら、遠慮なくご指摘いただけますと助かります。`,``,`次回は${c.next}をご用意してお持ちします。`,``,`引き続きよろしくお願いいたします。`].join("\n")},
+{k:"s3",n:"資料の送付",
+ s:c=>`【${CO}】ご依頼の資料をお送りします`,
+ b:c=>[`${c.to}`,``,`お世話になっております。${CO}の${c.who}です。`,``,`先日お話に出ておりました資料をお送りします。お時間のあるときにご覧ください。`,``,`気になる点や、もっと見てみたいものがありましたら、いつでもお知らせください。次回のお打合せでご説明いたします。`,``,`よろしくお願いいたします。`].join("\n")},
+{k:"s4",n:"次回の日程調整",
+ s:c=>`【${CO}】次回お打合せの日程について`,
+ b:c=>[`${c.to}`,``,`お世話になっております。${CO}の${c.who}です。`,``,`次回のお打合せですが、下記の候補でご都合はいかがでしょうか。`,``,`　第1希望　${fmtW(c.nextD)} 10:00〜`,`　第2希望　${fmtW(c.nextD+1)} 14:00〜`,`　第3希望　${fmtW(c.nextD+3)} 14:00〜`,``,`いずれも難しい場合は、ご都合のよい日を2〜3ついただけますと助かります。`,``,`よろしくお願いいたします。`].join("\n")},
+{k:"s5",n:"見積書の提出",
+ s:c=>`【${CO}】お見積書をお送りします`,
+ b:c=>[`${c.to}`,``,`お世話になっております。${CO}の${c.who}です。`,``,`お打合せの内容をもとに、お見積書をお作りしました。ご確認をお願いいたします。`,``,`金額の内訳と、標準仕様から変更になっている箇所を別紙にまとめております。どこにいくらかかっているかが分かる形にしましたので、気になる項目がありましたらお聞かせください。`,``,`ご不明な点はいつでもご連絡ください。`].join("\n")},
+{k:"s6",n:"ご契約日のご案内",
+ s:c=>`【${CO}】ご契約の日程と当日お持ちいただくもの`,
+ b:c=>[`${c.to}`,``,`お世話になっております。${CO}の${c.who}です。`,``,`工事請負契約の日程が${fmtW(c.nextD)}で決まりましたので、当日の流れをご案内いたします。`,``,`　場所　　${CO} 本社`,`　所要　　1時間30分ほど`,`　お持ちいただくもの　ご実印／印鑑証明書／本人確認書類`,``,`当日は契約書と約款、設計図書、仕様書、お見積書、工程表をご一緒に確認しながら進めます。事前に目を通しておきたい書類がありましたら、先にお送りいたします。`,``,`よろしくお願いいたします。`].join("\n")},
+{k:"s7",n:"必要書類のお願い(不足分から自動作成)",
+ s:c=>`【${CO}】ご用意をお願いしたい書類のご連絡`,b:null},
+{k:"s8",n:"着工前のご挨拶",
+ s:c=>`【${CO}】着工前のご挨拶と今後の流れ`,
+ b:c=>[`${c.to}`,``,`お世話になっております。${CO}の${c.who}です。`,``,`いよいよ着工が近づいてまいりました。着工前に、近隣へのご挨拶と地鎮祭の日程についてご相談させてください。`,``,`工事が始まりましたら、現場の写真を週に1度お送りします。なかなか現場に来られない日でも、進み具合が分かるようにしています。`,``,`ご不明な点がありましたら、いつでもご連絡ください。`].join("\n")},
+{k:"s9",n:"しばらく間が空いた方への再接触",
+ s:c=>`【${CO}】その後のご検討状況はいかがでしょうか`,
+ b:c=>[`${c.to}`,``,`ご無沙汰しております。${CO}の${c.who}です。`,``,`その後、家づくりのご検討はいかがでしょうか。`,``,`ご状況が変わっていることもあるかと思いますので、無理に進めていただく必要はまったくありません。いまはまだ、ということでしたら、そのひとことだけお知らせいただければ、こちらからのご連絡は控えます。`,``,`ご検討を続けていらっしゃるようでしたら、最近の施工事例と補助金の状況をまとめてお送りできればと思います。`,``,`よろしくお願いいたします。`].join("\n")}];
+
+const SAMPLE={
+ogawa:[`${fmtW(-4)} 14:00-16:30 打合せ ご出席:小川様ご夫妻・お母様 / 弊社 森`,"LDKは20帖で確定。対面キッチンで進める。","和室は4.5帖の畳コーナーに変更で決定。仏壇スペースを確保する。","2階の子供部屋は将来間仕切りできるようにする方向。図面で確認する。","外壁は塗り壁とガルバリウムの2案で迷っている。次回サンプルを持参する。","お母様の寝室は1階をご希望。トイレを近くに配置してほしいとのこと。","太陽光は保留。次回までに載せた場合の光熱費の試算を出す。","資金計画は月々11万円までに収めたい。頭金は500万円をご予定。","お客様に土地の登記事項証明書と公図をご用意いただく。",`次回は${fmtW(11)}14時から。`].join("\n"),
+yoshikawa:[`${fmtW(-3)} 10:00-11:30 打合せ ご出席:吉川様ご夫妻 / 弊社 井上`,"最終見積の金額でOK。工事請負契約に進めることで決定。","契約日は来週の土曜日で調整する方向。時間は追ってご連絡する。","住宅ローンはA銀行で確定。本審査の書類を用意する。","キッチンのメーカーは2案で迷っている。次回ショールームで最終決定。","外構は本体と分離して後から検討することで決定。","お客様に印鑑証明書と住民票をご用意いただく。","地鎮祭の日程を神社に確認する。",`次回は${fmtW(5)}10時から。`].join("\n")};
+
+const [tasks,setTasks]=ew.useState(T0);
+const [tab,setTab]=ew.useState("docs");
+const [ck,setCk]=ew.useState("yoshikawa");
+const [flt,setFlt]=ew.useState("all");
+const [docv,setDocv]=ew.useState(CDOC0);
+const [sk,setSk]=ew.useState("s1");
+const [memo,setMemo]=ew.useState(null);
+const [mrun,setMrun]=ew.useState(false);
+const [msg,setMsg]=ew.useState("");
+const [work,setWork]=ew.useState([
+{n:"工事請負契約・設計契約の書類一式",u:"件/月",cnt:2,be:3.5,af:1.2},
+{n:"住宅ローンの書類準備・回収・提出",u:"件/月",cnt:3,be:2.5,af:1},
+{n:"補助金・各種申請の書類そろえ",u:"件/月",cnt:2,be:4,af:1.5},
+{n:"打合せ議事録の作成・送付",u:"回/月",cnt:24,be:.8,af:.2},
+{n:"お客様への連絡文(お礼・日程調整・資料送付)",u:"通/月",cnt:60,be:.3,af:.1},
+{n:"提案・比較資料の作成",u:"件/月",cnt:8,be:1.5,af:.5}]);
+
+const cur=cOf(ck);
+const memoV=null===memo?(SAMPLE[ck]||SAMPLE.yoshikawa):memo;
+const open=tasks.filter(t=>t.st<3);
+const over=open.filter(t=>t.d<0);
+const week=open.filter(t=>t.d>=0&&t.d<=7);
+const aiAll=tasks.filter(t=>t.ai);
+const aiDone=aiAll.filter(t=>t.st>=1);
+const wBe=work.reduce((s,r)=>s+r.cnt*r.be,0);
+const wAf=work.reduce((s,r)=>s+r.cnt*r.af,0);
+const wCut=wBe-wAf;
+const wYear=wCut*12;
+const wPer=wYear/1800;
+const REPS=["井上","大西","森","岸","白石"];
+const shown=tasks.filter(t=>"all"===flt?1:"over"===flt?t.d<0&&t.st<3:"done"===flt?3===t.st:t.who===flt).slice().sort((a,b)=>a.d-b.d);
+
+const bump=id=>setTasks(tasks.map(t=>t.id===id?Object.assign({},t,{st:(t.st+1)%4}):t));
+const cyc=(bk,i)=>{const nx=JSON.parse(JSON.stringify(docv));nx[ck].v[bk][i]=(nx[ck].v[bk][i]+1)%3;setDocv(nx);};
+
+const dItems=[];
+(docv[ck].b||[]).forEach(bk=>BD[bk].items.forEach((it,i)=>dItems.push({bk:bk,i:i,it:it,v:docv[ck].v[bk][i]})));
+const lack=dItems.filter(x=>x.v<2);
+const lackCust=lack.filter(x=>"お客様"===x.it.w);
+const lackSelf=lack.filter(x=>"自社"===x.it.w);
+const lackThird=lack.filter(x=>"第三者"===x.it.w);
+const pct=dItems.length?Math.round(100*(dItems.length-lack.length)/dItems.length):0;
+
+const askText=()=>{const c=cur,L=lackCust;
+ if(!L.length)return [`${c.to}`,``,`お世話になっております。${CO}の${c.who}です。`,``,`お願いしておりました書類は、すべてお預かりしております。ご対応ありがとうございました。`,``,`引き続きよろしくお願いいたします。`].join("\n");
+ return [`${c.to}`,``,`お世話になっております。${CO}の${c.who}です。`,``,`${c.next}の手続きにあたり、下記の書類をご用意いただけますでしょうか。`,``].concat(L.map((x,i)=>`　${i+1}. ${x.it.n}`+("—"===x.it.note?"":`（${x.it.note}）`))).concat([``,`お手数をおかけしますが、${fmtW(Math.max(1,c.nextD-2))}までにお預かりできますと、その後の手続きがスムーズです。`,`お手元にない書類がありましたら、取得の方法もあわせてご案内しますのでお知らせください。`,``,`よろしくお願いいたします。`]).join("\n");};
+
+const sc=SCENES.find(s=>s.k===sk)||SCENES[0];
+const mailBody="s7"===sk?askText():sc.b(cur);
+const mailSub=sc.s(cur);
+const flash=t=>{setMsg(t);setTimeout(()=>setMsg(""),3200);};
+const copy=(txt,lbl)=>{try{navigator.clipboard.writeText(txt);flash(`${lbl}をコピーしました。メールやLINEに貼って、送る前に必ず内容を確認してください。`);}catch(e){flash("コピーできませんでした。テキストを選択してコピーしてください。");}};
+
+const lines=memoV.split("\n").map(s=>s.trim()).filter(Boolean);
+const head=lines[0]||"";
+const RE_C=/お客様に|ご用意いただく|ご準備いただく|ご確認いただく|お持ちいただく/;
+const RE_P=/保留|迷って|次回まで|次回[^。]*決定|持ち帰|引き続き検討|検討中|する方向|方向で/;
+const RE_D=/確定|決定|で進める|でいく|でOK|採用/;
+const RE_S=/出す|作成する|持参する|確認する|手配する|調べる|お送りする|依頼して|用意する|ご連絡する|調整する|登録する/;
+const dec=[],pen=[],req=[],hwS=[],hwC=[];
+const sents=l=>l.match(/[^。]*。|[^。]+/g)||[l];
+lines.slice(1).forEach(l=>{
+ if(/^次回は/.test(l))return;
+ if(RE_C.test(l)){hwC.push(l);return;}
+ const ss=sents(l),act=ss.filter(x=>RE_S.test(x)),rest=ss.filter(x=>!RE_S.test(x));
+ const main=rest.length?rest.join(""):l;
+ if(RE_P.test(l))pen.push(main);else if(RE_D.test(l))dec.push(main);else if(!act.length)req.push(main);
+ act.forEach(x=>hwS.push(x.trim()));});
+const mNext=memoV.match(/次回は\s*(\d{1,2})\/(\d{1,2}).*?(\d{1,2})\s*時/);
+const nextTxt=mNext?`${mNext[1]}月${mNext[2]}日 ${mNext[3]}:00〜`:"未定（この場で決めてください）";
+const mHead=head.match(/^(\d{1,2}\/\d{1,2}(?:\([^)]*\))?)\s*([\d:\-〜～]*)/);
+const attend=(head.match(/ご出席[:：]?\s*(.+)$/)||[])[1]||"—";
+
+const addTasks=()=>{
+ const c=cur;const ex=tasks.map(t=>`${t.c}|${t.t}`);const add=[];let seq=0;
+ const push=(t,kind,d,min)=>{if(ex.indexOf(`${c.k}|${t}`)>=0)return;seq++;add.push({id:`TX${Date.now().toString(36)}${seq}`,c:c.k,t:t,kind:kind,who:c.who,d:d,ai:1,st:1,min:min});};
+ hwS.forEach(l=>push(l.replace(/。$/,""),"社内",5,45));
+ if(hwC.length)push(`お客様にご用意いただく書類の依頼(${hwC.length}件)`,"連絡",3,20);
+ push("議事録をお送りする","議事録",1,15);
+ if(!add.length){flash("追加できる新しい宿題はありませんでした（すでに同じタスクがあります）。");return;}
+ setTasks(tasks.concat(add));flash(`${add.length}件を「いま溜まっている事務」に追加しました。担当は${c.who}、状態はAI下書き済みで入れています。`);};
+
+return h("div",null,
+ h("div",{className:"module-head"},
+  h("h2",null,"営業アシスタントAI"),
+  h("p",null,"営業が商談以外に使っている時間を巻き取る画面です。契約書類・住宅ローン・各種申請について、案件ごとに「まだそろっていない書類」を突き合わせ、お客様への依頼文と連絡文の下書きまで作ります。アシスタントを置いていない会社では、これを営業本人が夜にやっています。")),
+
+ h("div",{className:"kpi-grid"},
+  h(bL,{label:"未処理の事務タスク",value:`${open.length}件`,sub:`全${tasks.length}件のうち完了 ${tasks.length-open.length}件`,alert:over.length>0}),
+  h(bL,{label:"期限を過ぎている",value:`${over.length}件`,sub:over.length?`最長 ${Math.max.apply(null,over.map(t=>-t.d))}日超過`:"超過なし",alert:over.length>0}),
+  h(bL,{label:"AIが下書き済み",value:`${aiDone.length} / ${aiAll.length}件`,sub:"残っているのは人が確認して送る作業だけ"}),
+  h(bL,{label:"事務に戻さない時間",value:`月${wCut.toFixed(1)}時間`,sub:`年${Math.round(wYear)}時間 ≒ ${wPer.toFixed(1)}人分(年1,800時間換算)`})),
+
+ (over.length>0||week.length>0)&&h("div",{className:"alert-center"},
+  h("div",{className:"alert-title"},`⚡ いま手を打つもの（期限超過 ${over.length}件 ／ 今週が締切 ${week.length}件）`),
+  over.slice(0,4).map((t,i)=>h("div",{className:"alert-line red",key:`o${i}`},
+   h("span",null,"🚨"),
+   h("span",{className:"alert-text"},`${cOf(t.c).n} ${t.t} — 期限を${-t.d}日超過（担当 ${t.who}）`),
+   h("span",{className:"alert-to"},`→ ${STL[t.st]}`))),
+  week.slice(0,4).map((t,i)=>h("div",{className:"alert-line amber",key:`w${i}`},
+   h("span",null,"⏳"),
+   h("span",{className:"alert-text"},`${cOf(t.c).n} ${t.t} — ${fmtW(t.d)}まで（担当 ${t.who}）`),
+   h("span",{className:"alert-to"},`→ ${STL[t.st]}`)))),
+
+ h("div",{className:"panel no-print"},
+  h("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:10,marginBottom:12}},
+   h("b",null,"いま溜まっている事務"),
+   h("div",{className:"proj-tabs"},
+    [["all",`全件(${tasks.length})`],["over",`期限超過(${over.length})`]].concat(REPS.map(r=>[r,`${r}(${tasks.filter(t=>t.who===r&&t.st<3).length})`])).concat([["done",`完了(${tasks.length-open.length})`]]).map(x=>
+     h("button",{className:`proj-tab ${flt===x[0]?"on":""}`,onClick:()=>setFlt(x[0]),key:x[0]},x[1])))),
+  h("div",{style:{overflowX:"auto"}},
+   h("table",{className:"tbl slim"},
+    h("thead",null,h("tr",null,
+     h("th",null,"期限"),h("th",null,"案件"),h("th",null,"事務タスク"),h("th",null,"種別"),
+     h("th",null,"担当"),h("th",{className:"r"},"目安"),h("th",null,"状態（クリックで進む）"))),
+    h("tbody",null,shown.map(t=>h("tr",{key:t.id},
+     h("td",{style:{whiteSpace:"nowrap",color:t.d<0&&t.st<3?"#c4554d":void 0,fontWeight:t.d<0&&t.st<3?800:400}},
+      t.d<0&&t.st<3?`${fmt(t.d)}（${-t.d}日超過）`:fmtW(t.d)),
+     h("td",{style:{whiteSpace:"nowrap"}},cOf(t.c).n),
+     h("td",null,t.t,t.ai?h("span",{className:"badge green",style:{marginLeft:6}},"AI下書き可"):null),
+     h("td",null,h("span",{className:"badge",style:{background:`${KC[t.kind]}1f`,color:KC[t.kind]}},t.kind)),
+     h("td",{style:{whiteSpace:"nowrap"}},t.who),
+     h("td",{className:"r",style:{whiteSpace:"nowrap"}},`${t.min}分`),
+     h("td",null,h("button",{className:"tpl-btn",style:{padding:"4px 12px",whiteSpace:"nowrap",color:STC[t.st],borderColor:STC[t.st]},onClick:()=>bump(t.id)},STL[t.st]))))))),
+  h("div",{className:"hint"},"期限は今日を基準に計算しています。目安の時間は「その事務を人が手で全部やった場合」です。AI下書き可のものは、下の①〜③で実際に下書きを作れます。")),
+
+ h("div",{className:"panel"},
+  h("div",{className:"no-print",style:{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap",marginBottom:12}},
+   h("b",{style:{marginRight:4}},"案件"),
+   h("select",{value:ck,onChange:e=>{setCk(e.target.value);setMemo(null);setMrun(false);},style:{padding:"6px 10px",fontSize:13}},
+    CASES.map(c=>h("option",{value:c.k,key:c.k},`${c.n}（${c.stage}）`))),
+   h("span",{className:"badge"},`担当 ${cur.who}`),
+   h("span",{className:"badge"},`ご予算 ${cur.amt.toLocaleString()}万円`),
+   h("span",{className:"badge"},`ローン ${cur.loan}`),
+   h("span",{className:"badge amber"},`次は ${cur.next}（${fmtW(cur.nextD)}）`)),
+  h("div",{className:"no-print",style:{fontSize:12.5,color:"#5c6b77",marginBottom:12,lineHeight:1.9}},cur.note),
+  h("div",{className:"proj-tabs",style:{marginBottom:14}},
+   [["docs","① 書類そろえチェック"],["mail","② 連絡文の下書き"],["min","③ 打合せ議事録"],["time","④ 事務時間の棚卸し"]].map(x=>
+    h("button",{className:`proj-tab ${tab===x[0]?"on":""}`,onClick:()=>setTab(x[0]),key:x[0]},x[1]))),
+  msg?h("div",{className:"imp-msg ok no-print",style:{marginBottom:12}},msg):null,
+
+  "docs"===tab&&h("div",null,
+   h("div",{style:{display:"flex",gap:8,flexWrap:"wrap",marginBottom:12}},
+    h("span",{className:"badge green"},`そろった ${dItems.length-lack.length} / ${dItems.length}点（${pct}%）`),
+    h("span",{className:"badge",style:{background:"#fbe9e4",color:"#a2453d"}},`自社で作る残り ${lackSelf.length}点`),
+    h("span",{className:"badge amber"},`お客様にお願いする ${lackCust.length}点`),
+    h("span",{className:"badge gray"},`第三者を待つ ${lackThird.length}点`)),
+   (docv[ck].b||[]).map(bk=>h("div",{key:bk,style:{marginBottom:16}},
+    h("div",{style:{fontWeight:700,fontSize:13,marginBottom:6}},BD[bk].n),
+    h("div",{style:{overflowX:"auto"}},
+     h("table",{className:"tbl slim"},
+      h("thead",null,h("tr",null,h("th",null,"書類"),h("th",null,"誰が"),h("th",null,"状態"),h("th",null,"メモ"))),
+      h("tbody",null,BD[bk].items.map((it,i)=>{const v=docv[ck].v[bk][i];return h("tr",{key:i},
+       h("td",null,h("b",null,it.n)),
+       h("td",{style:{whiteSpace:"nowrap"}},h("span",{className:`badge ${"自社"===it.w?"":"お客様"===it.w?"amber":"gray"}`},it.w)),
+       h("td",null,h("button",{className:"tpl-btn",style:{padding:"3px 12px",whiteSpace:"nowrap",color:SC3[v],borderColor:SC3[v]},onClick:()=>cyc(bk,i)},SL[it.w][v])),
+       h("td",{style:{fontSize:11.5,color:"#7e8b96"}},it.note));})))))),
+   h("div",{className:"parse-result no-print"},
+    h("div",{style:{fontWeight:700,marginBottom:6}},`お客様にお願いする書類（${lackCust.length}点）— 依頼文の下書き`),
+    h("textarea",{readOnly:!0,value:askText(),style:{width:"100%",minHeight:190,fontSize:12.5,lineHeight:1.9,padding:10,border:"1px solid #cfe4dc",borderRadius:6,background:"#fff",fontFamily:"inherit"}}),
+    h("button",{className:"tpl-btn pri",style:{marginTop:8},onClick:()=>copy(askText(),"依頼文")},"📋 依頼文をコピー")),
+   h("div",{className:"hint"},"「誰が用意するか」で分けているのは、次にやることが変わるからです。自社は手を動かす、お客様は依頼文を送る、第三者は進捗を確認する。この3つを混ぜた1本のチェックリストは、結局どれも進みません。")),
+
+  "mail"===tab&&h("div",null,
+   h("div",{className:"proj-tabs",style:{marginBottom:12}},
+    SCENES.map(s=>h("button",{className:`proj-tab ${sk===s.k?"on":""}`,onClick:()=>setSk(s.k),key:s.k},s.n))),
+   h("div",{className:"parse-result"},
+    h("div",{style:{fontWeight:700,marginBottom:6}},"件名"),
+    h("input",{readOnly:!0,value:mailSub,style:{width:"100%",fontSize:13,padding:"7px 10px",border:"1px solid #cfe4dc",borderRadius:6,background:"#fff",marginBottom:12}}),
+    h("div",{style:{fontWeight:700,marginBottom:6}},"本文"),
+    h("textarea",{readOnly:!0,value:mailBody,style:{width:"100%",minHeight:250,fontSize:12.5,lineHeight:1.9,padding:10,border:"1px solid #cfe4dc",borderRadius:6,background:"#fff",fontFamily:"inherit"}}),
+    h("div",{style:{display:"flex",gap:8,marginTop:8,flexWrap:"wrap"}},
+     h("button",{className:"tpl-btn pri",onClick:()=>copy(`${mailSub}\n\n${mailBody}`,"件名と本文")},"📋 件名と本文をコピー"),
+     h("button",{className:"tpl-btn",onClick:()=>copy(mailBody,"本文")},"本文だけコピー"))),
+   h("div",{className:"hint"},"お客様名・担当者名・日付・次の予定は、選んだ案件のデータから入っています。⚠️ この下書きをそのまま送らないでください。金額と日付が合っているか、その方に合った言い方かは、送る前に必ず人が見る運用にしてください。")),
+
+  "min"===tab&&h("div",null,
+   h("div",{className:"no-print"},
+    h("div",{style:{fontSize:12.5,color:"#5c6b77",marginBottom:8,lineHeight:1.9}},"打合せ中に取ったメモをそのまま貼ってください。決まったこと・続けて検討すること・宿題に仕分けて、お客様にお送りする議事録の形にします。"),
+    h("textarea",{value:memoV,onChange:e=>{setMemo(e.target.value);setMrun(false);},style:{width:"100%",minHeight:170,fontSize:12.5,lineHeight:1.9,padding:10,border:"1px solid #cfd8d3",borderRadius:6,fontFamily:"inherit"}}),
+    h("div",{style:{display:"flex",gap:8,marginTop:8,flexWrap:"wrap"}},
+     h("button",{className:"tpl-btn pri",onClick:()=>setMrun(true)},"🤖 議事録にする"),
+     SAMPLE[ck]?h("button",{className:"tpl-btn",onClick:()=>{setMemo(null);setMrun(false);}},"サンプルのメモに戻す"):null,
+     mrun?h("button",{className:"tpl-btn",onClick:()=>window.print()},"🖨 議事録を印刷"):null,
+     mrun?h("button",{className:"tpl-btn",onClick:addTasks},"＋ 宿題をタスクに追加"):null),
+    mrun?h("div",{className:"parse-chips",style:{marginTop:12}},
+     h("span",{className:"badge green"},`決まったこと ${dec.length}件`),
+     h("span",{className:"badge amber"},`続けて検討 ${pen.length}件`),
+     h("span",{className:"badge gray"},`ご要望 ${req.length}件`),
+     h("span",{className:"badge"},`宿題(自社) ${hwS.length}件`),
+     h("span",{className:"badge"},`宿題(お客様) ${hwC.length}件`)):null),
+   mrun?h("div",{className:"plan-sheet",style:{marginTop:14}},
+    h("div",{className:"ps-header"},
+     h("div",{className:"ps-title"},"お打合せ記録"),
+     h("div",{className:"ps-meta"},CO)),
+    h("table",{className:"tbl slim ps-tbl",style:{margin:"14px 0"}},h("tbody",null,
+     h("tr",null,h("th",{style:{width:120}},"日時"),h("td",null,mHead?`${mHead[1]} ${mHead[2]}`.trim():"—")),
+     h("tr",null,h("th",null,"案件"),h("td",null,`${cur.n}（${cur.stage}）`)),
+     h("tr",null,h("th",null,"ご出席"),h("td",null,attend)),
+     h("tr",null,h("th",null,"弊社担当"),h("td",null,cur.who)))),
+    h("div",{className:"ps-sec"},"1. 決まったこと"),
+    dec.length?h("ol",{style:{margin:"0 0 14px 20px",fontSize:13,lineHeight:2}},dec.map((l,i)=>h("li",{key:i},l))):h("p",{style:{fontSize:13,color:"#8a938e"}},"（この打合せで確定した項目はありません）"),
+    h("div",{className:"ps-sec"},"2. 続けて検討すること"),
+    pen.length?h("ol",{style:{margin:"0 0 14px 20px",fontSize:13,lineHeight:2}},pen.map((l,i)=>h("li",{key:i},l))):h("p",{style:{fontSize:13,color:"#8a938e"}},"（なし）"),
+    h("div",{className:"ps-sec"},"3. ご要望として伺ったこと"),
+    req.length?h("ol",{style:{margin:"0 0 14px 20px",fontSize:13,lineHeight:2}},req.map((l,i)=>h("li",{key:i},l))):h("p",{style:{fontSize:13,color:"#8a938e"}},"（なし）"),
+    h("div",{className:"ps-sec"},"4. 弊社でご用意するもの"),
+    hwS.length?h("ol",{style:{margin:"0 0 14px 20px",fontSize:13,lineHeight:2}},hwS.map((l,i)=>h("li",{key:i},l))):h("p",{style:{fontSize:13,color:"#8a938e"}},"（なし）"),
+    h("div",{className:"ps-sec"},"5. お客様にご用意いただくもの"),
+    hwC.length?h("ol",{style:{margin:"0 0 14px 20px",fontSize:13,lineHeight:2}},hwC.map((l,i)=>h("li",{key:i},l))):h("p",{style:{fontSize:13,color:"#8a938e"}},"（なし）"),
+    h("div",{className:"ps-sec"},"6. 次回のお打合せ"),
+    h("p",{style:{fontSize:13,lineHeight:2}},nextTxt),
+    h("div",{className:"ps-note"},"この記録に認識の違いがありましたら、お手数ですが担当までお知らせください。ご返信をもって内容のご確認とさせていただきます。")):null,
+   mrun?h("div",{className:"hint no-print"},"仕様の差分と追加金額は「仕様決定・変更管理AI」が拾います。この画面が作るのは、お客様にお送りする議事録と、次にやることの一覧です。"):null),
+
+  "time"===tab&&h("div",null,
+   h("div",{style:{fontSize:12.5,color:"#5c6b77",marginBottom:10,lineHeight:1.9}},"件数を自社の実績に置き換えると、その場で試算し直します。「いま」は人が手で全部やった場合、「AI下書き後」は下書きをAIが作り、人は確認して送るだけにした場合です。"),
+   h("div",{style:{overflowX:"auto"}},
+    h("table",{className:"tbl slim"},
+     h("thead",null,h("tr",null,h("th",null,"事務"),h("th",{className:"r"},"件数"),h("th",null,"単位"),h("th",{className:"r"},"いま"),h("th",{className:"r"},"AI下書き後"),h("th",{className:"r"},"月あたり削減"))),
+     h("tbody",null,work.map((r,i)=>h("tr",{key:i},
+      h("td",null,r.n),
+      h("td",{className:"r"},h("input",{type:"number",min:0,value:r.cnt,onChange:e=>{const v=Math.max(0,Number(e.target.value)||0);setWork(work.map((x,j)=>j===i?Object.assign({},x,{cnt:v}):x));},style:{width:64,textAlign:"right"}})),
+      h("td",{style:{fontSize:11.5,color:"#7e8b96"}},r.u),
+      h("td",{className:"r"},`${r.be}時間`),
+      h("td",{className:"r"},`${r.af}時間`),
+      h("td",{className:"r",style:{fontWeight:700,color:"#1e7a62"}},`${(r.cnt*(r.be-r.af)).toFixed(1)}時間`)))),
+     h("tfoot",null,h("tr",null,
+      h("th",null,"合計"),h("th",null,""),h("th",null,""),
+      h("th",{className:"r"},`${wBe.toFixed(1)}時間`),
+      h("th",{className:"r"},`${wAf.toFixed(1)}時間`),
+      h("th",{className:"r",style:{color:"#1e7a62"}},`${wCut.toFixed(1)}時間`))))),
+   h("div",{className:"kpi-grid",style:{marginTop:14}},
+    h(bL,{label:"いまかかっている事務",value:`月${wBe.toFixed(1)}時間`,sub:"営業部の合計"}),
+    h(bL,{label:"AI下書き後",value:`月${wAf.toFixed(1)}時間`,sub:"人は確認して送るだけになる"}),
+    h(bL,{label:"空く時間",value:`月${wCut.toFixed(1)}時間`,sub:`年${Math.round(wYear)}時間 ≒ ${wPer.toFixed(1)}人分`})),
+   h("div",{className:"hint"},"⚠️ 1件あたりの時間はデモ用の目安です。まず1か月ぶんを実測して置き換えてください。空いた時間をそのまま人件費の削減とみなすか、商談と現場同行に回すかは会社の判断です。ここでは「営業が本来の仕事に戻れる時間」として出しています。"))),
+
+ h("div",{className:"panel no-print"},
+  h("b",null,"この画面の考え方"),
+  h("div",{style:{overflowX:"auto",marginTop:10}},
+   h("table",{className:"tbl slim"},
+    h("thead",null,h("tr",null,h("th",null,"AIに任せること"),h("th",null,"人がやること"))),
+    h("tbody",null,
+     h("tr",null,h("td",null,"期限の逆算と、抜けている書類の突き合わせ"),h("td",null,"金額・日付・お名前が合っているかの最終確認")),
+     h("tr",null,h("td",null,"契約書・申込書・依頼文・議事録の下書き"),h("td",null,"お客様への送信と、言い方の調整")),
+     h("tr",null,h("td",null,"打合せメモの仕分けと、次にやることの洗い出し"),h("td",null,"契約書への押印と、条件の判断")),
+     h("tr",null,h("td",null,"担当と期限の割り当て"),h("td",null,"優先順位を変える判断"))))),
+  h("div",{className:"hint"},
+   "スイート連携：見積書の最終版がそのまま契約書の金額に、仕様決定・変更管理AIの確定版が仕様書に、工程×職人手配が工程表に、資金計画・FPが資金計画書になります。補助金の交付申請は「補助金 申請書類管理」と同じ案件を見ています。同じ数字を何度も打ち直さないことが、事務時間のいちばん減るところです。",
+   h("br",null),
+   "※ この画面の案件・お客様名・金額・所要時間はすべてデモ用の架空のデータです。書類の一覧と法令の記載は一般的な流れをもとにした下書きで、実際の運用では自社の契約書式・取引金融機関が指定する書類・顧問士業の確認に合わせてください。")));
+},group:"営業"},{key:"fp",label:"資金計画・FP",icon:"🏦",comp:function(){let[e,t]=(0,ew.useState)("sim"),[r,n]=(0,ew.useState)(1200),[a,i]=(0,ew.useState)(2450),[l,o]=(0,ew.useState)(500),[s,u]=(0,ew.useState)("kosodate"),[c,f]=(0,ew.useState)("chouki"),[d,h]=(0,ew.useState)(!1),[p,g]=(0,ew.useState)(.9),[m,v]=(0,ew.useState)(35),[b,y]=(0,ew.useState)(650),[x,j]=(0,ew.useState)(2),[O,w]=(0,ew.useState)(""),[C,I]=(0,ew.useState)(34),[k,A]=(0,ew.useState)(82e3),[S,E]=(0,ew.useState)(26e3),[P,T]=(0,ew.useState)(18e3),N=Math.round((r+a)*.08),_=(0,ew.useMemo)(()=>{let e="other"!==s,t=0,r="対象なし";"gx"===c?(t=110,r="GX志向型 110万円(全世帯)"):"chouki"===c&&e?(t=80,r="長期優良 80万円"):"zeh"===c&&e&&(t=40,r="ZEH水準 40万円(第2期 9/30締切)");let n=t;return t>0&&d&&"gx"!==c&&(n+=20,r+=" + 解体加算20万円"),{total:n,label:r}},[s,c,d]),M=r+a+N,D=1e4*Math.max(M-l-_.total,0),G=C3(D,p,m),L=C3(D,p+.5,m),W=G*m*12,Z=(0,ew.useMemo)(()=>{let e=[],t=300;for(let r=0;r<=30;r++)t+=b*(r<25?1+.01*r:.55)-(260+x*(r>3&&r<22?45+55*(r>12):20))-(r<m?12*G/1e4:0),e.push({age:`${34+r}\u{6B73}`,savings:Math.round(t)});return e},[b,x,G,m]),B=Math.min(...Z.map(e=>e.savings)),R="gx"===c?.45:"chouki"===c?.35:"zeh"===c?.3:.1,F=Math.round(S*(1-R)),Y=k+S+P,z=Math.round(G)+F+P,X=z-Y;return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"資金計画・FPツール"}),(0,eO.jsx)("p",{children:"商談中にその場で資金計画。補助金の対象判定(みらいエコ住宅2026)と金利上昇シナリオ、35年のライフプランまで1画面で見せられます。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"sim"===e?"on":""}`,onClick:()=>t("sim"),children:"シミュレーション"}),(0,eO.jsx)("button",{className:`proj-tab ${"sheet"===e?"on":""}`,onClick:()=>t("sheet"),children:"資金計画・返済計画書(印刷)"})]}),"sheet"===e&&(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"計画書 追加入力"}),(0,eO.jsxs)("div",{className:"form-grid",children:[(0,eO.jsxs)("label",{children:["お施主様名",(0,eO.jsx)("input",{value:O,onChange:e=>w(e.target.value),placeholder:"例:原"})]}),(0,eO.jsxs)("label",{children:["ご本人年齢",(0,eO.jsx)("input",{type:"number",value:C,onChange:e=>I(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["現在の家賃(円/月)",(0,eO.jsx)("input",{type:"number",value:k,onChange:e=>A(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["現在の水道光熱費(円/月)",(0,eO.jsx)("input",{type:"number",value:S,onChange:e=>E(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["その他固定費(円/月)",(0,eO.jsx)("input",{type:"number",value:P,onChange:e=>T(+e.target.value)})]})]}),(0,eO.jsx)("button",{className:"gen-btn ghost",style:{width:"auto",padding:"9px 18px"},onClick:()=>window.print(),children:"🖨 この計画書を印刷 / PDF保存"})]}),(0,eO.jsxs)("div",{className:"plan-sheet",children:[(0,eO.jsxs)("div",{className:"ps-header",children:[(0,eO.jsxs)("div",{className:"ps-title",children:[O||"___","様 資金計画・返済計画書"]}),(0,eO.jsxs)("div",{className:"ps-meta",children:["作成日 ",new Date().toLocaleDateString("ja-JP")," ｜ 担当:彩の国ホーム"]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"一次エネルギー消費量計算を根拠にランニングコストを考えた提案資料です。※本書式はシミュレーションであり、生活スタイルや経済状況により実際と異なる場合があります。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報①)家族構成と資産"}),(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"家族構成"}),(0,eO.jsxs)("td",{children:["ご本人(",C,"歳)・配偶者・お子様",x,"人"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"世帯年収"}),(0,eO.jsxs)("td",{children:[b.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"自己資金(貯蓄より充当)"}),(0,eO.jsxs)("td",{children:[l.toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報②)毎月支出の比較 — 現在のお住まい vs 新築後"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"項目"}),(0,eO.jsx)("th",{className:"r",children:"現在"}),(0,eO.jsx)("th",{className:"r",children:"新築後"}),(0,eO.jsx)("th",{className:"r",children:"差額"})]})}),(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"家賃 → 住宅ローン返済"}),(0,eO.jsxs)("td",{className:"r",children:[k.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(G).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[(Math.round(G)-k).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["水道光熱費(断熱性能により▲",Math.round(100*R),"%)"]}),(0,eO.jsxs)("td",{className:"r",children:[S.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[F.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:["▲",(S-F).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"その他固定費"}),(0,eO.jsxs)("td",{className:"r",children:[P.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[P.toLocaleString("ja-JP"),"円"]}),(0,eO.jsx)("td",{className:"r",children:"0円"})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"毎月合計"}),(0,eO.jsxs)("td",{className:"r",children:[Y.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[z.toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:X<=0?"#2F9E82":"#C4554D"},children:[X<=0?"▲":"+",Math.abs(X).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"35年間の総額比較"}),(0,eO.jsxs)("td",{className:"r",children:[(420*Y).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",children:[(420*z).toLocaleString("ja-JP"),"円"]}),(0,eO.jsxs)("td",{className:"r",style:{fontWeight:800,color:X<=0?"#2F9E82":"#C4554D"},children:[X<=0?"▲":"+",Math.abs(420*X).toLocaleString("ja-JP"),"円"]})]})]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"現在の暮らしをこのまま35年続けた場合と、高断熱の新築で35年暮らした場合の比較です。"}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報③)予算とローン計画"}),(0,eO.jsxs)("div",{className:"ps-cols",children:[(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"1 土地価格"}),(0,eO.jsxs)("td",{className:"r",children:[r.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"2 建物価格(外構・太陽光含む)"}),(0,eO.jsxs)("td",{className:"r",children:[a.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"3 諸費用・その他"}),(0,eO.jsxs)("td",{className:"r",children:[N.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["4 補助金(",_.label,")"]}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:["▲",_.total,"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"5 自己資金"}),(0,eO.jsxs)("td",{className:"r",children:["▲",l.toLocaleString("ja-JP"),"万円"]})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"借入金額"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(D/1e4).toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("table",{className:"tbl slim ps-tbl",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"返済期間"}),(0,eO.jsxs)("td",{className:"r",children:[m,"年"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"適用金利(変動想定)"}),(0,eO.jsxs)("td",{className:"r",children:[p,"%"]})]}),(0,eO.jsxs)("tr",{style:{fontWeight:800},children:[(0,eO.jsx)("td",{children:"毎月支払い"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(G).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"ボーナス加算"}),(0,eO.jsx)("td",{className:"r",children:"0円"})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"金利+0.5%時の毎月支払い"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(L).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総返済額(概算)"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(W/1e4).toLocaleString("ja-JP"),"万円"]})]})]})})]}),(0,eO.jsx)("div",{className:"ps-sec",children:"(情報④)返済計画 — 5年ごとのローン残高と繰上返済プラン"}),(0,eO.jsxs)("table",{className:"tbl slim ps-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"経過"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsxs)("th",{className:"r",children:[e,"年後(",C+e,"歳)"]},e))]})}),(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"ローン残高(概算)"}),[5,10,15,20,25,30,35].map(e=>{let t,r,n;return(0,eO.jsxs)("td",{className:"r",children:[Math.round((t=p/100/12,r=12*m,((n=12*e)>=r?0:0===t?D*(1-n/r):(Math.pow(1+t,r)-Math.pow(1+t,n))/(Math.pow(1+t,r)-1)*D)/1e4)).toLocaleString("ja-JP"),"万円"]},e)})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"繰上返済(ご相談)"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsx)("td",{className:"r",style:{color:"#B9C2BD"},children:"円"},e))]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"光熱費節約分の累計"}),[5,10,15,20,25,30,35].map(e=>(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82"},children:[Math.round((S-F)*12*e/1e4).toLocaleString("ja-JP"),"万円"]},e))]})]})]}),(0,eO.jsx)("div",{className:"ps-note",children:"光熱費の節約分を繰上返済に回すことで完済時期の前倒しが可能です。住宅ローン控除・繰上返済のご判断はお施主様ご自身で行っていただき、金融商品の推奨は行いません。"})]})]}),"sim"===e&&(0,eO.jsxs)(eO.Fragment,{children:[(0,eO.jsxs)("div",{className:"panel-row",children:[(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:300},children:[(0,eO.jsx)("h3",{children:"入力"}),(0,eO.jsxs)("div",{className:"form-grid",children:[(0,eO.jsxs)("label",{children:["土地(万円)",(0,eO.jsx)("input",{type:"number",value:r,onChange:e=>n(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["建物(万円)",(0,eO.jsx)("input",{type:"number",value:a,onChange:e=>i(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["自己資金(万円)",(0,eO.jsx)("input",{type:"number",value:l,onChange:e=>o(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["世帯年収(万円)",(0,eO.jsx)("input",{type:"number",value:b,onChange:e=>y(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["お子様の人数",(0,eO.jsx)("input",{type:"number",min:0,max:4,value:x,onChange:e=>j(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["世帯タイプ",(0,eO.jsxs)("select",{value:s,onChange:e=>u(e.target.value),children:[(0,eO.jsx)("option",{value:"kosodate",children:"子育て世帯(18歳未満の子)"}),(0,eO.jsx)("option",{value:"wakamono",children:"若者夫婦世帯(39歳以下)"}),(0,eO.jsx)("option",{value:"other",children:"その他"})]})]}),(0,eO.jsxs)("label",{children:["住宅性能",(0,eO.jsxs)("select",{value:c,onChange:e=>f(e.target.value),children:[(0,eO.jsx)("option",{value:"gx",children:"GX志向型"}),(0,eO.jsx)("option",{value:"chouki",children:"長期優良住宅"}),(0,eO.jsx)("option",{value:"zeh",children:"ZEH水準"}),(0,eO.jsx)("option",{value:"sonota",children:"その他"})]})]}),(0,eO.jsxs)("label",{children:["金利(%)",(0,eO.jsx)("input",{type:"number",step:.1,value:p,onChange:e=>g(+e.target.value)})]}),(0,eO.jsxs)("label",{children:["返済期間(年)",(0,eO.jsx)("input",{type:"number",value:m,onChange:e=>v(+e.target.value)})]})]}),(0,eO.jsxs)("label",{className:"chk",children:[(0,eO.jsx)("input",{type:"checkbox",checked:d,onChange:e=>h(e.target.checked)})," 建て替え(旧居解体あり)"]})]}),(0,eO.jsxs)("div",{className:"panel",style:{flex:1.3,minWidth:320},children:[(0,eO.jsx)("h3",{children:"資金計画(概算)"}),(0,eO.jsx)("table",{className:"tbl slim",children:(0,eO.jsxs)("tbody",{children:[(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総額(土地+建物+諸費用8%)"}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[M.toLocaleString("ja-JP"),"万円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"補助金判定"}),(0,eO.jsxs)("td",{className:"r",style:{color:"#2F9E82",fontWeight:700},children:[_.label," → ▲",_.total,"万円"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"借入金額"}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[Math.round(D/1e4).toLocaleString("ja-JP"),"万円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:["毎月返済(金利",p,"%)"]}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsxs)("b",{children:[Math.round(G).toLocaleString("ja-JP"),"円"]})})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"金利+0.5%なら"}),(0,eO.jsxs)("td",{className:"r",style:{color:"#C4554D"},children:[Math.round(L).toLocaleString("ja-JP"),"円(+",Math.round(L-G).toLocaleString("ja-JP"),"円)"]})]}),(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:"総返済額"}),(0,eO.jsxs)("td",{className:"r",children:[Math.round(W/1e4).toLocaleString("ja-JP"),"万円"]})]})]})}),(0,eO.jsx)("div",{className:"hint",children:"補助金は2026年度みらいエコ住宅の簡易判定(デモ)。申請可否は公式要件で最終確認します。"})]})]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"ライフプラン簡易シミュレーション(30年・貯蓄残高)"}),(0,eO.jsx)(iO,{width:"100%",height:220,children:(0,eO.jsxs)(C4,{data:Z,margin:{top:10,right:10,left:0,bottom:0},children:[(0,eO.jsx)(mC,{stroke:"#E5E2D8",vertical:!1}),(0,eO.jsx)(bI,{dataKey:"age",tick:{fontSize:11},interval:4}),(0,eO.jsx)(bG,{tick:{fontSize:11}}),(0,eO.jsx)(bu,{}),(0,eO.jsx)(vT,{y:0,stroke:"#C4554D",strokeDasharray:"4 4"}),(0,eO.jsx)(vw,{dataKey:"savings",name:"貯蓄残高(万円)",stroke:"#2F9E82",strokeWidth:2.5,dot:!1})]})}),(0,eO.jsxs)("div",{className:"hint",children:["最小貯蓄額:",B.toLocaleString("ja-JP"),"万円",B<0&&" ⚠ 教育費ピークで赤字。借入額・期間の調整を推奨","。教育費・収入カーブは簡易モデルです。"]})]})]})]})},group:"営業"},
 {key:"estimate",label:"見積書",icon:"📄",comp:function(){let{projects:e,updateProjects:t}=eG(),[r,n]=(0,ew.useState)("S様"),[a,i]=(0,ew.useState)(C5),[l,o]=(0,ew.useState)(""),[ar,setAr]=(0,ew.useState)(112.4),[iq,setIq]=(0,ew.useState)(""),[im,setIm]=(0,ew.useState)(""),[ih,setIh]=(0,ew.useState)([]),[isnap,setIsnap]=(0,ew.useState)(null),s=(e,t,r)=>i(n=>n.map((n,a)=>a===e?{...n,[t]:"number"==typeof n[t]?+r:r}:n)),u=e=>{i(e?[{name:"工事項目",detail:"",qty:1,unit:"式",price:0,cost:0}]:C5.map(e=>({...e}))),o("")},c=a.reduce((e,t)=>e+t.qty*t.price,0),f=Math.round(.1*c),d=Math.round((c+f)*.1),h=a.reduce((e,t)=>e+t.qty*t.cost,0),p=c+f>0?Math.round((c+f-h)/(c+f)*1e3)/10:0,tsb=ar>0?Math.round(ar/3.305785*10)/10:0,m2p=ar>0?Math.round((c+f)/ar):0,tbp=tsb>0?Math.round((c+f)/tsb):0,H=ew.createElement,KW=[["仮設",["仮設","足場"]],["基礎",["鉄筋","コンクリート","生コン","基礎","土間"]],["木",["木材","材木","構造材","プレカット","柱","梁","木工"]],["屋根",["屋根","ガルバ","瓦","板金"]],["サッシ",["サッシ","窓","アルミ","ガラス"]],["断熱",["断熱","ウレタン","グラスウール","気密"]],["電気",["電気","配線","照明","太陽光"]],["給排水",["給排水","水道","配管","ガス","衛生"]],["住設",["住設","キッチン","ユニットバス","UB","洗面","トイレ","浴室"]],["内装",["内装","クロス","石膏","ボード","建具","床","フローリング"]]],tgt=function(q){if(/全体|全部|全項目|一律|すべて|全て|総額/.test(q))return a.map(function(x,k){return k});var r=[];a.forEach(function(row,k){var nm=row.name||"",b=nm.replace(/工事|設備|仕上|費/g,""),ok=!1;if(nm&&q.indexOf(nm)>=0)ok=!0;if(!ok&&b.length>=2&&q.indexOf(b)>=0)ok=!0;if(!ok)KW.forEach(function(kw){if(nm.indexOf(kw[0])>=0&&kw[1].some(function(w){return q.indexOf(w)>=0}))ok=!0});if(ok)r.push(k)});return r},doInstr=function(){var q=(iq||"").trim();if(!q){setIm("指示を入力してください。");return}var mp=q.match(/([0-9]+(?:\.[0-9]+)?)\s*[%％]/),my=q.match(/([0-9]+(?:\.[0-9]+)?)\s*(万円|万|円)/);if(!mp&&!my){setIm("変更幅が読み取れませんでした。「8%上げて」「5万円下げて」のように書いてください。");return}var sg=/下げ|値下|ダウン|減額|減らし|マイナス|▲/.test(q)?-1:1,fld=/原価だけ|原価のみ|仕入だけ|仕入れだけ/.test(q)?"cost":/単価だけ|単価のみ|売価だけ|見積だけ/.test(q)?"price":"both",idx=tgt(q);if(!idx.length){setIm("対象の工事項目を特定できませんでした。「木工事」のように項目名を入れるか、「全体」と書いてください。");return}var pct=mp?parseFloat(mp[1]):0,yen=my?parseFloat(my[1])*("円"===my[2]?1:1e4):0,conv=function(v){return mp?Math.max(0,Math.round(v*(1+sg*pct/100))):Math.max(0,Math.round(v+sg*yen))},bt=c+f,bg=p,nx=a.map(function(row,k){return idx.indexOf(k)<0?row:Object.assign({},row,{price:"cost"===fld?row.price:conv(row.price),cost:"price"===fld?row.cost:conv(row.cost)})}),nc=nx.reduce(function(x,row){return x+row.qty*row.price},0),nf=Math.round(.1*nc),nh=nx.reduce(function(x,row){return x+row.qty*row.cost},0),ng=nc+nf>0?Math.round((nc+nf-nh)/(nc+nf)*1e3)/10:0,dd=nc+nf-bt;setIsnap(a.map(function(row){return Object.assign({},row)}));i(nx);setIm((idx.length===a.length?"全項目":idx.map(function(k){return a[k].name}).join("・"))+"の"+("cost"===fld?"原価":"price"===fld?"単価":"単価と原価")+"を"+(mp?pct+"%":"円"===my[2]?yen.toLocaleString("ja-JP")+"円":my[1]+"万円")+(sg>0?"引き上げました。":"引き下げました。")+" 本体価格 "+bt.toLocaleString("ja-JP")+"円 → "+(nc+nf).toLocaleString("ja-JP")+"円("+(dd>=0?"+":"")+dd.toLocaleString("ja-JP")+"円)"+" / 粗利率 "+bg+"% → "+ng+"%"+(ng<bg?"(-"+Math.round(10*(bg-ng))/10+"pt)":""));setIh([{q:q,d:dd,g:ng}].concat(ih).slice(0,8))};return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"見積書"}),(0,eO.jsx)("p",{children:"明細を編集すると即時再計算。延床面積を入れれば㎡単価・坪単価も同時に出ます。資材の値上がりは文章で指示すればまとめて改定できます。原価も持っているので、見積の時点で粗利が見えます。"})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"flex-end",flexWrap:"wrap"},children:[(0,eO.jsxs)("label",{style:{fontSize:12},children:["お施主様名",(0,eO.jsx)("br",{}),(0,eO.jsx)("input",{value:r,onChange:e=>n(e.target.value)})]}),(0,eO.jsxs)("label",{style:{fontSize:12},children:["延床面積(㎡)",(0,eO.jsx)("br",{}),(0,eO.jsx)("input",{type:"number",step:"0.01",min:"0",value:ar,onChange:e=>setAr(+e.target.value||0),style:{width:86,textAlign:"right"}})]}),(0,eO.jsxs)("label",{style:{fontSize:12},children:["延床面積(坪)",(0,eO.jsx)("br",{}),(0,eO.jsx)("input",{type:"number",step:"0.1",min:"0",value:tsb,onChange:e=>setAr(Math.round(330.5785*(+e.target.value||0))/100),style:{width:74,textAlign:"right"}})]}),(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>u(!1),children:"+ 新規作成(標準テンプレ)"}),(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>u(!0),children:"+ 新規作成(白紙)"}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"標準テンプレは延床112.4㎡(34坪)・2階建ての標準単価。㎡単価・坪単価は税抜の本体価格(小計+諸経費)÷延床面積です。自社の実績見積を取り込めば単価は置き換わります。"})]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsxs)("h3",{children:[r,"邸 御見積内訳"]}),(0,eO.jsxs)("table",{className:"tbl est-tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"工事項目"}),(0,eO.jsx)("th",{children:"仕様・摘要"}),(0,eO.jsx)("th",{className:"r",children:"数量"}),(0,eO.jsx)("th",{children:"単位"}),(0,eO.jsx)("th",{className:"r",children:"単価"}),(0,eO.jsx)("th",{className:"r",children:"金額"}),(0,eO.jsx)("th",{})]})}),(0,eO.jsx)("tbody",{children:a.map((e,t)=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("input",{value:e.name,onChange:e=>s(t,"name",e.target.value),style:{width:110}})}),(0,eO.jsx)("td",{children:(0,eO.jsx)("input",{value:e.detail,onChange:e=>s(t,"detail",e.target.value),style:{width:190}})}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsx)("input",{type:"number",value:e.qty,onChange:e=>s(t,"qty",e.target.value),style:{width:60,textAlign:"right"}})}),(0,eO.jsx)("td",{children:(0,eO.jsx)("input",{value:e.unit,onChange:e=>s(t,"unit",e.target.value),style:{width:42}})}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsx)("input",{type:"number",value:e.price,onChange:e=>s(t,"price",e.target.value),style:{width:96,textAlign:"right"}})}),(0,eO.jsx)("td",{className:"r",children:(0,eO.jsx)("b",{children:(e.qty*e.price).toLocaleString("ja-JP")})}),(0,eO.jsx)("td",{children:(0,eO.jsx)("button",{className:"delay-btn",onClick:()=>i(e=>e.filter((e,r)=>r!==t)),title:"行を削除",children:"×"})})]},t))})]}),(0,eO.jsx)("button",{className:"tpl-btn",style:{marginTop:8},onClick:()=>i(e=>[...e,{name:"追加工事",detail:"",qty:1,unit:"式",price:0,cost:0}]),children:"+ 行を追加"}),(0,eO.jsxs)("div",{className:"est-grand",children:[(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"小計"}),(0,eO.jsxs)("b",{children:[c.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"諸経費(10%)"}),(0,eO.jsxs)("b",{children:[f.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"消費税(10%)"}),(0,eO.jsxs)("b",{children:[d.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{className:"grand",children:[(0,eO.jsx)("span",{children:"御見積合計"}),(0,eO.jsxs)("b",{children:[(c+f+d).toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"㎡単価(税抜)"}),(0,eO.jsxs)("b",{children:[m2p.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"坪単価(税抜)"}),(0,eO.jsxs)("b",{children:[tbp.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("span",{children:"想定粗利率"}),(0,eO.jsxs)("b",{style:{color:p<22?"#C4554D":"#2F9E82"},children:[p,"%"]})]})]})]}),H("div",{className:"panel"},H("h3",null,"🤖 指示で単価を改定する"),H("p",{className:"hint",style:{margin:"0 0 8px"}},"資材が値上がりしたときは、明細を1行ずつ直さずに文章で指示できます。「木材が値上がりしたので木工事を8%上げて」のように書くと、該当する明細の単価と原価をまとめて改定します。「原価だけ」と書けば原価だけが上がるので、値上げ分をお客様に転嫁しなかったときに粗利がどれだけ削られるかが分かります。"),H("div",{style:{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center"}},H("input",{value:iq,onChange:function(e){setIq(e.target.value)},onKeyDown:function(e){"Enter"===e.key&&doInstr()},placeholder:"例) 木材が値上がりしたので木工事を8%上げて",style:{flex:"1 1 320px",minWidth:200}}),H("button",{className:"tpl-btn",onClick:doInstr},"指示を反映する"),H("button",{className:"tpl-btn",disabled:!isnap,style:{opacity:isnap?1:.45},onClick:function(){isnap&&(i(isnap),setIsnap(null),setIm("直前の改定を取り消しました。"))}},"元に戻す")),H("div",{style:{display:"flex",gap:6,flexWrap:"wrap",marginTop:8}},["木材が値上がりしたので木工事を8%上げて","全体を3%値上げして","サッシ工事の原価だけ5万円上げて","住設設備を12万円下げて"].map(function(t,k){return H("button",{key:k,className:"tpl-btn",style:{fontSize:11,padding:"4px 8px"},onClick:function(){setIq(t)}},t)})),im?H("div",{className:"imp-msg ok",style:{marginTop:10}},im):null,ih.length?H("div",{style:{marginTop:10}},H("div",{className:"hint",style:{margin:"0 0 4px"}},"改定履歴(新しい順)"),H("ul",{style:{margin:0,paddingLeft:18,fontSize:12,lineHeight:1.9}},ih.map(function(r,k){return H("li",{key:k},r.q," → 本体 ",(r.d>=0?"+":"")+r.d.toLocaleString("ja-JP"),"円 / 粗利率 ",r.g,"%")}))):null),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",alignItems:"center",gap:12,flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"gen-btn",style:{width:"auto",margin:0,padding:"10px 18px"},onClick:()=>{let n=`P-${2200+e.length}`;t([...e,{id:n,name:`${r}\u{90B8}(\u{898B}\u{7A4D}\u{9023}\u{643A})`,contract:c+f,progress:0,handover:"未定",rows:a.map(e=>({category:e.name,budget:e.qty*e.cost,ordered:0,paid:0}))}],"見積書モジュール","api"),o(`\u{5B9F}\u{884C}\u{4E88}\u{7B97}\u{306B}\u{767B}\u{9332}\u{3057}\u{307E}\u{3057}\u{305F}(\u{6848}\u{4EF6}ID: ${n})\u{3002}\u{300C}\u{5B9F}\u{884C}\u{4E88}\u{7B97}\u{30FB}\u{9032}\u{6357}\u{300D}\u{3067}\u{767A}\u{6CE8}\u{7BA1}\u{7406}\u{3092}\u{958B}\u{59CB}\u{3067}\u{304D}\u{307E}\u{3059}\u{3002}\u{540C}\u{3058}\u{6570}\u{5B57}\u{3092}2\u{5EA6}\u{6253}\u{305F}\u{306A}\u{3044}\u{3001}\u{304C}\u{5B9F}\u{73FE}\u{3055}\u{308C}\u{3066}\u{3044}\u{307E}\u{3059}\u{3002}`)},children:"✓ この見積を確定して実行予算に登録"}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"販売価格→請負金額、原価→工種別実行予算として案件が自動作成されます。"})]}),l&&(0,eO.jsx)("div",{className:"imp-msg ok",style:{marginTop:10},children:l})]})},group:"営業"},
 {key:"subsidy",label:"補助金情報",icon:"📡",comp:function(){return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"補助金インテリジェンス"}),(0,eO.jsx)("p",{children:"国・県・市の制度をAIが毎朝巡回し、変更点と予算消化ペースを自動でキャッチ。「早く決めないと枠が消える」を営業の武器にします。"})]}),eP.map(e=>(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:e.name}),(0,eO.jsx)("div",{className:"kpi-sub",style:{marginBottom:10},children:e.scope}),e.items.map(e=>(0,eO.jsxs)("div",{className:"sub-row",children:[(0,eO.jsxs)("div",{className:"sub-name",children:[(0,eO.jsx)("b",{children:e.type}),(0,eO.jsxs)("span",{children:[e.amount," ｜ ",e.target]})]}),(0,eO.jsx)("div",{className:"sub-bar-wrap",children:(0,eO.jsx)("div",{className:"sub-bar",style:{width:`${e.consumed}%`,background:e.consumed>=75?"#C4554D":e.consumed>=50?"#D98E32":"#2F9E82"}})}),(0,eO.jsxs)("div",{className:"sub-pct",style:{color:e.consumed>=75?"#C4554D":void 0},children:["消化 ",e.consumed,"%",e.consumed>=75&&" ⚠残枠僅少"]})]},e.type))]},e.name)),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"AI巡回フィード(毎朝6時 自動更新)"}),(0,eO.jsx)("div",{className:"feed",children:eT.map((e,t)=>(0,eO.jsxs)("div",{className:"feed-item",children:[(0,eO.jsx)("span",{className:"feed-date",children:e.date}),(0,eO.jsx)("span",{className:"badge green",children:"自動"}),(0,eO.jsxs)("span",{children:[(0,eO.jsx)("b",{children:e.src})," — ",e.msg]})]},t))}),(0,eO.jsx)("div",{className:"hint",children:"一次情報URL付きでChatworkに週次配信。申請判断時は必ず公式サイトで最終確認します。数値はデモ値です。"})]})]})},group:"営業"},
 {key:"subsidyapp",label:"補助金 申請書類管理",icon:"🗂",comp:function(){
