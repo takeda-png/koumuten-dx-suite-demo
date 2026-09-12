@@ -792,6 +792,270 @@
 </div>
 
     </template>
+<template id="arch-html">
+<style>
+#arch-app .arch-fig{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+#arch-app .arch-users{flex:0 0 170px;border:1px solid #cfd8d3;border-radius:12px;background:#fafaf8;padding:12px;display:flex;flex-direction:column;gap:7px}
+#arch-app .arch-users .arch-ttl{font-weight:700;font-size:12.5px;color:#2b332f;text-align:center;margin-bottom:2px}
+#arch-app .arch-u{background:#fff;border:1px solid #e5e2d8;border-radius:8px;padding:7px 9px;font-size:12px;text-align:center;color:#4a554f;line-height:1.5}
+#arch-app .arch-arh{flex:0 0 auto;align-self:center;color:#9aa7a1;font-size:16px;line-height:1}
+#arch-app .arch-cf{flex:1 1 440px;min-width:0;border:2px solid #f38020;border-radius:12px;background:#fffaf5;padding:14px}
+#arch-app .arch-cf-ttl{text-align:center;font-weight:700;color:#8a4200;font-size:14px;margin-bottom:12px}
+#arch-app .arch-cf-ttl span{display:block;font-weight:400;font-size:11px;color:#a9713f;margin-top:3px;line-height:1.6}
+#arch-app .arch-b{border-radius:10px;padding:11px 14px;text-align:center;cursor:pointer;border:1.5px solid #cfd8d3;background:#fff;transition:box-shadow .12s,transform .12s}
+#arch-app .arch-b:hover{transform:translateY(-1px)}
+#arch-app .arch-b:focus-visible{outline:2px solid #2f9e82;outline-offset:2px}
+#arch-app .arch-b b{display:block;font-size:13.5px;line-height:1.5}
+#arch-app .arch-b span{display:block;font-size:11px;margin-top:3px;line-height:1.6;opacity:.9}
+#arch-app .arch-b.on{box-shadow:0 0 0 3px rgba(47,158,130,.28)}
+#arch-app .arch-access{background:#f2f0fc;border-color:#5b4bb5;color:#3a2f80}
+#arch-app .arch-workers{background:#f1faf6;border-color:#2f9e82;color:#1b6b57}
+#arch-app .arch-store{background:#eff6fc;border-color:#2a6fb5;color:#1d4f80}
+#arch-app .arch-cron{background:#f2f4f3;border-color:#4a554f;color:#2b332f}
+#arch-app .arch-extb{background:#fafaf8;border-color:#cfd8d3;color:#4a554f}
+#arch-app .arch-mods{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0 9px}
+#arch-app .arch-mods i{flex:1 1 84px;background:#16302b;color:#fff;border-radius:7px;padding:7px 4px;font-style:normal;font-size:12px;font-weight:700;line-height:1.4}
+#arch-app .arch-mods i em{display:block;font-style:normal;font-weight:400;font-size:10px;opacity:.82;margin-top:2px}
+#arch-app .arch-ar{text-align:center;color:#c6a183;font-size:13px;line-height:1;margin:9px 0}
+#arch-app .arch-2{display:flex;gap:10px;flex-wrap:wrap}
+#arch-app .arch-2>*{flex:1 1 190px;min-width:0}
+#arch-app .arch-ext{display:flex;gap:10px;flex-wrap:wrap}
+#arch-app .arch-ext>*{flex:1 1 170px;min-width:0}
+#arch-app .arch-d-grid{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px}
+#arch-app .arch-d-grid>div{flex:1 1 280px;min-width:0}
+#arch-app .arch-d-grid b{display:block;font-size:11.5px;color:#7e8b96;margin-bottom:5px}
+#arch-app .arch-d-grid ul{margin:0;padding-left:18px;font-size:12.5px;line-height:1.9;color:#3a443e}
+#arch-app .arch-note{margin-top:12px;background:#f2fbf7;border-left:3px solid #2f9e82;border-radius:0 8px 8px 0;padding:9px 12px;font-size:12px;line-height:1.8;color:#28453c}
+#arch-app .arch-warn{background:#fff8f1;border-left:3px solid #f38020;border-radius:0 8px 8px 0;padding:10px 13px;font-size:12px;line-height:1.85;color:#6b3d12}
+#arch-app .arch-sum{font-size:13px;line-height:1.9;color:#3a443e;margin:0}
+#arch-app .arch-scroll{overflow-x:auto}
+#arch-app .arch-big{font-size:19px;font-weight:700;color:#16302b;letter-spacing:.01em}
+#arch-app .arch-faq dt{font-weight:700;font-size:13.5px;color:#16302b;margin-top:16px;padding-left:20px;position:relative;line-height:1.6}
+#arch-app .arch-faq dt:first-child{margin-top:0}
+#arch-app .arch-faq dt:before{content:"Q";position:absolute;left:0;top:0;color:#2f9e82;font-size:12.5px}
+#arch-app .arch-faq dd{margin:6px 0 0 20px;font-size:12.5px;line-height:1.95;color:#4a554f}
+#arch-app .arch-hint{font-size:11.5px;color:#7e8b96;margin-top:9px;line-height:1.8}
+#arch-app .arch-ol{margin:0;padding-left:20px;font-size:12.5px;line-height:2;color:#3a443e}
+#arch-app .arch-ol li{margin-bottom:8px}
+#arch-app .arch-ol li:last-child{margin-bottom:0}
+#arch-app .arch-ol b{color:#16302b}
+@media(max-width:860px){
+ #arch-app .arch-fig{flex-direction:column}
+ #arch-app .arch-users{flex:1 1 auto;width:100%;flex-direction:row;flex-wrap:wrap;align-items:center}
+ #arch-app .arch-users .arch-ttl{flex:1 1 100%;margin-bottom:0}
+ #arch-app .arch-u{flex:1 1 44%}
+ #arch-app .arch-arh{align-self:center;transform:rotate(90deg)}
+ #arch-app .arch-cf{flex:1 1 auto;width:100%}
+}
+</style>
+<div id="arch-app">
+  <div class="module-head">
+    <h2>システム構成(本番運用)</h2>
+    <p>いまご覧のデモを、実際に自社で運用するときの構成案です。事務所にサーバーを1台も置かず、画面・データ・写真・定期処理までをCloudflareの中で完結させます。図のブロックを押すと、その部品が何をしているかが下に出ます。</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">自社に置くサーバー</div><div class="kpi-value">0台</div><div class="kpi-sub">買う・置く・入れ替えるが不要</div></div>
+    <div class="kpi"><div class="kpi-label">使う人</div><div class="kpi-value">4種類</div><div class="kpi-sub">社員・大工・協力業者・施主</div></div>
+    <div class="kpi"><div class="kpi-label">データの置き場所</div><div class="kpi-value">1か所</div><div class="kpi-sub">表はD1・ファイルはR2</div></div>
+    <div class="kpi"><div class="kpi-label">現場で使うもの</div><div class="kpi-value">ブラウザだけ</div><div class="kpi-sub">アプリのインストール不要</div></div>
+  </div>
+
+  <div class="proj-tabs" id="arch-tabs" style="margin-bottom:14px"></div>
+
+  <div id="arch-v-map">
+    <div class="panel">
+      <h3>全体の構成</h3>
+      <div class="arch-fig">
+        <div class="arch-users">
+          <div class="arch-ttl">利用者</div>
+          <div class="arch-u">社員</div>
+          <div class="arch-u">大工・職人</div>
+          <div class="arch-u">協力業者</div>
+          <div class="arch-u">施主(閲覧のみ)</div>
+        </div>
+        <div class="arch-arh">&#8594;</div>
+        <div class="arch-cf">
+          <div class="arch-cf-ttl">Cloudflare<span>画面・データ・写真・定期処理まで、すべてここで完結</span></div>
+
+          <div class="arch-b arch-access" data-arch="access" role="button" tabindex="0">
+            <b>Access 認証・権限</b>
+            <span>Googleログイン・二段階認証</span>
+          </div>
+          <div class="arch-ar">&#8595;</div>
+
+          <div class="arch-b arch-workers" data-arch="workers" role="button" tabindex="0">
+            <b>Workers 画面とAPI(このデモの画面)</b>
+            <div class="arch-mods">
+              <i>経営<em>予算・月報</em></i>
+              <i>営業<em>追客・見積</em></i>
+              <i>設計<em>設計・図面</em></i>
+              <i>工事<em>工程・写真</em></i>
+              <i>集客<em>集客・SNS</em></i>
+            </div>
+            <span>権限チェック・外部API連携・署名付きURL発行</span>
+          </div>
+          <div class="arch-ar">&#8595;</div>
+
+          <div class="arch-2">
+            <div class="arch-b arch-store" data-arch="d1" role="button" tabindex="0">
+              <b>D1 データベース</b>
+              <span>追客・見積・予算・工程・OB</span>
+            </div>
+            <div class="arch-b arch-store" data-arch="r2" role="button" tabindex="0">
+              <b>R2 ファイル保管</b>
+              <span>現場写真・図面・帳票PDF</span>
+            </div>
+          </div>
+          <div class="arch-ar">&#8595;</div>
+
+          <div class="arch-b arch-cron" data-arch="cron" role="button" tabindex="0">
+            <b>Cron 定期処理</b>
+            <span>天気予報の取得・月次報告書の下書き・アラート判定</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arch-ar">&#8597;</div>
+      <div class="arch-ext">
+        <div class="arch-b arch-extb" data-arch="ext" role="button" tabindex="0"><b>天気</b><span>Open-Meteo</span></div>
+        <div class="arch-b arch-extb" data-arch="ext" role="button" tabindex="0"><b>SNS</b><span>Meta Graph API</span></div>
+        <div class="arch-b arch-extb" data-arch="ext" role="button" tabindex="0"><b>WEB分析</b><span>GA4・Search Console</span></div>
+      </div>
+      <div class="arch-hint">押すと下に説明が出ます。会計ソフト・施工管理ソフトとのつなぎ込みは「データ連携ハブ」の画面にまとめています。</div>
+    </div>
+
+    <div class="panel">
+      <h3 id="arch-d-ttl">Workers 画面とAPI</h3>
+      <p class="arch-sum" id="arch-d-sum"></p>
+      <div class="arch-d-grid">
+        <div><b>ここが担当すること</b><ul id="arch-d-role"></ul></div>
+        <div><b>効いてくる画面</b><ul id="arch-d-scr"></ul></div>
+      </div>
+      <div class="arch-note" id="arch-d-note"></div>
+    </div>
+  </div>
+
+  <div id="arch-v-cost" hidden>
+    <div class="panel">
+      <h3>毎月かかるインフラの実費</h3>
+      <p class="arch-sum">サーバーを借りないため、毎月決まったサーバー代や保守費はありません。かかるのは、使った量に応じた実費だけです。下はCloudflareに支払う分の公開価格です。</p>
+      <div class="arch-scroll">
+      <table class="tbl" style="min-width:620px;margin-top:12px">
+        <thead><tr><th style="width:170px">部品</th><th style="width:230px">無料で使える範囲</th><th>それを超えたら</th></tr></thead>
+        <tbody>
+          <tr><td>Access(ログイン)</td><td>50人まで無料</td><td>人数を増やす分だけ有料</td></tr>
+          <tr><td>Workers(画面とAPI)</td><td>1日10万アクセスまで無料</td><td>月5ドルで1,000万アクセスまで</td></tr>
+          <tr><td>D1(表のデータ)</td><td>5GB・1日500万行の読み取りまで</td><td>上の月5ドルに5GBまで含まれる</td></tr>
+          <tr><td>R2(写真・図面)</td><td>10GBまで無料</td><td>1GBあたり月0.015ドル</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="arch-note">
+        <b>目安</b>：社員と職人を合わせて50人以内、現場写真を100GB保管した場合、Cloudflareに支払う実費は<span class="arch-big">月6〜7ドル</span>(Workers 5ドル＋R2の超過90GB分 約1.35ドル)です。写真が少ないうちは無料の範囲に収まることもあります。
+      </div>
+      <div class="arch-warn" style="margin-top:12px">上の金額は2026年9月時点のCloudflare公開価格で、インフラの実費のみです。画面をつくる費用と、その後の保守の費用は別にかかります。実際のお見積りは運用の見込みを伺ってからお出しします。</div>
+    </div>
+
+    <div class="panel">
+      <h3>この持ち方がなぜ安く収まるのか</h3>
+      <div class="arch-scroll">
+      <table class="tbl" style="min-width:640px">
+        <thead><tr><th style="width:170px">持ち方</th><th style="width:190px">費用の決まり方</th><th>職人20人を足したら</th><th>施主100件に見せたら</th></tr></thead>
+        <tbody>
+          <tr><td><b>この構成</b></td><td>使った量(処理の回数・保存容量)</td><td>ほとんど変わりません</td><td>ほとんど変わりません</td></tr>
+          <tr><td>1人あたり月額のサービス</td><td>人数 × 単価</td><td>人数分そのまま増えます</td><td>さらに増えるか、そもそも入れられません</td></tr>
+          <tr><td>事務所にサーバーを置く</td><td>機器代＋保守＋電気代</td><td>変わりません</td><td>変わりません</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="arch-note"><b>工務店にとって一番効くのは1行目です。</b>大工・協力業者・施主まで巻き込みたいのに、1人あたり月額のサービスだと人数のところで止まってしまいます。この構成なら、見せる相手を増やしても費用はほとんど動きません。</div>
+    </div>
+
+    <div class="panel">
+      <h3>さらに抑えるなら</h3>
+      <ol class="arch-ol">
+        <li><b>1つの部門から始める。</b>よく使う1〜2画面(たとえば工程×職人手配と現場写真)だけで始めれば、無料の範囲に収まることもあります。使う量が見えてから広げるほうが、結果として安く済みます。</li>
+        <li><b>写真の残し方を決める。</b>容量で増えるのはR2だけです。引渡しまでは原本、引渡し後は縮小版だけ残す、といったルールにすると保管量が大きく下がります。</li>
+        <li><b>施主はログインの人数に入れない。</b>施主には期限付きのURLを渡す形にすれば、Accessの50人の枠を使わずに済みます。</li>
+        <li><b>写真を何度見返しても増えない。</b>R2は取り出しに通信料がかからないため、過去の現場写真を繰り返し開く使い方でも費用は増えません。</li>
+      </ol>
+      <div class="arch-warn" style="margin-top:14px">毎月ほんとうに大きいのは、サーバー代ではなく<b>人が入力している時間</b>です。入力を1回にまとめ、定期の作業をCronに寄せることで、その時間を減らすのがこのスイートの狙いです。実際の削減の試算は「シンミドウの実践記録」の画面にあります。</div>
+    </div>
+  </div>
+
+  <div id="arch-v-who" hidden>
+    <div class="panel">
+      <h3>誰が何を使えるか</h3>
+      <div class="arch-scroll">
+      <table class="tbl" style="min-width:620px">
+        <thead><tr><th style="width:120px">利用者</th><th style="width:170px">主に使う画面</th><th>できること</th><th style="width:170px">見えないもの</th></tr></thead>
+        <tbody>
+          <tr><td>社員(経営)</td><td>すべての画面</td><td>閲覧と入力のすべて</td><td>制限なし</td></tr>
+          <tr><td>社員(営業)</td><td>追客管理・見積書・資金計画</td><td>自分の案件の入力、見積の作成</td><td>他部門の原価・人にかかわる情報</td></tr>
+          <tr><td>社員(設計・工事)</td><td>工程・現場写真・図面・検査</td><td>担当現場の進捗入力、写真のアップ</td><td>経営の数字(設定によります)</td></tr>
+          <tr><td>大工・職人</td><td>工程×職人手配、現場写真</td><td>自分の予定の確認、写真のアップ</td><td>見積・原価・他の職人の単価</td></tr>
+          <tr><td>協力業者</td><td>工程、見積の提出</td><td>依頼の受領と回答</td><td>他社の見積・金額</td></tr>
+          <tr><td>施主</td><td>オーナー様マイページのみ</td><td>自分の家の保証・点検・設備の確認</td><td>他の邸、社内の情報すべて</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="arch-note">見える範囲はAccessの設定で決めます。上の分け方は一例で、会社のやり方に合わせて後から変えられます。退職や取引終了のときは、Access側を止めるだけですべての画面が止まります。</div>
+    </div>
+  </div>
+
+  <div id="arch-v-diff" hidden>
+    <div class="panel">
+      <h3>いまのデモと、本番で導入したときの違い</h3>
+      <div class="arch-scroll">
+      <table class="tbl" style="min-width:560px">
+        <thead><tr><th style="width:130px">項目</th><th>いまのデモ</th><th>本番で導入したとき</th></tr></thead>
+        <tbody>
+          <tr><td>入力したデータ</td><td>この端末のブラウザにだけ残ります(他の人には見えません)</td><td>D1に保存され、全員が同じ最新を見ます</td></tr>
+          <tr><td>写真・図面</td><td>見本の画像です</td><td>R2に原本のまま保管され、邸ごとに紐づきます</td></tr>
+          <tr><td>数字</td><td>すべて架空のデモ値です</td><td>自社の実績に入れ替わります</td></tr>
+          <tr><td>使う人</td><td>1人で触る前提です</td><td>役割ごとに見える範囲が分かれます</td></tr>
+          <tr><td>更新のきっかけ</td><td>画面を開いたときだけです</td><td>Cronが決めた時刻に動きます</td></tr>
+          <tr><td>天気・SNS・WEB分析</td><td>画面の見本です</td><td>実データを取ってきます</td></tr>
+          <tr><td>変更の記録</td><td>残りません</td><td>誰がいつ何を変えたかが残ります</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="arch-note">このデモは見た目の説明ではなく、本番の画面そのものです。項目・並び・出力する帳票をここで触って決めていただくと、それがそのまま導入後の画面になります。</div>
+    </div>
+  </div>
+
+  <div id="arch-v-faq" hidden>
+    <div class="panel">
+      <h3>よくあるご質問</h3>
+      <dl class="arch-faq">
+        <dt>データは自社のパソコンに置かなくてよいのですか</dt>
+        <dd>置きません。事務所にサーバーを置かないので、故障・停電・盗難への備えや、数年ごとの機器の入れ替えが不要になります。事務所が使えない状況でも、ネットにつながれば現場から見られます。</dd>
+
+        <dt>途中でやめたくなったら、データはどうなりますか</dt>
+        <dd>データベースの中身とファイルは、まとめて書き出して持ち出せる形にしておきます。中身が読めない形で閉じ込めることはしません。</dd>
+
+        <dt>現場でネットがつながらないときは</dt>
+        <dd>写真は端末にいったん溜めて、電波の届く場所に戻ったときにまとめて上げる形にできます。工程の確認のように読むだけの部分は、直前に開いた内容が残ります。</dd>
+
+        <dt>いま使っている会計ソフトや施工管理ソフトは捨てるのですか</dt>
+        <dd>捨てません。置き換えるのではなく、間をつないで二重入力をなくすのがこのスイートの役割です。つなぎ方は「データ連携ハブ」の画面にまとめています。</dd>
+
+        <dt>情報が漏れないか心配です</dt>
+        <dd>ログインはGoogleアカウントと二段階認証を通します。写真や図面は、その人がその時間だけ開ける期限付きのURLでしか表示されません。誰がいつ何を見て、何を変えたかの記録が残ります。</dd>
+
+        <dt>導入までどれくらいかかりますか</dt>
+        <dd>画面はこのデモがそのまま土台になるため、決めていただくのは「どの画面から始めるか」と「いまのデータをどう移すか」の2点です。全部を一度に入れるより、1つの部門から始めて広げるほうが定着します。進め方は「導入・運用ガイド」の画面にまとめています。</dd>
+
+        <dt>費用はどれくらいですか</dt>
+        <dd>毎月のインフラ実費と、その考え方は「費用の考え方」のタブにまとめています。画面をつくる費用と保守の費用は、運用の見込みを伺ってから個別にお見積りします。</dd>
+      </dl>
+      <div class="arch-warn" style="margin-top:18px">この画面に書いている構成は、本番導入するときの設計案です。実際の構成は、いまお使いのソフトや社内のルールに合わせて調整します。</div>
+    </div>
+  </div>
+</div>
+</template>
+
 <template id="aidm-html">
 <style>
 .aidm-wrap{border:1px solid #cfe0d9;border-radius:12px;background:#fff;overflow:hidden;margin-top:4px}
@@ -4380,7 +4644,7 @@ h("div",{className:"sub-bar-wrap"},h("div",{className:"sub-bar",style:{width:`${
 h("div",{className:"sub-pct",style:{width:70}},`${e[1].n}件`))),
 h("div",{className:"hint"},"件数だけでなく「止まっている案件を何件抱えているか」で見ます。多く持っている人ほど止まりやすいので、配り直しの判断材料になります。"))))},group:"基盤"},
 {key:"data",label:"データ連携ハブ",icon:"🔌",comp:function(){let{projects:e,monthlyPL:t,cashflow13w:r,logs:n,updatePL:a,updateCF:i}=eG(),[l,o]=(0,ew.useState)("io"),[s,u]=(0,ew.useState)(null),c=(0,ew.useRef)(null),f=async e=>{if(e)try{let t=CJ(await e.arrayBuffer(),{type:"array"}),r=C$(t.Sheets[t.SheetNames[0]],{header:1,raw:!1,defval:null}),n=[],l=[],o=null;r.forEach(e=>{let t=String(e?.[0]??"");if(t.includes("月次PL")){o="pl";return}if(t.includes("資金繰り")){o="cf";return}e?.[0]&&null!=e[1]&&("pl"===o&&n.push({month:String(e[0]),sales:+e[1]||0,grossProfit:+e[2]||0,rate:+e[3]||0,ly:0,lyRate:0}),"cf"===o&&l.push({week:String(e[0]),balance:+e[1]||0,in:+e[2]||0,out:+e[3]||0}))}),n.length&&a(n,`CSV\u{53D6}\u{8FBC}(${e.name})`),l.length&&i(l,`CSV\u{53D6}\u{8FBC}(${e.name})`),n.length||l.length?u({ok:!0,t:`\u{53D6}\u{8FBC}\u{5B8C}\u{4E86}:\u{6708}\u{6B21}PL ${n.length}\u{884C} / \u{8CC7}\u{91D1}\u{7E70}\u{308A} ${l.length}\u{884C}\u{3002}\u{30C0}\u{30C3}\u{30B7}\u{30E5}\u{30DC}\u{30FC}\u{30C9}\u{306B}\u{5373}\u{6642}\u{53CD}\u{6620}\u{3055}\u{308C}\u{3066}\u{3044}\u{307E}\u{3059}\u{3002}`}):u({ok:!1,t:"ヘッダー(【月次PL】/【資金繰り】)を認識できませんでした。テンプレート形式でアップロードしてください。"}),c.current&&(c.current.value="")}catch{u({ok:!1,t:"読み取りに失敗しました。CSV / xlsx 形式かご確認ください。"})}},d=e.reduce((e,t)=>e+t.contract,0);return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"データ連携ハブ"}),(0,eO.jsx)("p",{children:"スイートの心臓部。Excel/CSVの取込・書出と、会計・施工管理・SNSなど外部システムとのAPI連携をここで管理します。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"io"===l?"on":""}`,onClick:()=>o("io"),children:"Excel/CSV 取込・書出"}),(0,eO.jsx)("button",{className:`proj-tab ${"api"===l?"on":""}`,onClick:()=>o("api"),children:"API連携設計"}),(0,eO.jsxs)("button",{className:`proj-tab ${"log"===l?"on":""}`,onClick:()=>o("log"),children:["更新履歴(",n.length,")"]})]}),"io"===l&&(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"kpi-grid",children:[(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"管理中の案件"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[e.length,"件"]}),(0,eO.jsxs)("div",{className:"kpi-sub",children:["請負総額 ",d.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"月次PL"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[t.length,"ヶ月分"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"ダッシュボードに反映中"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"資金繰り"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[r.length,"週分"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"安全水準チェック稼働中"})]})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>{let e="\uFEFF"+[["【月次PL】月","売上(万円)","粗利(万円)","粗利率(%)"],...t.map(e=>[e.month,e.sales,e.grossProfit,e.rate]),[""],["【資金繰り】週","残高(万円)","入金(万円)","支払(万円)"],...r.map(e=>[e.week,e.balance,e.in,e.out])].map(e=>e.join(",")).join("\n"),n=document.createElement("a");n.href=URL.createObjectURL(new Blob([e],{type:"text/csv"})),n.download="スイート取込テンプレート.csv",n.click()},children:"📥 テンプレCSVをダウンロード(現データ入り)"}),(0,eO.jsxs)("label",{className:"tpl-btn",style:{cursor:"pointer"},children:["📤 Excel / CSV を取り込む",(0,eO.jsx)("input",{ref:c,type:"file",accept:".csv,.xlsx,.xls",style:{display:"none"},onChange:e=>f(e.target.files?.[0])})]}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"テンプレを編集して取り込むと、経営ダッシュボードの数字がその場で入れ替わります(デモで体感できる連携)。"}),s&&(0,eO.jsx)("div",{className:`imp-msg ${s.ok?"ok":"ng"}`,style:{flexBasis:"100%"},children:s.t})]})]}),"api"===l&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"外部システム連携(設計表)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"接続先"}),(0,eO.jsx)("th",{children:"方向"}),(0,eO.jsx)("th",{children:"連携内容"}),(0,eO.jsx)("th",{children:"状態"})]})}),(0,eO.jsx)("tbody",{children:I_.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.name})}),(0,eO.jsx)("td",{children:e.dir}),(0,eO.jsx)("td",{style:{fontSize:12.5},children:e.what}),(0,eO.jsx)("td",{children:(0,eO.jsx)("span",{className:`badge ${e.status.includes("稼働")?"green":"gray"}`,children:e.status})})]},e.name))})]}),(0,eO.jsx)("div",{className:"hint",children:"思想:入力は1回、反映は全画面。既存ツールを置き換えるのではなく、間をつないで二重入力を消すのがこのスイートの役割です。"})]}),"log"===l&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"データ更新履歴"}),(0,eO.jsx)("div",{className:"feed",children:n.map((e,t)=>(0,eO.jsxs)("div",{className:"feed-item",children:[(0,eO.jsx)("span",{className:"feed-date",children:e.at}),(0,eO.jsx)("span",{className:`badge ${"auto"===e.kind?"green":"api"===e.kind?"amber":"gray"}`,children:"auto"===e.kind?"自動":"api"===e.kind?"連携":"取込"}),(0,eO.jsxs)("span",{children:[(0,eO.jsx)("b",{children:e.src})," — ",e.msg]})]},t))})]})]})},group:"基盤"},
-{key:"ops",label:"導入・運用ガイド",icon:"🧭",comp:function(){let[e,t]=(0,ew.useState)("road");return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"導入・運用ガイド"}),(0,eO.jsx)("p",{children:"ツールは「入れた後」が本番です。定着までのロードマップと、モジュール別の運用ルールをここに集約しています。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"road"===e?"on":""}`,onClick:()=>t("road"),children:"導入ロードマップ"}),(0,eO.jsx)("button",{className:`proj-tab ${"ops"===e?"on":""}`,onClick:()=>t("ops"),children:"モジュール別 運用手順"}),(0,eO.jsx)("button",{className:`proj-tab ${"week"===e?"on":""}`,onClick:()=>t("week"),children:"週次の回し方"}),(0,eO.jsx)("button",{className:`proj-tab ${"pit"===e?"on":""}`,onClick:()=>t("pit"),children:"定着の壁と対策"}),(0,eO.jsxs)("button",{className:`proj-tab ${"forms"===e?"on":""}`,onClick:()=>t("forms"),children:["帳票ライブラリ(",IM.length,")"]})]}),"road"===e&&(0,eO.jsx)("div",{className:"panel-row",children:ID.map(e=>(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:260},children:[(0,eO.jsx)("div",{className:"badge green",style:{marginBottom:6},children:e.phase}),(0,eO.jsx)("h3",{style:{marginTop:4},children:e.title}),(0,eO.jsx)("ul",{className:"slide-points",children:e.items.map(e=>(0,eO.jsx)("li",{children:e},e))})]},e.phase))}),"ops"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"誰が・いつ・何をするか"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"モジュール"}),(0,eO.jsx)("th",{children:"担当"}),(0,eO.jsx)("th",{children:"頻度"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IG.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.mod})}),(0,eO.jsx)("td",{children:e.who}),(0,eO.jsx)("td",{children:e.when}),(0,eO.jsx)("td",{children:e.what})]},e.mod))})]}),(0,eO.jsx)("div",{className:"hint",children:"週の合計入力時間は全社で約30分。それ以外はAIと連携が回します。"})]}),"week"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"週次リズム(推奨)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:60},children:"曜日"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IL.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.day})}),(0,eO.jsx)("td",{children:e.what})]},e.day))})]})]}),"pit"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"定着の壁 5つと対策"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"よくある壁"}),(0,eO.jsx)("th",{children:"対策"})]})}),(0,eO.jsx)("tbody",{children:IW.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.pit})}),(0,eO.jsx)("td",{children:e.fix})]},e.pit))})]})]}),"forms"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"標準帳票ライブラリ(Google Drive連携・業務フロー01〜22対応)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:70},children:"帳票No"}),(0,eO.jsx)("th",{children:"帳票名"}),(0,eO.jsx)("th",{children:"関連する業務ステップ"}),(0,eO.jsx)("th",{style:{width:90},children:"原本"})]})}),(0,eO.jsx)("tbody",{children:IM.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.code}),"ppt"===e.type&&(0,eO.jsx)("span",{className:"badge gray",style:{marginLeft:4},children:"PPT"})]}),(0,eO.jsx)("td",{children:e.name}),(0,eO.jsx)("td",{style:{fontSize:12},children:e.step.map(e=>{let t=eN.find(t=>t.no===e);return`${String(e).padStart(2,"0")} ${t.name}`}).join(" / ")}),(0,eO.jsx)("td",{children:(0,eO.jsx)("a",{href:e.url,target:"_blank",rel:"noreferrer",className:"drive-link",children:"Driveで開く"})})]},e.code))})]}),(0,eO.jsx)("div",{className:"hint",children:"標準業務フロー(01初回接客〜22引渡し式)の各ステップで使う帳票の一覧です。Driveの原本に直接アクセスできます。各帳票をスプレッドシート化すれば、スイート内チェックリストとして直接実装できます。"})]})]})},group:"基盤"},
+{key:"arch",label:"システム構成(本番運用)",icon:"☁️",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("arch-html").innerHTML}})},group:"基盤"},{key:"ops",label:"導入・運用ガイド",icon:"🧭",comp:function(){let[e,t]=(0,ew.useState)("road");return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"導入・運用ガイド"}),(0,eO.jsx)("p",{children:"ツールは「入れた後」が本番です。定着までのロードマップと、モジュール別の運用ルールをここに集約しています。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"road"===e?"on":""}`,onClick:()=>t("road"),children:"導入ロードマップ"}),(0,eO.jsx)("button",{className:`proj-tab ${"ops"===e?"on":""}`,onClick:()=>t("ops"),children:"モジュール別 運用手順"}),(0,eO.jsx)("button",{className:`proj-tab ${"week"===e?"on":""}`,onClick:()=>t("week"),children:"週次の回し方"}),(0,eO.jsx)("button",{className:`proj-tab ${"pit"===e?"on":""}`,onClick:()=>t("pit"),children:"定着の壁と対策"}),(0,eO.jsxs)("button",{className:`proj-tab ${"forms"===e?"on":""}`,onClick:()=>t("forms"),children:["帳票ライブラリ(",IM.length,")"]})]}),"road"===e&&(0,eO.jsx)("div",{className:"panel-row",children:ID.map(e=>(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:260},children:[(0,eO.jsx)("div",{className:"badge green",style:{marginBottom:6},children:e.phase}),(0,eO.jsx)("h3",{style:{marginTop:4},children:e.title}),(0,eO.jsx)("ul",{className:"slide-points",children:e.items.map(e=>(0,eO.jsx)("li",{children:e},e))})]},e.phase))}),"ops"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"誰が・いつ・何をするか"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"モジュール"}),(0,eO.jsx)("th",{children:"担当"}),(0,eO.jsx)("th",{children:"頻度"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IG.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.mod})}),(0,eO.jsx)("td",{children:e.who}),(0,eO.jsx)("td",{children:e.when}),(0,eO.jsx)("td",{children:e.what})]},e.mod))})]}),(0,eO.jsx)("div",{className:"hint",children:"週の合計入力時間は全社で約30分。それ以外はAIと連携が回します。"})]}),"week"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"週次リズム(推奨)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:60},children:"曜日"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IL.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.day})}),(0,eO.jsx)("td",{children:e.what})]},e.day))})]})]}),"pit"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"定着の壁 5つと対策"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"よくある壁"}),(0,eO.jsx)("th",{children:"対策"})]})}),(0,eO.jsx)("tbody",{children:IW.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.pit})}),(0,eO.jsx)("td",{children:e.fix})]},e.pit))})]})]}),"forms"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"標準帳票ライブラリ(Google Drive連携・業務フロー01〜22対応)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:70},children:"帳票No"}),(0,eO.jsx)("th",{children:"帳票名"}),(0,eO.jsx)("th",{children:"関連する業務ステップ"}),(0,eO.jsx)("th",{style:{width:90},children:"原本"})]})}),(0,eO.jsx)("tbody",{children:IM.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.code}),"ppt"===e.type&&(0,eO.jsx)("span",{className:"badge gray",style:{marginLeft:4},children:"PPT"})]}),(0,eO.jsx)("td",{children:e.name}),(0,eO.jsx)("td",{style:{fontSize:12},children:e.step.map(e=>{let t=eN.find(t=>t.no===e);return`${String(e).padStart(2,"0")} ${t.name}`}).join(" / ")}),(0,eO.jsx)("td",{children:(0,eO.jsx)("a",{href:e.url,target:"_blank",rel:"noreferrer",className:"drive-link",children:"Driveで開く"})})]},e.code))})]}),(0,eO.jsx)("div",{className:"hint",children:"標準業務フロー(01初回接客〜22引渡し式)の各ステップで使う帳票の一覧です。Driveの原本に直接アクセスできます。各帳票をスプレッドシート化すれば、スイート内チェックリストとして直接実装できます。"})]})]})},group:"基盤"},
 {key:"sinmido",label:"シンミドウの実践記録",icon:"🏆",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("sinmido-html").innerHTML}})},group:"実践記録"}],IB=["経営","営業","設計","工事","集客","基盤","実践記録"];function IR(){let[e,t]=(0,ew.useState)("dash"),r=IZ.find(t=>t.key===e).comp;return(0,eO.jsx)(eD,{children:(0,eO.jsxs)("div",{className:"app",children:[(0,eO.jsxs)("aside",{className:"sidebar",children:[(0,eO.jsxs)("div",{className:"brand",children:[(0,eO.jsx)("div",{className:"brand-mark",children:"彩"}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"brand-name",children:"彩の国ホーム"}),(0,eO.jsx)("div",{className:"brand-sub",children:"工務店DXスイート(デモ)"})]})]}),(0,eO.jsx)("nav",{children:IB.map(r=>(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"nav-group",children:r}),IZ.filter(e=>e.group===r).map(r=>(0,eO.jsxs)("button",{className:`nav-item ${r.key===e?"on":""}`,onClick:()=>t(r.key),children:[(0,eO.jsx)("span",{className:"nav-icon",children:r.icon}),r.label]},r.key))]},r))}),(0,eO.jsxs)("div",{className:"sidebar-foot",children:["powered by シンミドウ",(0,eO.jsx)("br",{}),"AI×工務店DX(デモ)"]})]}),(0,eO.jsx)("main",{className:"main",children:(0,eO.jsx)(r,{})})]})})}(0,eC.createRoot)(document.getElementById("root")).render((0,eO.jsx)(ew.StrictMode,{children:(0,eO.jsx)(function(){return(0,eO.jsx)(IR,{})},{})}));</script>
   
 
@@ -6080,4 +6344,197 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     }
   }, 250);
 })();
+
+/* ===== システム構成(本番運用) ===== */
+(function(){
+  var TABS = [
+    { k:'map',  label:'構成図' },
+    { k:'cost', label:'費用の考え方' },
+    { k:'who',  label:'誰が何を使えるか' },
+    { k:'diff', label:'いまのデモとの違い' },
+    { k:'faq',  label:'よくあるご質問' }
+  ];
+
+  var PARTS = {
+    access: {
+      title: 'Access 認証・権限',
+      sum: '誰がどこまで見られるかを、入口でまとめて決める部分です。社員はふだん使っているGoogleアカウントでログインし、二段階認証を通ります。',
+      role: [
+        'ログインの窓口を1つにまとめる(画面ごとにIDとパスワードを作らない)',
+        '社員・大工・協力業者・施主で、入れる画面を分ける',
+        '退職や取引終了のときは、ここを止めるだけですべての画面が止まる'
+      ],
+      scr: [
+        'すべての画面',
+        'オーナー様マイページ(施主は自分の家の分だけ)',
+        '工程×職人手配(職人は自分の現場だけ)'
+      ],
+      note: 'パスワードを自社で預からない形にできるので、万一のときの影響を小さくできます。'
+    },
+    workers: {
+      title: 'Workers 画面とAPI',
+      sum: 'いまご覧いただいている画面が、そのまま動くところです。サーバーを借りず、OSの更新も要りません。',
+      role: [
+        '画面を表示する',
+        '押されたボタンの処理をする(保存・集計・帳票の出力)',
+        '見てよい人かどうかを毎回チェックする',
+        '写真や図面を開くときの、期限付きURLを発行する'
+      ],
+      scr: [
+        '経営(予算・月報)',
+        '営業(追客・見積)',
+        '設計(設計・図面)',
+        '工事(工程・写真)',
+        '集客(集客・SNS)'
+      ],
+      note: '混み合っても自動で処理が増えるため、繁忙期に備えて大きなサーバーを借りておく必要がありません。'
+    },
+    d1: {
+      title: 'D1 データベース',
+      sum: '表に入る情報をまとめて持つところです。追客・見積・予算・工程・OB顧客などが、ここ1か所に入ります。',
+      role: [
+        '同じ情報を1回入れれば、どの画面にも反映される状態をつくる',
+        '誰がいつ何を変えたかの記録を残す',
+        '月報や着地予測のような、集計が必要な画面に数字を渡す'
+      ],
+      scr: [
+        '追客管理 / 見積書',
+        '実行予算・進捗 / 月次報告書',
+        '工程×職人手配',
+        'アフター点検・OB管理 ほか'
+      ],
+      note: 'データ連携ハブの「入力は1回、反映は全画面」が成り立つのは、ここに1本化しているからです。'
+    },
+    r2: {
+      title: 'R2 ファイル保管',
+      sum: '写真・図面・帳票PDFなど、ファイルそのものを置くところです。',
+      role: [
+        '現場写真を原本のまま保管する(枚数が増えても置き場に困らない)',
+        '図面・契約書・保証書のPDFを、邸ごとに紐づける',
+        '期限付きのURLで、その人がその時間だけ開ける形にする'
+      ],
+      scr: [
+        '現場写真・報告書',
+        '図面アーカイブ',
+        'オーナー様マイページ',
+        '検査・是正管理'
+      ],
+      note: '取り出すときの通信料がかからない仕組みなので、過去の現場写真を何度も見返す使い方と相性が良い部分です。'
+    },
+    cron: {
+      title: 'Cron 定期処理',
+      sum: '誰も操作していない時間に、決めた時刻で動く部分です。人が見に行かなくても、向こうから出てきます。',
+      role: [
+        '天気予報を取ってきて工程表に反映する',
+        '月次報告書の下書きを月初に作っておく',
+        '期限が近いものを拾ってアラートを出す(保証の満了・定期点検・補助金の締切・追客の放置)'
+      ],
+      scr: [
+        '工程×職人手配',
+        '月次報告書',
+        'アフター点検・OB管理',
+        '補助金 申請書類管理'
+      ],
+      note: '気づいたときには期限が過ぎていた、をなくすための部分です。'
+    },
+    ext: {
+      title: '外部サービスとのつなぎ込み',
+      sum: '自社で持たなくてよい情報は、外から取ってきます。',
+      role: [
+        '天気(Open-Meteo) … 工程表に出す雨の予報',
+        'SNS(Meta Graph API) … Instagram・Facebookへの投稿と、反応の取得',
+        'WEB分析(GA4・Search Console) … 自社サイトの流入と検索での見え方'
+      ],
+      scr: [
+        '工程×職人手配',
+        'SNS投稿AI',
+        'WEB分析(SCOPE連携)'
+      ],
+      note: '会計ソフトや施工管理ソフトとのつなぎ込みは、データ連携ハブの画面にまとめています。'
+    }
+  };
+
+  var curTab = 'map';
+  var curPart = 'workers';
+
+  function q(id){ return document.getElementById(id); }
+
+  function renderTabs(){
+    var tb = q('arch-tabs'); if(!tb) return;
+    tb.innerHTML = '';
+    TABS.forEach(function(t){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'proj-tab' + (t.k === curTab ? ' on' : '');
+      b.textContent = t.label;
+      b.setAttribute('data-arch-tab', t.k);
+      tb.appendChild(b);
+    });
+    TABS.forEach(function(t){
+      var v = q('arch-v-' + t.k);
+      if(v) v.hidden = (t.k !== curTab);
+    });
+  }
+
+  function fillList(id, arr){
+    var ul = q(id); if(!ul) return;
+    ul.innerHTML = '';
+    arr.forEach(function(s){
+      var li = document.createElement('li');
+      li.textContent = s;
+      ul.appendChild(li);
+    });
+  }
+
+  function renderPart(){
+    var p = PARTS[curPart]; if(!p) return;
+    var t = q('arch-d-ttl'), s = q('arch-d-sum'), n = q('arch-d-note');
+    if(t) t.textContent = p.title;
+    if(s) s.textContent = p.sum;
+    if(n) n.textContent = p.note;
+    fillList('arch-d-role', p.role);
+    fillList('arch-d-scr', p.scr);
+    var app = q('arch-app'); if(!app) return;
+    var bs = app.querySelectorAll('[data-arch]');
+    for(var i = 0; i < bs.length; i++){
+      var on = bs[i].getAttribute('data-arch') === curPart;
+      if(on) bs[i].classList.add('on'); else bs[i].classList.remove('on');
+    }
+  }
+
+  function pick(k){
+    if(!PARTS[k]) return;
+    curPart = k;
+    renderPart();
+  }
+
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(!t || !t.closest || !t.closest('#arch-app')) return;
+    var tb = t.closest('[data-arch-tab]');
+    if(tb){ curTab = tb.getAttribute('data-arch-tab'); renderTabs(); return; }
+    var pb = t.closest('[data-arch]');
+    if(pb){ pick(pb.getAttribute('data-arch')); }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var t = e.target;
+    if(!t || !t.closest || !t.closest('#arch-app')) return;
+    var pb = t.closest('[data-arch]');
+    if(pb){ e.preventDefault(); pick(pb.getAttribute('data-arch')); }
+  });
+
+  setInterval(function(){
+    var app = q('arch-app');
+    if(app && !app.getAttribute('data-arch-ready')){
+      app.setAttribute('data-arch-ready', '1');
+      curTab = 'map';
+      curPart = 'workers';
+      renderTabs();
+      renderPart();
+    }
+  }, 250);
+})();
+
 </script>
