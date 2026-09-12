@@ -26,161 +26,6 @@
 
 .sm-slides-row{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 10px}
 .sm-slides-row img{width:340px;flex-shrink:0;border:1px solid #e5e2d8;border-radius:8px;box-shadow:0 1px 4px #141e1c14}
-/* ===== 助成金シミュレーター ===== */
-.jk-wrap{clear:both;border:1px solid #cfe0d9;border-radius:12px;background:#fff;padding:0;overflow:hidden;margin-top:4px}
-.jk-head{background:linear-gradient(135deg,#16302b,#2f9e82);color:#fff;padding:18px 22px}
-.jk-head h3{color:#fff;font-size:17px;margin:0 0 6px}
-.jk-head p{font-size:12.5px;line-height:1.85;color:#dcefe8;margin:0}
-.jk-body{padding:16px 18px}
-.jk-grid{display:flex;flex-wrap:wrap;gap:12px}
-.jk-f{flex:1;min-width:160px;display:flex;flex-direction:column;gap:4px}
-.jk-f label{font-size:11.5px;font-weight:800;color:#4a554f;letter-spacing:.03em}
-.jk-f .u{font-size:10.5px;color:#8a938e;font-weight:600}
-.jk-f input,.jk-f select{width:100%;background:#f2fbf7;border:1px solid #9fd3c1;font-size:13.5px;padding:7px 9px}
-.jk-f input:focus,.jk-f select:focus{outline:2px solid #2f9e82;outline-offset:-1px}
-.jk-f.auto input{background:#fff;border-color:#cfd8d3;color:#4a554f}
-.jk-seg{display:inline-flex;border:1px solid #cfd8d3;border-radius:8px;overflow:hidden}
-.jk-seg button{background:#fff;border:0;padding:7px 16px;font-size:12.5px;font-weight:700;color:#5c6b77;cursor:pointer}
-.jk-seg button.on{background:#16302b;color:#fff}
-.jk-plan{border:1px solid #cfe0d9;border-left:4px solid #2f9e82;border-radius:10px;background:#fbfdfc;padding:14px 16px 12px;margin-bottom:10px}
-.jk-plan.b{border-left-color:#3a6ea5}
-.jk-plan-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px}
-.jk-tag{background:#2f9e82;color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:3px 12px;flex-shrink:0}
-.jk-tag.b{background:#3a6ea5}
-.jk-plan-name{font-size:12.5px;font-weight:800;color:#16302b;line-height:1.5}
-.jk-del{margin-left:auto;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;color:#8a938e;cursor:pointer}
-.jk-del:hover{background:#fbeeec;border-color:#edc8c1;color:#a33f36}
-.jk-plan-sum{margin-top:11px;border-top:1px dashed #cfe0d9;padding-top:9px;font-size:12px;color:#4a554f;line-height:1.8;font-variant-numeric:tabular-nums}
-.jk-plan-sum b{color:#1e7a62;font-size:13.5px}
-.jk-addwrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:2px 0 12px}
-.jk-addwrap span{font-size:11px;color:#8a938e;line-height:1.7;flex:1;min-width:140px}
-.jk-add{background:#f2fbf7;border:1px dashed #2f9e82;border-radius:999px;padding:8px 18px;font-size:12.5px;font-weight:800;color:#1e7a62;cursor:pointer}
-.jk-add:hover{background:#ddf0e9}
-.jk-sync{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;background:#eef4fa;border:1px solid #cfdcea;border-radius:8px;padding:7px 11px;font-size:11.5px;color:#3a6ea5;line-height:1.7;cursor:pointer}
-.jk-sync input{width:14px;height:14px;padding:0;flex-shrink:0;accent-color:#3a6ea5}
-.jk-sync b{font-weight:800}
-.jk-sync span{color:#7e8b96;font-weight:600}
-.jk-f input.lock{background:#f3f4f2;border-color:#dfe3e0;color:#8a938e}
-.jk-sumlabel{font-size:11px;font-weight:700;color:#8a938e;margin-left:8px;letter-spacing:0}
-.jk-sec{margin-top:16px}
-.jk-sec h4{font-size:12.5px;font-weight:800;color:#16302b;margin:0 0 8px;letter-spacing:.04em}
-.jk-res{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-.jk-card{flex:1;min-width:150px;border:1px solid #e5e2d8;border-radius:10px;padding:11px 13px;background:#fbfbf8}
-.jk-card .l{font-size:10.5px;color:#7e8b96;font-weight:800;letter-spacing:.06em}
-.jk-card .v{font-size:21px;font-weight:800;color:#16302b;margin-top:3px;line-height:1.2}
-.jk-card .s{font-size:11px;color:#8a938e;margin-top:3px;line-height:1.6}
-.jk-card.hl{background:#ddf0e9;border-color:#9fd3c1}
-.jk-card.hl .v{color:#1e7a62}
-.jk-card.net .v{color:#3a6ea5}
-.jk-bd{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px}
-.jk-bd th,.jk-bd td{border-bottom:1px solid #eceae1;padding:7px 8px;text-align:left}
-.jk-bd th{background:#f6f5f0;color:#5c6b77;font-size:11.5px;font-weight:800}
-.jk-bd td.r,.jk-bd th.r{text-align:right;font-variant-numeric:tabular-nums}
-.jk-bd tr.tot td{background:#f2fbf7;font-weight:800;color:#16302b;border-bottom:0}
-.jk-bd tr.sub td{background:#f6f5f0;font-weight:800;color:#16302b;font-size:11.5px;letter-spacing:.03em}
-.jk-bd tr.sub td .c{color:#5c6b77;font-weight:700;letter-spacing:0}
-.jk-bd tr.mid td{background:#fbfdfc;font-weight:700;color:#1e7a62}
-.jk-warn{background:#fbeeec;border:1px solid #edc8c1;color:#a33f36;border-radius:8px;padding:8px 12px;font-size:11.5px;line-height:1.75;margin-top:10px}
-.jk-ok{background:#eef7f3;border:1px solid #bfe3d6;color:#1e5c4b;border-radius:8px;padding:8px 12px;font-size:11.5px;line-height:1.75;margin-top:10px}
-.jk-cap{background:#fbf6ea;border:1px solid #ecd9b0;color:#8a6a22;border-radius:8px;padding:8px 12px;font-size:11.5px;line-height:1.75;margin-top:10px}
-.jk-preset{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
-.jk-preset button{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;color:#16302b;cursor:pointer}
-.jk-preset button:hover{background:#f2fbf7;border-color:#9fd3c1}
-.jk-preset span{font-size:11px;color:#8a938e}
-.jk-chk{display:flex;flex-wrap:wrap;gap:6px}
-.jk-chk label{flex:1;min-width:270px;display:flex;gap:7px;align-items:flex-start;background:#fbfbf8;border:1px solid #eceae1;border-radius:8px;padding:7px 10px;font-size:11.5px;line-height:1.7;color:#4a554f;cursor:pointer}
-.jk-chk input{margin-top:2px;flex-shrink:0;width:14px;height:14px;padding:0;accent-color:#c4554d}
-.jk-chk label.on{background:#fbeeec;border-color:#edc8c1;color:#a33f36}
-.jk-courses{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
-.jk-courses th,.jk-courses td{border:1px solid #eceae1;padding:6px 8px;text-align:left}
-.jk-courses th{background:#16302b;color:#fff;font-weight:700;font-size:11px}
-.jk-courses td.r{text-align:right;font-variant-numeric:tabular-nums}
-.jk-courses tr.on td{background:#f2fbf7;font-weight:700;box-shadow:inset 3px 0 0 #2f9e82}
-.jk-courses tr.onb td{background:#eef4fa;font-weight:700;box-shadow:inset 3px 0 0 #3a6ea5}
-.jk-courses tr.onab td{background:#f2fbf7;font-weight:700;box-shadow:inset 3px 0 0 #2f9e82,inset 6px 0 0 #3a6ea5}
-.jk-small{font-size:11px;color:#7e8b96;line-height:1.9;margin-top:8px}
-.jk-small li{margin-left:16px}
-@media(max-width:900px){.jk-card{min-width:44%}.jk-f{min-width:46%}.jk-chk label{min-width:46%}}
-@media(max-width:640px){.jk-card,.jk-f,.jk-chk label{min-width:100%}.jk-head,.jk-body{padding-left:12px;padding-right:12px}.jk-card .v{font-size:19px}.jk-plan{padding:12px 12px 10px}.jk-plan-name{font-size:12px}.jk-addwrap span{min-width:100%}.jk-add{width:100%}}
-/* --- company profile (auto size judge) --- */
-.jk-co{border:1px solid #e5e2d8;background:#fbfbf8;border-radius:10px;padding:12px 14px;margin-bottom:12px}
-.jk-co-h{font-size:12px;font-weight:800;color:#16302b;margin-bottom:9px;letter-spacing:.03em}
-.jk-co-r{margin-top:10px;border-radius:8px;padding:8px 12px;font-size:11.5px;line-height:1.75;background:#eef7f3;border:1px solid #bfe3d6;color:#1e5c4b}
-.jk-co-r b{font-weight:800}
-.jk-co-r.big{background:#eef4fa;border-color:#cfdcea;color:#3a6ea5}
-.jk-co-r.na{background:#fff;border-color:#e5e2d8;color:#8a938e}
-.jk-co-a{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:9px}
-.jk-co-a button{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:6px 14px;font-size:11.5px;font-weight:700;color:#16302b;cursor:pointer;flex-shrink:0}
-.jk-co-a button:hover{background:#f2fbf7;border-color:#9fd3c1}
-.jk-co-a span{font-size:10.5px;color:#8a938e;line-height:1.7;flex:1;min-width:180px}
-/* --- break-even solver --- */
-.jk-zero{margin-top:12px;border:1px solid #9fd3c1;background:#f2fbf7;border-radius:10px;padding:12px 14px}
-.jk-zero-h{font-size:13px;font-weight:800;color:#16302b;letter-spacing:.03em}
-.jk-zero-h span{margin-left:8px;background:#2f9e82;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px;vertical-align:2px}
-.jk-zero p{font-size:11.5px;color:#4a554f;line-height:1.8;margin:6px 0 0}
-.jk-zero-b{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.jk-zero-b button{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:700;color:#5c6b77;cursor:pointer}
-.jk-zero-b button:hover{border-color:#9fd3c1;color:#16302b}
-.jk-zero-b button.p{background:#16302b;border-color:#16302b;color:#fff}
-.jk-zero-b button.p:hover{background:#2f9e82;border-color:#2f9e82;color:#fff}
-.jk-zn{font-weight:800;color:#1e7a62;font-size:14px;font-variant-numeric:tabular-nums}
-.jk-card.net.zero{background:#ddf0e9;border-color:#9fd3c1}
-.jk-card.net.zero .v{color:#1e7a62}
-@media(max-width:640px){.jk-zero-b button{flex:1;min-width:100%}.jk-co-a button{width:100%}.jk-co-a span{min-width:100%}}
-/* --- age split button / subsidy cap row --- */
-.jk-add.age{background:#eef4fa;border-color:#3a6ea5;color:#2c5580}
-.jk-add.age:hover{background:#dde8f4}
-.jk-bd tr.cut td{background:#fbeeec;color:#a33f36;font-weight:700}
-.jk-tag.age{background:#8a6a22}
-
-/* --- sharoushi fee (auto) --- */
-.jk-srbtn{display:block;margin:6px 0 0 auto;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:4px 12px;font-size:10.5px;font-weight:700;color:#5c6b77;cursor:pointer;white-space:nowrap}
-.jk-srbtn:hover{background:#f2fbf7;border-color:#9fd3c1;color:#16302b}
-.jk-srb{display:block;margin-top:3px;font-size:10.5px;color:#8a938e;font-weight:600;line-height:1.7}
-.jk-srb.manual{color:#8a6a22}
-.jk-srin{width:160px;text-align:right;background:#f2fbf7;border:1px solid #9fd3c1}
-@media(max-width:640px){.jk-srin{width:130px}}
-
-/* --- かんたん試算(職種別・自動提案) --- */
-.jk-easy{border:1px solid #9fd3c1;border-radius:12px;background:#f6fbf9;padding:14px 16px 12px}
-.jk-easy h4{display:flex;align-items:center;gap:8px}
-.jk-ebadge{background:#2f9e82;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px}
-.jk-elead{font-size:11.5px;line-height:1.9;color:#4a554f;margin:0 0 10px}
-.jk-eset{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;align-items:flex-end}
-#jk-e-split{flex-wrap:wrap}
-@media(min-width:641px){.jk-fsplit{min-width:250px}}
-#jk-e-split button{padding:7px 11px}
-.jk-mgb{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#2f9e82;color:#fff;font-size:10px;font-weight:800;vertical-align:middle}
-.jk-etbl td{vertical-align:middle}
-.jk-etbl input,.jk-etbl select{width:100%;background:#f2fbf7;border:1px solid #9fd3c1;border-radius:6px;font-size:13px;padding:5px 7px}
-.jk-etbl input.r{text-align:right}
-.jk-edel{background:#fff;border:1px solid #cfd8d3;border-radius:6px;color:#a2453d;cursor:pointer;font-size:12px;font-weight:800;padding:3px 8px}
-.jk-edel:hover{border-color:#c4554d;background:#fbeeec}
-.jk-ea{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
-.jk-ea button{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:6px 15px;font-size:12px;font-weight:700;color:#5c6b77;cursor:pointer}
-.jk-ea button:hover{border-color:#9fd3c1;color:#16302b}
-.jk-ea span{font-size:11px;color:#8a938e;line-height:1.7;flex:1;min-width:220px}
-.jk-eout{margin-top:14px}
-.jk-eplan{font-size:11.5px;color:#4a554f;line-height:1.9;background:#fff;border:1px solid #cfe0d9;border-radius:8px;padding:9px 12px;margin-top:10px}
-.jk-eplan b{color:#16302b}
-.jk-ewarn{font-size:11.5px;color:#8a6a22;background:#fbf6ea;border:1px solid #ecdcb4;border-radius:8px;padding:9px 12px;margin-top:10px;line-height:1.9}
-.jk-eempty{font-size:12px;color:#8a938e;padding:14px 0;text-align:center}
-.jk-etbl2 .c{font-weight:700;color:#16302b}
-.jk-etbl2 .sub{display:block;font-size:10.5px;color:#8a938e;font-weight:400}
-.jk-etbl2 tr.tot td{background:#ddf0e9;font-weight:800;color:#16302b}
-.jk-eojt{display:flex;align-items:flex-start;gap:6px;font-size:12.5px;font-weight:700;color:#4a554f;background:#fff;border:1px solid #cfd8d3;border-radius:8px;padding:7px 10px;cursor:pointer;line-height:1.4}
-.jk-eojt input{width:14px;height:14px;padding:0;margin:1px 0 0;flex-shrink:0;accent-color:#2f9e82}
-.jk-eojt span{display:block;font-size:10.5px;color:#8a938e;font-weight:600;line-height:1.6}
-.jk-htbl{margin-top:12px}
-.jk-htbl tr.on td{background:#ddf0e9;font-weight:800}
-.jk-htbl tr.min td{box-shadow:inset 0 0 0 1.5px #2f9e82}
-.jk-hbtn{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:3px 12px;font-size:11.5px;font-weight:700;color:#5c6b77;cursor:pointer;white-space:nowrap}
-.jk-hbtn:hover{border-color:#2f9e82;color:#16302b}
-.jk-hnow{font-size:11.5px;color:#8a938e;font-weight:700}
-.jk-dtoggle{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:8px 18px;font-size:12.5px;font-weight:700;color:#5c6b77;cursor:pointer}
-.jk-dtoggle:hover{border-color:#9fd3c1;color:#16302b}
-@media(max-width:640px){.jk-eset .jk-f{max-width:none!important;min-width:100%}.jk-ea button{flex:1;min-width:100%}.jk-dtoggle{width:100%}}
-
 /* ===== 会社案内・採用パンフレット ギャラリー ===== */
 .pm-row{display:flex;gap:12px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x proximity}
 .pm-row figure{margin:0;flex:0 0 auto;width:430px;scroll-snap-align:start}
@@ -233,7 +78,7 @@
 
 <div class="module-head">
   <h2>🏆 シンミドウの実践記録</h2>
-  <p>このスイートで提案しているAI活用は、すべてシンミドウ自身が社内で実践し、成果を確認したものです。ここに載せているのは推定値ではなく、GA4・本番サイト・送信ログから直接取り出した実数です(対象期間:2026年3月〜8月/前年比較は1〜7月の累計/データ取得日:2026年8月18日)。</p>
+  <p>このスイートで提案しているAI活用は、すべてシンミドウ自身が社内で実践し、成果を確認したものです。ここに載せているのは推定値ではなく、GA4・本番サイト・送信ログから直接取り出した実数です(対象期間:2026年3月〜9月/前年比較は1〜7月の累計/GA4のデータ取得日:2026年8月18日、記事本数とAI検索順位は2026年9月12日実測)。</p>
 </div>
 
 <div class="sm-hero">
@@ -254,13 +99,13 @@
   <h3>💰 投資対効果 — 外注なら約3,200万円分の仕事を、月1万円のAIで</h3>
   <p style="font-size:13px;line-height:1.9;color:#4a554f">このページに載せた成果物を、すべて正規の料金で外部に発注した場合の想定額と、実際にかかったAI利用料(Claude 月額約1万円)の比較です。外注相場は一般に公開されている料金レンジの中間〜控えめな単価で試算しています。</p>
   <div class="kpi-grid" style="margin-top:12px">
-    <div class="kpi" style="border-color:#cfd8d3"><div class="kpi-label">外注した場合の想定費用</div><div class="kpi-value" style="color:#5c6b77">約3,202万円</div><div class="kpi-sub">下の内訳11項目の合計(一般相場による試算)</div></div>
+    <div class="kpi" style="border-color:#cfd8d3"><div class="kpi-label">外注した場合の想定費用</div><div class="kpi-value" style="color:#5c6b77">約3,286万円</div><div class="kpi-sub">下の内訳11項目の合計(一般相場による試算)</div></div>
     <div class="kpi" style="border-color:#2f9e82"><div class="kpi-label">実際にかかったAI費用</div><div class="kpi-value" style="color:#1e7a62">7万円</div><div class="kpi-sub">Claude 月額約1万円 × 7か月(2026年3月〜9月)</div></div>
-    <div class="kpi" style="border-color:#2f9e82;background:#ddf0e9"><div class="kpi-label">投資対効果</div><div class="kpi-value" style="color:#1e7a62">約450倍</div><div class="kpi-sub">3,202万円 ÷ 7万円。人件費を含めない単純比較</div></div>
+    <div class="kpi" style="border-color:#2f9e82;background:#ddf0e9"><div class="kpi-label">投資対効果</div><div class="kpi-value" style="color:#1e7a62">約460倍</div><div class="kpi-sub">3,286万円 ÷ 7万円。人件費を含めない単純比較</div></div>
   </div>
   <table class="tbl slim" style="max-width:860px">
     <tr><th>項目</th><th>実績数量</th><th>試算単価(外注相場)</th><th class="r">外注想定額</th></tr>
-    <tr><td>SEO・コラム記事の制作</td><td>434本(下のエリアレポートを除く)</td><td>3万円/本(制作会社相場 1.5〜5万円)</td><td class="r">1,302万円</td></tr>
+    <tr><td>SEO・コラム記事の制作</td><td>447本(下のエリアレポートを除く)</td><td>3万円/本(制作会社相場 1.5〜5万円)</td><td class="r">1,341万円</td></tr>
     <tr><td>LP/サービスページ制作・全面改修</td><td>8件</td><td>30万円/件</td><td class="r">240万円</td></tr>
     <tr><td>市区町村別 採用市場レポート</td><td>63市町村</td><td>5万円/本(調査レポート作成)</td><td class="r">315万円</td></tr>
     <tr><td>競合サイト分析レポート(定期)</td><td>3社×5か月</td><td>3万円/社・月</td><td class="r">45万円</td></tr>
@@ -269,15 +114,15 @@
     <tr><td>自動化スクリプト・業務システム開発</td><td>365本+6件</td><td>システム開発外注(控えめ試算)</td><td class="r">300万円</td></tr>
     <tr><td>セキュリティ対応・保守(駆除・走査・バックアップ)</td><td>一式+調査報告書1件</td><td>駆除業者+月額保守+改ざん調査</td><td class="r">60万円</td></tr>
     <tr><td>Claude研修プログラム・研修資料の開発</td><td>2日分</td><td>企業研修の企画・資料制作</td><td class="r">50万円</td></tr>
-    <tr><td>MAツールの自社開発(スクラッチ)</td><td>一式・稼働中</td><td>システム開発外注(控えめ試算)</td><td class="r">150万円</td></tr><tr><td>工務店DXスイート(このデモ)の開発</td><td>36モジュール+オーナー様ページ</td><td>15万円/画面(開発の画面単価 15〜40万円の下限)</td><td class="r">540万円</td></tr>
-    <tr><td><b>合計</b></td><td></td><td></td><td class="r"><b>約3,202万円</b></td></tr>
+    <tr><td>MAツールの自社開発(スクラッチ)</td><td>一式・稼働中</td><td>システム開発外注(控えめ試算)</td><td class="r">150万円</td></tr><tr><td>工務店DXスイート(このデモ)の開発</td><td>39モジュール+オーナー様ページ</td><td>15万円/画面(開発の画面単価 15〜40万円の下限)</td><td class="r">585万円</td></tr>
+    <tr><td><b>合計</b></td><td></td><td></td><td class="r"><b>約3,286万円</b></td></tr>
   </table>
   <div class="sm-note">※ 外注相場はSEO記事制作(制作会社:1.5〜5万円/本)、フォーム営業代行(従量:100〜300円/件)など公開されている一般的な料金レンジに基づく試算です。品質・仕様により変動します。社内メンバーの確認・仕上げ工数(人件費)はAI費用側に含めていません。</div>
 </div>
 
 <div class="panel" style="border:1px dashed #9fb8b0;background:#fbfdfc">
   <h3>⏱ 人的工数の削減(試算) — 資料作成の時間が半分になったと仮定すると<span class="sm-src">仮定にもとづく試算</span></h3>
-  <p style="font-size:13px;line-height:1.9;color:#4a554f">上の投資対効果が「外に出したらいくらかかったか」の試算なのに対して、こちらは「社内の時間がどれだけ空いたか」の試算です。提案書・報告書・企画書・議事録・分析レポート・原稿など、資料をつくる仕事にかけている時間が半分になった場合として置いています。<b>この欄だけは実測ではなく仮定にもとづく参考値</b>で、上の約450倍という数字には含めていません。</p>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f">上の投資対効果が「外に出したらいくらかかったか」の試算なのに対して、こちらは「社内の時間がどれだけ空いたか」の試算です。提案書・報告書・企画書・議事録・分析レポート・原稿など、資料をつくる仕事にかけている時間が半分になった場合として置いています。<b>この欄だけは実測ではなく仮定にもとづく参考値</b>で、上の約460倍という数字には含めていません。</p>
   <div class="kpi-grid" style="margin-top:12px">
     <div class="kpi" style="border-color:#cfd8d3"><div class="kpi-label">空く時間(年)</div><div class="kpi-value" style="color:#5c6b77">5,880時間</div><div class="kpi-sub">49名 × 月10時間 × 12か月</div></div>
     <div class="kpi" style="border-color:#cfd8d3"><div class="kpi-label">人数に置き換えると</div><div class="kpi-value" style="color:#5c6b77">約3.3人分</div><div class="kpi-sub">1人あたり年1,800時間で換算</div></div>
@@ -292,19 +137,19 @@
     <tr><td>1人あたり年間労働時間</td><td>1,800時間</td><td class="r">人数に置き換えるときの分母</td></tr>
     <tr><td>人件費単価</td><td>3,000円/時間</td><td class="r">年収500万円前後＋法定福利費を年間労働時間で割った目安</td></tr>
   </table>
-  <div class="sm-note">※ この欄は実測値ではありません。「資料作成にあてている時間 月20時間」と「半分になる」はいずれも仮定で、社内で計測した数字ではありません。導入時はまず1か月ぶんの作業時間を記録し、その実数に置き換えてご覧いただくことをおすすめしています。上の投資対効果(外注想定 約3,202万円 ÷ AI費用 7万円 = 約450倍)には、この人件費換算額は含めていません。</div>
+  <div class="sm-note">※ この欄は実測値ではありません。「資料作成にあてている時間 月20時間」と「半分になる」はいずれも仮定で、社内で計測した数字ではありません。導入時はまず1か月ぶんの作業時間を記録し、その実数に置き換えてご覧いただくことをおすすめしています。上の投資対効果(外注想定 約3,286万円 ÷ AI費用 7万円 = 約460倍)には、この人件費換算額は含めていません。</div>
 </div>
 
 <div class="kpi-grid">
   <div class="kpi"><div class="kpi-label">サイト訪問者数(前年同期比)</div><div class="kpi-value">2.45倍</div><div class="kpi-sub">25,603人 → 62,818人(1〜7月の累計/GA4実数)</div></div>
   <div class="kpi"><div class="kpi-label">フォーム送信数(前年同期比)</div><div class="kpi-value">1.89倍</div><div class="kpi-sub">2,081件 → 3,932件。月平均297件→562件、2026年5月は739件で最高値</div></div>
-  <div class="kpi"><div class="kpi-label">公開した記事</div><div class="kpi-value">497本</div><div class="kpi-sub">2サイト合計・約6か月間(本番サイトで実数確認)</div></div>
+  <div class="kpi"><div class="kpi-label">公開した記事</div><div class="kpi-value">510本</div><div class="kpi-sub">2サイト合計・約7か月間(本番サイトで実数確認)</div></div>
   <div class="kpi"><div class="kpi-label">営業フォーム送信</div><div class="kpi-value">10,048社</div><div class="kpi-sub">収集した26,885社のうち送信完了した企業数(送信ログ実数)</div></div>
 </div>
 
 <div class="panel">
-  <h3>📝 実践①:コラム記事の自動化 — 6か月で497本、検索流入2.24倍<span class="sm-src">GA4 / WORDPRESS</span></h3>
-  <p style="font-size:13px;line-height:1.9;color:#4a554f">記事の企画・キーワード分析から執筆・入稿・内部リンク設計・インデックス申請までを一気通貫で自動化。コーポレートサイトは公開中の全445本のうち47%(208本)、採用サイトは全119本のうち94%(112本)が、この5か月で増えたものです。結果、月間訪問者数は前年の2倍を超え、ピークは13,097人/月。伸びの主因は自然検索で、検索流入は前年同期の2.24倍になりました。</p>
+  <h3>📝 実践①:コラム記事の自動化 — 7か月で510本、検索流入2.24倍<span class="sm-src">GA4 / WORDPRESS</span></h3>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f">記事の企画・キーワード分析から執筆・入稿・内部リンク設計・インデックス申請までを一気通貫で自動化。コーポレートサイトは公開中の全567本のうち55%(313本)、採用サイトは全204本のうち97%(197本)が、この7か月で増えたものです。結果、月間訪問者数は前年の2倍を超え、ピークは13,097人/月。伸びの主因は自然検索で、検索流入は前年同期の2.24倍になりました。</p>
   <div class="sm-flow">
     <span class="step">キーワード分析</span><span class="sep">▶</span>
     <span class="step ai">AIが執筆</span><span class="sep">▶</span>
@@ -320,7 +165,7 @@
     <tr><td>フォーム送信</td><td class="r">2,081</td><td class="r">3,932</td><td class="r"><b style="color:#1e7a62">1.89倍</b></td></tr>
     <tr><td>ページビュー</td><td class="r">84,260</td><td class="r">139,649</td><td class="r"><b style="color:#1e7a62">1.66倍</b></td></tr>
   </table>
-  <div class="hint">コーポレートサイト記事310本+採用サイトコラム187本=497本。うち埼玉県内63市町村の「市区町村別 採用市場レポート」は専用ハブページ付きで公開しています。</div>
+  <div class="hint">コーポレートサイト記事313本+採用サイトコラム197本=510本。うち埼玉県内63市町村の「市区町村別 採用市場レポート」は専用ハブページ付きで公開しています。</div>
 </div>
 
 <div class="panel-row">
@@ -346,11 +191,11 @@
 
 <div class="panel">
   <h3>🌐 実践④:自社リクルートサイト — コラムの94%をこの期間に内製<span class="sm-src">本番サイトで実数確認</span></h3>
-  <p style="font-size:13px;line-height:1.9;color:#4a554f">シンミドウ自身の採用サイトを、AI活用で運用。掲載中のコラム全119本のうち94%(112本)をこの期間に内製・公開しました。あわせてLP/サービスページ8件を新規制作・全面改修(合同LP・AI検索順位診断・SCOPEほか)。求職者・顧客との接点になるページを、外注に頼らず即日更新できる体制です。</p>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f">シンミドウ自身の採用サイトを、AI活用で運用。掲載中のコラム全204本のうち97%(197本)をこの期間に内製・公開しました。あわせてLP/サービスページ8件を新規制作・全面改修(合同LP・AI検索順位診断・SCOPEほか)。求職者・顧客との接点になるページを、外注に頼らず即日更新できる体制です。</p>
   <div class="sm-ba">
     <div class="ba-box before"><span class="ba-tag">BEFORE</span>サイト更新は外注頼み。1本ごとに費用と待ち時間が発生</div>
     <div class="arrow">→</div>
-    <div class="ba-box after"><span class="ba-tag">AFTER</span>採用コラム<span class="sm-num">112本</span>+LP/サービスページ<span class="sm-num">8件</span>を内製。思い立った日に公開</div>
+    <div class="ba-box after"><span class="ba-tag">AFTER</span>採用コラム<span class="sm-num">197本</span>+LP/サービスページ<span class="sm-num">8件</span>を内製。思い立った日に公開</div>
   </div>
 </div>
 
@@ -511,6 +356,73 @@
 </div>
 
 
+<div class="panel">
+  <h3>🔍 実践⑩:新卒採用サイトのAI検索順位を実測 — 就活生の50語×4エンジン<span class="sm-src">2026年9月12日実測</span></h3>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f">2026年1月に立ち上げた自社の新卒採用サイトが、<b>就活生のAI検索でどう見られているか</b>を実測しました。学生が実際にAIへ入力する想定の<b>キーワード50語</b>をChatGPT・Gemini・Claude・Microsoft Copilotの4エンジンに投げ、回答内に自社が現れるかを記録（指名検索は対象外）。結果、<b>15語で「筆頭〜3位級の推薦」</b>として登場しました。ここに載せているのは、その上位15語だけです。</p>
+<div class="kpi-grid">
+<div class="kpi"><div class="kpi-label">ChatGPT</div><div class="kpi-value">11 / 50語</div><div class="kpi-sub">「埼玉×コンサル」で候補表の1位。文系・未経験の質問でも筆頭</div></div>
+<div class="kpi"><div class="kpi-label">Gemini</div><div class="kpi-value">6 / 50語</div><div class="kpi-sub">「埼玉密着型・地域特化コンサル」の1番目として紹介</div></div>
+<div class="kpi"><div class="kpi-label">Claude</div><div class="kpi-value">6 / 50語</div><div class="kpi-sub">候補例の1番目。「地域密着で中小企業支援をしたいなら相性が良い」</div></div>
+<div class="kpi"><div class="kpi-label">Copilot</div><div class="kpi-value">4 / 50語</div><div class="kpi-sub">「中小企業×地域支援に強いHR会社」の中核3社入り</div></div>
+</div>
+<div class="ai-rank-wrap">
+<table class="ai-rank">
+<thead><tr><th class="kw">上位に登場したキーワード（社名を含まない“発見系”）</th><th>ChatGPT</th><th>Gemini</th><th>Claude</th><th>Copilot</th></tr></thead>
+<tbody>
+<tr class="grp"><td colspan="5">埼玉 × コンサルティング（新卒）<span>6語 ― ChatGPT・Gemini・Claude の3エンジンが筆頭</span></td></tr>
+<tr><td class="kw">埼玉 コンサル 新卒</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 コンサルティング会社 就職</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 新卒 コンサルタント 募集</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">大宮 コンサルティング会社</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 経営コンサル 新卒採用</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr><td class="kw">埼玉 コンサルファーム 一覧</td><td class="o">上位</td><td class="o">上位</td><td class="o">上位</td><td class="x">―</td></tr>
+<tr class="grp"><td colspan="5">文系・未経験 × 人事 / DX<span>5語 ― ChatGPT が筆頭</span></td></tr>
+<tr><td class="kw">文系 コンサル 新卒</td><td class="o">上位</td><td class="x">―</td><td class="x">―</td><td class="x">―</td></tr>
+<tr><td class="kw">未経験 コンサルタント 新卒</td><td class="o">上位</td><td class="x">―</td><td class="x">―</td><td class="x">―</td></tr>
+<tr><td class="kw">人事研修職 新卒</td><td class="o">上位</td><td class="x">―</td><td class="x">―</td><td class="x">―</td></tr>
+<tr><td class="kw">DXコンサルタント 文系 新卒</td><td class="o">上位</td><td class="x">―</td><td class="x">―</td><td class="x">―</td></tr>
+<tr><td class="kw">文理不問 コンサル 採用</td><td class="o">上位</td><td class="x">―</td><td class="x">―</td><td class="x">―</td></tr>
+<tr class="grp"><td colspan="5">HR業界 × 地域・中小企業支援<span>4語 ― Copilot が中核3社に</span></td></tr>
+<tr><td class="kw">HR業界 企業 新卒</td><td class="x">―</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td></tr>
+<tr><td class="kw">人材業界 地域密着 会社</td><td class="x">―</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td></tr>
+<tr><td class="kw">地域企業 支援 HR企業</td><td class="x">―</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td></tr>
+<tr><td class="kw">中小企業 人事支援 会社</td><td class="x">―</td><td class="x">―</td><td class="x">―</td><td class="o">上位</td></tr>
+</tbody>
+<tfoot><tr><td class="kw">上位に登場した語数（全50語中）</td><td class="tot">11</td><td class="tot">6</td><td class="tot">6</td><td class="tot">4</td></tr></tfoot>
+</table>
+</div>
+  <div class="ai-terr">
+    <div class="win">
+      <div class="th">AIがすでに推している質問</div>
+      <ul>
+        <li><b>「埼玉でコンサルに新卒入社したい」= 3エンジンとも筆頭</b>― ChatGPTは候補表の1位で「埼玉で『コンサル会社』に入りたいなら最も直球」、Geminiは「埼玉密着型・地域特化コンサル」の1番目で「採用や集客支援に興味があるならシンミドウ」、Claudeは候補例の1番目で「地域密着で中小企業支援をしたいなら相性が良い」と回答しました。</li>
+        <li><b>「文系から人事・コンサルへ」= ChatGPTが筆頭</b>― 候補表の1行目に掲載。「人と話す・採用・組織に興味があるなら」という志向別の推薦まで獲得しています。自社サイトに書いた職種情報が、そのまま推薦の根拠になっていました。</li>
+        <li><b>「HR業界で中小企業・地域を支援」= Copilotが中核3社に</b>― 根拠として引用されたのは<b>自社で書いたコラム</b>「埼玉の採用支援会社 完全比較ガイド（2026年版）」でした。</li>
+        <li><b>引用元が4エンジンで別々</b>― 大手ナビ媒体・地域の就活メディア・自社サイト／自社コラムの3層が、それぞれ別の経路でAIに届いています。どれか1つに依存していない状態です。</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f;margin-top:12px">この結果で一番大きいのは3つ目です。Copilotが推薦の根拠にしたのは、広告でも媒体でもなく<b>自社で書いたコラム1本</b>でした。実践①で積み上げた記事が、検索エンジンだけでなく<b>AIの回答にも引用されている</b>ことを確認できた形です。一方、残る35語（「大宮 新卒採用 企業」「採用コンサルタント 未経験」「転勤なし 埼玉」など、<b>就活の入口</b>になる質問）は4エンジンとも圏外でした。学生が使う言葉で答えるページを増やすことが次の打ち手です。</p>
+  <div class="sm-flow">
+    <span class="step">2026年1月 採用サイトを公開</span><span class="sep">▶</span>
+    <span class="step ai">コラム197本を内製で公開</span><span class="sep">▶</span>
+    <span class="step ai">2026年9月 AI検索で実測</span><span class="sep">▶</span>
+    <span class="step">3エンジンが「埼玉×コンサル」で筆頭推薦</span><span class="sep">▶</span>
+    <span class="step">次:職種解説・働き方条件のページを追加</span>
+  </div>
+  <div class="sm-note">打ち手はこれからです。「採用コンサルタントとはどんな仕事か」「転勤なし・研修制度」といった、いま圏外の35語に正面から答えるページを用意して、同じ50語で測り直します。<b>この記録には、まだ確かめていないことは書きません。</b></div>
+  <div class="sm-footnote">
+    <ul>
+      <li>実測日:2026年9月12日。ChatGPT・Gemini・Claude・Microsoft Copilot の4エンジンで同日に測定しました。</li>
+      <li>計測条件:ChatGPTは一時チャット＋パーソナライズOFF、Claudeはシークレットチャット、Gemini・Copilotは通常モード。過去の会話が結果に影響しない中立条件で計測しています。</li>
+      <li>判定:<b>上位</b>=筆頭〜3位級で推薦、<b>―</b>=回答に登場せず。50語は就活生の代表質問10問に類型化し、各質問を実際にAIへ入力した結果を同類型の語に適用しています。</li>
+      <li>この表は<b>上位に登場した15語だけ</b>を抜き出したものです。全50語×4エンジン＝200測定のうち、上位登場は27（13.5%）でした。</li>
+      <li>対象外:指名検索（社名で調べる検索）。</li>
+      <li>AIの回答は時期・条件によって変動します。他社として挙がった社名は、AIが回答時点で挙げたものであり各社の実態・優劣を示すものではないため、本ページには掲載していません。</li>
+    </ul>
+  </div>
+</div>
+
 <div class="panel" id="pm-sec">
   <h3>📕 会社案内・採用パンフレット — 私たちがどんな会社か</h3>
   <p style="font-size:13px;line-height:1.9;color:#4a554f">シンミドウの会社案内を兼ねた、2028年新卒採用パンフレットです。ビジョンと事業領域、自社で開発しているプロダクト、社員インタビュー、一日の流れ、キャリアパス、制度、数字、会社概要までを1冊にまとめています。工務店・住宅会社さまの採用パンフレット制作も、同じ体制でご支援しています。<b>全14見開き(26ページ)を掲載</b>しています ― 画像をクリックすると拡大表示します。<span class="sm-src">2026年6月発行</span></p>
@@ -539,11 +451,11 @@
 
 <div class="panel">
   <h3>🧭 まとめ:このデモ自体が、実践の成果物です</h3>
-  <p style="font-size:13px;line-height:1.9;color:#4a554f">いまご覧いただいているこの「工務店DXスイート」のデモも、シンミドウがAIで構築したものです。私たちは「AIを提案する会社」である前に「AIを一番使い倒している会社」でありたいと考えています。コラムも、レポートも、営業も、採用も、まず自社で実践し、数字で確認できた方法だけをお客様にお渡しします。このデモも作って終わりにはせず、いまも増え続けています(現在36モジュール。直近では、ヒヤリハット・クレーム管理、商圏シェア・競合分析、自社データを根拠に答える専用AIアシスタントを追加しました)。</p>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f">いまご覧いただいているこの「工務店DXスイート」のデモも、シンミドウがAIで構築したものです。私たちは「AIを提案する会社」である前に「AIを一番使い倒している会社」でありたいと考えています。コラムも、レポートも、営業も、採用も、まず自社で実践し、数字で確認できた方法だけをお客様にお渡しします。このデモも作って終わりにはせず、いまも増え続けています(現在39モジュール。直近では、自社データを根拠に答える専用AIアシスタント、営業アシスタントAI、システム構成(本番運用)を追加し、研修助成金シミュレーターを独立したタブにしました)。</p>
   <div class="goal-row">
     <div class="goal"><div class="goal-head"><span>実践して提案する</span><b>実数で検証済み</b></div><div class="goal-sub">GA4・本番サイト・送信ログの実数のみ。推定値・盛った数字は使いません</div></div>
     <div class="goal"><div class="goal-head"><span>業界特化</span><b>工務店・住宅会社</b></div><div class="goal-sub">1,200社超の支援経験×AIで、業界特有の業務に最適化</div></div>
-    <div class="goal"><div class="goal-head"><span>人が主役</span><b>AIは道具</b></div><div class="goal-sub">AIが下書きし、人が仕上げる。品質と責任は人が持つ体制です</div></div><div class="goal"><div class="goal-head"><span>作って終わりにしない</span><b>36モジュール</b></div><div class="goal-sub">このデモ自体も更新を続けています。直近はヒヤリハット管理・商圏シェア分析・専用AIアシスタント</div></div>
+    <div class="goal"><div class="goal-head"><span>人が主役</span><b>AIは道具</b></div><div class="goal-sub">AIが下書きし、人が仕上げる。品質と責任は人が持つ体制です</div></div><div class="goal"><div class="goal-head"><span>作って終わりにしない</span><b>39モジュール</b></div><div class="goal-sub">このデモ自体も更新を続けています。直近は営業アシスタントAI・システム構成(本番運用)・研修助成金シミュレーター</div></div>
   </div>
   <div class="sm-footnote">
     <b>データの出典と注記</b>
@@ -554,6 +466,172 @@
     <li>サイト指標の伸びには、AI活用以外の施策(広告出稿・季節要因・既存の営業活動)も含まれます。</li>
   </div>
 </div>
+
+    </template>
+<template id="josei-html">
+<style>
+/* 実践記録から複製（このタブでも出典表記を使うため） */
+.sm-src{font-size:10.5px;color:#8a938e;letter-spacing:.08em;font-weight:800;float:right}
+/* ===== 助成金シミュレーター ===== */
+.jk-wrap{clear:both;border:1px solid #cfe0d9;border-radius:12px;background:#fff;padding:0;overflow:hidden;margin-top:4px}
+.jk-head{background:linear-gradient(135deg,#16302b,#2f9e82);color:#fff;padding:18px 22px}
+.jk-head h3{color:#fff;font-size:17px;margin:0 0 6px}
+.jk-head p{font-size:12.5px;line-height:1.85;color:#dcefe8;margin:0}
+.jk-body{padding:16px 18px}
+.jk-grid{display:flex;flex-wrap:wrap;gap:12px}
+.jk-f{flex:1;min-width:160px;display:flex;flex-direction:column;gap:4px}
+.jk-f label{font-size:11.5px;font-weight:800;color:#4a554f;letter-spacing:.03em}
+.jk-f .u{font-size:10.5px;color:#8a938e;font-weight:600}
+.jk-f input,.jk-f select{width:100%;background:#f2fbf7;border:1px solid #9fd3c1;font-size:13.5px;padding:7px 9px}
+.jk-f input:focus,.jk-f select:focus{outline:2px solid #2f9e82;outline-offset:-1px}
+.jk-f.auto input{background:#fff;border-color:#cfd8d3;color:#4a554f}
+.jk-seg{display:inline-flex;border:1px solid #cfd8d3;border-radius:8px;overflow:hidden}
+.jk-seg button{background:#fff;border:0;padding:7px 16px;font-size:12.5px;font-weight:700;color:#5c6b77;cursor:pointer}
+.jk-seg button.on{background:#16302b;color:#fff}
+.jk-plan{border:1px solid #cfe0d9;border-left:4px solid #2f9e82;border-radius:10px;background:#fbfdfc;padding:14px 16px 12px;margin-bottom:10px}
+.jk-plan.b{border-left-color:#3a6ea5}
+.jk-plan-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px}
+.jk-tag{background:#2f9e82;color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:3px 12px;flex-shrink:0}
+.jk-tag.b{background:#3a6ea5}
+.jk-plan-name{font-size:12.5px;font-weight:800;color:#16302b;line-height:1.5}
+.jk-del{margin-left:auto;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:4px 12px;font-size:11px;font-weight:700;color:#8a938e;cursor:pointer}
+.jk-del:hover{background:#fbeeec;border-color:#edc8c1;color:#a33f36}
+.jk-plan-sum{margin-top:11px;border-top:1px dashed #cfe0d9;padding-top:9px;font-size:12px;color:#4a554f;line-height:1.8;font-variant-numeric:tabular-nums}
+.jk-plan-sum b{color:#1e7a62;font-size:13.5px}
+.jk-addwrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:2px 0 12px}
+.jk-addwrap span{font-size:11px;color:#8a938e;line-height:1.7;flex:1;min-width:140px}
+.jk-add{background:#f2fbf7;border:1px dashed #2f9e82;border-radius:999px;padding:8px 18px;font-size:12.5px;font-weight:800;color:#1e7a62;cursor:pointer}
+.jk-add:hover{background:#ddf0e9}
+.jk-sync{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;background:#eef4fa;border:1px solid #cfdcea;border-radius:8px;padding:7px 11px;font-size:11.5px;color:#3a6ea5;line-height:1.7;cursor:pointer}
+.jk-sync input{width:14px;height:14px;padding:0;flex-shrink:0;accent-color:#3a6ea5}
+.jk-sync b{font-weight:800}
+.jk-sync span{color:#7e8b96;font-weight:600}
+.jk-f input.lock{background:#f3f4f2;border-color:#dfe3e0;color:#8a938e}
+.jk-sumlabel{font-size:11px;font-weight:700;color:#8a938e;margin-left:8px;letter-spacing:0}
+.jk-sec{margin-top:16px}
+.jk-sec h4{font-size:12.5px;font-weight:800;color:#16302b;margin:0 0 8px;letter-spacing:.04em}
+.jk-res{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.jk-card{flex:1;min-width:150px;border:1px solid #e5e2d8;border-radius:10px;padding:11px 13px;background:#fbfbf8}
+.jk-card .l{font-size:10.5px;color:#7e8b96;font-weight:800;letter-spacing:.06em}
+.jk-card .v{font-size:21px;font-weight:800;color:#16302b;margin-top:3px;line-height:1.2}
+.jk-card .s{font-size:11px;color:#8a938e;margin-top:3px;line-height:1.6}
+.jk-card.hl{background:#ddf0e9;border-color:#9fd3c1}
+.jk-card.hl .v{color:#1e7a62}
+.jk-card.net .v{color:#3a6ea5}
+.jk-bd{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px}
+.jk-bd th,.jk-bd td{border-bottom:1px solid #eceae1;padding:7px 8px;text-align:left}
+.jk-bd th{background:#f6f5f0;color:#5c6b77;font-size:11.5px;font-weight:800}
+.jk-bd td.r,.jk-bd th.r{text-align:right;font-variant-numeric:tabular-nums}
+.jk-bd tr.tot td{background:#f2fbf7;font-weight:800;color:#16302b;border-bottom:0}
+.jk-bd tr.sub td{background:#f6f5f0;font-weight:800;color:#16302b;font-size:11.5px;letter-spacing:.03em}
+.jk-bd tr.sub td .c{color:#5c6b77;font-weight:700;letter-spacing:0}
+.jk-bd tr.mid td{background:#fbfdfc;font-weight:700;color:#1e7a62}
+.jk-warn{background:#fbeeec;border:1px solid #edc8c1;color:#a33f36;border-radius:8px;padding:8px 12px;font-size:11.5px;line-height:1.75;margin-top:10px}
+.jk-ok{background:#eef7f3;border:1px solid #bfe3d6;color:#1e5c4b;border-radius:8px;padding:8px 12px;font-size:11.5px;line-height:1.75;margin-top:10px}
+.jk-cap{background:#fbf6ea;border:1px solid #ecd9b0;color:#8a6a22;border-radius:8px;padding:8px 12px;font-size:11.5px;line-height:1.75;margin-top:10px}
+.jk-preset{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.jk-preset button{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;color:#16302b;cursor:pointer}
+.jk-preset button:hover{background:#f2fbf7;border-color:#9fd3c1}
+.jk-preset span{font-size:11px;color:#8a938e}
+.jk-chk{display:flex;flex-wrap:wrap;gap:6px}
+.jk-chk label{flex:1;min-width:270px;display:flex;gap:7px;align-items:flex-start;background:#fbfbf8;border:1px solid #eceae1;border-radius:8px;padding:7px 10px;font-size:11.5px;line-height:1.7;color:#4a554f;cursor:pointer}
+.jk-chk input{margin-top:2px;flex-shrink:0;width:14px;height:14px;padding:0;accent-color:#c4554d}
+.jk-chk label.on{background:#fbeeec;border-color:#edc8c1;color:#a33f36}
+.jk-courses{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
+.jk-courses th,.jk-courses td{border:1px solid #eceae1;padding:6px 8px;text-align:left}
+.jk-courses th{background:#16302b;color:#fff;font-weight:700;font-size:11px}
+.jk-courses td.r{text-align:right;font-variant-numeric:tabular-nums}
+.jk-courses tr.on td{background:#f2fbf7;font-weight:700;box-shadow:inset 3px 0 0 #2f9e82}
+.jk-courses tr.onb td{background:#eef4fa;font-weight:700;box-shadow:inset 3px 0 0 #3a6ea5}
+.jk-courses tr.onab td{background:#f2fbf7;font-weight:700;box-shadow:inset 3px 0 0 #2f9e82,inset 6px 0 0 #3a6ea5}
+.jk-small{font-size:11px;color:#7e8b96;line-height:1.9;margin-top:8px}
+.jk-small li{margin-left:16px}
+@media(max-width:900px){.jk-card{min-width:44%}.jk-f{min-width:46%}.jk-chk label{min-width:46%}}
+@media(max-width:640px){.jk-card,.jk-f,.jk-chk label{min-width:100%}.jk-head,.jk-body{padding-left:12px;padding-right:12px}.jk-card .v{font-size:19px}.jk-plan{padding:12px 12px 10px}.jk-plan-name{font-size:12px}.jk-addwrap span{min-width:100%}.jk-add{width:100%}}
+/* --- company profile (auto size judge) --- */
+.jk-co{border:1px solid #e5e2d8;background:#fbfbf8;border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.jk-co-h{font-size:12px;font-weight:800;color:#16302b;margin-bottom:9px;letter-spacing:.03em}
+.jk-co-r{margin-top:10px;border-radius:8px;padding:8px 12px;font-size:11.5px;line-height:1.75;background:#eef7f3;border:1px solid #bfe3d6;color:#1e5c4b}
+.jk-co-r b{font-weight:800}
+.jk-co-r.big{background:#eef4fa;border-color:#cfdcea;color:#3a6ea5}
+.jk-co-r.na{background:#fff;border-color:#e5e2d8;color:#8a938e}
+.jk-co-a{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:9px}
+.jk-co-a button{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:6px 14px;font-size:11.5px;font-weight:700;color:#16302b;cursor:pointer;flex-shrink:0}
+.jk-co-a button:hover{background:#f2fbf7;border-color:#9fd3c1}
+.jk-co-a span{font-size:10.5px;color:#8a938e;line-height:1.7;flex:1;min-width:180px}
+/* --- break-even solver --- */
+.jk-zero{margin-top:12px;border:1px solid #9fd3c1;background:#f2fbf7;border-radius:10px;padding:12px 14px}
+.jk-zero-h{font-size:13px;font-weight:800;color:#16302b;letter-spacing:.03em}
+.jk-zero-h span{margin-left:8px;background:#2f9e82;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px;vertical-align:2px}
+.jk-zero p{font-size:11.5px;color:#4a554f;line-height:1.8;margin:6px 0 0}
+.jk-zero-b{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.jk-zero-b button{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:700;color:#5c6b77;cursor:pointer}
+.jk-zero-b button:hover{border-color:#9fd3c1;color:#16302b}
+.jk-zero-b button.p{background:#16302b;border-color:#16302b;color:#fff}
+.jk-zero-b button.p:hover{background:#2f9e82;border-color:#2f9e82;color:#fff}
+.jk-zn{font-weight:800;color:#1e7a62;font-size:14px;font-variant-numeric:tabular-nums}
+.jk-card.net.zero{background:#ddf0e9;border-color:#9fd3c1}
+.jk-card.net.zero .v{color:#1e7a62}
+@media(max-width:640px){.jk-zero-b button{flex:1;min-width:100%}.jk-co-a button{width:100%}.jk-co-a span{min-width:100%}}
+/* --- age split button / subsidy cap row --- */
+.jk-add.age{background:#eef4fa;border-color:#3a6ea5;color:#2c5580}
+.jk-add.age:hover{background:#dde8f4}
+.jk-bd tr.cut td{background:#fbeeec;color:#a33f36;font-weight:700}
+.jk-tag.age{background:#8a6a22}
+
+/* --- sharoushi fee (auto) --- */
+.jk-srbtn{display:block;margin:6px 0 0 auto;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:4px 12px;font-size:10.5px;font-weight:700;color:#5c6b77;cursor:pointer;white-space:nowrap}
+.jk-srbtn:hover{background:#f2fbf7;border-color:#9fd3c1;color:#16302b}
+.jk-srb{display:block;margin-top:3px;font-size:10.5px;color:#8a938e;font-weight:600;line-height:1.7}
+.jk-srb.manual{color:#8a6a22}
+.jk-srin{width:160px;text-align:right;background:#f2fbf7;border:1px solid #9fd3c1}
+@media(max-width:640px){.jk-srin{width:130px}}
+
+/* --- かんたん試算(職種別・自動提案) --- */
+.jk-easy{border:1px solid #9fd3c1;border-radius:12px;background:#f6fbf9;padding:14px 16px 12px}
+.jk-easy h4{display:flex;align-items:center;gap:8px}
+.jk-ebadge{background:#2f9e82;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:2px 9px}
+.jk-elead{font-size:11.5px;line-height:1.9;color:#4a554f;margin:0 0 10px}
+.jk-eset{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;align-items:flex-end}
+#jk-e-split{flex-wrap:wrap}
+@media(min-width:641px){.jk-fsplit{min-width:250px}}
+#jk-e-split button{padding:7px 11px}
+.jk-mgb{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:999px;background:#2f9e82;color:#fff;font-size:10px;font-weight:800;vertical-align:middle}
+.jk-etbl td{vertical-align:middle}
+.jk-etbl input,.jk-etbl select{width:100%;background:#f2fbf7;border:1px solid #9fd3c1;border-radius:6px;font-size:13px;padding:5px 7px}
+.jk-etbl input.r{text-align:right}
+.jk-edel{background:#fff;border:1px solid #cfd8d3;border-radius:6px;color:#a2453d;cursor:pointer;font-size:12px;font-weight:800;padding:3px 8px}
+.jk-edel:hover{border-color:#c4554d;background:#fbeeec}
+.jk-ea{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.jk-ea button{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:6px 15px;font-size:12px;font-weight:700;color:#5c6b77;cursor:pointer}
+.jk-ea button:hover{border-color:#9fd3c1;color:#16302b}
+.jk-ea span{font-size:11px;color:#8a938e;line-height:1.7;flex:1;min-width:220px}
+.jk-eout{margin-top:14px}
+.jk-eplan{font-size:11.5px;color:#4a554f;line-height:1.9;background:#fff;border:1px solid #cfe0d9;border-radius:8px;padding:9px 12px;margin-top:10px}
+.jk-eplan b{color:#16302b}
+.jk-ewarn{font-size:11.5px;color:#8a6a22;background:#fbf6ea;border:1px solid #ecdcb4;border-radius:8px;padding:9px 12px;margin-top:10px;line-height:1.9}
+.jk-eempty{font-size:12px;color:#8a938e;padding:14px 0;text-align:center}
+.jk-etbl2 .c{font-weight:700;color:#16302b}
+.jk-etbl2 .sub{display:block;font-size:10.5px;color:#8a938e;font-weight:400}
+.jk-etbl2 tr.tot td{background:#ddf0e9;font-weight:800;color:#16302b}
+.jk-eojt{display:flex;align-items:flex-start;gap:6px;font-size:12.5px;font-weight:700;color:#4a554f;background:#fff;border:1px solid #cfd8d3;border-radius:8px;padding:7px 10px;cursor:pointer;line-height:1.4}
+.jk-eojt input{width:14px;height:14px;padding:0;margin:1px 0 0;flex-shrink:0;accent-color:#2f9e82}
+.jk-eojt span{display:block;font-size:10.5px;color:#8a938e;font-weight:600;line-height:1.6}
+.jk-htbl{margin-top:12px}
+.jk-htbl tr.on td{background:#ddf0e9;font-weight:800}
+.jk-htbl tr.min td{box-shadow:inset 0 0 0 1.5px #2f9e82}
+.jk-hbtn{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:3px 12px;font-size:11.5px;font-weight:700;color:#5c6b77;cursor:pointer;white-space:nowrap}
+.jk-hbtn:hover{border-color:#2f9e82;color:#16302b}
+.jk-hnow{font-size:11.5px;color:#8a938e;font-weight:700}
+.jk-dtoggle{background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:8px 18px;font-size:12.5px;font-weight:700;color:#5c6b77;cursor:pointer}
+.jk-dtoggle:hover{border-color:#9fd3c1;color:#16302b}
+@media(max-width:640px){.jk-eset .jk-f{max-width:none!important;min-width:100%}.jk-ea button{flex:1;min-width:100%}.jk-dtoggle{width:100%}}
+</style>
+<div id="josei-app">
+  <div class="module-head">
+    <h2>研修助成金シミュレーター</h2>
+    <p>AI研修・DX研修は、厚生労働省の人材開発支援助成金の対象になり得ます。会社情報から中小企業／大企業を自動で判定し、受講人数・研修時間・研修費用を入れると、想定助成額・申請代行(社労士)費用・実質負担がその場で出ます。金額はあくまで想定で、支給の可否と金額は労働局の審査によります。</p>
+  </div>
 
 <div class="panel" id="jk-sim">
   <h3>💰 研修助成金シミュレーション(人材開発支援助成金)</h3>
@@ -790,8 +868,8 @@
     </div>
   </div>
 </div>
-
-    </template>
+</div>
+</template>
 <template id="arch-html">
 <style>
 #arch-app .arch-fig{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
@@ -4647,7 +4725,8 @@ h("div",{className:"sub-pct",style:{width:70}},`${e[1].n}件`))),
 h("div",{className:"hint"},"件数だけでなく「止まっている案件を何件抱えているか」で見ます。多く持っている人ほど止まりやすいので、配り直しの判断材料になります。"))))},group:"基盤"},
 {key:"data",label:"データ連携ハブ",icon:"🔌",comp:function(){let{projects:e,monthlyPL:t,cashflow13w:r,logs:n,updatePL:a,updateCF:i}=eG(),[l,o]=(0,ew.useState)("io"),[s,u]=(0,ew.useState)(null),c=(0,ew.useRef)(null),f=async e=>{if(e)try{let t=CJ(await e.arrayBuffer(),{type:"array"}),r=C$(t.Sheets[t.SheetNames[0]],{header:1,raw:!1,defval:null}),n=[],l=[],o=null;r.forEach(e=>{let t=String(e?.[0]??"");if(t.includes("月次PL")){o="pl";return}if(t.includes("資金繰り")){o="cf";return}e?.[0]&&null!=e[1]&&("pl"===o&&n.push({month:String(e[0]),sales:+e[1]||0,grossProfit:+e[2]||0,rate:+e[3]||0,ly:0,lyRate:0}),"cf"===o&&l.push({week:String(e[0]),balance:+e[1]||0,in:+e[2]||0,out:+e[3]||0}))}),n.length&&a(n,`CSV\u{53D6}\u{8FBC}(${e.name})`),l.length&&i(l,`CSV\u{53D6}\u{8FBC}(${e.name})`),n.length||l.length?u({ok:!0,t:`\u{53D6}\u{8FBC}\u{5B8C}\u{4E86}:\u{6708}\u{6B21}PL ${n.length}\u{884C} / \u{8CC7}\u{91D1}\u{7E70}\u{308A} ${l.length}\u{884C}\u{3002}\u{30C0}\u{30C3}\u{30B7}\u{30E5}\u{30DC}\u{30FC}\u{30C9}\u{306B}\u{5373}\u{6642}\u{53CD}\u{6620}\u{3055}\u{308C}\u{3066}\u{3044}\u{307E}\u{3059}\u{3002}`}):u({ok:!1,t:"ヘッダー(【月次PL】/【資金繰り】)を認識できませんでした。テンプレート形式でアップロードしてください。"}),c.current&&(c.current.value="")}catch{u({ok:!1,t:"読み取りに失敗しました。CSV / xlsx 形式かご確認ください。"})}},d=e.reduce((e,t)=>e+t.contract,0);return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"データ連携ハブ"}),(0,eO.jsx)("p",{children:"スイートの心臓部。Excel/CSVの取込・書出と、会計・施工管理・SNSなど外部システムとのAPI連携をここで管理します。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"io"===l?"on":""}`,onClick:()=>o("io"),children:"Excel/CSV 取込・書出"}),(0,eO.jsx)("button",{className:`proj-tab ${"api"===l?"on":""}`,onClick:()=>o("api"),children:"API連携設計"}),(0,eO.jsxs)("button",{className:`proj-tab ${"log"===l?"on":""}`,onClick:()=>o("log"),children:["更新履歴(",n.length,")"]})]}),"io"===l&&(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"kpi-grid",children:[(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"管理中の案件"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[e.length,"件"]}),(0,eO.jsxs)("div",{className:"kpi-sub",children:["請負総額 ",d.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"月次PL"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[t.length,"ヶ月分"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"ダッシュボードに反映中"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"資金繰り"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[r.length,"週分"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"安全水準チェック稼働中"})]})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>{let e="\uFEFF"+[["【月次PL】月","売上(万円)","粗利(万円)","粗利率(%)"],...t.map(e=>[e.month,e.sales,e.grossProfit,e.rate]),[""],["【資金繰り】週","残高(万円)","入金(万円)","支払(万円)"],...r.map(e=>[e.week,e.balance,e.in,e.out])].map(e=>e.join(",")).join("\n"),n=document.createElement("a");n.href=URL.createObjectURL(new Blob([e],{type:"text/csv"})),n.download="スイート取込テンプレート.csv",n.click()},children:"📥 テンプレCSVをダウンロード(現データ入り)"}),(0,eO.jsxs)("label",{className:"tpl-btn",style:{cursor:"pointer"},children:["📤 Excel / CSV を取り込む",(0,eO.jsx)("input",{ref:c,type:"file",accept:".csv,.xlsx,.xls",style:{display:"none"},onChange:e=>f(e.target.files?.[0])})]}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"テンプレを編集して取り込むと、経営ダッシュボードの数字がその場で入れ替わります(デモで体感できる連携)。"}),s&&(0,eO.jsx)("div",{className:`imp-msg ${s.ok?"ok":"ng"}`,style:{flexBasis:"100%"},children:s.t})]})]}),"api"===l&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"外部システム連携(設計表)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"接続先"}),(0,eO.jsx)("th",{children:"方向"}),(0,eO.jsx)("th",{children:"連携内容"}),(0,eO.jsx)("th",{children:"状態"})]})}),(0,eO.jsx)("tbody",{children:I_.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.name})}),(0,eO.jsx)("td",{children:e.dir}),(0,eO.jsx)("td",{style:{fontSize:12.5},children:e.what}),(0,eO.jsx)("td",{children:(0,eO.jsx)("span",{className:`badge ${e.status.includes("稼働")?"green":"gray"}`,children:e.status})})]},e.name))})]}),(0,eO.jsx)("div",{className:"hint",children:"思想:入力は1回、反映は全画面。既存ツールを置き換えるのではなく、間をつないで二重入力を消すのがこのスイートの役割です。"})]}),"log"===l&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"データ更新履歴"}),(0,eO.jsx)("div",{className:"feed",children:n.map((e,t)=>(0,eO.jsxs)("div",{className:"feed-item",children:[(0,eO.jsx)("span",{className:"feed-date",children:e.at}),(0,eO.jsx)("span",{className:`badge ${"auto"===e.kind?"green":"api"===e.kind?"amber":"gray"}`,children:"auto"===e.kind?"自動":"api"===e.kind?"連携":"取込"}),(0,eO.jsxs)("span",{children:[(0,eO.jsx)("b",{children:e.src})," — ",e.msg]})]},t))})]})]})},group:"基盤"},
 {key:"arch",label:"システム構成(本番運用)",icon:"☁️",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("arch-html").innerHTML}})},group:"基盤"},{key:"ops",label:"導入・運用ガイド",icon:"🧭",comp:function(){let[e,t]=(0,ew.useState)("road");return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"導入・運用ガイド"}),(0,eO.jsx)("p",{children:"ツールは「入れた後」が本番です。定着までのロードマップと、モジュール別の運用ルールをここに集約しています。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"road"===e?"on":""}`,onClick:()=>t("road"),children:"導入ロードマップ"}),(0,eO.jsx)("button",{className:`proj-tab ${"ops"===e?"on":""}`,onClick:()=>t("ops"),children:"モジュール別 運用手順"}),(0,eO.jsx)("button",{className:`proj-tab ${"week"===e?"on":""}`,onClick:()=>t("week"),children:"週次の回し方"}),(0,eO.jsx)("button",{className:`proj-tab ${"pit"===e?"on":""}`,onClick:()=>t("pit"),children:"定着の壁と対策"}),(0,eO.jsxs)("button",{className:`proj-tab ${"forms"===e?"on":""}`,onClick:()=>t("forms"),children:["帳票ライブラリ(",IM.length,")"]})]}),"road"===e&&(0,eO.jsx)("div",{className:"panel-row",children:ID.map(e=>(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:260},children:[(0,eO.jsx)("div",{className:"badge green",style:{marginBottom:6},children:e.phase}),(0,eO.jsx)("h3",{style:{marginTop:4},children:e.title}),(0,eO.jsx)("ul",{className:"slide-points",children:e.items.map(e=>(0,eO.jsx)("li",{children:e},e))})]},e.phase))}),"ops"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"誰が・いつ・何をするか"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"モジュール"}),(0,eO.jsx)("th",{children:"担当"}),(0,eO.jsx)("th",{children:"頻度"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IG.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.mod})}),(0,eO.jsx)("td",{children:e.who}),(0,eO.jsx)("td",{children:e.when}),(0,eO.jsx)("td",{children:e.what})]},e.mod))})]}),(0,eO.jsx)("div",{className:"hint",children:"週の合計入力時間は全社で約30分。それ以外はAIと連携が回します。"})]}),"week"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"週次リズム(推奨)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:60},children:"曜日"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IL.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.day})}),(0,eO.jsx)("td",{children:e.what})]},e.day))})]})]}),"pit"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"定着の壁 5つと対策"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"よくある壁"}),(0,eO.jsx)("th",{children:"対策"})]})}),(0,eO.jsx)("tbody",{children:IW.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.pit})}),(0,eO.jsx)("td",{children:e.fix})]},e.pit))})]})]}),"forms"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"標準帳票ライブラリ(Google Drive連携・業務フロー01〜22対応)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:70},children:"帳票No"}),(0,eO.jsx)("th",{children:"帳票名"}),(0,eO.jsx)("th",{children:"関連する業務ステップ"}),(0,eO.jsx)("th",{style:{width:90},children:"原本"})]})}),(0,eO.jsx)("tbody",{children:IM.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.code}),"ppt"===e.type&&(0,eO.jsx)("span",{className:"badge gray",style:{marginLeft:4},children:"PPT"})]}),(0,eO.jsx)("td",{children:e.name}),(0,eO.jsx)("td",{style:{fontSize:12},children:e.step.map(e=>{let t=eN.find(t=>t.no===e);return`${String(e).padStart(2,"0")} ${t.name}`}).join(" / ")}),(0,eO.jsx)("td",{children:(0,eO.jsx)("a",{href:e.url,target:"_blank",rel:"noreferrer",className:"drive-link",children:"Driveで開く"})})]},e.code))})]}),(0,eO.jsx)("div",{className:"hint",children:"標準業務フロー(01初回接客〜22引渡し式)の各ステップで使う帳票の一覧です。Driveの原本に直接アクセスできます。各帳票をスプレッドシート化すれば、スイート内チェックリストとして直接実装できます。"})]})]})},group:"基盤"},
-{key:"sinmido",label:"シンミドウの実践記録",icon:"🏆",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("sinmido-html").innerHTML}})},group:"実践記録"}],IB=["経営","営業","設計","工事","集客","基盤","実践記録"];function IR(){let[e,t]=(0,ew.useState)("dash"),r=IZ.find(t=>t.key===e).comp;return(0,eO.jsx)(eD,{children:(0,eO.jsxs)("div",{className:"app",children:[(0,eO.jsxs)("aside",{className:"sidebar",children:[(0,eO.jsxs)("div",{className:"brand",children:[(0,eO.jsx)("div",{className:"brand-mark",children:"彩"}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"brand-name",children:"彩の国ホーム"}),(0,eO.jsx)("div",{className:"brand-sub",children:"工務店DXスイート(デモ)"})]})]}),(0,eO.jsx)("nav",{children:IB.map(r=>(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"nav-group",children:r}),IZ.filter(e=>e.group===r).map(r=>(0,eO.jsxs)("button",{className:`nav-item ${r.key===e?"on":""}`,onClick:()=>t(r.key),children:[(0,eO.jsx)("span",{className:"nav-icon",children:r.icon}),r.label]},r.key))]},r))}),(0,eO.jsxs)("div",{className:"sidebar-foot",children:["powered by シンミドウ",(0,eO.jsx)("br",{}),"AI×工務店DX(デモ)"]})]}),(0,eO.jsx)("main",{className:"main",children:(0,eO.jsx)(r,{})})]})})}(0,eC.createRoot)(document.getElementById("root")).render((0,eO.jsx)(ew.StrictMode,{children:(0,eO.jsx)(function(){return(0,eO.jsx)(IR,{})},{})}));</script>
+{key:"sinmido",label:"シンミドウの実践記録",icon:"🏆",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("sinmido-html").innerHTML}})},group:"実践記録"},
+{key:"josei",label:"研修助成金シミュレーター",icon:"💴",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("josei-html").innerHTML}})},group:"助成金"}],IB=["経営","営業","設計","工事","集客","基盤","実践記録","助成金"];function IR(){let[e,t]=(0,ew.useState)("dash"),r=IZ.find(t=>t.key===e).comp;return(0,eO.jsx)(eD,{children:(0,eO.jsxs)("div",{className:"app",children:[(0,eO.jsxs)("aside",{className:"sidebar",children:[(0,eO.jsxs)("div",{className:"brand",children:[(0,eO.jsx)("div",{className:"brand-mark",children:"彩"}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"brand-name",children:"彩の国ホーム"}),(0,eO.jsx)("div",{className:"brand-sub",children:"工務店DXスイート(デモ)"})]})]}),(0,eO.jsx)("nav",{children:IB.map(r=>(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"nav-group",children:r}),IZ.filter(e=>e.group===r).map(r=>(0,eO.jsxs)("button",{className:`nav-item ${r.key===e?"on":""}`,onClick:()=>t(r.key),children:[(0,eO.jsx)("span",{className:"nav-icon",children:r.icon}),r.label]},r.key))]},r))}),(0,eO.jsxs)("div",{className:"sidebar-foot",children:["powered by シンミドウ",(0,eO.jsx)("br",{}),"AI×工務店DX(デモ)"]})]}),(0,eO.jsx)("main",{className:"main",children:(0,eO.jsx)(r,{})})]})})}(0,eC.createRoot)(document.getElementById("root")).render((0,eO.jsx)(ew.StrictMode,{children:(0,eO.jsx)(function(){return(0,eO.jsx)(IR,{})},{})}));</script>
   
 
 <script>
