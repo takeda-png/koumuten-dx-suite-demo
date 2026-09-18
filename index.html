@@ -1,4 +1,76 @@
-<!DOCTYPE html><html lang=ja><style>*{box-sizing:border-box;margin:0;padding:0}body{color:#22303c;-webkit-font-smoothing:antialiased;background:#f4f4ef;font-family:Hiragino Kaku Gothic ProN,Hiragino Sans,Yu Gothic UI,Meiryo,sans-serif;font-size:15px}button,input,select{font-family:inherit}input,select{background:#fff;border:1px solid #cfd8d3;border-radius:6px;padding:6px 9px;font-size:13px}label{display:block}.app{min-height:100vh;display:flex}.sidebar{color:#e8efea;background:#16302b;flex-direction:column;flex-shrink:0;width:232px;height:100vh;display:flex;position:sticky;top:0;overflow-y:auto}.brand{border-bottom:1px solid #24443c;align-items:center;gap:10px;padding:18px 16px 14px;display:flex}.brand-mark{color:#fff;background:#2f9e82;border-radius:9px;justify-content:center;align-items:center;width:38px;height:38px;font-size:19px;font-weight:800;display:flex}.brand-name{font-size:14.5px;font-weight:800}.brand-sub{color:#9db5aa;font-size:10px}nav{flex:1;padding:6px 8px 14px}.nav-group{letter-spacing:.18em;color:#7e9c8f;padding:13px 10px 4px;font-size:10px;font-weight:800}.nav-item{text-align:left;color:#c8d6ce;cursor:pointer;background:0 0;border:none;border-radius:8px;align-items:center;gap:9px;width:100%;padding:8px 10px;font-size:13px;line-height:1.35;display:flex}.nav-item:hover{color:#fff;background:#1f3b34}.nav-item.on{color:#fff;background:#2f9e82;font-weight:700}.nav-icon{text-align:center;flex-shrink:0;width:20px;font-size:15px}.sidebar-foot{color:#7e9c8f;border-top:1px solid #24443c;padding:12px 16px;font-size:10px;line-height:1.6}.main{flex:1;width:100%;max-width:1560px;margin:0 auto;padding:28px 36px 60px}.module-head{margin-bottom:18px}.module-head h2{letter-spacing:.02em;font-size:22px}.module-head p{color:#5c6b77;max-width:860px;margin-top:6px;font-size:13px;line-height:1.8}.panel{background:#fff;border:1px solid #e5e2d8;border-radius:12px;margin-bottom:16px;padding:18px 20px;box-shadow:0 1px 3px #141e1c0d}.panel h3{border-left:4px solid #2f9e82;margin-bottom:12px;padding-left:10px;font-size:14.5px}.panel-row{flex-wrap:wrap;gap:16px;margin-bottom:0;display:flex}.panel-row .panel{margin-bottom:16px}.hint{color:#7e8b96;margin-top:10px;font-size:12px;line-height:1.8}.kpi-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:16px;display:grid}.kpi{background:#fff;border:1px solid #e5e2d8;border-radius:12px;padding:14px 16px;box-shadow:0 1px 3px #141e1c0d}.kpi-label{color:#7e8b96;margin-bottom:4px;font-size:11.5px}.kpi-value{letter-spacing:.01em;font-size:23px;font-weight:800}.kpi-sub{color:#8a938e;margin-top:4px;font-size:11px;line-height:1.5}.tbl{border-collapse:collapse;width:100%;font-size:13px}.tbl th{text-align:left;color:#7e8b96;white-space:nowrap;border-bottom:2px solid #e5e2d8;padding:7px 8px;font-size:11.5px}.tbl td{vertical-align:top;border-bottom:1px solid #efefe9;padding:8px}.tbl.slim td,.tbl.slim th{padding:6px 8px}.tbl td.r,.tbl th.r{text-align:right}.tbl input{padding:4px 6px;font-size:12.5px}.badge{color:#5c6b77;white-space:nowrap;background:#eef1ee;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700;display:inline-block}.badge.green{color:#1e7a62;background:#ddf0e9}.badge.amber{color:#8a6a22;background:#fbefd9}.badge.gray{color:#7e8b96;background:#eef1ee}.proj-tabs{flex-wrap:wrap;gap:6px;display:flex}.proj-tab{cursor:pointer;color:#4a554f;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:7px 16px;font-size:12.5px}.proj-tab:hover{border-color:#2f9e82}.proj-tab.on{color:#fff;background:#2f9e82;border-color:#2f9e82;font-weight:700}.pipe-row{align-items:center;gap:10px;padding:6px 0;display:flex}.pipe-stage{flex-shrink:0;width:118px;font-size:12.5px}.pipe-bar-wrap{background:#eef1ee;border-radius:999px;flex:1;height:14px;overflow:hidden}.pipe-bar{background:#2f9e82;border-radius:999px;height:100%}.pipe-num{white-space:nowrap;font-size:12.5px;font-weight:700}.pipe-amt{color:#7e8b96;font-size:11.5px;font-weight:400}.yoy-sub{color:#7e8b96;font-size:10.5px;font-weight:500}.feed-item{border-bottom:1px dashed #efefe9;align-items:baseline;gap:10px;padding:8px 0;font-size:12.5px;line-height:1.7;display:flex}.feed-date{color:#8a938e;white-space:nowrap;font-size:11px}.alert-center{background:#fff;border:1px solid #e5e2d8;border-left:5px solid #c4554d;border-radius:10px;margin-bottom:16px;padding:12px 16px;box-shadow:0 1px 3px #141e1c0f}.alert-title{margin-bottom:6px;font-size:13px;font-weight:800}.alert-line{align-items:baseline;gap:8px;padding:3px 0;font-size:12.5px;display:flex}.alert-line.red .alert-text{color:#a2453d;font-weight:700}.alert-line.amber .alert-text{color:#8a6a22}.alert-to{color:#8a938e;white-space:nowrap;margin-left:auto;font-size:11px}.form-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px 12px;margin-bottom:10px;display:grid}.form-grid label{color:#4a554f;font-size:12px}.form-grid input,.form-grid select{width:100%;margin-top:4px}.chk{margin:8px 0;font-size:12.5px}.gen-btn{color:#fff;cursor:pointer;background:#2f9e82;border:none;border-radius:9px;width:100%;margin-top:8px;padding:12px;font-size:14px;font-weight:800}.gen-btn:hover{background:#27866e}.gen-btn:disabled{opacity:.6;cursor:wait}.gen-btn.ghost{color:#2f9e82;background:#fff;border:1.5px solid #2f9e82}.tpl-btn{cursor:pointer;color:#4a554f;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:7px 16px;font-size:12.5px}.tpl-btn:hover{color:#2f9e82;border-color:#2f9e82}.upload-box{text-align:center;cursor:pointer;background:#fafcfb;border:2px dashed #b9ccc4;border-radius:10px;margin-bottom:10px;padding:16px;display:block}.upload-box:hover{border-color:#2f9e82}.upload-title{color:#2f6fb5;font-size:13.5px;font-weight:700}.upload-sub{color:#7e8b96;margin-top:4px;font-size:11.5px;line-height:1.7}.parse-result{background:#f6faf8;border:1px solid #cfe4dc;border-radius:8px;margin-bottom:12px;padding:10px 12px}.parse-head{margin-bottom:6px;font-size:12px;font-weight:700}.parse-chips{flex-wrap:wrap;gap:5px;margin-bottom:4px;display:flex}.parse-chip{border-radius:999px;padding:3px 9px;font-size:11px}.parse-chip.ok{color:#1e7a62;background:#ddf0e9}.parse-chip.ng{color:#8a6a22;background:#fbefd9}.parse-empty{color:#8a6a22;font-size:12px}.imp-msg{border-radius:8px;padding:9px 12px;font-size:12.5px;line-height:1.7}.imp-msg.ok{color:#1e7a62;background:#ddf0e9}.imp-msg.ng{color:#a2453d;background:#fbe9e4}.empty-state{color:#8a938e;text-align:center;justify-content:center;align-items:center;min-height:200px;font-size:13px;line-height:2;display:flex}.gen-steps{text-align:left;color:#4a554f;font-size:13px;line-height:2.4}.gen-steps .pulse{color:#2f9e82;font-weight:700;animation:1.2s infinite pulse}@keyframes pulse{50%{opacity:.45}}.wish-wrap{margin:10px 0}.wish{cursor:pointer;color:#4a554f;background:#fff;border:1px solid #cfd8d3;border-radius:999px;margin:0 5px 6px 0;padding:5px 13px;font-size:12px}.wish.on{color:#fff;background:#22303c;border-color:#22303c}.plan-svg{background:#fff;border:1px solid #e5e2d8;border-radius:8px;width:100%;height:auto}.slides{flex-direction:column;gap:12px;display:flex}.slide{background:#fff;border:1px solid #e5e2d8;border-radius:10px;padding:16px 18px}.slide.cover{text-align:center;border-top:6px solid;padding:30px 18px}.slide-en{letter-spacing:.3em;color:#8a938e;font-size:11px}.slide-title{margin:8px 0 4px;font-size:21px;font-weight:800}.slide-copy{color:#4a554f;margin:8px 0;font-size:14px}.slide-meta{color:#8a938e;margin-top:10px;font-size:11px}.slide-h{letter-spacing:.08em;color:#2f9e82;margin-bottom:10px;font-size:13px;font-weight:800}.slide-points{margin-top:8px;padding-left:18px;font-size:12.5px;line-height:1.9}.sim-plans{background:#f6faf8;border:1px solid #cfe4dc;border-radius:8px;margin-bottom:12px;padding:10px 12px;font-size:12.5px}.sim-plans>b{margin-bottom:4px;display:block}.sim-row{padding:2px 0}.sim-reason{color:#8a6a22;font-size:11.5px}.arc-filters{flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px;font-size:12.5px;display:flex}.arc-grid{grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;display:grid}.arc-card{background:#fff;border:1px solid #e5e2d8;border-radius:10px;gap:10px;padding:10px;display:flex}.arc-thumb{flex-shrink:0;width:110px;height:auto}.arc-body{min-width:0}.arc-head{flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;display:flex}.arc-meta{color:#7e8b96;margin:3px 0 5px;font-size:11px}.arc-tags{flex-wrap:wrap;gap:4px;display:flex}.arc-reason{color:#8a6a22;background:#fbf6ea;border-radius:6px;margin-top:6px;padding:5px 8px;font-size:11.5px;line-height:1.6}.sched-ctrl{flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:12px;font-size:13px;display:flex}.sched-scroll{border:1px solid #e5e2d8;border-radius:8px;overflow-x:auto}.sched-tbl{border-collapse:collapse;font-size:11.5px}.sched-tbl th,.sched-tbl td{background:#fff;border:1px solid #edefea;padding:2px 4px}.sched-tbl th.stick,.sched-tbl td.stick{z-index:2;text-align:left;background:#fafaf7;position:sticky}.sched-tbl th.stick:first-child,.sched-tbl td.stick:first-child{left:0}.sched-tbl .num{text-align:center;min-width:34px}.sched-tbl th.day,.sched-tbl td.day{text-align:center;min-width:24px;max-width:24px;padding:1px}.sched-tbl th.day .mon{color:#2f9e82;font-size:10px;font-weight:800}.sched-tbl th.day .dow{color:#8a938e;font-size:9px}.sched-tbl .sun{background:#fbefef!important}.sched-tbl .sat{background:#eff4fb!important}.sched-tbl .today{box-shadow:inset 0 0 0 1.5px #d98e32;background:#fdebd3!important}.sched-tbl td.day .bar{border-radius:2px;height:8px;margin:1px 0}.sched-tbl th.day .wx{margin-top:1px;font-size:12px;line-height:1.1}.sched-tbl th.day .wx .pop{color:#c4554d;font-size:8.5px;font-weight:800}.sched-tbl td.day.rain-risk{box-shadow:inset 0 0 0 1.5px #c4554d;background:#fbefef!important}.kind-chip{color:#fff;white-space:nowrap;border-radius:999px;padding:2px 7px;font-size:10px;font-weight:800}.delay-btn{cursor:pointer;background:#fff;border:1px solid #cfd8d3;border-radius:4px;margin-left:4px;padding:0 4px;font-size:10px}.rain-alert{background:#fbf3f0;border:1px solid #e8c9c0;border-radius:8px;margin-bottom:10px;padding:10px 14px;font-size:12.5px}.rain-alert>b{color:#a2453d;margin-bottom:4px;display:block}.rain-row{color:#4a554f;padding:3px 0}.yr-wrap{overflow-x:auto}.yr-grid{min-width:940px;padding:44px 0 6px;position:relative}.yr-month{color:#8a938e;border-left:1px solid #edefea;font-size:10.5px;position:absolute;top:0;bottom:0}.yr-month span{position:absolute;top:0;left:3px}.yr-today{z-index:3;border-left:2px solid #c4554d;position:absolute;top:14px;bottom:0}.yr-today-label{color:#c4554d;font-size:9.5px;font-weight:800;position:absolute;top:-13px;left:-12px}.yr-events{height:22px;position:absolute;top:16px;left:0;right:0}.yr-event{z-index:4;position:absolute;transform:translate(-50%)}.yr-flag{color:#fff;white-space:nowrap;border-radius:999px;padding:2px 7px;font-size:9px;font-weight:800;box-shadow:0 1px 3px #0003}.yr-row{border-bottom:1px dashed #edefea;align-items:center;height:52px;display:flex;position:relative}.yr-name{z-index:4;background:linear-gradient(90deg,#fff 82%,#0000);flex-shrink:0;width:150px;font-size:12.5px;line-height:1.3;position:sticky;left:0}.yr-sub{color:#8a938e;font-size:10px;display:block}.yr-track{height:16px;position:absolute;top:12px;left:0;right:0}.yr-seg{opacity:.9;border-radius:2px;height:16px;position:absolute;top:0}.yr-seg.slip{background:repeating-linear-gradient(45deg,#c4554d,#c4554d 4px,#e2a29a 4px 8px)}.yr-prog{background:#22303c;border-radius:2px;height:4px;position:absolute;top:18px}.yr-mark{color:#22303c;font-size:9px;position:absolute;top:-13px;transform:translate(-50%)}.yr-mark.dia{color:#c4554d}.yr-status{z-index:4;background:#fff;padding:0 4px;font-size:10.5px;font-weight:800;position:absolute;top:32px;right:0}.yr-status.ok{color:#2f9e82}.yr-status.warn{color:#d98e32}.yr-status.late{color:#c4554d}.yr-legend{color:#4a554f;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:11px;display:flex}.yr-legend i{border-radius:3px;width:10px;height:10px;margin-right:4px;display:inline-block}.est-grand{flex-wrap:wrap;justify-content:flex-end;align-items:baseline;gap:22px;margin-top:14px;font-size:13px;display:flex}.est-grand>div{align-items:baseline;gap:8px;display:flex}.est-grand span{color:#7e8b96;font-size:12px}.est-grand .grand b{color:#22303c;font-size:19px}.sub-row{border-bottom:1px dashed #efefe9;align-items:center;gap:12px;padding:8px 0;display:flex}.sub-name{flex-shrink:0;width:320px;font-size:12.5px;line-height:1.5}.sub-name span{color:#7e8b96;font-size:11px;display:block}.sub-bar-wrap{background:#eef1ee;border-radius:999px;flex:1;height:12px;overflow:hidden}.sub-bar{border-radius:999px;height:100%}.sub-pct{text-align:right;width:140px;font-size:12px;font-weight:700}.sns-text{white-space:pre-wrap;background:#fafaf7;border:1px solid #edefea;border-radius:8px;padding:12px;font-size:12.5px;line-height:1.85}.sns-tags{color:#3a6ea5;margin-top:8px;font-size:11px;line-height:1.7}.photo-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;display:grid}.photo-card{background:#fff;border:1px solid #e5e2d8;border-radius:10px;overflow:hidden}.photo-img{justify-content:center;align-items:center;height:120px;font-size:30px;display:flex}.photo-meta{padding:8px 10px;font-size:12px;line-height:1.5}.photo-meta span{color:#8a938e;margin-top:2px;font-size:10.5px;display:block}.drive-link{color:#2f6fb5;font-size:12px;font-weight:700;text-decoration:none}.drive-link:hover{text-decoration:underline}.plan-sheet{background:#fff;border:1px solid #d9dad2;border-radius:4px;max-width:1000px;padding:30px 34px;box-shadow:0 2px 8px #141e1c12}.ps-header{border-bottom:3px double #22303c;flex-wrap:wrap;justify-content:space-between;align-items:baseline;padding-bottom:8px;display:flex}.ps-title{letter-spacing:.04em;font-size:20px;font-weight:800}.ps-meta{color:#5c6b77;font-size:11px}.ps-note{color:#5c6b77;margin:8px 0 4px;font-size:11px;line-height:1.7}.ps-sec{color:#fff;letter-spacing:.06em;background:#22303c;margin:16px 0 8px;padding:5px 10px;font-size:13px;font-weight:800}.ps-tbl td,.ps-tbl th{border:1px solid #d9dad2!important}.ps-cols{flex-wrap:wrap;gap:14px;display:flex}.ps-cols table{flex:1;min-width:300px}.report-book{max-width:900px}.rb-cover{text-align:center;border-bottom:3px double #22303c;margin-bottom:16px;padding:40px 0 26px}.rb-co{letter-spacing:.2em;color:#5c6b77;font-size:12px}.rb-title{letter-spacing:.12em;margin:10px 0 4px;font-size:28px;font-weight:800}.rb-ym{color:#2f9e82;font-size:15px;font-weight:700}.rb-toc{color:#7e8b96;margin-top:16px;font-size:11px}@media (width>=1900px){body{font-size:16px}.main{max-width:1760px}.kpi-value{font-size:26px}.module-head h2{font-size:24px}.panel h3{font-size:16px}.tbl th,.tbl td{font-size:14px}.module-head p,.hint{font-size:13.5px}.nav-item{font-size:14.5px}}@media (width>=2400px){body{font-size:17px}.main{max-width:2000px}.kpi-value{font-size:30px}}@media print{.no-print,.sidebar,.module-head,.proj-tabs,.gen-btn,.form-grid,.panel:has(.form-grid),.tpl-btn,.alert-center,.kpi-grid{display:none!important}.plan-sheet{box-shadow:none;border:none;max-width:none;padding:0}.main{max-width:none;padding:0}body{background:#fff}}.goal-row{flex-wrap:wrap;gap:16px;margin-top:14px;display:flex}.goal{background:#fafaf7;border:1px solid #edefea;border-radius:10px;flex:1;min-width:260px;padding:12px 14px}.goal-head{justify-content:space-between;margin-bottom:6px;font-size:12.5px;display:flex}.goal-head b{color:#2f9e82;font-size:16px}.goal-bar{background:#e8ece8;border-radius:999px;height:10px;overflow:hidden}.goal-bar>div{background:linear-gradient(90deg,#2f9e82,#46b598);border-radius:999px;height:100%}.goal-sub{color:#7e8b96;margin-top:6px;font-size:11px}.ow-split{flex-wrap:wrap;gap:16px;display:flex}.ow-col{flex:1 1 320px;min-width:0}.ow-url-label{color:#7e8b96;margin-bottom:4px;font-size:11.5px;font-weight:700}.ow-url{word-break:break-all;background:#f6faf8;border:1px solid #cfe4dc;border-radius:8px;padding:9px 11px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6}.ow-btns{flex-wrap:wrap;align-items:center;gap:8px;margin-top:9px;display:flex}.ow-btn{cursor:pointer;color:#4a554f;text-decoration:none;white-space:nowrap;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:7px 15px;font-family:inherit;font-size:12.5px;display:inline-block}.ow-btn:hover{color:#2f9e82;border-color:#2f9e82}.ow-btn.pri{color:#fff;background:#2f9e82;border-color:#2f9e82;font-weight:700}.ow-btn.pri:hover{color:#fff;background:#27866e}.ow-ta{color:#22303c;background:#fff;border:1px solid #cfd8d3;border-radius:8px;width:100%;padding:9px 11px;font-family:inherit;font-size:12.5px;line-height:1.85;resize:vertical}.ow-notice{background:#fdf7ea;border:1px solid #e8ddc0;border-radius:8px;margin-top:10px;padding:11px 13px;font-size:12.5px;line-height:1.8}.ow-notice>b{margin-bottom:4px;display:block}.ow-steps{background:#fafaf7;border:1px solid #edefea;border-radius:10px;padding:12px 14px;font-size:12.5px;line-height:1.9}.ow-steps>b{margin-bottom:4px;display:block}.ow-steps ol{margin:0;padding-left:20px}.ow-phone{background:#eef1ee;border-radius:16px;justify-content:center;padding:12px;display:flex}.ow-frame{background:#fff;border:1px solid #d8ded9;border-radius:10px;width:390px;max-width:100%;height:660px}@media (max-width:520px){.ow-phone{border-radius:10px;padding:6px}.ow-frame{height:560px}}.og-wrap{padding:4px 0}.og-top{justify-content:center;display:flex}.og-stem{background:#cfd8d3;width:2px;height:18px;margin:0 auto}.og-deps{gap:12px;padding-top:14px;display:flex;position:relative}.og-deps:before{content:"";background:#cfd8d3;height:2px;position:absolute;top:0;left:12.5%;right:12.5%}.og-dep{flex:1 1 180px;min-width:0;position:relative}.og-dep:before{content:"";background:#cfd8d3;width:2px;height:14px;position:absolute;top:-14px;left:50%}.og-dep-h{color:#fff;border-radius:8px 8px 0 0;padding:7px 10px;font-size:12.5px;font-weight:800}.og-dep-h span{opacity:.85;font-size:11.5px;font-weight:600}.og-dep-note{color:#7e8b96;background:#fafaf7;border:1px solid #edefea;border-top:none;padding:5px 10px;font-size:10.5px;line-height:1.6}.og-card{background:#fff;border:1px solid #e5e2d8;border-left:4px solid #cfd8d3;border-radius:8px;margin-top:7px;padding:8px 10px;box-shadow:0 1px 2px #141e1c0d}.og-card.boss{border-left-width:5px;min-width:230px}.og-nm{align-items:center;gap:5px;font-size:14px;font-weight:800;display:flex}.og-dot{color:#2f9e82;font-size:8px}.og-tt{color:#5c6b77;margin-top:1px;font-size:11px}.og-nt{color:#8a938e;margin-top:4px;font-size:10.5px;line-height:1.6}.og-open{color:#2f9e82;text-align:center;background:#f6faf8;border:1.5px dashed #b9ccc4;border-radius:8px;margin-top:7px;padding:9px 10px;font-size:12px;font-weight:700}.og-gen{align-items:flex-end;gap:14px;min-height:120px;padding-top:10px;display:flex}.og-gen-i{text-align:center;flex:1}.og-gen-b{background:linear-gradient(#46b598,#2f9e82);border-radius:5px 5px 0 0}.og-gen-n{margin-top:5px;font-size:12.5px;font-weight:800}.og-gen-l{color:#8a938e;font-size:10.5px}@media (max-width:760px){.og-deps{flex-wrap:wrap;padding-top:0}.og-deps:before,.og-dep:before{display:none}.og-stem{height:10px}.og-dep{flex:1 1 100%}}</style><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>工務店DXスイート デモ</title><style id="edu-css">.ed-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;font-size:12px;color:#5c6b77}.ed-legend span{display:inline-flex;align-items:center;gap:5px}.ed-legend i{display:inline-block;width:14px;height:14px;border-radius:4px}.ed-grid th.ed-th{text-align:center;white-space:normal;min-width:76px;font-size:11.5px;color:#22303c}.ed-grid th.ed-th.warn{color:#c4554d}.ed-th-s{font-weight:400;font-size:10.5px;color:#8a938e;margin-top:2px}.ed-grid th.ed-th.warn .ed-th-s{color:#c4554d;font-weight:700}.ed-grid td{padding:4px}.ed-c{display:block;width:100%;min-width:72px;border:0;border-radius:6px;padding:8px 4px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit}.ed-c:hover{outline:2px solid #16302b33}.ed-c.ai{min-width:96px}.ed-name{background:none;border:0;padding:4px 2px;font-weight:800;font-size:13px;color:#16302b;cursor:pointer;font-family:inherit;text-decoration:underline dotted #9fb5ab}.ed-sel td{background:#f2fbf7}.ed-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.ed-2col>.panel{min-width:0}@media(max-width:900px){.ed-2col{grid-template-columns:1fr}}.ed-plan{padding-left:20px;font-size:13px;line-height:1.8}.ed-plan li{margin-bottom:12px}.ed-plan-h{font-weight:800;font-size:14px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}.ed-lv{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}.ed-warn{background:#fbf0ec;border:1px solid #f0d2c8;border-radius:8px;padding:8px 11px;margin-top:6px;font-size:12.5px;color:#8c3a33;line-height:1.7}.ed-ok,.ed-empty{background:#fafaf7;border:1px dashed #d9d9d0;border-radius:10px;padding:18px;font-size:13px;color:#5c6b77;line-height:1.8}.ed-tag{display:inline-block;color:#fff;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:700;white-space:nowrap;margin-right:6px}.ed-mini{display:inline-block;margin-left:6px;background:#fbf0ec;color:#c4554d;border-radius:4px;padding:0 5px;font-size:10.5px;font-weight:700}.ed-meter{margin-top:14px}.ed-meter-bar{position:relative;height:10px;background:#efefe9;border-radius:6px}.ed-meter-bar i{display:block;height:100%;background:#2f9e82;border-radius:6px}.ed-meter-bar b{position:absolute;top:-4px;height:18px;border-left:2px dashed #c4554d;font-size:10.5px;color:#c4554d;padding-left:4px;line-height:18px;font-weight:700;white-space:nowrap}.ed-meter-t{font-size:12.5px;margin-top:8px;font-weight:700;color:#1e7a62}.ed-prog td{text-align:center;padding:5px}.ed-prog td:first-child,.ed-prog td:last-child{text-align:left}.ed-dot{width:28px;height:28px;border-radius:50%;border:1px solid #cfd8d3;background:#fff;color:#fff;font-weight:800;cursor:pointer;font-family:inherit}.ed-dot.on{background:#2f9e82;border-color:#2f9e82}.ed-bar{height:8px;background:#efefe9;border-radius:4px;overflow:hidden}.ed-bar>i{display:block;height:100%;background:#2f9e82;border-radius:4px}.ed-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}.ed-step{background:#fafaf7;border:1px solid #e5e2d8;border-radius:10px;padding:12px;font-size:12.5px;line-height:1.7}.ed-step b{display:block;font-size:13.5px;margin:2px 0 4px}.ed-step-t{font-size:11.5px;color:#2f9e82;font-weight:800}.ed-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.ed-chip{border:1px solid #cfd8d3;background:#fff;border-radius:999px;padding:5px 14px;font-size:12px;cursor:pointer;font-family:inherit;color:#4a554f}.ed-chip.on{background:#16302b;border-color:#16302b;color:#fff}.ed-scen{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}.ed-scen-i{text-align:left;border:1px solid #e5e2d8;background:#fff;border-radius:10px;padding:10px 12px;font-size:13px;font-weight:700;color:#22303c;cursor:pointer;font-family:inherit;line-height:1.6}.ed-scen-i:hover{border-color:#2f9e82}.ed-scen-i.on{border-color:#2f9e82;background:#f2fbf7;box-shadow:inset 3px 0 0 #2f9e82}.ed-who{font-size:12px;color:#5c6b77;margin-bottom:6px}.ed-bubble{background:#f2fbf7;border:1px solid #cfe0d9;border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:14px;line-height:1.8}.ed-ta{width:100%;min-height:130px;border:1px solid #cfd8d3;border-radius:8px;padding:10px 12px;font-family:inherit;font-size:13.5px;line-height:1.75;resize:vertical;background:#fff}.ed-in{width:100%;margin-bottom:8px;font-weight:700}.ed-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.ed-btn{background:#2f9e82;color:#fff;border:1px solid #2f9e82;border-radius:8px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}.ed-btn:hover{background:#26876f}.ed-btn:disabled{opacity:.45;cursor:default}.ed-btn.sub{background:#fff;color:#16302b;border-color:#cfd8d3}.ed-btn.sub:hover{border-color:#2f9e82;background:#f2fbf7}.ed-btn.sm{padding:5px 10px;font-size:11.5px;white-space:nowrap}.ed-score{font-size:40px;font-weight:800;line-height:1.1}.ed-score span{font-size:15px}.ed-chk{list-style:none;padding:0;margin:0 0 10px;font-size:13px;line-height:1.7}.ed-chk li{padding:7px 10px;border-radius:8px;margin-bottom:5px}.ed-chk li.ok{background:#eef8f3}.ed-chk li.ng{background:#fbf0ec}.ed-chk li.ok b{color:#1e7a62}.ed-chk li.ng b{color:#c4554d}.ed-chk li div{font-size:12px;color:#5c6b77}.ed-model{margin-top:10px;font-size:13px;line-height:1.8}.ed-model summary{cursor:pointer;font-weight:700;color:#2f6fb5}.ed-model>div{background:#fafaf7;border-radius:8px;padding:10px 12px;margin-top:6px}.ed-qs{padding-left:20px;font-size:13.5px;line-height:1.8}.ed-qs li{margin-bottom:6px}.ed-doc{font-size:13.5px;line-height:1.8}.ed-doc ol,.ed-doc ul{padding-left:22px;margin-bottom:10px}.ed-doc-h{font-weight:800;font-size:13px;border-bottom:2px solid #e5e2d8;padding-bottom:3px;margin:8px 0 6px}.ed-doc-h.warn{color:#c4554d;border-color:#f0d2c8}.ed-doc ul.ed-box{list-style:none;padding-left:4px}</style><body>
+<!DOCTYPE html><html lang=ja><style>*{box-sizing:border-box;margin:0;padding:0}body{color:#22303c;-webkit-font-smoothing:antialiased;background:#f4f4ef;font-family:Hiragino Kaku Gothic ProN,Hiragino Sans,Yu Gothic UI,Meiryo,sans-serif;font-size:15px}button,input,select{font-family:inherit}input,select{background:#fff;border:1px solid #cfd8d3;border-radius:6px;padding:6px 9px;font-size:13px}label{display:block}.app{min-height:100vh;display:flex}.sidebar{color:#e8efea;background:#16302b;flex-direction:column;flex-shrink:0;width:232px;height:100vh;display:flex;position:sticky;top:0;overflow-y:auto}.brand{border-bottom:1px solid #24443c;align-items:center;gap:10px;padding:18px 16px 14px;display:flex}.brand-mark{color:#fff;background:#2f9e82;border-radius:9px;justify-content:center;align-items:center;width:38px;height:38px;font-size:19px;font-weight:800;display:flex}.brand-name{font-size:14.5px;font-weight:800}.brand-sub{color:#9db5aa;font-size:10px}nav{flex:1;padding:6px 8px 14px}.nav-group{letter-spacing:.18em;color:#7e9c8f;padding:13px 10px 4px;font-size:10px;font-weight:800}.nav-item{text-align:left;color:#c8d6ce;cursor:pointer;background:0 0;border:none;border-radius:8px;align-items:center;gap:9px;width:100%;padding:8px 10px;font-size:13px;line-height:1.35;display:flex}.nav-item:hover{color:#fff;background:#1f3b34}.nav-item.on{color:#fff;background:#2f9e82;font-weight:700}.nav-icon{text-align:center;flex-shrink:0;width:20px;font-size:15px}.sidebar-foot{color:#7e9c8f;border-top:1px solid #24443c;padding:12px 16px;font-size:10px;line-height:1.6}.main{flex:1;width:100%;max-width:1560px;margin:0 auto;padding:28px 36px 60px}.module-head{margin-bottom:18px}.module-head h2{letter-spacing:.02em;font-size:22px}.module-head p{color:#5c6b77;max-width:860px;margin-top:6px;font-size:13px;line-height:1.8}.panel{background:#fff;border:1px solid #e5e2d8;border-radius:12px;margin-bottom:16px;padding:18px 20px;box-shadow:0 1px 3px #141e1c0d}.panel h3{border-left:4px solid #2f9e82;margin-bottom:12px;padding-left:10px;font-size:14.5px}.panel-row{flex-wrap:wrap;gap:16px;margin-bottom:0;display:flex}.panel-row .panel{margin-bottom:16px}.hint{color:#7e8b96;margin-top:10px;font-size:12px;line-height:1.8}.kpi-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:16px;display:grid}.kpi{background:#fff;border:1px solid #e5e2d8;border-radius:12px;padding:14px 16px;box-shadow:0 1px 3px #141e1c0d}.kpi-label{color:#7e8b96;margin-bottom:4px;font-size:11.5px}.kpi-value{letter-spacing:.01em;font-size:23px;font-weight:800}.kpi-sub{color:#8a938e;margin-top:4px;font-size:11px;line-height:1.5}.tbl{border-collapse:collapse;width:100%;font-size:13px}.tbl th{text-align:left;color:#7e8b96;white-space:nowrap;border-bottom:2px solid #e5e2d8;padding:7px 8px;font-size:11.5px}.tbl td{vertical-align:top;border-bottom:1px solid #efefe9;padding:8px}.tbl.slim td,.tbl.slim th{padding:6px 8px}.tbl td.r,.tbl th.r{text-align:right}.tbl input{padding:4px 6px;font-size:12.5px}.badge{color:#5c6b77;white-space:nowrap;background:#eef1ee;border-radius:999px;padding:3px 10px;font-size:11px;font-weight:700;display:inline-block}.badge.green{color:#1e7a62;background:#ddf0e9}.badge.amber{color:#8a6a22;background:#fbefd9}.badge.gray{color:#7e8b96;background:#eef1ee}.proj-tabs{flex-wrap:wrap;gap:6px;display:flex}.proj-tab{cursor:pointer;color:#4a554f;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:7px 16px;font-size:12.5px}.proj-tab:hover{border-color:#2f9e82}.proj-tab.on{color:#fff;background:#2f9e82;border-color:#2f9e82;font-weight:700}.pipe-row{align-items:center;gap:10px;padding:6px 0;display:flex}.pipe-stage{flex-shrink:0;width:118px;font-size:12.5px}.pipe-bar-wrap{background:#eef1ee;border-radius:999px;flex:1;height:14px;overflow:hidden}.pipe-bar{background:#2f9e82;border-radius:999px;height:100%}.pipe-num{white-space:nowrap;font-size:12.5px;font-weight:700}.pipe-amt{color:#7e8b96;font-size:11.5px;font-weight:400}.yoy-sub{color:#7e8b96;font-size:10.5px;font-weight:500}.feed-item{border-bottom:1px dashed #efefe9;align-items:baseline;gap:10px;padding:8px 0;font-size:12.5px;line-height:1.7;display:flex}.feed-date{color:#8a938e;white-space:nowrap;font-size:11px}.alert-center{background:#fff;border:1px solid #e5e2d8;border-left:5px solid #c4554d;border-radius:10px;margin-bottom:16px;padding:12px 16px;box-shadow:0 1px 3px #141e1c0f}.alert-title{margin-bottom:6px;font-size:13px;font-weight:800}.alert-line{align-items:baseline;gap:8px;padding:3px 0;font-size:12.5px;display:flex}.alert-line.red .alert-text{color:#a2453d;font-weight:700}.alert-line.amber .alert-text{color:#8a6a22}.alert-to{color:#8a938e;white-space:nowrap;margin-left:auto;font-size:11px}.form-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px 12px;margin-bottom:10px;display:grid}.form-grid label{color:#4a554f;font-size:12px}.form-grid input,.form-grid select{width:100%;margin-top:4px}.chk{margin:8px 0;font-size:12.5px}.gen-btn{color:#fff;cursor:pointer;background:#2f9e82;border:none;border-radius:9px;width:100%;margin-top:8px;padding:12px;font-size:14px;font-weight:800}.gen-btn:hover{background:#27866e}.gen-btn:disabled{opacity:.6;cursor:wait}.gen-btn.ghost{color:#2f9e82;background:#fff;border:1.5px solid #2f9e82}.tpl-btn{cursor:pointer;color:#4a554f;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:7px 16px;font-size:12.5px}.tpl-btn:hover{color:#2f9e82;border-color:#2f9e82}.upload-box{text-align:center;cursor:pointer;background:#fafcfb;border:2px dashed #b9ccc4;border-radius:10px;margin-bottom:10px;padding:16px;display:block}.upload-box:hover{border-color:#2f9e82}.upload-title{color:#2f6fb5;font-size:13.5px;font-weight:700}.upload-sub{color:#7e8b96;margin-top:4px;font-size:11.5px;line-height:1.7}.parse-result{background:#f6faf8;border:1px solid #cfe4dc;border-radius:8px;margin-bottom:12px;padding:10px 12px}.parse-head{margin-bottom:6px;font-size:12px;font-weight:700}.parse-chips{flex-wrap:wrap;gap:5px;margin-bottom:4px;display:flex}.parse-chip{border-radius:999px;padding:3px 9px;font-size:11px}.parse-chip.ok{color:#1e7a62;background:#ddf0e9}.parse-chip.ng{color:#8a6a22;background:#fbefd9}.parse-empty{color:#8a6a22;font-size:12px}.imp-msg{border-radius:8px;padding:9px 12px;font-size:12.5px;line-height:1.7}.imp-msg.ok{color:#1e7a62;background:#ddf0e9}.imp-msg.ng{color:#a2453d;background:#fbe9e4}.empty-state{color:#8a938e;text-align:center;justify-content:center;align-items:center;min-height:200px;font-size:13px;line-height:2;display:flex}.gen-steps{text-align:left;color:#4a554f;font-size:13px;line-height:2.4}.gen-steps .pulse{color:#2f9e82;font-weight:700;animation:1.2s infinite pulse}@keyframes pulse{50%{opacity:.45}}.wish-wrap{margin:10px 0}.wish{cursor:pointer;color:#4a554f;background:#fff;border:1px solid #cfd8d3;border-radius:999px;margin:0 5px 6px 0;padding:5px 13px;font-size:12px}.wish.on{color:#fff;background:#22303c;border-color:#22303c}.plan-svg{background:#fff;border:1px solid #e5e2d8;border-radius:8px;width:100%;height:auto}.slides{flex-direction:column;gap:12px;display:flex}.slide{background:#fff;border:1px solid #e5e2d8;border-radius:10px;padding:16px 18px}.slide.cover{text-align:center;border-top:6px solid;padding:30px 18px}.slide-en{letter-spacing:.3em;color:#8a938e;font-size:11px}.slide-title{margin:8px 0 4px;font-size:21px;font-weight:800}.slide-copy{color:#4a554f;margin:8px 0;font-size:14px}.slide-meta{color:#8a938e;margin-top:10px;font-size:11px}.slide-h{letter-spacing:.08em;color:#2f9e82;margin-bottom:10px;font-size:13px;font-weight:800}.slide-points{margin-top:8px;padding-left:18px;font-size:12.5px;line-height:1.9}.sim-plans{background:#f6faf8;border:1px solid #cfe4dc;border-radius:8px;margin-bottom:12px;padding:10px 12px;font-size:12.5px}.sim-plans>b{margin-bottom:4px;display:block}.sim-row{padding:2px 0}.sim-reason{color:#8a6a22;font-size:11.5px}.arc-filters{flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px;font-size:12.5px;display:flex}.arc-grid{grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;display:grid}.arc-card{background:#fff;border:1px solid #e5e2d8;border-radius:10px;gap:10px;padding:10px;display:flex}.arc-thumb{flex-shrink:0;width:110px;height:auto}.arc-body{min-width:0}.arc-head{flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;display:flex}.arc-meta{color:#7e8b96;margin:3px 0 5px;font-size:11px}.arc-tags{flex-wrap:wrap;gap:4px;display:flex}.arc-reason{color:#8a6a22;background:#fbf6ea;border-radius:6px;margin-top:6px;padding:5px 8px;font-size:11.5px;line-height:1.6}.sched-ctrl{flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:12px;font-size:13px;display:flex}.sched-scroll{border:1px solid #e5e2d8;border-radius:8px;overflow-x:auto}.sched-tbl{border-collapse:collapse;font-size:11.5px}.sched-tbl th,.sched-tbl td{background:#fff;border:1px solid #edefea;padding:2px 4px}.sched-tbl th.stick,.sched-tbl td.stick{z-index:2;text-align:left;background:#fafaf7;position:sticky}.sched-tbl th.stick:first-child,.sched-tbl td.stick:first-child{left:0}.sched-tbl .num{text-align:center;min-width:34px}.sched-tbl th.day,.sched-tbl td.day{text-align:center;min-width:24px;max-width:24px;padding:1px}.sched-tbl th.day .mon{color:#2f9e82;font-size:10px;font-weight:800}.sched-tbl th.day .dow{color:#8a938e;font-size:9px}.sched-tbl .sun{background:#fbefef!important}.sched-tbl .sat{background:#eff4fb!important}.sched-tbl .today{box-shadow:inset 0 0 0 1.5px #d98e32;background:#fdebd3!important}.sched-tbl td.day .bar{border-radius:2px;height:8px;margin:1px 0}.sched-tbl th.day .wx{margin-top:1px;font-size:12px;line-height:1.1}.sched-tbl th.day .wx .pop{color:#c4554d;font-size:8.5px;font-weight:800}.sched-tbl td.day.rain-risk{box-shadow:inset 0 0 0 1.5px #c4554d;background:#fbefef!important}.kind-chip{color:#fff;white-space:nowrap;border-radius:999px;padding:2px 7px;font-size:10px;font-weight:800}.delay-btn{cursor:pointer;background:#fff;border:1px solid #cfd8d3;border-radius:4px;margin-left:4px;padding:0 4px;font-size:10px}.rain-alert{background:#fbf3f0;border:1px solid #e8c9c0;border-radius:8px;margin-bottom:10px;padding:10px 14px;font-size:12.5px}.rain-alert>b{color:#a2453d;margin-bottom:4px;display:block}.rain-row{color:#4a554f;padding:3px 0}.yr-wrap{overflow-x:auto}.yr-grid{min-width:940px;padding:44px 0 6px;position:relative}.yr-month{color:#8a938e;border-left:1px solid #edefea;font-size:10.5px;position:absolute;top:0;bottom:0}.yr-month span{position:absolute;top:0;left:3px}.yr-today{z-index:3;border-left:2px solid #c4554d;position:absolute;top:14px;bottom:0}.yr-today-label{color:#c4554d;font-size:9.5px;font-weight:800;position:absolute;top:-13px;left:-12px}.yr-events{height:22px;position:absolute;top:16px;left:0;right:0}.yr-event{z-index:4;position:absolute;transform:translate(-50%)}.yr-flag{color:#fff;white-space:nowrap;border-radius:999px;padding:2px 7px;font-size:9px;font-weight:800;box-shadow:0 1px 3px #0003}.yr-row{border-bottom:1px dashed #edefea;align-items:center;height:52px;display:flex;position:relative}.yr-name{z-index:4;background:linear-gradient(90deg,#fff 82%,#0000);flex-shrink:0;width:150px;font-size:12.5px;line-height:1.3;position:sticky;left:0}.yr-sub{color:#8a938e;font-size:10px;display:block}.yr-track{height:16px;position:absolute;top:12px;left:0;right:0}.yr-seg{opacity:.9;border-radius:2px;height:16px;position:absolute;top:0}.yr-seg.slip{background:repeating-linear-gradient(45deg,#c4554d,#c4554d 4px,#e2a29a 4px 8px)}.yr-prog{background:#22303c;border-radius:2px;height:4px;position:absolute;top:18px}.yr-mark{color:#22303c;font-size:9px;position:absolute;top:-13px;transform:translate(-50%)}.yr-mark.dia{color:#c4554d}.yr-status{z-index:4;background:#fff;padding:0 4px;font-size:10.5px;font-weight:800;position:absolute;top:32px;right:0}.yr-status.ok{color:#2f9e82}.yr-status.warn{color:#d98e32}.yr-status.late{color:#c4554d}.yr-legend{color:#4a554f;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:11px;display:flex}.yr-legend i{border-radius:3px;width:10px;height:10px;margin-right:4px;display:inline-block}.est-grand{flex-wrap:wrap;justify-content:flex-end;align-items:baseline;gap:22px;margin-top:14px;font-size:13px;display:flex}.est-grand>div{align-items:baseline;gap:8px;display:flex}.est-grand span{color:#7e8b96;font-size:12px}.est-grand .grand b{color:#22303c;font-size:19px}.sub-row{border-bottom:1px dashed #efefe9;align-items:center;gap:12px;padding:8px 0;display:flex}.sub-name{flex-shrink:0;width:320px;font-size:12.5px;line-height:1.5}.sub-name span{color:#7e8b96;font-size:11px;display:block}.sub-bar-wrap{background:#eef1ee;border-radius:999px;flex:1;height:12px;overflow:hidden}.sub-bar{border-radius:999px;height:100%}.sub-pct{text-align:right;width:140px;font-size:12px;font-weight:700}.sns-text{white-space:pre-wrap;background:#fafaf7;border:1px solid #edefea;border-radius:8px;padding:12px;font-size:12.5px;line-height:1.85}.sns-tags{color:#3a6ea5;margin-top:8px;font-size:11px;line-height:1.7}.photo-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;display:grid}.photo-card{background:#fff;border:1px solid #e5e2d8;border-radius:10px;overflow:hidden}.photo-img{justify-content:center;align-items:center;height:120px;font-size:30px;display:flex}.photo-meta{padding:8px 10px;font-size:12px;line-height:1.5}.photo-meta span{color:#8a938e;margin-top:2px;font-size:10.5px;display:block}.drive-link{color:#2f6fb5;font-size:12px;font-weight:700;text-decoration:none}.drive-link:hover{text-decoration:underline}.plan-sheet{background:#fff;border:1px solid #d9dad2;border-radius:4px;max-width:1000px;padding:30px 34px;box-shadow:0 2px 8px #141e1c12}.ps-header{border-bottom:3px double #22303c;flex-wrap:wrap;justify-content:space-between;align-items:baseline;padding-bottom:8px;display:flex}.ps-title{letter-spacing:.04em;font-size:20px;font-weight:800}.ps-meta{color:#5c6b77;font-size:11px}.ps-note{color:#5c6b77;margin:8px 0 4px;font-size:11px;line-height:1.7}.ps-sec{color:#fff;letter-spacing:.06em;background:#22303c;margin:16px 0 8px;padding:5px 10px;font-size:13px;font-weight:800}.ps-tbl td,.ps-tbl th{border:1px solid #d9dad2!important}.ps-cols{flex-wrap:wrap;gap:14px;display:flex}.ps-cols table{flex:1;min-width:300px}.report-book{max-width:900px}.rb-cover{text-align:center;border-bottom:3px double #22303c;margin-bottom:16px;padding:40px 0 26px}.rb-co{letter-spacing:.2em;color:#5c6b77;font-size:12px}.rb-title{letter-spacing:.12em;margin:10px 0 4px;font-size:28px;font-weight:800}.rb-ym{color:#2f9e82;font-size:15px;font-weight:700}.rb-toc{color:#7e8b96;margin-top:16px;font-size:11px}@media (width>=1900px){body{font-size:16px}.main{max-width:1760px}.kpi-value{font-size:26px}.module-head h2{font-size:24px}.panel h3{font-size:16px}.tbl th,.tbl td{font-size:14px}.module-head p,.hint{font-size:13.5px}.nav-item{font-size:14.5px}}@media (width>=2400px){body{font-size:17px}.main{max-width:2000px}.kpi-value{font-size:30px}}@media print{.no-print,.sidebar,.module-head,.proj-tabs,.gen-btn,.form-grid,.panel:has(.form-grid),.tpl-btn,.alert-center,.kpi-grid{display:none!important}.plan-sheet{box-shadow:none;border:none;max-width:none;padding:0}.main{max-width:none;padding:0}body{background:#fff}}.goal-row{flex-wrap:wrap;gap:16px;margin-top:14px;display:flex}.goal{background:#fafaf7;border:1px solid #edefea;border-radius:10px;flex:1;min-width:260px;padding:12px 14px}.goal-head{justify-content:space-between;margin-bottom:6px;font-size:12.5px;display:flex}.goal-head b{color:#2f9e82;font-size:16px}.goal-bar{background:#e8ece8;border-radius:999px;height:10px;overflow:hidden}.goal-bar>div{background:linear-gradient(90deg,#2f9e82,#46b598);border-radius:999px;height:100%}.goal-sub{color:#7e8b96;margin-top:6px;font-size:11px}.ow-split{flex-wrap:wrap;gap:16px;display:flex}.ow-col{flex:1 1 320px;min-width:0}.ow-url-label{color:#7e8b96;margin-bottom:4px;font-size:11.5px;font-weight:700}.ow-url{word-break:break-all;background:#f6faf8;border:1px solid #cfe4dc;border-radius:8px;padding:9px 11px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6}.ow-btns{flex-wrap:wrap;align-items:center;gap:8px;margin-top:9px;display:flex}.ow-btn{cursor:pointer;color:#4a554f;text-decoration:none;white-space:nowrap;background:#fff;border:1px solid #cfd8d3;border-radius:999px;padding:7px 15px;font-family:inherit;font-size:12.5px;display:inline-block}.ow-btn:hover{color:#2f9e82;border-color:#2f9e82}.ow-btn.pri{color:#fff;background:#2f9e82;border-color:#2f9e82;font-weight:700}.ow-btn.pri:hover{color:#fff;background:#27866e}.ow-ta{color:#22303c;background:#fff;border:1px solid #cfd8d3;border-radius:8px;width:100%;padding:9px 11px;font-family:inherit;font-size:12.5px;line-height:1.85;resize:vertical}.ow-notice{background:#fdf7ea;border:1px solid #e8ddc0;border-radius:8px;margin-top:10px;padding:11px 13px;font-size:12.5px;line-height:1.8}.ow-notice>b{margin-bottom:4px;display:block}.ow-steps{background:#fafaf7;border:1px solid #edefea;border-radius:10px;padding:12px 14px;font-size:12.5px;line-height:1.9}.ow-steps>b{margin-bottom:4px;display:block}.ow-steps ol{margin:0;padding-left:20px}.ow-phone{background:#eef1ee;border-radius:16px;justify-content:center;padding:12px;display:flex}.ow-frame{background:#fff;border:1px solid #d8ded9;border-radius:10px;width:390px;max-width:100%;height:660px}@media (max-width:520px){.ow-phone{border-radius:10px;padding:6px}.ow-frame{height:560px}}.og-wrap{padding:4px 0}.og-top{justify-content:center;display:flex}.og-stem{background:#cfd8d3;width:2px;height:18px;margin:0 auto}.og-deps{gap:12px;padding-top:14px;display:flex;position:relative}.og-deps:before{content:"";background:#cfd8d3;height:2px;position:absolute;top:0;left:12.5%;right:12.5%}.og-dep{flex:1 1 180px;min-width:0;position:relative}.og-dep:before{content:"";background:#cfd8d3;width:2px;height:14px;position:absolute;top:-14px;left:50%}.og-dep-h{color:#fff;border-radius:8px 8px 0 0;padding:7px 10px;font-size:12.5px;font-weight:800}.og-dep-h span{opacity:.85;font-size:11.5px;font-weight:600}.og-dep-note{color:#7e8b96;background:#fafaf7;border:1px solid #edefea;border-top:none;padding:5px 10px;font-size:10.5px;line-height:1.6}.og-card{background:#fff;border:1px solid #e5e2d8;border-left:4px solid #cfd8d3;border-radius:8px;margin-top:7px;padding:8px 10px;box-shadow:0 1px 2px #141e1c0d}.og-card.boss{border-left-width:5px;min-width:230px}.og-nm{align-items:center;gap:5px;font-size:14px;font-weight:800;display:flex}.og-dot{color:#2f9e82;font-size:8px}.og-tt{color:#5c6b77;margin-top:1px;font-size:11px}.og-nt{color:#8a938e;margin-top:4px;font-size:10.5px;line-height:1.6}.og-open{color:#2f9e82;text-align:center;background:#f6faf8;border:1.5px dashed #b9ccc4;border-radius:8px;margin-top:7px;padding:9px 10px;font-size:12px;font-weight:700}.og-gen{align-items:flex-end;gap:14px;min-height:120px;padding-top:10px;display:flex}.og-gen-i{text-align:center;flex:1}.og-gen-b{background:linear-gradient(#46b598,#2f9e82);border-radius:5px 5px 0 0}.og-gen-n{margin-top:5px;font-size:12.5px;font-weight:800}.og-gen-l{color:#8a938e;font-size:10.5px}@media (max-width:760px){.og-deps{flex-wrap:wrap;padding-top:0}.og-deps:before,.og-dep:before{display:none}.og-stem{height:10px}.og-dep{flex:1 1 100%}}</style><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>工務店DXスイート デモ</title><style id="edu-css">.ep-phone{max-width:420px;margin:0 auto 14px;background:#f7f7f3;border:1px solid #d9d9d0;border-radius:24px;overflow:hidden;box-shadow:0 8px 28px #141e1c1f}.ep-bar{background:#16302b;color:#fff;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;font-size:14px}.ep-bar span{font-size:11.5px;opacity:.75}.ep-chat{padding:14px 12px;display:flex;flex-direction:column;gap:9px;max-height:430px;min-height:260px;overflow-y:auto}.ep-me{align-self:flex-end;max-width:82%;background:#2f9e82;color:#fff;border-radius:16px 16px 4px 16px;padding:9px 13px;font-size:14px;line-height:1.6}.ep-ai{align-self:flex-start;max-width:90%;background:#fff;border:1px solid #e5e2d8;border-radius:16px 16px 16px 4px;padding:10px 13px;font-size:14px;line-height:1.65}.ep-ai.miss{background:#fdf7ea;border-color:#e8ddc0}.ep-ai.score{width:90%}.ep-role{font-size:11.5px;color:#8a938e;margin-bottom:3px}.ep-src{margin-top:8px;padding-top:8px;border-top:1px dashed #e5e2d8;font-size:11.5px;color:#5c6b77;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:space-between}.ep-src button,.ep-who button{border:1px solid #2f9e82;background:#fff;color:#1e7a62;border-radius:999px;padding:4px 11px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}.ep-who{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.ep-sent{background:#eef8f3;border:1px solid #cfe0d9;color:#1e7a62;border-radius:10px;padding:9px 12px;font-size:12.5px;font-weight:700;margin-top:8px;line-height:1.6}.ep-chips{display:flex;gap:6px;padding:8px 12px 0;border-top:1px solid #e5e2d8;background:#fff}.ep-chips button{border:0;background:none;padding:5px 8px;font-size:12px;color:#8a938e;font-weight:700;cursor:pointer;font-family:inherit;border-bottom:2px solid transparent}.ep-chips button.on{color:#16302b;border-bottom-color:#2f9e82}.ep-sugg{display:flex;gap:6px;overflow-x:auto;padding:8px 12px;background:#fff}.ep-sugg button{flex:0 0 auto;border:1px solid #cfd8d3;background:#fafaf7;border-radius:999px;padding:6px 12px;font-size:12.5px;cursor:pointer;font-family:inherit;white-space:nowrap;color:#22303c}.ep-input{display:flex;gap:6px;padding:10px 12px 14px;background:#fff}.ep-input input{flex:1;min-width:0;border-radius:999px;padding:10px 14px;font-size:14px}.ep-input textarea{flex:1;min-height:76px;border:1px solid #cfd8d3;border-radius:12px;padding:9px 12px;font-family:inherit;font-size:14px;line-height:1.6}.ep-input.col{flex-direction:column}.ep-input button,.ep-go,.ep-btn{background:#2f9e82;color:#fff;border:0;border-radius:999px;padding:10px 18px;font-size:13.5px;font-weight:800;cursor:pointer;font-family:inherit}.ep-input button:disabled,.ep-go:disabled,.ep-btn:disabled{background:#b8c9c1;cursor:default}.ep-go{display:block;width:100%;margin-top:14px;padding:13px;font-size:15px}.ep-btn{border-radius:10px;margin-top:10px}.ep-link{background:none;border:0;color:#2f6fb5;font-weight:700;font-size:12.5px;cursor:pointer;padding:8px 0;font-family:inherit;display:block}.ep-cards{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;background:#fff;border-bottom:1px solid #e5e2d8}.ep-cards.flat{padding:0 0 10px;border:0;flex-wrap:wrap}.ep-cards button{flex:0 0 auto;border:1px solid #e5e2d8;background:#fff;border-radius:12px;padding:7px 11px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;color:#22303c;text-align:left;white-space:nowrap}.ep-cards button i{display:block;font-style:normal;font-size:10.5px;color:#8a938e;font-weight:400}.ep-cards button.on{border-color:#2f9e82;background:#f2fbf7;box-shadow:inset 0 -3px 0 #2f9e82}.ep-body{padding:14px 16px 16px;background:#fff}.ep-ttl{font-size:18px;font-weight:800}.ep-meta{font-size:12px;color:#5c6b77;margin:3px 0 10px}.ep-prog{height:6px;background:#efefe9;border-radius:3px;overflow:hidden;margin-bottom:12px}.ep-prog i{display:block;height:100%;background:#2f9e82;transition:width .2s}.ep-steps{list-style:none;padding:0;margin:0}.ep-steps li{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid #efefe9;align-items:flex-start}.ep-steps li.ok .ep-st>div:first-child{color:#8a938e;text-decoration:line-through}.ep-box{flex:0 0 30px;height:30px;border-radius:8px;border:2px solid #cfd8d3;background:#fff;color:#fff;font-weight:900;font-size:15px;cursor:pointer;font-family:inherit}.ep-steps li.ok .ep-box{background:#2f9e82;border-color:#2f9e82}.ep-st{flex:1;font-size:14.5px;line-height:1.6}.ep-w{margin-top:4px;background:#fbf0ec;color:#a8433c;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;display:inline-block}.ep-ph{display:block;margin-top:6px;border:1px dashed #9fb5ab;background:#fafaf7;border-radius:8px;padding:6px 10px;font-size:12.5px;cursor:pointer;font-family:inherit;color:#3e6b5e}.ep-ph.on{border-style:solid;border-color:#2f9e82;background:#eef8f3;font-weight:700}.ep-pt{font-size:34px;font-weight:900;line-height:1.1}.ep-list div{font-size:13px;padding:3px 0}.ep-list .ok{color:#1e7a62}.ep-list .ng{color:#c4554d;font-weight:700}.ep-ai details{margin-top:6px;font-size:13px}.ep-ai summary{cursor:pointer;color:#2f6fb5;font-weight:700}.ep-note{max-width:420px;margin:0 auto;font-size:11.5px;color:#8a938e;line-height:1.7;text-align:center}.ep-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:16px}@media(max-width:900px){.ep-grid{grid-template-columns:1fr}}.ep-row{display:grid;grid-template-columns:52px 1fr;gap:2px 8px;width:100%;text-align:left;border:1px solid #e5e2d8;background:#fff;border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer;font-family:inherit;font-size:13.5px;color:#22303c}.ep-row b{grid-row:span 2;font-size:15px;color:#16302b}.ep-row small{color:#8a938e;font-size:11.5px}.ep-row.on{border-color:#2f9e82;background:#f2fbf7}.ep-log{font-size:13px;padding:7px 0;border-bottom:1px solid #efefe9}.ep-log small{display:block;color:#8a938e;font-size:11.5px}.ep-sheet{border:1px solid #e5e2d8;border-radius:10px;overflow:hidden}.ep-sr{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid #efefe9;font-size:13.5px}.ep-sr:last-child{border-bottom:0}.ep-sr button{flex:0 0 44px;height:34px;border:2px solid;border-radius:8px;background:#fff;font-size:17px;font-weight:900;cursor:pointer;font-family:inherit}.ed-row2{display:flex;gap:8px;flex-wrap:wrap}.ep-memo{width:100%;min-height:96px;margin-top:10px;border:1px solid #cfd8d3;border-radius:10px;padding:10px 12px;font-family:inherit;font-size:13px;line-height:1.7;background:#fafaf7}.ep-q{border:1px solid #e5e2d8;border-radius:12px;padding:12px 14px;margin-bottom:12px}.ep-qh{display:flex;justify-content:space-between;font-size:12.5px}.ep-qh small{color:#8a938e}.ep-qq{font-size:15px;font-weight:800;margin-top:4px}.ep-lv{border:0;border-radius:6px;padding:7px 4px;width:100%;min-width:64px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}.ep-rec{display:flex;align-items:center;gap:14px;background:#16302b;color:#fff;border-radius:14px;padding:14px 16px}.ep-rec small{display:block;font-size:11.5px;opacity:.7}.ep-mic{flex:0 0 56px;height:56px;border-radius:50%;border:3px solid #fff;background:#c4554d;color:#fff;font-size:22px;cursor:pointer}.ep-mic.on{animation:epp 1s infinite}@keyframes epp{50%{box-shadow:0 0 0 8px #c4554d55}}.ep-trans{margin-top:10px;background:#fafaf7;border:1px solid #e5e2d8;border-radius:10px;padding:10px 12px;min-height:150px;font-size:13.5px;line-height:1.75}.ep-trans p{margin-bottom:3px}.ep-empty{background:#fafaf7;border:1px dashed #d9d9d0;border-radius:10px;padding:24px;font-size:13px;color:#8a938e;text-align:center}.ep-title{width:100%;font-size:15px;font-weight:800;margin-bottom:10px}.ep-edit{display:flex;gap:5px;align-items:center;margin-bottom:6px}.ep-edit>span{flex:0 0 20px;font-size:12px;color:#8a938e;text-align:right}.ep-edit input{flex:1;min-width:0}.ep-edit button{flex:0 0 32px;height:32px;border:1px solid #cfd8d3;background:#fff;border-radius:8px;cursor:pointer;opacity:.45;font-size:13px}.ep-edit button.on{opacity:1;border-color:#2f9e82;background:#eef8f3}.ep-edit button.on.w{border-color:#c4554d;background:#fbf0ec}.ep-okd{display:flex;align-items:center;gap:6px;font-size:13px;margin-top:10px}</style><script id="edu-store">/* 教育グループの共有データ（新人側・教える人側の5画面で共有）。
+   モジュールはタブ切替で作り直されるので、状態は window.EDU に持つ。 */
+window.EDU=(function(){
+var C=[
+ {id:"haikin",t:"基礎配筋検査",d:"工事",who:"中原",ok:true,
+  st:[{t:"前日に図面と構造計算書を見直す"},
+      {t:"全体を見てから、端から順番に見る"},
+      {t:"かぶり厚さをスケールで測る（立上り40mm以上・底盤60mm以上）",ph:1,w:"スケールを当てた写真を必ず残す"},
+      {t:"鉄筋の間隔が200mmピッチか測る",ph:1},
+      {t:"人通口まわりの補強筋を確認",w:"一番抜けやすい。絶対に見る"},
+      {t:"スペーサーが倒れていないか見る"},
+      {t:"是正はその場で職人さんに伝え、直した後の写真をもらう",ph:1},
+      {t:"第三者検査と一緒に回り、指摘は是正管理へ"}],
+  fq:[{k:["かぶり"],a:"立上りは40mm以上、底盤は60mm以上。スケールを当てて写真を残してください。"},
+      {k:["ピッチ","間隔"],a:"200mmピッチです。メジャーで測って写真を1枚。"},
+      {k:["人通口","補強"],a:"人通口のまわりは補強筋が抜けやすいので、必ず目で確認してください。"},
+      {k:["スペーサー"],a:"倒れていたらその場で職人さんに直してもらいます。"}]},
+ {id:"ky",t:"朝のKY活動",d:"工事",who:"鈴木",ok:true,
+  st:[{t:"今日の工程と天気を確認"},
+      {t:"危ない作業を3つ挙げる"},
+      {t:"それぞれの対策を1つずつ決める"},
+      {t:"風速10m以上・雨の日は高所作業を中止",w:"迷ったら中止。中原さんに連絡"},
+      {t:"全員で指差し呼称"},
+      {t:"KYシートを写真で残す",ph:1}],
+  fq:[{k:["風","雨","中止","天気"],a:"風速10m以上か雨の日は、高所作業は中止です。迷ったら中原さんに電話してください。"},
+      {k:["KY","ケーワイ","危ない"],a:"今日の危ない作業を3つ、対策を1つずつ。書いたら全員で指差し呼称して写真を残します。"}]},
+ {id:"sekkyaku",t:"初回来場の接客",d:"営業",who:"井上",ok:true,
+  st:[{t:"来てくれたお礼と「決めていなくて大丈夫」"},
+      {t:"性能の話から入らない",w:"いきなりUA値や設備の話をしない"},
+      {t:"最初の10分は、いまの住まいの困りごとだけ聞く"},
+      {t:"入学・更新の時期が出たら、いつかを聞く"},
+      {t:"予算は家賃と比べる形で聞く"},
+      {t:"見学会の案内を渡し、日程を仮で押さえる"},
+      {t:"3日以内にお礼の連絡"}],
+  fq:[{k:["予算","お金","いくら"],a:"「いまの家賃と比べて、月々いくらなら安心ですか」と聞くと身構えられません。"},
+      {k:["決めていない","なんとなく","冷やかし"],a:"まず「決めていない方がほとんどなので大丈夫です」と伝えてから、いまの住まいの困りごとを聞いてください。"},
+      {k:["次","帰り","見学会"],a:"帰り際に見学会の案内を1枚渡して、その場で日程を仮押さえ。3日以内にお礼の連絡です。"}]},
+ {id:"after",t:"アフター電話の一次対応",d:"総務",who:"白石",ok:true,
+  st:[{t:"電話のお礼と、ご心配へのお詫び"},
+      {t:"場所・いつから・どんな症状かを聞く"},
+      {t:"スマホの写真か動画をお願いする",ph:1},
+      {t:"保証の範囲か確認（1年・2年・10年）"},
+      {t:"欠陥かどうかはその場で答えない",w:"見に行く日を決めることが一番の安心"},
+      {t:"訪問の候補日を2つもらい、担当監督へ引き継ぐ"}],
+  fq:[{k:["きしみ","きしむ","不具合","音"],a:"欠陥かどうかはその場で答えず、場所・いつから・動画をもらって、訪問日を決めてください。担当は桑原さんです。"},
+      {k:["保証"],a:"引渡しから1年は全般、2年は建具・設備、10年は構造と雨漏りです。オーナー様マイページで確認できます。"}]},
+ {id:"shinsei",t:"確認申請の提出準備",d:"設計",who:"高木",ok:false,
+  st:[{t:"2週間前までに配置図と求積図を固める"},
+      {t:"窓の位置は申請前に施主に決めきってもらう",w:"変更が一番出やすいところ"},
+      {t:"斜線制限は自分で引き直す",w:"ソフトの結果だけで出さない"},
+      {t:"道路後退がある敷地は先に検査機関へ電話"},
+      {t:"面積表の数字を3回確認"},
+      {t:"受付番号と担当者名を共有フォルダに残す"}],
+  fq:[{k:["差し戻し","戻され"],a:"一番多いのは面積表の数字の食い違いです。提出前に3回確認してください。"},
+      {k:["斜線"],a:"ソフトの結果だけで出さず、自分で引き直してください。"}]}];
+var S={
+ cards:C,
+ qs:[{id:1,from:"塚田",to:"中原",q:"基礎の天端レベルは何mmまでずれていい？",t:"9:12",card:"haikin"},
+     {id:2,from:"岸",to:"井上",q:"つなぎ融資ってどう説明すればいい？",t:"昨日",card:"sekkyaku"}],
+ done:[{who:"塚田",card:"基礎配筋検査",t:"9/16",note:"写真8枚・上長確認済み"},{who:"岸",card:"初回来場の接客",t:"9/15",note:"井上さん同席"}],
+ me:"塚田",
+ /* 育成の段階 0=未 1=同行した 2=一人でできた 3=教えられる */
+ lv:{岸:{sekkyaku:1,after:0,haikin:0,ky:0,shinsei:0},森:{sekkyaku:2,after:1,haikin:0,ky:0,shinsei:0},塚田:{haikin:1,ky:2,after:0,sekkyaku:0,shinsei:0},村瀬:{shinsei:1,haikin:0,ky:0,after:0,sekkyaku:0}},
+ ask:function(q){
+   var s=(q||"").replace(/\s/g,""),best=null,bs=0;
+   C.forEach(function(c){c.fq.forEach(function(f){var n=0;f.k.forEach(function(k){if(s.indexOf(k)>=0)n++;});if(n>bs){bs=n;best={c:c,f:f};}});});
+   return best;
+ },
+ card:function(id){for(var i=0;i<C.length;i++)if(C[i].id===id)return C[i];return null;},
+ go:function(label){var b=[].slice.call(document.querySelectorAll(".nav-item")).filter(function(x){return x.textContent.indexOf(label)>=0;})[0];if(b){b.click();window.scrollTo(0,0);}}
+};
+return S;})();
+</script><body>
     <div id=root></div>
     <template id="sinmido-html">
 <style>
@@ -99,9 +171,9 @@
   <h3>💰 投資対効果 — 外注なら約3,300万円分の仕事を、月1万円のAIで</h3>
   <p style="font-size:13px;line-height:1.9;color:#4a554f">このページに載せた成果物を、すべて正規の料金で外部に発注した場合の想定額と、実際にかかったAI利用料(Claude 月額約1万円)の比較です。外注相場は一般に公開されている料金レンジの中間〜控えめな単価で試算しています。</p>
   <div class="kpi-grid" style="margin-top:12px">
-    <div class="kpi" style="border-color:#cfd8d3"><div class="kpi-label">外注した場合の想定費用</div><div class="kpi-value" style="color:#5c6b77">約3,346万円</div><div class="kpi-sub">下の内訳11項目の合計(一般相場による試算)</div></div>
+    <div class="kpi" style="border-color:#cfd8d3"><div class="kpi-label">外注した場合の想定費用</div><div class="kpi-value" style="color:#5c6b77">約3,361万円</div><div class="kpi-sub">下の内訳11項目の合計(一般相場による試算)</div></div>
     <div class="kpi" style="border-color:#2f9e82"><div class="kpi-label">実際にかかったAI費用</div><div class="kpi-value" style="color:#1e7a62">7万円</div><div class="kpi-sub">Claude 月額約1万円 × 7か月(2026年3月〜9月)</div></div>
-    <div class="kpi" style="border-color:#2f9e82;background:#ddf0e9"><div class="kpi-label">投資対効果</div><div class="kpi-value" style="color:#1e7a62">約470倍</div><div class="kpi-sub">3,346万円 ÷ 7万円。人件費を含めない単純比較</div></div>
+    <div class="kpi" style="border-color:#2f9e82;background:#ddf0e9"><div class="kpi-label">投資対効果</div><div class="kpi-value" style="color:#1e7a62">約480倍</div><div class="kpi-sub">3,361万円 ÷ 7万円。人件費を含めない単純比較</div></div>
   </div>
   <table class="tbl slim" style="max-width:860px">
     <tr><th>項目</th><th>実績数量</th><th>試算単価(外注相場)</th><th class="r">外注想定額</th></tr>
@@ -114,15 +186,15 @@
     <tr><td>自動化スクリプト・業務システム開発</td><td>365本+6件</td><td>システム開発外注(控えめ試算)</td><td class="r">300万円</td></tr>
     <tr><td>セキュリティ対応・保守(駆除・走査・バックアップ)</td><td>一式+調査報告書1件</td><td>駆除業者+月額保守+改ざん調査</td><td class="r">60万円</td></tr>
     <tr><td>Claude研修プログラム・研修資料の開発</td><td>2日分</td><td>企業研修の企画・資料制作</td><td class="r">50万円</td></tr>
-    <tr><td>MAツールの自社開発(スクラッチ)</td><td>一式・稼働中</td><td>システム開発外注(控えめ試算)</td><td class="r">150万円</td></tr><tr><td>工務店DXスイート(このデモ)の開発</td><td>43モジュール+オーナー様ページ</td><td>15万円/画面(開発の画面単価 15〜40万円の下限)</td><td class="r">645万円</td></tr>
-    <tr><td><b>合計</b></td><td></td><td></td><td class="r"><b>約3,346万円</b></td></tr>
+    <tr><td>MAツールの自社開発(スクラッチ)</td><td>一式・稼働中</td><td>システム開発外注(控えめ試算)</td><td class="r">150万円</td></tr><tr><td>工務店DXスイート(このデモ)の開発</td><td>44モジュール+オーナー様ページ</td><td>15万円/画面(開発の画面単価 15〜40万円の下限)</td><td class="r">660万円</td></tr>
+    <tr><td><b>合計</b></td><td></td><td></td><td class="r"><b>約3,361万円</b></td></tr>
   </table>
   <div class="sm-note">※ 外注相場はSEO記事制作(制作会社:1.5〜5万円/本)、フォーム営業代行(従量:100〜300円/件)など公開されている一般的な料金レンジに基づく試算です。品質・仕様により変動します。社内メンバーの確認・仕上げ工数(人件費)はAI費用側に含めていません。</div>
 </div>
 
 <div class="panel" style="border:1px dashed #9fb8b0;background:#fbfdfc">
   <h3>⏱ 人的工数の削減(試算) — 資料作成の時間が半分になったと仮定すると<span class="sm-src">仮定にもとづく試算</span></h3>
-  <p style="font-size:13px;line-height:1.9;color:#4a554f">上の投資対効果が「外に出したらいくらかかったか」の試算なのに対して、こちらは「社内の時間がどれだけ空いたか」の試算です。提案書・報告書・企画書・議事録・分析レポート・原稿など、資料をつくる仕事にかけている時間が半分になった場合として置いています。<b>この欄だけは実測ではなく仮定にもとづく参考値</b>で、上の約470倍という数字には含めていません。</p>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f">上の投資対効果が「外に出したらいくらかかったか」の試算なのに対して、こちらは「社内の時間がどれだけ空いたか」の試算です。提案書・報告書・企画書・議事録・分析レポート・原稿など、資料をつくる仕事にかけている時間が半分になった場合として置いています。<b>この欄だけは実測ではなく仮定にもとづく参考値</b>で、上の約480倍という数字には含めていません。</p>
   <div class="kpi-grid" style="margin-top:12px">
     <div class="kpi" style="border-color:#cfd8d3"><div class="kpi-label">空く時間(年)</div><div class="kpi-value" style="color:#5c6b77">5,880時間</div><div class="kpi-sub">49名 × 月10時間 × 12か月</div></div>
     <div class="kpi" style="border-color:#cfd8d3"><div class="kpi-label">人数に置き換えると</div><div class="kpi-value" style="color:#5c6b77">約3.3人分</div><div class="kpi-sub">1人あたり年1,800時間で換算</div></div>
@@ -137,7 +209,7 @@
     <tr><td>1人あたり年間労働時間</td><td>1,800時間</td><td class="r">人数に置き換えるときの分母</td></tr>
     <tr><td>人件費単価</td><td>3,000円/時間</td><td class="r">年収500万円前後＋法定福利費を年間労働時間で割った目安</td></tr>
   </table>
-  <div class="sm-note">※ この欄は実測値ではありません。「資料作成にあてている時間 月20時間」と「半分になる」はいずれも仮定で、社内で計測した数字ではありません。導入時はまず1か月ぶんの作業時間を記録し、その実数に置き換えてご覧いただくことをおすすめしています。上の投資対効果(外注想定 約3,346万円 ÷ AI費用 7万円 = 約470倍)には、この人件費換算額は含めていません。</div>
+  <div class="sm-note">※ この欄は実測値ではありません。「資料作成にあてている時間 月20時間」と「半分になる」はいずれも仮定で、社内で計測した数字ではありません。導入時はまず1か月ぶんの作業時間を記録し、その実数に置き換えてご覧いただくことをおすすめしています。上の投資対効果(外注想定 約3,361万円 ÷ AI費用 7万円 = 約480倍)には、この人件費換算額は含めていません。</div>
 </div>
 
 <div class="kpi-grid">
@@ -451,11 +523,11 @@
 
 <div class="panel">
   <h3>🧭 まとめ:このデモ自体が、実践の成果物です</h3>
-  <p style="font-size:13px;line-height:1.9;color:#4a554f">いまご覧いただいているこの「工務店DXスイート」のデモも、シンミドウがAIで構築したものです。私たちは「AIを提案する会社」である前に「AIを一番使い倒している会社」でありたいと考えています。コラムも、レポートも、営業も、採用も、まず自社で実践し、数字で確認できた方法だけをお客様にお渡しします。このデモも作って終わりにはせず、いまも増え続けています(現在43モジュール。直近では、社員の教育にAIを使う「教育」グループ(スキルマップ・AI活用研修カリキュラム・暗黙知→形式知・AIロープレ)を新設しました)。</p>
+  <p style="font-size:13px;line-height:1.9;color:#4a554f">いまご覧いただいているこの「工務店DXスイート」のデモも、シンミドウがAIで構築したものです。私たちは「AIを提案する会社」である前に「AIを一番使い倒している会社」でありたいと考えています。コラムも、レポートも、営業も、採用も、まず自社で実践し、数字で確認できた方法だけをお客様にお渡しします。このデモも作って終わりにはせず、いまも増え続けています(現在44モジュール。直近では、新人がスマホで使う「AI先輩に聞く・手順カード・ロープレ練習」と、教える人が使う「今日のOJT・質問箱・話して手順書に」を追加しました)。</p>
   <div class="goal-row">
     <div class="goal"><div class="goal-head"><span>実践して提案する</span><b>実数で検証済み</b></div><div class="goal-sub">GA4・本番サイト・送信ログの実数のみ。推定値・盛った数字は使いません</div></div>
     <div class="goal"><div class="goal-head"><span>業界特化</span><b>工務店・住宅会社</b></div><div class="goal-sub">1,200社超の支援経験×AIで、業界特有の業務に最適化</div></div>
-    <div class="goal"><div class="goal-head"><span>人が主役</span><b>AIは道具</b></div><div class="goal-sub">AIが下書きし、人が仕上げる。品質と責任は人が持つ体制です</div></div><div class="goal"><div class="goal-head"><span>作って終わりにしない</span><b>43モジュール</b></div><div class="goal-sub">このデモ自体も更新を続けています。直近は教育グループ(スキルマップ・研修カリキュラム・暗黙知→形式知・AIロープレ)</div></div>
+    <div class="goal"><div class="goal-head"><span>人が主役</span><b>AIは道具</b></div><div class="goal-sub">AIが下書きし、人が仕上げる。品質と責任は人が持つ体制です</div></div><div class="goal"><div class="goal-head"><span>作って終わりにしない</span><b>44モジュール</b></div><div class="goal-sub">このデモ自体も更新を続けています。直近はAI先輩・手順カード・話して手順書に(ベテランの暗黙知を形式知に)</div></div>
   </div>
   <div class="sm-footnote">
     <b>データの出典と注記</b>
@@ -4533,531 +4605,216 @@ P("⑧ 書類の中身と、誰が発行するか",
 
 );
 },group:"集客"},
-{key:"edu",label:"教育ダッシュボード(スキルマップ)",icon:"🎓",comp:function(){
-const h=ew.createElement;
-/* 🔴 メンバーは組織図と同じ14名。技能の段階は 0=未経験 1=見習い 2=一人でできる 3=教えられる。
-   「教えられる人が1人しかいない技能」＝属人化。役割分担マップ・組織図の「代わりがいない」と同じ人が出る。 */
-const DEPT=[
- {k:"sales", n:"営業部",     color:"#2F9E82"},
- {k:"design",n:"設計部",     color:"#2F6FB5"},
- {k:"const", n:"工事部",     color:"#D19B3D"},
- {k:"admin", n:"総務・経理", color:"#8A6A22"}];
-const SK={
- sales:["初回接客","資金計画の説明","プラン提案","見積作成","契約・重要事項説明","追客"],
- design:["プラン作成","実施設計","確認申請","省エネ計算","仕様打合せ"],
- const:["工程管理","発注・職人手配","品質検査","安全管理(KY)","近隣・施主対応"],
- admin:["経理・請求","アフター窓口","広告運用","採用・教育"]};
-const LESSON={"初回接客":"営業②AIロープレ(初回接客)","資金計画の説明":"営業③資金計画の説明資料づくり","プラン提案":"営業④要望の整理と提案書","見積作成":"営業④要望の整理と提案書","契約・重要事項説明":"OJT(同席)","追客":"営業⑤追客メール・LINE文面",
- "プラン作成":"設計①要望メモからプラン条件を整理","実施設計":"OJT(高木さんに同行)","確認申請":"OJT(高木さんに同行)","省エネ計算":"設計④省エネ計算の下調べ","仕様打合せ":"設計②仕様打合せの議事録と変更合意書",
- "工程管理":"工事③職人への段取り連絡","発注・職人手配":"工事③職人への段取り連絡","品質検査":"工事④是正報告書と検査の手順書","安全管理(KY)":"工事②KY活動・安全指示書","近隣・施主対応":"工事⑤AIロープレ(近隣・施主対応)",
- "経理・請求":"総務①請求・経理の定型作業","アフター窓口":"総務②アフター問合せの一次対応","広告運用":"OJT(社長に同行)","採用・教育":"総務③求人票・採用広報"};
-const LV=["未経験","見習い","一人でできる","教えられる"];
-const LVC=["#F1F1EC","#DDEFE7","#8FCDB8","#2F9E82"];
-const LVT=["#8A938E","#3E6B5E","#16302B","#FFFFFF"];
-const AIL=["使っていない","触ったことがある","業務で使っている","人に教えられる"];
-const INIT=[
- {n:"社長",d:"admin",lv:[2,1,3,3],ai:1,hrs:2},
- {n:"専務",d:"admin",lv:[3,2,1,3],ai:2,hrs:6},
- {n:"白石",d:"admin",lv:[2,3,2,0],ai:2,hrs:8},
- {n:"井上",d:"sales",lv:[3,3,3,3,3,3],ai:1,hrs:4},
- {n:"大西",d:"sales",lv:[3,2,2,3,2,3],ai:2,hrs:8},
- {n:"森",  d:"sales",lv:[2,1,1,1,0,2],ai:3,hrs:14},
- {n:"岸",  d:"sales",lv:[1,0,0,0,0,1],ai:2,hrs:18},
- {n:"高木",d:"design",lv:[3,3,3,2,3],ai:1,hrs:2},
- {n:"佐藤",d:"design",lv:[3,1,0,1,3],ai:2,hrs:9},
- {n:"村瀬",d:"design",lv:[1,1,1,0,1],ai:3,hrs:15},
- {n:"中原",d:"const",lv:[3,3,3,3,3],ai:0,hrs:1},
- {n:"鈴木",d:"const",lv:[3,2,2,3,2],ai:1,hrs:5},
- {n:"桑原",d:"const",lv:[2,1,1,2,3],ai:2,hrs:9},
- {n:"塚田",d:"const",lv:[1,0,0,1,1],ai:2,hrs:16}];
-
-const[mem,setMem]=(0,ew.useState)(()=>INIT.map(m=>({...m,lv:m.lv.slice()})));
-const[dep,setDep]=(0,ew.useState)("sales");
-const[who,setWho]=(0,ew.useState)("岸");
-
-const P=(t,...k)=>h("div",{className:"panel"},h("h3",null,t),...k);
-const SC=(...k)=>h("div",{style:{overflowX:"auto"}},...k);
-const HINT=t=>h("div",{className:"hint"},t);
-const KPI=(l,v,s,c)=>h("div",{className:"kpi"},h("div",{className:"kpi-label"},l),h("div",{className:"kpi-value",style:c?{color:c}:undefined},v),h("div",{className:"kpi-sub"},s));
-
-const cycle=(n,i)=>setMem(ms=>ms.map(m=>m.n!==n?m:{...m,lv:m.lv.map((v,j)=>j===i?(v+1)%4:v)}));
-const cycleAi=n=>setMem(ms=>ms.map(m=>m.n!==n?m:{...m,ai:(m.ai+1)%4}));
-const inDep=k=>mem.filter(m=>m.d===k);
-const teachers=(k,i)=>inDep(k).filter(m=>m.lv[i]===3);
-
-let cells=0,ok=0;const solo=[],none=[];
-DEPT.forEach(d=>{inDep(d.k).forEach(m=>m.lv.forEach(v=>{cells++;if(v>=2)ok++;}));
-  SK[d.k].forEach((s,i)=>{const t=teachers(d.k,i);if(t.length===1)solo.push({s,t:t[0].n,d:d.k});if(t.length===0)none.push({s,d:d.k});});});
-const aiUse=mem.filter(m=>m.ai>=2).length;
-const hrs=mem.reduce((s,m)=>s+m.hrs,0);
-
-const d0=DEPT.find(d=>d.k===dep);
-const rows=inDep(dep);
-
-/* 育成計画(AIが下書き)：一人でできない技能を低い順に3つまで。教える人は同じ部門で「教えられる」人 */
-const me=mem.find(m=>m.n===who)||mem[0];
-const gaps=SK[me.d].map((s,i)=>({s,i,v:me.lv[i]})).filter(x=>x.v<2).sort((a,b)=>a.v-b.v).slice(0,3);
-const teachOf=mem.filter(m=>m.d===me.d);
-const mySolo=solo.filter(x=>x.t===me.n);
-const plan=gaps.map(g=>{const t=teachOf.filter(m=>m.n!==me.n&&m.lv[g.i]===3);
-  return {g,t,month:g.v===0?3:2,lesson:LESSON[g.s]};});
-
+{key:"eduask",label:"AI先輩に聞く",icon:"💬",comp:function(){
+const h=ew.createElement,E=window.EDU;
+const[,re]=(0,ew.useState)(0);const up=()=>re(x=>x+1);
+const[q,setQ]=(0,ew.useState)("");
+const[msgs,setMsgs]=(0,ew.useState)([{r:"ai",a:"おつかれさまです。現場で分からないことを聞いてください。社内の手順カードから答えます。"}]);
+const CH={工事:["かぶり厚さは何mm？","鉄筋のピッチは？","雨の日の高所作業は？","天端レベルの許容は？"],営業:["予算はどう聞けばいい？","なんとなく来た人への最初のひと言は？","つなぎ融資の説明は？"],設計:["確認申請で差し戻されやすいのは？","斜線はソフトの結果でいい？"],総務:["床がきしむと電話が来た","保証は何年？"]};
+const[tab,setTab]=(0,ew.useState)("工事");
+const send=t=>{const s=(t||q).trim();if(!s)return;const r=E.ask(s);
+  setMsgs(m=>m.concat({r:"me",a:s},r?{r:"ai",a:r.f.a,c:r.c}:{r:"ai",miss:s}));setQ("");};
+const toSenior=(s,who,i)=>{E.qs.push({id:Date.now(),from:E.me,to:who,q:s,t:"いま"});
+  setMsgs(m=>m.map((x,j)=>j===i?{...x,sent:who}:x));up();};
+const bottom=(0,ew.useRef)(null);
+(0,ew.useEffect)(()=>{const b=bottom.current;if(b&&b.parentElement)b.parentElement.scrollTop=b.parentElement.scrollHeight;},[msgs]);
 return h("div",null,
-
-h("div",{className:"module-head"},
-  h("h2",null,"教育ダッシュボード(スキルマップ)"),
-  h("p",null,"誰が何をどこまでできるかを1枚にして、足りないところをAIが育成計画に落とします。営業・設計・工事・総務の技能と、AIをどこまで使えるかを同じ表で見ます。マスを押すと段階が変わり、上の数字と下の育成計画がその場で作り直されます。メンバーは組織図と同じ14名です。")),
-
-h("div",{className:"kpi-grid"},
-  KPI("一人でできる技能の割合",Math.round(ok/cells*100)+"%",ok+" / "+cells+" マスが「一人でできる」以上"),
-  KPI("教えられる人が1人だけの技能",solo.length+"件","その人が休むと教える人がいない（"+[...new Set(solo.map(x=>x.t))].join("・")+"）","#C4554D"),
-  KPI("AIを業務で使っている人",aiUse+" / "+mem.length+"名","「業務で使っている」以上。研修の効果はここで測る"),
-  KPI("今期の育成時間",hrs+"時間","研修・OJT・ロープレの合計（1人平均 "+Math.round(hrs/mem.length*10)/10+"時間）")),
-
+h("div",{className:"module-head"},h("h2",null,"AI先輩に聞く"),h("p",null,"新人・職人さんがスマホで使う画面です。手順カードにない質問は、そのまま先輩に届きます。")),
+h("div",{className:"ep-phone"},
+  h("div",{className:"ep-bar"},h("b",null,"AI先輩"),h("span",null,E.me+"さん（工事部・2年目）")),
+  h("div",{className:"ep-chat"},
+    msgs.map((m,i)=>m.r==="me"?h("div",{key:i,className:"ep-me"},m.a)
+    :m.miss?h("div",{key:i,className:"ep-ai miss"},
+      h("div",null,"まだ手順カードにありません。先輩に聞きますか？"),
+      m.sent?h("div",{className:"ep-sent"},"✓ "+m.sent+"さんに送りました。回答が手順カードに入ると、次からここで答えます。")
+      :h("div",{className:"ep-who"},["中原","鈴木","井上","高木","白石"].map(w=>h("button",{key:w,onClick:()=>toSenior(m.miss,w,i)},w+"さんに聞く"))))
+    :h("div",{key:i,className:"ep-ai"},
+      h("div",null,m.a),
+      m.c?h("div",{className:"ep-src"},
+        h("span",null,"📋 "+m.c.t+"｜"+m.c.who+"さん"+(m.c.ok?"確認済み":"確認待ち")),
+        h("button",{onClick:()=>{E.open=m.c.id;E.go("手順カード");}},"手順カードを開く")):null)),
+    h("div",{ref:bottom})),
+  h("div",{className:"ep-chips"},Object.keys(CH).map(k=>h("button",{key:k,className:tab===k?"on":"",onClick:()=>setTab(k)},k))),
+  h("div",{className:"ep-sugg"},CH[tab].map(s=>h("button",{key:s,onClick:()=>send(s)},s))),
+  h("div",{className:"ep-input"},
+    h("input",{value:q,placeholder:"例：かぶり厚さは何mm？",onChange:e=>setQ(e.target.value),onKeyDown:e=>{if(e.key==="Enter")send();}}),
+    h("button",{onClick:()=>send()},"送信"))),
+h("div",{className:"ep-note"},"デモは手順カードの言葉と照らして答えています。本番はClaudeが手順カード・図面・過去の是正記録を読んで答え、根拠のカードを必ず添えます。")
+);},group:"教育(新人)"},
+{key:"edusteps",label:"手順カード",icon:"📋",comp:function(){
+const h=ew.createElement,E=window.EDU;
+const[,re]=(0,ew.useState)(0);const up=()=>re(x=>x+1);
+const[id,setId]=(0,ew.useState)(E.open||"haikin");
+const[ck,setCk]=(0,ew.useState)({});const[ph,setPh]=(0,ew.useState)({});const[sent,setSent]=(0,ew.useState)(false);
+const c=E.card(id)||E.cards[0];
+const pick=x=>{setId(x);E.open=x;setCk({});setPh({});setSent(false);};
+const need=c.st.filter((s,i)=>!ck[i]||(s.ph&&!ph[i])).length;
+const pct=Math.round(c.st.filter((s,i)=>ck[i]).length/c.st.length*100);
+const finish=()=>{E.done.unshift({who:E.me,card:c.t,t:"今日",note:"写真"+Object.keys(ph).length+"枚・確認待ち"});
+  const L=E.lv[E.me]||(E.lv[E.me]={});L[c.id]=Math.max(L[c.id]||0,2);setSent(true);up();};
+return h("div",null,
+h("div",{className:"module-head"},h("h2",null,"手順カード"),h("p",null,"現場で開いて、上から順にチェックしていくカードです。ベテランが話した内容から作っています。")),
+h("div",{className:"ep-phone"},
+  h("div",{className:"ep-bar"},h("b",null,"手順カード"),h("span",null,E.cards.length+"枚")),
+  h("div",{className:"ep-cards"},E.cards.map(x=>h("button",{key:x.id,className:x.id===c.id?"on":"",onClick:()=>pick(x.id)},h("i",null,x.d),x.t))),
+  h("div",{className:"ep-body"},
+    h("div",{className:"ep-ttl"},c.t),
+    h("div",{className:"ep-meta"},"話した人："+c.who+"さん　"+(c.ok?"✓ 本人確認済み":"⏳ 本人確認待ち")),
+    h("div",{className:"ep-prog"},h("i",{style:{width:pct+"%"}})),
+    h("ol",{className:"ep-steps"},c.st.map((s,i)=>h("li",{key:i,className:ck[i]?"ok":""},
+      h("button",{className:"ep-box",onClick:()=>setCk(o=>({...o,[i]:!o[i]}))},ck[i]?"✓":""),
+      h("div",{className:"ep-st"},
+        h("div",null,s.t),
+        s.w?h("div",{className:"ep-w"},"⚠ "+s.w):null,
+        s.ph?h("button",{className:"ep-ph"+(ph[i]?" on":""),onClick:()=>setPh(o=>({...o,[i]:!o[i]}))},ph[i]?"📷 写真 1枚 ✓":"📷 写真を撮る（必須）"):null)))),
+    sent?h("div",{className:"ep-sent"},"✓ 上長に送りました。「今日のOJT」で確認されます。")
+    :h("button",{className:"ep-go",disabled:need>0,onClick:finish},need>0?"あと "+need+" 項目":"完了して上長に送る"),
+    h("button",{className:"ep-link",onClick:()=>E.go("AI先輩に聞く")},"分からないところをAI先輩に聞く →"))),
+h("div",{className:"ep-note"},"写真が必要な手順は、撮るまで完了にできません。送った記録は教える人の画面に届きます。")
+);},group:"教育(新人)"},
+{key:"edurp",label:"ロープレ練習",icon:"🗣",comp:function(){
+const h=ew.createElement;
+const SC=[
+ {k:"s1",d:"営業",t:"初回来場",who:"来場したご夫婦",q:"子どもが来年小学校なので、なんとなく見に来ただけで……まだ何も決めていないんですけど。",
+  pts:[["お礼と安心",["ありがとう","大丈夫","ほとんど"]],["時期を聞く",["入学","いつ","時期","春"]],["いまの暮らしを聞く",["今の","いまの","困って","狭"]],["お金は家賃と比べる",["家賃","月々","予算"]],["次の約束",["見学会","次","日程","ご予約"]]],
+  bad:"ありがとうございます。このモデルハウスはUA値0.46の高断熱で、今月はキャンペーン中です。",
+  good:"来ていただいてありがとうございます。何も決めていない方がほとんどなので大丈夫ですよ。来年の春、ご入学までに住み替えたいイメージですか？いまのお住まいで困っていることを教えてください。月々は今の家賃と比べて考えられます。来週土曜の見学会の日程も押さえておきましょうか。"},
+ {k:"k1",d:"工事",t:"近隣の苦情",who:"隣に住む方",q:"朝7時台から音がしてるんだけど、うちは夜勤明けなのよ。毎日こうなの？",
+  pts:[["お詫び",["申し訳","すみません"]],["何時・どの音か聞く",["何時","どの","音"]],["明日からの対策",["8時","始め","控え"]],["いつまで続くか",["予定","いつまで","週","終わ"]],["連絡先を渡す",["連絡","電話","名刺"]]],
+  bad:"すみません、8時からは作業していいことになっているので……気をつけます。",
+  good:"ご迷惑をおかけして申し訳ありません。特に困るのは何時ごろの、どの音でしょうか。明日から音の出る作業は8時半以降に始めます。大きな音は来週水曜までの予定で、その後は静かになります。こちらが名刺です、何かあれば直接お電話ください。"},
+ {k:"k2",d:"工事",t:"職人さんに是正依頼",who:"クロス職人さん",q:"（2階洋室のクロスの継ぎ目が目立つと検査で指摘された。職人さんに頼む）",
+  pts:[["場所と写真",["2階","洋室","写真"]],["理由",["検査","指摘","施主"]],["期限",["までに","日","曜日"]],["お願いの言葉",["お願い","ありがとう","お手数","助かり"]],["完了の確認",["写真","完了","連絡"]]],
+  bad:"クロス直しといてください。",
+  good:"お疲れさまです、お手数ですがお願いです。検査で2階洋室の窓側のクロスの継ぎ目を指摘されました。写真を送ります。施主さんの立会いが金曜なので、木曜までに直してもらえると助かります。終わったら写真を1枚送ってください。いつもありがとうございます。"},
+ {k:"a1",d:"総務",t:"床がきしむ電話",who:"引渡し8か月のオーナー様",q:"最近、廊下を歩くとギシギシ音がするんです。欠陥じゃないですよね？",
+  pts:[["不安を受け止める",["ご心配","申し訳","すみません"]],["場所・いつから",["どこ","いつ","場所"]],["写真・動画",["写真","動画"]],["保証に触れる",["保証","無償","点検"]],["訪問日を決める",["伺","日程","ご都合"]]],
+  bad:"木なので、きしむのは仕方ないですね。様子を見てください。",
+  good:"お電話ありがとうございます、ご心配をおかけしてすみません。廊下のどのあたりで、いつごろからでしょうか。よければスマホで動画を送ってください。1年以内は保証の対象ですので、担当の桑原が見に伺います。ご都合のよい日を2つ教えてください。"}];
+const[k,setK]=(0,ew.useState)("s1");const[a,setA]=(0,ew.useState)("");const[res,setRes]=(0,ew.useState)(null);
+const c=SC.find(x=>x.k===k);
+const grade=()=>{const s=a.replace(/\s/g,"");const r=c.pts.map(p=>({n:p[0],hit:p[1].some(w=>s.indexOf(w)>=0)}));setRes({r,s:Math.round(r.filter(x=>x.hit).length/r.length*100)});};
+return h("div",null,
+h("div",{className:"module-head"},h("h2",null,"ロープレ練習"),h("p",null,"AIがお客様や職人さんの役をします。返し方を打つと、その場で採点します。")),
+h("div",{className:"ep-phone"},
+  h("div",{className:"ep-bar"},h("b",null,"ロープレ"),h("span",null,c.d+"｜"+c.t)),
+  h("div",{className:"ep-cards"},SC.map(x=>h("button",{key:x.k,className:x.k===k?"on":"",onClick:()=>{setK(x.k);setA("");setRes(null);}},h("i",null,x.d),x.t))),
+  h("div",{className:"ep-chat",style:{minHeight:0}},
+    h("div",{className:"ep-ai"},h("div",{className:"ep-role"},"🎭 "+c.who),c.q),
+    res?h("div",{className:"ep-me"},a):null,
+    res?h("div",{className:"ep-ai score"},
+      h("div",{className:"ep-pt",style:{color:res.s>=80?"#1E7A62":res.s>=60?"#B7791F":"#C4554D"}},res.s+"点"),
+      h("div",{className:"ep-list"},res.r.map((x,i)=>h("div",{key:i,className:x.hit?"ok":"ng"},(x.hit?"○ ":"✕ ")+x.n))),
+      h("details",null,h("summary",null,"先輩の返し方"),h("div",null,c.good))):null),
+  h("div",{className:"ep-sugg"},
+    h("button",{onClick:()=>{setA(c.bad);setRes(null);}},"新人の例を入れる"),
+    h("button",{onClick:()=>{setA(c.good);setRes(null);}},"先輩の例を入れる")),
+  h("div",{className:"ep-input col"},
+    h("textarea",{value:a,placeholder:"相手に言う言葉をそのまま打つ",onChange:e=>{setA(e.target.value);setRes(null);}}),
+    h("button",{onClick:grade,disabled:!a.trim()},"採点する"))),
+h("div",{className:"ep-note"},"デモは押さえるべき言葉が入っているかで採点しています。本番はClaudeが言い回しまで見て採点し、音声でも練習できます。")
+);},group:"教育(新人)"},
+{key:"eduojt",label:"今日のOJT・質問箱",icon:"🧑‍🏫",comp:function(){
+const h=ew.createElement,E=window.EDU;
+const[,re]=(0,ew.useState)(0);const up=()=>re(x=>x+1);
+const[tab,setTab]=(0,ew.useState)("ojt");
+const OJT=[{n:"塚田",by:"中原",card:"haikin",at:"13:30",where:"上尾市K様邸"},{n:"岸",by:"井上",card:"sekkyaku",at:"10:00",where:"大宮モデルハウス"},{n:"村瀬",by:"高木",card:"shinsei",at:"15:00",where:"事務所"}];
+const[sel,setSel]=(0,ew.useState)(0);
+const[mk,setMk]=(0,ew.useState)({});
+const[memo,setMemo]=(0,ew.useState)("");const[saved,setSaved]=(0,ew.useState)("");
+const o=OJT[sel],c=E.card(o.card);
+const MK=["—","○","△","✕"],MC=["#8A938E","#1E7A62","#B7791F","#C4554D"];
+const key=i=>sel+"-"+i;
+const cyc=i=>setMk(m=>({...m,[key(i)]:((m[key(i)]||0)+1)%4}));
+const ai=()=>{const good=[],bad=[];c.st.forEach((s,i)=>{const v=mk[key(i)]||0;if(v===1)good.push(s.t);if(v>=2)bad.push(s.t);});
+  setMemo("【できていた】"+(good.length?good.join("／"):"（まだ記録なし）")+"\n【次回の課題】"+(bad.length?bad.join("／"):"特になし")+"\n【次にやること】"+(bad.length?"課題の手順だけ、次回は"+o.n+"さんが先に説明してから一緒に確認。":"次回は"+o.n+"さん一人で行い、写真で確認。"));setSaved("");};
+const save=()=>{const vs=c.st.map((s,i)=>mk[key(i)]||0);const lv=vs.every(v=>v===1)?2:1;const L=E.lv[o.n]||(E.lv[o.n]={});L[c.id]=Math.max(L[c.id]||0,lv);setSaved(o.n+"さんに送りました（"+["","同行した","一人でできた"][lv]+"）");up();};
+const SAMPLE={1:"±5mm以内。レーザーで4隅と中央を測って、超えていたら打設前に止めて連絡。",2:"「建物が完成するまでの間、着工金や中間金を払うための一時的な借入」と説明。利息は完成までの数か月分だけ、と金額の目安も添える。"};
+const KEYS={1:["天端","レベル"],2:["つなぎ融資","つなぎ"]};
+const[ans,setAns]=(0,ew.useState)({});
+const answer=x=>{const a=(ans[x.id]!==undefined?ans[x.id]:SAMPLE[x.id]||"").trim();if(!a)return;
+  const k=KEYS[x.id]||x.q.split(/[はのをがにでとってどうすればいい？?、。\s]+/).filter(w=>w.length>=2).slice(0,3);
+  const cd=E.card(x.card)||E.cards.find(z=>z.who===x.to)||E.cards[0];
+  cd.fq.push({k:k,a:a});E.qs=E.qs.filter(z=>z.id!==x.id);E.added=(E.added||[]).concat({q:x.q,c:cd.t});up();};
+const T=["sekkyaku","after","haikin","ky","shinsei"];const LV=["未","同行","一人で","教える"],LC=["#F1F1EC","#DDEFE7","#8FCDB8","#2F9E82"];
+return h("div",null,
+h("div",{className:"module-head"},h("h2",null,"今日のOJT・質問箱"),h("p",null,"教える人が毎日使う画面です。同行した新人に○△✕を付け、新人からの質問に答えると、その答えが手順カードに入ります。")),
 h("div",{className:"proj-tabs",style:{marginBottom:14}},
-  DEPT.map(d=>h("button",{key:d.k,className:"proj-tab"+(dep===d.k?" on":""),onClick:()=>setDep(d.k)},d.n))),
-
-P(d0.n+"のスキルマップ",
-  h("div",{className:"ed-legend"},LV.map((l,i)=>h("span",{key:i},h("i",{style:{background:LVC[i],border:i===0?"1px solid #d9d9d0":"0"}}),l))),
-  SC(h("table",{className:"tbl ed-grid"},
-    h("thead",null,h("tr",null,
-      h("th",null,"メンバー"),
-      SK[dep].map((s,i)=>{const t=teachers(dep,i).length;
-        return h("th",{key:i,className:"ed-th"+(t<=1?" warn":"")},s,h("div",{className:"ed-th-s"},t===0?"教える人なし":t===1?"教える人1名":"教える人"+t+"名"));}),
-      h("th",{className:"ed-th ai"},"AI活用"),
-      h("th",null,"育成時間"))),
-    h("tbody",null,rows.map(m=>h("tr",{key:m.n,className:who===m.n?"ed-sel":""},
-      h("td",{style:{whiteSpace:"nowrap"}},h("button",{className:"ed-name",onClick:()=>setWho(m.n)},m.n)),
-      m.lv.map((v,i)=>h("td",{key:i},h("button",{className:"ed-c",title:"押すと段階が変わります",style:{background:LVC[v],color:LVT[v]},onClick:()=>cycle(m.n,i)},LV[v]))),
-      h("td",null,h("button",{className:"ed-c ai",title:"押すと段階が変わります",onClick:()=>cycleAi(m.n),style:{background:["#FBF0EC","#FDF7EA","#E6F2FB","#2F6FB5"][m.ai],color:m.ai===3?"#fff":"#22303c"}},AIL[m.ai])),
-      h("td",{style:{whiteSpace:"nowrap",fontSize:12,color:"#5C6B77"}},m.hrs+"時間")))))),
-  HINT("見出しが赤いのは「教えられる人が1人以下」の技能です。ここは本人が休む・辞めると、会社として教える手段がなくなります。名前を押すと、下の育成計画がその人に切り替わります。")),
-
-h("div",{className:"ed-2col"},
-P("AIが作った育成計画（"+me.n+"さん）",
-  gaps.length===0
-    ?h("div",{className:"ed-ok"},"この部門の技能はすべて「一人でできる」以上です。次は「教えられる」に上げて、教える側に回ってもらう段階です。")
-    :h("ol",{className:"ed-plan"},plan.map((p,i)=>h("li",{key:i},
-      h("div",{className:"ed-plan-h"},p.g.s,h("span",{className:"ed-lv",style:{background:LVC[p.g.v],color:LVT[p.g.v]}},LV[p.g.v]+" → 一人でできる")),
-      h("div",null,"研修：",h("b",null,p.lesson)),
-      h("div",null,"教わる人：",p.t.length?h("b",null,p.t.map(x=>x.n).join("・")+"さん"):h("b",{style:{color:"#C4554D"}},"部門内にいません（社外研修か他部門）")),
-      h("div",{style:{color:"#5C6B77"}},"目安：約"+p.month+"か月で「一人でできる」へ"),
-      p.t.length===1?h("div",{className:"ed-warn"},p.t[0].n+"さんしか教えられない技能です。教わる側の予定より先に、"+p.t[0].n+"さんの時間を押さえてください。"):null))),
-  me.ai<2?h("div",{className:"ow-notice"},h("b",null,"AIの使い方から始めてください"),h("div",null,"いまは「"+AIL[me.ai]+"」の段階です。AI活用研修の全社共通（4時間）を先に受けると、上の研修の多くをAIで予習・復習できるようになります。")):null,
-  mySolo.length?h("div",{className:"ow-notice"},h("b",null,"教える側としての計画"),h("div",null,me.n+"さんしか教えられない技能が "+mySolo.length+"件あります（"+mySolo.map(x=>x.s).join("・")+"）。「暗黙知→形式知(ナレッジ化)」で、話した内容を手順書にしておくと、教える時間を半分にできます。")):null,
-  HINT("計画は、段階の低い技能から3つまで拾い、同じ部門で「教えられる」人を先生に当てて組み立てています。本番では面談メモや日報もAIが読んで、本人の希望やつまずいている場面まで計画に反映します。")),
-
-P("会社として手を打つ技能",
-  SC(h("table",{className:"tbl"},
-    h("thead",null,h("tr",null,h("th",null,"技能"),h("th",null,"部門"),h("th",null,"いま教えられる人"),h("th",null,"打ち手"))),
-    h("tbody",null,
-      none.map((x,i)=>h("tr",{key:"n"+i,style:{background:"#FBF0EC"}},h("td",null,h("b",null,x.s)),h("td",null,DEPT.find(d=>d.k===x.d).n),h("td",{style:{color:"#C4554D",fontWeight:800}},"なし"),h("td",{style:{fontSize:12}},"社外研修か、いちばん近い人を先に「教えられる」まで引き上げる"))),
-      solo.map((x,i)=>h("tr",{key:"s"+i},h("td",null,h("b",null,x.s)),h("td",null,DEPT.find(d=>d.k===x.d).n),h("td",null,x.t),h("td",{style:{fontSize:12}},x.t+"さんの話を手順書にする → 2番手を1人決めてOJT")))))),
-  HINT("組織図の「代わりがいない相談先」、役割分担マップの「属人化リスク」と同じ問題を、教育の側から見たものです。人を採るより先に、この表の上から順に2番手を育てるほうが早く効きます。"))),
-
-P("研修の効果をどう測るか",
-  SC(h("table",{className:"tbl"},
-    h("thead",null,h("tr",null,h("th",null,"見るもの"),h("th",null,"どこで測るか"),h("th",null,"目安"))),
-    h("tbody",null,[
-      ["技能の段階","このスキルマップ（半年に1回、上司と本人で付け直す）","「一人でできる」の割合 +10pt／年"],
-      ["AIの使用状況","専用AIアシスタントの利用ログ（誰が何回・何を聞いたか）","全員が「業務で使っている」"],
-      ["仕事の速さ","見積の作成時間・報告書の作成時間","資料づくりの時間が半分"],
-      ["仕事の質","検査・是正管理の指摘件数／ロープレの点数","指摘件数が前年より減る"]]
-      .map((r,i)=>h("tr",{key:i},h("td",null,h("b",null,r[0])),h("td",null,r[1]),h("td",{style:{fontSize:12,color:"#5C6B77"}},r[2])))))),
-  HINT("研修は「受けさせた」で終わらせると、次の年に予算がつきません。受ける前にこの表のどこを動かすかを決めておき、終わったら同じ場所を見て効果を確かめます。研修の費用は「研修助成金シミュレーター」で、助成金を使った場合の実質負担を試算できます。"))
-
-);
-},group:"教育"},
-{key:"educur",label:"AI活用研修カリキュラム",icon:"📚",comp:function(){
-const h=ew.createElement;
-/* 職種ごとに「全社共通4時間＋職種別」。どの職種も合計10時間以上＝人材開発支援助成金の最低時間を満たすように組んである。
-   ⚠️ 助成金では職種ごとに分けて実施するのが安全（令和8年8月3日の要件追加）なので、職種別のコースで持つ。 */
-const COMMON=[
- {id:"c1",t:"AIの基本と社内ルール",h:1.5,c:"何ができて何ができないか。入れていい情報・入れてはいけない情報（施主の個人情報・図面・見積）の線引き",m:"専用AI アシスタント",o:"社内のAI利用ルール（1枚）"},
- {id:"c2",t:"メール・文章をAIで作る",h:1.5,c:"お詫び・日程調整・社内連絡。下書きを作らせて人が直す、の型を身につける",m:"専用AI アシスタント",o:"自分用の文面テンプレート5本"},
- {id:"c3",t:"議事録・要約",h:1,c:"打合せの録音やメモから、決まったこと・宿題・期限を抜き出す",m:"仕様決定・変更管理AI",o:"打合せ議事録1本"}];
-const TRACK={
- sales:{n:"営業",color:"#2F9E82",ls:[
-  {id:"s1",t:"初回接客のヒアリング整理",h:2,c:"来場アンケートと会話メモから、家族構成・時期・予算・不安を整理し、次回の提案に使う",m:"追客管理",o:"ヒアリングシート"},
-  {id:"s2",t:"AIロープレ(初回接客)",h:2.5,c:"AIがお客様役になり、答え方を採点する。新人は1日1本",m:"AIロープレ・OJTコーチ",o:"ロープレ3本・点数の記録"},
-  {id:"s3",t:"資金計画の説明資料づくり",h:2,c:"月々の支払い・諸費用・補助金を、お客様の言葉で説明する資料にする",m:"資金計画・FP",o:"説明用の1枚資料"},
-  {id:"s4",t:"要望の整理と提案書",h:1.5,c:"聞いた要望を優先順位つきで整理し、プランと見積の前提にする",m:"営業アシスタントAI",o:"提案書の下書き"},
-  {id:"s5",t:"追客メール・LINE文面",h:1,c:"検討段階ごとの文面を作り分ける。送りすぎない頻度も決める",m:"追客管理",o:"段階別の文面6本"}]},
- design:{n:"設計",color:"#2F6FB5",ls:[
-  {id:"d1",t:"要望メモからプラン条件を整理",h:2,c:"営業のヒアリングシートから、部屋数・動線・収納・予算の条件を抜き出す",m:"設計AIプレゼン",o:"プラン条件表"},
-  {id:"d2",t:"仕様打合せの議事録と変更合意書",h:2,c:"決定・保留・宿題に仕分けし、差額と発注期限を添えて施主に確認する",m:"仕様決定・変更管理AI",o:"変更合意書1本"},
-  {id:"d3",t:"施主向けの説明資料",h:1.5,c:"専門用語を言い換え、図と一緒に1枚で説明する",m:"設計AIプレゼン",o:"説明資料1本"},
-  {id:"d4",t:"省エネ計算の下調べ",h:2,c:"外皮性能・設備の条件をAIに整理させ、計算ソフトへの入力を速くする。最終確認は人が行う",m:"図面アーカイブ",o:"入力条件の一覧"}]},
- const:{n:"工事",color:"#D19B3D",ls:[
-  {id:"k1",t:"現場写真から報告書",h:2,c:"その日の写真とひと言メモから、施主向けの工事報告を作る",m:"現場写真・報告書",o:"週報1本"},
-  {id:"k2",t:"KY活動・安全指示書",h:2,c:"工程と天気から、その日の危ない作業を洗い出して指示書にする",m:"工程×職人手配",o:"KYシート3日分"},
-  {id:"k3",t:"職人への段取り連絡",h:1.5,c:"工程変更を、職人さんごとに必要なことだけの連絡にする",m:"工程×職人手配",o:"連絡文面"},
-  {id:"k4",t:"是正報告書と検査の手順書",h:1.5,c:"指摘と是正写真から報告書を作る。ベテランの検査のコツを手順書にする",m:"検査・是正管理",o:"是正報告書・手順書"},
-  {id:"k5",t:"AIロープレ(近隣・施主対応)",h:1,c:"苦情・要望の電話をAI相手に練習する",m:"AIロープレ・OJTコーチ",o:"ロープレ2本"}]},
- admin:{n:"総務",color:"#8A6A22",ls:[
-  {id:"a1",t:"請求・経理の定型作業",h:2,c:"請求書の確認・仕訳の下準備・支払予定の一覧をAIで作る",m:"実行予算・進捗",o:"月次の作業手順"},
-  {id:"a2",t:"アフター問合せの一次対応",h:2,c:"電話・LINEの内容を整理し、保証の範囲と担当者への引き継ぎ文を作る",m:"オーナー様マイページ",o:"一次対応の文面集"},
-  {id:"a3",t:"求人票・採用広報",h:2,c:"組織図とキャリアパスから、職種ごとの求人票と社員紹介を作る",m:"組織図",o:"求人票2職種"}]}};
-const MEM=[
- {n:"社長",d:"admin"},{n:"専務",d:"admin"},{n:"白石",d:"admin"},
- {n:"井上",d:"sales"},{n:"大西",d:"sales"},{n:"森",d:"sales"},{n:"岸",d:"sales"},
- {n:"高木",d:"design"},{n:"佐藤",d:"design"},{n:"村瀬",d:"design"},
- {n:"中原",d:"const"},{n:"鈴木",d:"const"},{n:"桑原",d:"const"},{n:"塚田",d:"const"}];
-const DONE0={社長:["c1"],専務:["c1","c2","c3","a1"],白石:["c1","c2","a1","a2"],井上:["c1"],大西:["c1","c2","c3","s3"],森:["c1","c2","c3","s1","s2","s5"],岸:["c1","c2","c3","s1","s2"],
- 高木:[],佐藤:["c1","c2","d2"],村瀬:["c1","c2","c3","d1","d2","d3"],中原:[],鈴木:["c1","k2"],桑原:["c1","c2","k1","k2"],塚田:["c1","c2","c3","k1","k2","k3"]};
-
-const[tab,setTab]=(0,ew.useState)("sales");
-const[done,setDone]=(0,ew.useState)(()=>{const o={};Object.keys(DONE0).forEach(k=>o[k]=DONE0[k].slice());return o;});
-const toggle=(n,id)=>setDone(d=>{const a=d[n]||[];return {...d,[n]:a.indexOf(id)>=0?a.filter(x=>x!==id):a.concat(id)};});
-
-const P=(t,...k)=>h("div",{className:"panel"},h("h3",null,t),...k);
-const SC=(...k)=>h("div",{style:{overflowX:"auto"}},...k);
-const HINT=t=>h("div",{className:"hint"},t);
-const KPI=(l,v,s,c)=>h("div",{className:"kpi"},h("div",{className:"kpi-label"},l),h("div",{className:"kpi-value",style:c?{color:c}:undefined},v),h("div",{className:"kpi-sub"},s));
-const sumH=a=>a.reduce((s,x)=>s+x.h,0);
-const fmtH=v=>(Math.round(v*10)/10)+"時間";
-
-const tr=TRACK[tab];
-const lessons=COMMON.concat(tr.ls);
-const total=sumH(lessons);
-const people=MEM.filter(m=>m.d===tab);
-const pct=n=>{const d=done[n]||[];return lessons.filter(l=>d.indexOf(l.id)>=0).length/lessons.length;};
-const hDone=n=>{const d=done[n]||[];return sumH(lessons.filter(l=>d.indexOf(l.id)>=0));};
-const allTracks=Object.keys(TRACK);
-const trackTotal=k=>sumH(COMMON.concat(TRACK[k].ls));
-const doneAll=MEM.filter(m=>{const ls=COMMON.concat(TRACK[m.d].ls);const d=done[m.n]||[];return ls.every(l=>d.indexOf(l.id)>=0);}).length;
-const commonDone=MEM.filter(m=>COMMON.every(l=>(done[m.n]||[]).indexOf(l.id)>=0)).length;
-
+  [["ojt","今日の同行"],["q","質問箱"+(E.qs.length?"（"+E.qs.length+"）":"")],["b","育成ボード"]].map(x=>h("button",{key:x[0],className:"proj-tab"+(tab===x[0]?" on":""),onClick:()=>setTab(x[0])},x[1]))),
+tab==="ojt"?h("div",{className:"ep-grid"},
+  h("div",{className:"panel"},h("h3",null,"9月18日の同行"),
+    OJT.map((x,i)=>h("button",{key:i,className:"ep-row"+(sel===i?" on":""),onClick:()=>{setSel(i);setMemo("");setSaved("");}},
+      h("b",null,x.at),h("span",null,x.n+"さん ← "+x.by+"さん"),h("small",null,E.card(x.card).t+"｜"+x.where))),
+    h("h3",{style:{marginTop:16}},"新人から届いた完了報告"),
+    E.done.slice(0,4).map((d,i)=>h("div",{key:i,className:"ep-log"},h("b",null,d.who),"　"+d.card,h("small",null,d.t+"・"+d.note)))),
+  h("div",{className:"panel"},h("h3",null,o.n+"さん｜"+c.t),
+    h("div",{className:"ep-sheet"},c.st.map((s,i)=>{const v=mk[key(i)]||0;return h("div",{key:i,className:"ep-sr"},
+      h("span",null,(i+1)+". "+s.t),
+      h("button",{style:{color:MC[v],borderColor:MC[v]},onClick:()=>cyc(i)},MK[v]));})),
+    h("div",{className:"ed-row2"},h("button",{className:"ep-btn",onClick:ai},"AIに所見を書かせる")),
+    memo?h("textarea",{className:"ep-memo",value:memo,onChange:e=>setMemo(e.target.value)}):null,
+    memo?h("div",{className:"ed-row2"},h("button",{className:"ep-btn",onClick:save},"記録して"+o.n+"さんに送る")):null,
+    saved?h("div",{className:"ep-sent"},"✓ "+saved):null,
+    h("div",{className:"hint"},"○△✕はマスを押すたびに切り替わります。所見はAIの下書きなので、そのまま直して送れます。")))
+:tab==="q"?h("div",{className:"panel"},h("h3",null,"新人からの質問（AI先輩が答えられなかったもの）"),
+  E.qs.length===0?h("div",{className:"ep-sent"},"未回答の質問はありません。"):null,
+  E.qs.map(x=>h("div",{key:x.id,className:"ep-q"},
+    h("div",{className:"ep-qh"},h("b",null,x.from+"さん → "+x.to+"さん"),h("small",null,x.t)),
+    h("div",{className:"ep-qq"},"Q. "+x.q),
+    h("textarea",{className:"ep-memo",placeholder:"答えを入力（話し言葉のままでOK）",value:ans[x.id]!==undefined?ans[x.id]:(SAMPLE[x.id]||""),onChange:e=>{const v=e.target.value;setAns(s=>({...s,[x.id]:v}));}}),
+    h("button",{className:"ep-btn",onClick:()=>answer(x)},"回答して手順カードに追加"))),
+  (E.added||[]).map((x,i)=>h("div",{key:"a"+i,className:"ep-sent"},"✓「"+x.q+"」を「"+x.c+"」に追加しました。次からAI先輩が答えます。",
+    h("button",{className:"ep-link",onClick:()=>E.go("AI先輩に聞く")},"AI先輩で試す →"))))
+:h("div",{className:"panel"},h("h3",null,"育成ボード（マスを押すと段階が変わります）"),
+  h("div",{style:{overflowX:"auto"}},h("table",{className:"tbl"},
+    h("thead",null,h("tr",null,h("th",null,""),T.map(t=>h("th",{key:t,style:{whiteSpace:"normal",minWidth:80}},E.card(t).t)))),
+    h("tbody",null,Object.keys(E.lv).map(n=>h("tr",{key:n},h("td",null,h("b",null,n)),
+      T.map(t=>{const v=E.lv[n][t]||0;return h("td",{key:t},h("button",{className:"ep-lv",style:{background:LC[v],color:v===3?"#fff":"#22303c"},onClick:()=>{E.lv[n][t]=(v+1)%4;up();}},LV[v]));})))))),
+  h("div",{className:"hint"},"新人が手順カードを完了して送ると「一人で」、同行の記録を送ると「同行」に自動で上がります。"))
+);},group:"教育(教える人)"},
+{key:"eduvoice",label:"話して手順書に",icon:"🎙",comp:function(){
+const h=ew.createElement,E=window.EDU;
+const PRE={
+ jotou:{who:"中原",d:"工事",t:"上棟日の段取り",s:["前の週にクレーンの位置と搬入経路を現地で確認する","前日に天気を見て、風速10m以上の予報なら延期を大工さんと決める","当日は7時半に現場に入って、近隣に一声かける","材料の番付と図面を大工さんと一緒に照合する","クレーンの下には絶対に人を入れない","お昼は施主さんが来ることが多いので、写真を撮る場所を空けておく","夕方にブルーシートで養生して、雨に備える"],
+  fq:[{k:["上棟","建て方"],a:"前の週にクレーン位置と搬入経路を確認、前日に天気で延期を判断、当日は7時半入り。"},{k:["クレーン"],a:"クレーンの下には絶対に人を入れないでください。"}]},
+ shikin:{who:"井上",d:"営業",t:"資金計画の説明",s:["まず今の家賃と、毎月貯金できている額を聞く","借入額・金利・期間の前提を先に紙に書いて見せる","建物だけでなく、土地・外構・諸費用を含めた総額で話す","その場の暗算で月々を言い切らない","補助金は確定するまで金額に入れない","次回までに資金計画書を作って持っていく約束をする"],
+  fq:[{k:["月々","資金計画"],a:"先に今の家賃を聞き、前提（借入額・金利・期間）を紙に書いてから、諸費用込みの総額で話してください。"},{k:["補助金"],a:"補助金は確定するまで金額に入れないでください。"}]}};
+const[p,setP]=(0,ew.useState)("jotou");const pr=PRE[p];
+const[n,setN]=(0,ew.useState)(0);const[rec,setRec]=(0,ew.useState)(false);const[sec,setSec]=(0,ew.useState)(0);
+const[steps,setSteps]=(0,ew.useState)(null);const[title,setTitle]=(0,ew.useState)(pr.t);const[pub,setPub]=(0,ew.useState)(false);const[okd,setOkd]=(0,ew.useState)(true);
+(0,ew.useEffect)(()=>{if(!rec)return;const iv=setInterval(()=>{setSec(s=>s+17);setN(x=>{if(x+1>=pr.s.length){setRec(false);}return Math.min(x+1,pr.s.length);});},650);return()=>clearInterval(iv);},[rec,p]);
+const choose=k=>{setP(k);setN(0);setRec(false);setSec(0);setSteps(null);setTitle(PRE[k].t);setPub(false);};
+const make=()=>setSteps(pr.s.slice(0,n).map(t=>({t,w:/絶対|必ず|しない|言い切らない|入れない/.test(t),ph:false})));
+const ed=(i,f,v)=>setSteps(ss=>ss.map((s,j)=>j!==i?s:{...s,[f]:v}));
+const publish=()=>{const id="v"+Date.now();E.cards.push({id,t:title,d:pr.d,who:pr.who,ok:okd,
+  st:steps.filter(s=>s.t.trim()).map(s=>({t:s.t,w:s.w?"必ず守る":undefined,ph:s.ph?1:undefined})),fq:pr.fq.slice()});E.open=id;setPub(true);};
+const mm=x=>Math.floor(x/60)+":"+String(x%60).padStart(2,"0");
 return h("div",null,
-
-h("div",{className:"module-head"},
-  h("h2",null,"AI活用研修カリキュラム"),
-  h("p",null,"全員が受ける共通4時間と、職種ごとの研修を組み合わせたカリキュラムです。どの研修も、このスイートの画面を実際に使いながら自分の仕事の成果物を1つ作って終わる形にしてあるので、研修が終わった翌日から同じ作業に使えます。どの職種も合計10時間以上＝人材開発支援助成金の最低時間を満たすように組んであります。")),
-
-h("div",{className:"kpi-grid"},
-  KPI("共通研修を修了",commonDone+" / "+MEM.length+"名","AIの基本と社内ルール・文章・要約の3コマ"),
-  KPI("職種別まで全部修了",doneAll+" / "+MEM.length+"名","修了は受講状況の表で押して付け外しできます"),
-  KPI("研修時間(職種ごと)",allTracks.map(k=>TRACK[k].n+fmtH(trackTotal(k)).replace("時間","h")).join(" / "),"どれも10時間以上＝助成金の最低時間を満たす"),
-  KPI("研修でできる成果物",(COMMON.length+allTracks.reduce((s,k)=>s+TRACK[k].ls.length,0))+"件","研修の中で自分の仕事の資料を1つずつ完成させる")),
-
-h("div",{className:"proj-tabs",style:{marginBottom:14}},
-  allTracks.map(k=>h("button",{key:k,className:"proj-tab"+(tab===k?" on":""),onClick:()=>setTab(k)},TRACK[k].n+"コース"))),
-
-P(tr.n+"コース（共通 "+fmtH(sumH(COMMON))+" ＋ "+tr.n+" "+fmtH(sumH(tr.ls))+" ＝ 合計 "+fmtH(total)+"）",
-  SC(h("table",{className:"tbl"},
-    h("thead",null,h("tr",null,h("th",null,"#"),h("th",null,"研修"),h("th",null,"時間"),h("th",null,"内容"),h("th",null,"使う画面"),h("th",null,"終わったときに手元に残るもの"))),
-    h("tbody",null,lessons.map((l,i)=>h("tr",{key:l.id,style:i<COMMON.length?{background:"#FAFAF7"}:undefined},
-      h("td",{style:{whiteSpace:"nowrap"}},h("span",{className:"ed-tag",style:{background:i<COMMON.length?"#16302B":tr.color}},i<COMMON.length?"共通":tr.n)),
-      h("td",{style:{minWidth:150}},h("b",null,l.t)),
-      h("td",{style:{whiteSpace:"nowrap"}},fmtH(l.h)),
-      h("td",{style:{fontSize:12.5,minWidth:220}},l.c),
-      h("td",{style:{fontSize:12,whiteSpace:"nowrap"}},l.m),
-      h("td",{style:{fontSize:12,color:"#1E7A62",minWidth:120}},l.o)))))),
-  h("div",{className:"ed-meter"},
-    h("div",{className:"ed-meter-bar"},h("i",{style:{width:Math.min(100,total/15*100)+"%"}}),h("b",{style:{left:(10/15*100)+"%"}},"10時間")),
-    h("div",{className:"ed-meter-t"},total>=10
-      ?"合計 "+fmtH(total)+"。人材開発支援助成金の最低時間(10時間)を満たしています。"
-      :"合計 "+fmtH(total)+"。助成金の最低時間まであと "+fmtH(10-total)+"です。")),
-  HINT("⚠️ 助成金は令和8年8月3日の要件追加で「受講者の職務に沿った内容」が厳しく見られるようになり、職種ごとに分けて実施するのが安全です。そのため共通の3コマも職種別コースの中に含めて申請する形にしています。実質負担は「研修助成金シミュレーター」で試算できます。")),
-
-P(tr.n+"の受講状況（マスを押すと修了を付け外しできます）",
-  SC(h("table",{className:"tbl ed-prog"},
-    h("thead",null,h("tr",null,h("th",null,"メンバー"),lessons.map((l,i)=>h("th",{key:l.id,title:l.t},i<COMMON.length?"共"+(i+1):tr.n.charAt(0)+(i-COMMON.length+1))),h("th",null,"進み具合"))),
-    h("tbody",null,people.map(m=>h("tr",{key:m.n},
-      h("td",{style:{whiteSpace:"nowrap"}},h("b",null,m.n)),
-      lessons.map(l=>{const on=(done[m.n]||[]).indexOf(l.id)>=0;
-        return h("td",{key:l.id},h("button",{className:"ed-dot"+(on?" on":""),title:l.t,onClick:()=>toggle(m.n,l.id)},on?"✓":""));}),
-      h("td",{style:{minWidth:150}},
-        h("div",{className:"ed-bar"},h("i",{style:{width:Math.round(pct(m.n)*100)+"%",background:tr.color}})),
-        h("div",{style:{fontSize:11.5,color:"#5C6B77",marginTop:3}},fmtH(hDone(m.n))+" / "+fmtH(total)))))))),
-  HINT("ベテランほど共通研修が済んでいない、というのはどこの会社でも起きます。AIを使わない人が一番多くの仕事を持っているので、効果が出るのもそこです。受講の順番は「教育ダッシュボード」の育成計画と合わせて決めます。")),
-
-P("研修の進め方（1コマの流れ）",
-  h("div",{className:"ed-steps"},[
-    ["① 5分","今日つくる成果物を決める","自分がいま抱えている実際の案件を1つ選ぶ"],
-    ["② 15分","講師が見本を見せる","同じ画面で、プロンプトの書き方と直し方を実演"],
-    ["③ 30〜60分","自分の案件でつくる","AIに下書きさせ、自分で直す。講師が横で見て回る"],
-    ["④ 10分","発表と記録","できた成果物を共有し、使ったプロンプトを社内の型として保存"]]
-    .map((s,i)=>h("div",{key:i,className:"ed-step"},h("div",{className:"ed-step-t"},s[0]),h("b",null,s[1]),h("div",null,s[2])))),
-  HINT("講義を聞くだけの研修はほとんど残りません。自分の案件で1つ作って持ち帰る、を毎回くり返すと、研修が終わったときには職種ごとの「使い方の型」が社内にたまっています。"))
-
-);
-},group:"教育"},
-{key:"eduknow",label:"暗黙知→形式知(ナレッジ化)",icon:"🧠",comp:function(){
-const h=ew.createElement;
-/* 暗黙知＝ベテランが「言わなくても分かっている」こと。書いてもらうのは難しいが、聞かれれば話せる。
-   流れ：①AIが聞き出す質問を用意 → ②話してもらう(録音) → ③AIが手順・注意点・チェック項目に分ける → ④ベテランが直す → ⑤社内で使う。
-   ⚠️ デモの仕分けは文を区切って言葉で分類しているだけ。本番はClaudeが言い回しを整え、抜けている点を質問し返す。 */
-const SRC=[
- {k:"k",who:"中原",role:"工事長",skill:"品質検査",t:"基礎配筋検査の手順",
-  qs:["新人が配筋検査で最初に見落とすのはどこですか？","これを見たら「危ない」と思うサインは何ですか？","図面には書いていないけれど、毎回必ずやっていることは？","検査の前の日に準備していることは？","是正を頼むとき、職人さんにどう伝えていますか？"],
-  txt:"配筋検査の前の日に、図面と構造計算書を一度全部見直しておく。当日はまず全体を見て、それから端から順番に見ていく。かぶり厚さは必ずスケールを当てて写真に残す。立ち上がりは40mm以上、底盤は60mm以上ないとダメ。鉄筋の間隔が200mmピッチになっているかを測る。人通口のまわりは補強筋が抜けやすいから絶対に見る。スペーサーが倒れていないかも見る。直すところがあったら、その場で職人さんに伝えて、直したあとの写真ももらう。最後に第三者検査の人と一緒に回って、指摘があったら是正管理に入れる。"},
- {k:"d",who:"高木",role:"設計長",skill:"確認申請",t:"確認申請の段取り",
-  qs:["申請で差し戻されやすいのはどこですか？","提出前に必ず自分で見直しているところは？","検査機関とのやりとりで気をつけていることは？","施主の変更がどの時点までなら申請に影響しませんか？","新人に最初に任せるなら、どの作業ですか？"],
-  txt:"申請の2週間前には配置図と求積図を固めておく。変更が出やすいのは窓の位置なので、施主には申請前に窓は決めきってもらう。斜線制限は必ず自分で引き直す、ソフトの結果だけで出さない。道路後退が0.5m以上ある敷地は後退部分の扱いを検査機関に先に電話で確認する。差し戻しで多いのは面積表の数字の食い違いなので、面積は3回確認する。提出したら受付番号と担当者名をすぐ共有フォルダに残す。"},
- {k:"s",who:"井上",role:"営業主任",skill:"初回接客",t:"初回来場の接客",
-  qs:["初めて来たお客様に、最初のひと言で何を伝えていますか？","この人は本気だ、と分かるサインは何ですか？","新人がやりがちな失敗は？","話を聞く順番に決まりはありますか？","帰り際に必ず渡しているものは？"],
-  txt:"最初のひと言は来てくれたお礼と、決めていなくて大丈夫ということ。いきなり家の性能の話はしない。最初の10分は今の住まいで困っていることだけを聞く。お子さんの入学や更新の時期が出たら、それがいつかを必ず聞く。予算は家賃と比べる形で聞くと身構えられない。帰り際には次の見学会の案内を1枚渡して、日程をその場で仮で押さえる。3日以内にお礼の連絡を入れる。"}];
-const LIB0=[
- {t:"基礎配筋検査の手順",who:"中原",skill:"品質検査",st:2,use:14,d:"8/28"},
- {t:"上棟日の段取り",who:"中原",skill:"工程管理",st:2,use:9,d:"8/12"},
- {t:"確認申請の段取り",who:"高木",skill:"確認申請",st:1,use:0,d:"9/10"},
- {t:"初回来場の接客",who:"井上",skill:"初回接客",st:2,use:21,d:"7/30"},
- {t:"資金計画の説明の順番",who:"井上",skill:"資金計画の説明",st:2,use:11,d:"8/05"},
- {t:"雨の日の現場判断",who:"鈴木",skill:"安全管理(KY)",st:1,use:0,d:"9/08"},
- {t:"アフター電話の一次対応",who:"白石",skill:"アフター窓口",st:0,use:0,d:"9/15"}];
-/* 教えられる人が1人だけの技能（教育ダッシュボードの初期値と同じ） */
-const SOLO=[{s:"確認申請",t:"高木"},{s:"実施設計",t:"高木"},{s:"品質検査",t:"中原"},{s:"経理・請求",t:"専務"},{s:"発注・職人手配",t:"中原"},{s:"契約・重要事項説明",t:"井上"},{s:"資金計画の説明",t:"井上"},{s:"プラン提案",t:"井上"},{s:"アフター窓口",t:"白石"},{s:"広告運用",t:"社長"}];
-const ST=["下書き","ベテラン確認中","確認済み・公開"];
-const STC=["#8A938E","#B7791F","#1E7A62"];
-
-const[sk,setSk]=(0,ew.useState)("k");
-const cur=SRC.find(x=>x.k===sk);
-const[src,setSrc]=(0,ew.useState)(SRC[0].txt);
-const[doc,setDoc]=(0,ew.useState)(null);
-const[lib,setLib]=(0,ew.useState)(LIB0);
-
-const P=(t,...k)=>h("div",{className:"panel"},h("h3",null,t),...k);
-const SC=(...k)=>h("div",{style:{overflowX:"auto"}},...k);
-const HINT=t=>h("div",{className:"hint"},t);
-const KPI=(l,v,s,c)=>h("div",{className:"kpi"},h("div",{className:"kpi-label"},l),h("div",{className:"kpi-value",style:c?{color:c}:undefined},v),h("div",{className:"kpi-sub"},s));
-
-const choose=k=>{setSk(k);setSrc(SRC.find(x=>x.k===k).txt);setDoc(null);};
-const makeDoc=()=>{
-  const ss=src.replace(/\r/g,"").split(/[。\n]/).map(x=>x.trim()).filter(x=>x.length>3);
-  const warn=ss.filter(x=>/必ず|絶対|ダメ|だめ|しない|忘れ|注意|抜けやすい|多い/.test(x));
-  const chk=ss.filter(x=>/\d+(\.\d+)?\s*(mm|cm|m|本|回|枚|%|ピッチ|日|分)/.test(x));
-  setDoc({steps:ss,warn,chk});
-};
-const register=()=>{
-  if(lib.some(x=>x.t===cur.t&&x.st===0&&x.new))return;
-  setLib(l=>[{t:cur.t,who:cur.who,skill:cur.skill,st:0,use:0,d:"今日",new:true}].concat(l.filter(x=>!(x.t===cur.t&&x.new))));
-};
-const adv=i=>setLib(l=>l.map((x,j)=>j!==i?x:{...x,st:Math.min(2,x.st+1)}));
-
-const pub=lib.filter(x=>x.st===2);
-const covered=SOLO.filter(s=>lib.some(x=>x.skill===s.s&&x.st===2));
-const uses=lib.reduce((s,x)=>s+x.use,0);
-
-return h("div",null,
-
-h("div",{className:"module-head"},
-  h("h2",null,"暗黙知→形式知(ナレッジ化)"),
-  h("p",null,"ベテランが「言わなくても分かっている」ことを、会社の資産に変えます。ベテランに手順書を書いてもらうのは難しくても、聞かれれば話せます。AIが聞き出す質問を用意し、話した内容を手順書に分け、ベテランは直すだけ。できた手順書は新人の質問への回答、現場の点検表、研修の教材にそのまま使います。")),
-
-h("div",{className:"kpi-grid"},
-  KPI("公開済みの手順書",pub.length+"本","ベテランが確認したもの（全"+lib.length+"本）"),
-  KPI("属人化した技能のうち形式知になった割合",covered.length+" / "+SOLO.length,"教えられる人が1人だけの技能で、手順書が公開済みのもの",covered.length<SOLO.length/2?"#C4554D":undefined),
-  KPI("今月AIが手順書を根拠に答えた回数",uses+"回","新人の質問に、先輩の代わりに手順書で答えた回数"),
-  KPI("ベテランに使ってもらう時間","1本 約30分","話す20分＋直す10分。書くより直すほうがずっと楽")),
-
-P("形式知にする流れ",
-  h("div",{className:"ed-steps"},[
-    ["① AIが質問を用意","聞き出す","「新人が最初に見落とすのは？」のように、手順ではなく判断のコツを聞く質問をAIが作る"],
-    ["② 話してもらう","録音 20分","現場を歩きながらスマホで録音。書いてもらう必要はない"],
-    ["③ AIが整理","手順書に分ける","文字起こしを「手順」「必ず守ること」「数字で確認するもの」に仕分ける"],
-    ["④ ベテランが直す","確認 10分","違うところに赤を入れるだけ。直した内容もAIが反映する"],
-    ["⑤ 社内で使う","公開","AIアシスタントの知識・点検表・研修教材・ロープレの模範解答に使う"]]
-    .map((s,i)=>h("div",{key:i,className:"ed-step"},h("div",{className:"ed-step-t"},s[0]),h("b",null,s[1]),h("div",null,s[2])))),
-  HINT("暗黙知が形式知にならない一番の理由は「書く時間がない」ことです。書くのをAIに任せ、ベテランには話すことと直すことだけをお願いすると、忙しい人ほど協力してくれます。")),
-
-P("誰の知恵を形にするか",
-  h("div",{className:"ed-scen"},SRC.map(x=>h("button",{key:x.k,className:"ed-scen-i"+(sk===x.k?" on":""),onClick:()=>choose(x.k)},
-    h("span",{className:"ed-tag",style:{background:{k:"#D19B3D",d:"#2F6FB5",s:"#2F9E82"}[x.k]}},x.who+"・"+x.role),x.t)))),
-
-h("div",{className:"ed-2col"},
-P("① AIが用意した、"+cur.who+"さんに聞く質問",
-  h("ol",{className:"ed-qs"},cur.qs.map((q,i)=>h("li",{key:i},q))),
-  HINT("「手順を教えてください」と聞くと、ベテランは当たり前すぎて話せません。失敗・危ないサイン・図面にないこと、のように判断の理由を聞くと、暗黙知が出てきます。")),
-P("② 話してもらった内容（録音の文字起こし）",
-  h("textarea",{className:"ed-ta",style:{minHeight:200},value:src,onChange:e=>{setSrc(e.target.value);setDoc(null);}}),
-  h("div",{className:"ed-row"},
-    h("button",{className:"ed-btn",onClick:makeDoc},"③ 手順書にする"),
-    h("button",{className:"ed-btn sub",onClick:()=>{setSrc(cur.txt);setDoc(null);}},"見本に戻す")),
-  HINT("文章を書き換えて押し直すと、手順書も作り直されます。自分の会社のベテランの話を貼って試すこともできます。"))),
-
-doc?P("③ できあがった手順書：「"+cur.t+"」（話した人："+cur.who+"さん）",
-  h("div",{className:"ed-doc"},
-    h("div",{className:"ed-doc-h"},"手順"),
-    h("ol",null,doc.steps.map((s,i)=>h("li",{key:i},s+"。"))),
-    doc.warn.length?h("div",null,h("div",{className:"ed-doc-h warn"},"必ず守ること（ベテランの判断のコツ）"),h("ul",null,doc.warn.map((s,i)=>h("li",{key:i},s+"。")))):null,
-    doc.chk.length?h("div",null,h("div",{className:"ed-doc-h"},"チェック項目（数字で確認するもの）"),h("ul",{className:"ed-box"},doc.chk.map((s,i)=>h("li",{key:i},"☐ "+s)))):null),
-  h("div",{className:"ed-row"},
-    h("button",{className:"ed-btn",onClick:register},"④ ライブラリに登録して"+cur.who+"さんに確認を依頼")),
-  HINT("デモでは話した文を区切って仕分けているだけです。本番ではClaudeが言い回しを整え、写真を入れる場所や、話の中で抜けている点（例：「スペーサーの間隔は何cm？」）をベテランに質問し返します。")):null,
-
-P("ナレッジライブラリ",
-  SC(h("table",{className:"tbl"},
-    h("thead",null,h("tr",null,h("th",null,"手順書"),h("th",null,"話した人"),h("th",null,"技能"),h("th",null,"状態"),h("th",null,"AIが根拠に使った回数"),h("th",null,"更新"),h("th",null,""))),
-    h("tbody",null,lib.map((x,i)=>h("tr",{key:x.t+i,style:x.new?{background:"#F2FBF7"}:undefined},
-      h("td",{style:{minWidth:150}},h("b",null,x.t)),
-      h("td",{style:{whiteSpace:"nowrap"}},x.who),
-      h("td",{style:{fontSize:12,minWidth:110}},x.skill,SOLO.some(s=>s.s===x.skill)?h("span",{className:"ed-mini"},"属人化"):null),
-      h("td",null,h("span",{className:"ed-lv",style:{background:"#fff",border:"1px solid "+STC[x.st],color:STC[x.st]}},ST[x.st])),
-      h("td",null,x.use+"回"),
-      h("td",{style:{fontSize:12,color:"#5C6B77",whiteSpace:"nowrap"}},x.d),
-      h("td",null,x.st<2?h("button",{className:"ed-btn sub sm",onClick:()=>adv(i)},x.st===0?"確認を依頼":"確認済みにする"):null)))))),
-  HINT("公開済みの手順書は「専用AI アシスタント」の知識に入り、新人が「かぶり厚さは何mm？」と聞くと手順書を根拠に答えます。同時に、答えた回数が多い手順書ほど会社にとって大事な知恵だと分かります。")),
-
-P("まだ形になっていない、属人化した技能",
-  SC(h("table",{className:"tbl"},
-    h("thead",null,h("tr",null,h("th",null,"技能"),h("th",null,"いま教えられる人"),h("th",null,"状態"),h("th",null,"次にやること"))),
-    h("tbody",null,SOLO.map((s,i)=>{const l=lib.find(x=>x.skill===s.s);const done=l&&l.st===2;
-      return h("tr",{key:i,style:done?undefined:{background:"#FBF0EC"}},
-        h("td",null,h("b",null,s.s)),
-        h("td",null,s.t+"さん"),
-        h("td",{style:{color:done?"#1E7A62":l?"#B7791F":"#C4554D",fontWeight:800,fontSize:12}},done?"形式知になった":l?ST[l.st]:"まだ頭の中だけ"),
-        h("td",{style:{fontSize:12}},done?"2番手を1人決めてロープレ・OJTへ":s.t+"さんに30分もらって録音する"));})))),
-  HINT("教育ダッシュボードで「教える人1名」になっている技能の一覧です。人を採る前に、ここを上から順に形式知にしておくと、辞める・休むリスクと、新人を育てる時間の両方が減ります。"))
-
-);
-},group:"教育"},
-{key:"educoach",label:"AIロープレ・OJTコーチ",icon:"🗣",comp:function(){
-const h=ew.createElement;
-/* ⚠️ デモの採点は「押さえるべき点」の言葉が入っているかで判定している。本番はClaudeが文脈で採点する。 */
-const SC_=[
- {k:"s1",d:"営業",t:"初回来場「まだ何も決めていないんですけど…」",who:"来場したご夫婦（30代・お子さま2人）",
-  q:"子どもが来年小学校なので、なんとなく見に来ただけで……まだ何も決めていないんですけど、大丈夫ですか？",
-  pts:[
-   {n:"来てくれたことへのお礼と、決めていなくていいという安心",kw:["ありがとう","大丈夫","皆さん","ほとんどの方","安心"],tip:"最初のひと言で「売り込まれない」と思ってもらう"},
-   {n:"時期を確認する",kw:["入学","いつ","時期","春","来年","までに"],tip:"入学というヒントが出ているので、いつまでに住みたいかを聞く"},
-   {n:"いまの暮らしと困りごとを聞く",kw:["今の","いまの","お住まい","困って","狭","暮らし","不便"],tip:"家の話より先に、いまの暮らしの不満を聞く"},
-   {n:"お金の話につなぐ",kw:["家賃","月々","予算","資金","ローン"],tip:"家賃と比べる形にすると、予算を聞いても身構えられない"},
-   {n:"次の約束をつくる",kw:["次","見学会","資料","お送り","ご予約","日程","また"],tip:"今日で終わらせず、次に会う理由を1つ渡す"}],
-  model:"来ていただいてありがとうございます。何も決めていない段階で来られる方がほとんどなので、大丈夫ですよ。来年の春、ご入学までに住み替えたいというイメージでしょうか？　いまのお住まいで困っていることや、狭いなと感じるところがあれば教えてください。あわせて、いまの家賃と比べて月々いくらくらいなら安心か、というところから一緒に考えられます。来週の土曜日に完成見学会があるので、よければそちらもご案内させてください。",
-  vet:"何も決めていない人ほど、「決めなくていい理由」を先に渡すと話してくれる。家の話は3番目でいい。（井上・営業主任）",
-  bad:"ありがとうございます。こちらのモデルハウスは高気密高断熱で、UA値は0.46です。今月はキャンペーン中でオプションが10万円分サービスになります。"},
- {k:"s2",d:"営業",t:"資金計画「結局、月々いくらになりますか？」",who:"2回目の打合せのお客様",
-  q:"いろいろ説明してもらったんですけど、結局うちは月々いくらになるんですか？",
-  pts:[
-   {n:"いまの家賃・月々の支払いを聞く",kw:["家賃","今の","いまの","月々"],tip:"比べる相手がないと、金額を言っても判断できない"},
-   {n:"前提（借入額・金利・期間）を伝える",kw:["金利","期間","35年","借入","前提","条件"],tip:"数字だけ言うと、あとで違うと言われる"},
-   {n:"土地・建物以外の費用も含める",kw:["諸費用","総額","土地","外構","税","登記"],tip:"建物だけの月々は、あとで必ず増える"},
-   {n:"断定せず、試算で示す",kw:["試算","シミュレーション","目安","概算","計算"],tip:"その場の暗算で言い切らない"},
-   {n:"次にやることを決める",kw:["資金計画書","次回","お持ち","作って","ご用意"],tip:"書面にして持ち帰ってもらう"}],
-  model:"まず、いまの家賃がおいくらか教えていただけますか。そのうえで、借入額3,500万円・金利0.8%・35年で試算すると、月々はおよそ9万6千円が目安です。ただ、これは建物と土地に加えて、登記や外構などの諸費用も含めた総額で計算した場合です。前提によって変わるので、この場で言い切るより、次回までに資金計画書として条件を並べた試算をお作りします。",
-  vet:"「月々いくら？」には、先に家賃を聞き返す。比べる相手がない数字は、高いか安いかも分からない。（大西・営業）",
-  bad:"だいたい月々8万円くらいです。今は金利が安いので大丈夫ですよ。"},
- {k:"d1",d:"設計",t:"仕様変更「やっぱりキッチンをグレードアップしたい」",who:"施主（発注期限の3日前）",
-  q:"ショールームでもう一回見てきたんですけど、やっぱりキッチンを一つ上のグレードにしたいです。まだ間に合いますよね？",
-  pts:[
-   {n:"気持ちを受け止める",kw:["ありがとう","良い","よい","わかります","分かります","せっかく"],tip:"まず、見に行ってくれたこと自体を受け止める"},
-   {n:"差額を伝える",kw:["差額","万円","金額","追加"],tip:"金額を言わずに進めると、最後の精算で揉める"},
-   {n:"期限と工程への影響を伝える",kw:["期限","発注","工程","納期","間に合","日まで"],tip:"何日までに決めれば間に合うかを言う"},
-   {n:"書面で確認する",kw:["合意書","書面","サイン","確認書","お送り"],tip:"口約束にしない"},
-   {n:"代わりの案も出す",kw:["代わり","オプション","一部","だけ","案"],tip:"全部上げる以外の選択肢を1つ用意する"}],
-  model:"ショールームまで見に行っていただいてありがとうございます。変更は可能です。一つ上のグレードにすると差額は税込で約28万円の追加になります。キッチンの発注期限が今週の金曜日なので、木曜日までに決めていただければ工程には影響しません。天板と水栓だけを上げる案なら約9万円に抑えられるので、両方の金額を書いた変更合意書を今日お送りします。内容をご確認のうえサインをお願いします。",
-  vet:"変更の話は、金額・期限・書面の3つを同じ日に出す。どれかが後回しになると、引渡しの精算で揉める。（高木・設計長）",
-  bad:"大丈夫ですよ、変更しておきますね。金額はあとでまとめてお伝えします。"},
- {k:"k1",d:"工事",t:"近隣「朝から音がうるさい」",who:"現場の隣に住む方",
-  q:"朝7時台から音がしてるんだけど、うちは夜勤明けで寝てるのよ。毎日こうなの？",
-  pts:[
-   {n:"まずお詫びする",kw:["申し訳","すみません","失礼"],tip:"言い訳より先に謝る"},
-   {n:"具体的に聞く",kw:["何時","どの","音","いつ","曜日"],tip:"どの時間・どの音が困るのかを聞く"},
-   {n:"すぐできる対策を約束する",kw:["8時","始め","控え","時間","静か","対策"],tip:"その場で約束できることを1つ言う"},
-   {n:"この先の見通しを伝える",kw:["予定","いつまで","工程","日間","週","終わ"],tip:"うるさい作業がいつ終わるかを伝える"},
-   {n:"連絡先と報告",kw:["連絡","電話","名刺","お知らせ","ご報告"],tip:"次に困ったとき誰に言えばいいかを渡す"}],
-  model:"ご迷惑をおかけして申し訳ありません。夜勤明けでお休みのところだったんですね。特に困っているのは何時ごろの、どの音でしょうか。明日から、音の出る作業は8時半以降に始めるよう職人に徹底します。大きな音が出る作業は来週の水曜日までの予定で、それ以降は内装が中心になり静かになります。こちらが私の名刺です。何かあれば直接お電話ください。対応した内容も改めてご報告します。",
-  vet:"苦情は最初の5分で決まる。謝って、聞いて、明日から何を変えるかを1つ言う。工程表を持って行くと話が早い。（中原・工事長）",
-  bad:"すみません、8時から作業していいことになっているので……。できるだけ気をつけます。"},
- {k:"k2",d:"工事",t:"職人さんに是正をお願いする",who:"クロス職人さん（ベテラン）",
-  q:"（第三者検査で、2階洋室のクロスの継ぎ目が目立つと指摘された。職人さんに直してもらう）",
-  pts:[
-   {n:"場所を具体的に伝える",kw:["2階","洋室","場所","写真","窓"],tip:"写真と場所を一緒に渡す"},
-   {n:"なぜ直すのかを伝える",kw:["検査","指摘","施主","基準"],tip:"誰が気にしているのかを言う"},
-   {n:"期限を決める",kw:["日まで","までに","期限","日に","曜日"],tip:"いつまでに、を必ず決める"},
-   {n:"相手への敬意",kw:["お願い","ありがとう","助かり","お手数","すみません"],tip:"命令口調にしない"},
-   {n:"完了の確認方法",kw:["写真","完了","確認","連絡"],tip:"直したら写真で送ってもらう"}],
-  model:"お疲れさまです。お手数ですがお願いがあります。第三者検査で、2階洋室の窓側のクロスの継ぎ目が目立つと指摘がありました。写真を送りますので見ていただけますか。施主さんの立会いが金曜日なので、木曜日までに直していただけると助かります。終わったら直したあとの写真を1枚送ってください。いつもありがとうございます。",
-  vet:"職人さんへの是正は、写真・理由・期限をセットで。理由がないと「どこが悪いの」で止まる。（鈴木・現場監督）",
-  bad:"クロス直しといてください。"},
- {k:"a1",d:"総務",t:"引渡し後「床がきしむ」と電話",who:"引渡しから8か月のオーナー様",
-  q:"最近、廊下を歩くとギシギシ音がするんです。欠陥じゃないですよね？",
-  pts:[
-   {n:"不安を受け止める",kw:["ご心配","ご不安","申し訳","すみません","お電話ありがとう"],tip:"まず不安を受け止める"},
-   {n:"状況を聞く",kw:["どこ","いつ","場所","廊下","写真","動画"],tip:"場所・いつから・どんな音かを聞く"},
-   {n:"保証や点検に触れる",kw:["保証","点検","無償","対象"],tip:"保証の範囲かどうかを先に伝える"},
-   {n:"訪問の日程を決める",kw:["伺","訪問","日程","ご都合","見に"],tip:"見に行く日を決める"},
-   {n:"担当者に引き継ぐ",kw:["担当","監督","桑原","共有","引き継"],tip:"誰が行くのかを伝える"}],
-  model:"お電話ありがとうございます。ご心配をおかけしてすみません。音がするのは廊下のどのあたりで、いつごろから気になり始めましたか。もしよければスマホで動画を撮って送っていただけると助かります。引渡しから1年以内の不具合は保証の対象になりますので、まずは担当の桑原が見に伺います。ご都合のよい日程を2つほど教えていただけますか。",
-  vet:"アフターの電話は、欠陥かどうかをその場で答えない。見に行く日を決めることが一番の安心になる。（白石・総務）",
-  bad:"木なので、きしむのは仕方ないんですよ。しばらく様子を見てください。"}];
-const DEPS=["すべて","営業","設計","工事","総務"];
-
-const[mode,setMode]=(0,ew.useState)("rp");
-const[df,setDf]=(0,ew.useState)("すべて");
-const[sk,setSk]=(0,ew.useState)("s1");
-const[ans,setAns]=(0,ew.useState)("");
-const[res,setRes]=(0,ew.useState)(null);
-const[hist,setHist]=(0,ew.useState)([{n:"岸",t:"初回来場",s:40},{n:"岸",t:"初回来場",s:60},{n:"森",t:"資金計画",s:80},{n:"塚田",t:"近隣対応",s:60}]);
-
-const P=(t,...k)=>h("div",{className:"panel"},h("h3",null,t),...k);
-const SC=(...k)=>h("div",{style:{overflowX:"auto"}},...k);
-const HINT=t=>h("div",{className:"hint"},t);
-
-const list=SC_.filter(s=>df==="すべて"||s.d===df);
-const cur=SC_.find(s=>s.k===sk)||SC_[0];
-const pick=k=>{setSk(k);setAns("");setRes(null);};
-const grade=()=>{
-  const a=ans.replace(/\s/g,"");
-  const r=cur.pts.map(p=>({p,hit:p.kw.some(w=>a.indexOf(w)>=0)}));
-  const s=Math.round(r.filter(x=>x.hit).length/r.length*100);
-  setRes({r,s,len:ans.trim().length});
-  setHist(hs=>hs.concat({n:"あなた",t:cur.t.split("「")[0],s}).slice(-8));
-};
-
-return h("div",null,
-
-h("div",{className:"module-head"},
-  h("h2",null,"AIロープレ・OJTコーチ"),
-  h("p",null,"新人がつまずく場面で、AIがお客様や職人さんの役になって練習相手をします。答え方を採点し、押さえるべき点とベテランのひと言を返すので、先輩の時間を使わずに何度でも練習できます。模範の返し方とベテランのひと言は「暗黙知→形式知」で集めたものを使います。")),
-
-h("div",{className:"proj-tabs",style:{marginBottom:14}},
-  [["rp","AIロープレ（答え方を採点）"]]
-    .map(x=>h("button",{key:x[0],className:"proj-tab"+(mode===x[0]?" on":""),onClick:()=>setMode(x[0])},x[1]))),
-
-mode==="rp"?h("div",null,
-P("練習する場面を選ぶ",
-  h("div",{className:"ed-chips"},DEPS.map(d=>h("button",{key:d,className:"ed-chip"+(df===d?" on":""),onClick:()=>setDf(d)},d))),
-  h("div",{className:"ed-scen"},list.map(s=>h("button",{key:s.k,className:"ed-scen-i"+(sk===s.k?" on":""),onClick:()=>pick(s.k)},
-    h("span",{className:"ed-tag",style:{background:{営業:"#2F9E82",設計:"#2F6FB5",工事:"#D19B3D",総務:"#8A6A22"}[s.d]}},s.d),s.t)))),
-
-h("div",{className:"ed-2col"},
-P("AIが演じる相手",
-  h("div",{className:"ed-who"},cur.who),
-  h("div",{className:"ed-bubble"},cur.q),
-  h("div",{style:{fontSize:12.5,fontWeight:800,margin:"14px 0 6px"}},"あなたの返し方"),
-  h("textarea",{className:"ed-ta",value:ans,placeholder:"ここに、お客様や相手に実際に言う言葉を書いてください。",onChange:e=>setAns(e.target.value)}),
-  h("div",{className:"ed-row"},
-    h("button",{className:"ed-btn",onClick:grade,disabled:!ans.trim()},"AIに採点してもらう"),
-    h("button",{className:"ed-btn sub",onClick:()=>{setAns(cur.bad);setRes(null);}},"新人の回答例を入れる"),
-    h("button",{className:"ed-btn sub",onClick:()=>{setAns(cur.model);setRes(null);}},"ベテランの回答例を入れる")),
-  HINT("デモの採点は、押さえるべき点の言葉が入っているかどうかで判定しています。本番ではClaudeが文脈で採点し、言い回しの直し方まで返します。")),
-
-P("AIの採点とフィードバック",
-  !res?h("div",{className:"ed-empty"},"左で返し方を書いて「AIに採点してもらう」を押すと、ここに結果が出ます。まずは「新人の回答例を入れる」で試してみてください。")
-  :h("div",null,
-    h("div",{className:"ed-score",style:{color:res.s>=80?"#1E7A62":res.s>=60?"#B7791F":"#C4554D"}},res.s,h("span",null," 点")),
-    h("div",{style:{fontSize:12.5,color:"#5C6B77",marginBottom:10}},res.s>=80?"このまま現場で使えます。":res.s>=60?"あと1〜2点押さえると、お客様の受け取り方が変わります。":"大事な点が抜けています。下の✕から1つずつ足してみてください。"),
-    h("ul",{className:"ed-chk"},res.r.map((x,i)=>h("li",{key:i,className:x.hit?"ok":"ng"},
-      h("b",null,(x.hit?"○ ":"✕ ")+x.p.n),
-      x.hit?null:h("div",null,x.p.tip)))),
-    res.len>260?h("div",{className:"ed-warn"},"少し長めです（"+res.len+"字）。口で言うなら、半分くらいに削ると伝わりやすくなります。"):null,
-    h("div",{className:"ow-notice"},h("b",null,"ベテランのひと言"),h("div",null,cur.vet)),
-    h("details",{className:"ed-model"},h("summary",null,"模範の返し方を見る"),h("div",null,cur.model))))),
-
-P("練習の記録",
-  SC(h("table",{className:"tbl"},
-    h("thead",null,h("tr",null,h("th",null,"誰が"),h("th",null,"場面"),h("th",null,"点数"))),
-    h("tbody",null,hist.slice().reverse().map((x,i)=>h("tr",{key:i},h("td",null,x.n),h("td",null,x.t),
-      h("td",null,h("div",{className:"ed-bar",style:{width:120,display:"inline-block",verticalAlign:"middle",marginRight:8}},h("i",{style:{width:x.s+"%",background:x.s>=80?"#2F9E82":x.s>=60?"#D19B3D":"#C4554D"}})),x.s+"点")))))),
-  HINT("同じ場面を何度練習しても、お客様は怒りませんし、先輩の時間も使いません。点数は「教育ダッシュボード」の技能の段階を上げるときの材料にします。"))
-)
-
-:null
-
-);
-},group:"教育"},
+h("div",{className:"module-head"},h("h2",null,"話して手順書に"),h("p",null,"ベテランが現場で話した内容を、そのまま手順カードにします。書く必要はありません。")),
+h("div",{className:"ep-grid"},
+ h("div",{className:"panel"},h("h3",null,"① 話す"),
+  h("div",{className:"ep-cards flat"},Object.keys(PRE).map(k=>h("button",{key:k,className:p===k?"on":"",onClick:()=>choose(k)},h("i",null,PRE[k].who),PRE[k].t))),
+  h("div",{className:"ep-rec"},
+    h("button",{className:"ep-mic"+(rec?" on":""),onClick:()=>{if(n>=pr.s.length){setN(0);setSec(0);setSteps(null);}setRec(!rec);}},rec?"■":"●"),
+    h("div",null,h("b",null,rec?"録音中… "+mm(sec):n?"録音 "+mm(sec):"押して話しはじめる"),h("small",null,pr.who+"さん｜"+pr.t))),
+  h("div",{className:"ep-trans"},n===0?h("span",{style:{color:"#8A938E"}},"ここに文字起こしが出ます"):pr.s.slice(0,n).map((t,i)=>h("p",{key:i},t+"。"))),
+  h("button",{className:"ep-btn",disabled:!n||rec,onClick:make},"② 手順カードにする")),
+ h("div",{className:"panel"},h("h3",null,"③ 直して公開"),
+  !steps?h("div",{className:"ep-empty"},"録音して「手順カードにする」を押すと、ここに手順が並びます。"):
+  h("div",null,
+   h("input",{className:"ep-title",value:title,onChange:e=>setTitle(e.target.value)}),
+   steps.map((s,i)=>h("div",{key:i,className:"ep-edit"},
+     h("span",null,i+1),
+     h("input",{value:s.t,onChange:e=>ed(i,"t",e.target.value)}),
+     h("button",{className:s.w?"on w":"",title:"必ず守る",onClick:()=>ed(i,"w",!s.w)},"⚠"),
+     h("button",{className:s.ph?"on":"",title:"写真必須",onClick:()=>ed(i,"ph",!s.ph)},"📷"),
+     h("button",{title:"削除",onClick:()=>setSteps(ss=>ss.filter((x,j)=>j!==i))},"×"))),
+   h("button",{className:"ep-link",onClick:()=>setSteps(ss=>ss.concat({t:""}))},"＋ 手順を足す"),
+   h("label",{className:"ep-okd"},h("input",{type:"checkbox",checked:okd,onChange:e=>setOkd(e.target.checked)}),pr.who+"さんが内容を確認した"),
+   pub?h("div",{className:"ep-sent"},"✓ 手順カードに公開しました。AI先輩もこのカードで答えます。",h("button",{className:"ep-link",onClick:()=>E.go("手順カード")},"手順カードで見る →"))
+   :h("button",{className:"ep-btn",onClick:publish},"④ 手順カードに公開")),
+  h("div",{className:"hint"},"⚠を付けた手順は「必ず守ること」、📷は写真を撮るまで完了にできない手順になります。")))
+);},group:"教育(教える人)"},
 {key:"aidm",label:"専用AI アシスタント",icon:"🤖",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("aidm-html").innerHTML}})},group:"基盤"},{key:"flow",label:"案件進行ボード",icon:"🧾",comp:function(){
 const h=ew.createElement;
 const today=new Date();
@@ -5251,7 +5008,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
 {key:"data",label:"データ連携ハブ",icon:"🔌",comp:function(){let{projects:e,monthlyPL:t,cashflow13w:r,logs:n,updatePL:a,updateCF:i}=eG(),[l,o]=(0,ew.useState)("io"),[s,u]=(0,ew.useState)(null),c=(0,ew.useRef)(null),f=async e=>{if(e)try{let t=CJ(await e.arrayBuffer(),{type:"array"}),r=C$(t.Sheets[t.SheetNames[0]],{header:1,raw:!1,defval:null}),n=[],l=[],o=null;r.forEach(e=>{let t=String(e?.[0]??"");if(t.includes("月次PL")){o="pl";return}if(t.includes("資金繰り")){o="cf";return}e?.[0]&&null!=e[1]&&("pl"===o&&n.push({month:String(e[0]),sales:+e[1]||0,grossProfit:+e[2]||0,rate:+e[3]||0,ly:0,lyRate:0}),"cf"===o&&l.push({week:String(e[0]),balance:+e[1]||0,in:+e[2]||0,out:+e[3]||0}))}),n.length&&a(n,`CSV\u{53D6}\u{8FBC}(${e.name})`),l.length&&i(l,`CSV\u{53D6}\u{8FBC}(${e.name})`),n.length||l.length?u({ok:!0,t:`\u{53D6}\u{8FBC}\u{5B8C}\u{4E86}:\u{6708}\u{6B21}PL ${n.length}\u{884C} / \u{8CC7}\u{91D1}\u{7E70}\u{308A} ${l.length}\u{884C}\u{3002}\u{30C0}\u{30C3}\u{30B7}\u{30E5}\u{30DC}\u{30FC}\u{30C9}\u{306B}\u{5373}\u{6642}\u{53CD}\u{6620}\u{3055}\u{308C}\u{3066}\u{3044}\u{307E}\u{3059}\u{3002}`}):u({ok:!1,t:"ヘッダー(【月次PL】/【資金繰り】)を認識できませんでした。テンプレート形式でアップロードしてください。"}),c.current&&(c.current.value="")}catch{u({ok:!1,t:"読み取りに失敗しました。CSV / xlsx 形式かご確認ください。"})}},d=e.reduce((e,t)=>e+t.contract,0);return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"データ連携ハブ"}),(0,eO.jsx)("p",{children:"スイートの心臓部。Excel/CSVの取込・書出と、会計・施工管理・SNSなど外部システムとのAPI連携をここで管理します。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"io"===l?"on":""}`,onClick:()=>o("io"),children:"Excel/CSV 取込・書出"}),(0,eO.jsx)("button",{className:`proj-tab ${"api"===l?"on":""}`,onClick:()=>o("api"),children:"API連携設計"}),(0,eO.jsxs)("button",{className:`proj-tab ${"log"===l?"on":""}`,onClick:()=>o("log"),children:["更新履歴(",n.length,")"]})]}),"io"===l&&(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"kpi-grid",children:[(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"管理中の案件"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[e.length,"件"]}),(0,eO.jsxs)("div",{className:"kpi-sub",children:["請負総額 ",d.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"月次PL"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[t.length,"ヶ月分"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"ダッシュボードに反映中"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"資金繰り"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[r.length,"週分"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"安全水準チェック稼働中"})]})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>{let e="\uFEFF"+[["【月次PL】月","売上(万円)","粗利(万円)","粗利率(%)"],...t.map(e=>[e.month,e.sales,e.grossProfit,e.rate]),[""],["【資金繰り】週","残高(万円)","入金(万円)","支払(万円)"],...r.map(e=>[e.week,e.balance,e.in,e.out])].map(e=>e.join(",")).join("\n"),n=document.createElement("a");n.href=URL.createObjectURL(new Blob([e],{type:"text/csv"})),n.download="スイート取込テンプレート.csv",n.click()},children:"📥 テンプレCSVをダウンロード(現データ入り)"}),(0,eO.jsxs)("label",{className:"tpl-btn",style:{cursor:"pointer"},children:["📤 Excel / CSV を取り込む",(0,eO.jsx)("input",{ref:c,type:"file",accept:".csv,.xlsx,.xls",style:{display:"none"},onChange:e=>f(e.target.files?.[0])})]}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"テンプレを編集して取り込むと、経営ダッシュボードの数字がその場で入れ替わります(デモで体感できる連携)。"}),s&&(0,eO.jsx)("div",{className:`imp-msg ${s.ok?"ok":"ng"}`,style:{flexBasis:"100%"},children:s.t})]})]}),"api"===l&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"外部システム連携(設計表)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"接続先"}),(0,eO.jsx)("th",{children:"方向"}),(0,eO.jsx)("th",{children:"連携内容"}),(0,eO.jsx)("th",{children:"状態"})]})}),(0,eO.jsx)("tbody",{children:I_.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.name})}),(0,eO.jsx)("td",{children:e.dir}),(0,eO.jsx)("td",{style:{fontSize:12.5},children:e.what}),(0,eO.jsx)("td",{children:(0,eO.jsx)("span",{className:`badge ${e.status.includes("稼働")?"green":"gray"}`,children:e.status})})]},e.name))})]}),(0,eO.jsx)("div",{className:"hint",children:"思想:入力は1回、反映は全画面。既存ツールを置き換えるのではなく、間をつないで二重入力を消すのがこのスイートの役割です。"})]}),"log"===l&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"データ更新履歴"}),(0,eO.jsx)("div",{className:"feed",children:n.map((e,t)=>(0,eO.jsxs)("div",{className:"feed-item",children:[(0,eO.jsx)("span",{className:"feed-date",children:e.at}),(0,eO.jsx)("span",{className:`badge ${"auto"===e.kind?"green":"api"===e.kind?"amber":"gray"}`,children:"auto"===e.kind?"自動":"api"===e.kind?"連携":"取込"}),(0,eO.jsxs)("span",{children:[(0,eO.jsx)("b",{children:e.src})," — ",e.msg]})]},t))})]})]})},group:"基盤"},
 {key:"arch",label:"システム構成(本番運用)",icon:"☁️",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("arch-html").innerHTML}})},group:"基盤"},{key:"ops",label:"導入・運用ガイド",icon:"🧭",comp:function(){let[e,t]=(0,ew.useState)("road");return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"導入・運用ガイド"}),(0,eO.jsx)("p",{children:"ツールは「入れた後」が本番です。定着までのロードマップと、モジュール別の運用ルールをここに集約しています。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"road"===e?"on":""}`,onClick:()=>t("road"),children:"導入ロードマップ"}),(0,eO.jsx)("button",{className:`proj-tab ${"ops"===e?"on":""}`,onClick:()=>t("ops"),children:"モジュール別 運用手順"}),(0,eO.jsx)("button",{className:`proj-tab ${"week"===e?"on":""}`,onClick:()=>t("week"),children:"週次の回し方"}),(0,eO.jsx)("button",{className:`proj-tab ${"pit"===e?"on":""}`,onClick:()=>t("pit"),children:"定着の壁と対策"}),(0,eO.jsxs)("button",{className:`proj-tab ${"forms"===e?"on":""}`,onClick:()=>t("forms"),children:["帳票ライブラリ(",IM.length,")"]})]}),"road"===e&&(0,eO.jsx)("div",{className:"panel-row",children:ID.map(e=>(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:260},children:[(0,eO.jsx)("div",{className:"badge green",style:{marginBottom:6},children:e.phase}),(0,eO.jsx)("h3",{style:{marginTop:4},children:e.title}),(0,eO.jsx)("ul",{className:"slide-points",children:e.items.map(e=>(0,eO.jsx)("li",{children:e},e))})]},e.phase))}),"ops"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"誰が・いつ・何をするか"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"モジュール"}),(0,eO.jsx)("th",{children:"担当"}),(0,eO.jsx)("th",{children:"頻度"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IG.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.mod})}),(0,eO.jsx)("td",{children:e.who}),(0,eO.jsx)("td",{children:e.when}),(0,eO.jsx)("td",{children:e.what})]},e.mod))})]}),(0,eO.jsx)("div",{className:"hint",children:"週の合計入力時間は全社で約30分。それ以外はAIと連携が回します。"})]}),"week"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"週次リズム(推奨)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:60},children:"曜日"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IL.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.day})}),(0,eO.jsx)("td",{children:e.what})]},e.day))})]})]}),"pit"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"定着の壁 5つと対策"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"よくある壁"}),(0,eO.jsx)("th",{children:"対策"})]})}),(0,eO.jsx)("tbody",{children:IW.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.pit})}),(0,eO.jsx)("td",{children:e.fix})]},e.pit))})]})]}),"forms"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"標準帳票ライブラリ(Google Drive連携・業務フロー01〜22対応)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:70},children:"帳票No"}),(0,eO.jsx)("th",{children:"帳票名"}),(0,eO.jsx)("th",{children:"関連する業務ステップ"}),(0,eO.jsx)("th",{style:{width:90},children:"原本"})]})}),(0,eO.jsx)("tbody",{children:IM.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.code}),"ppt"===e.type&&(0,eO.jsx)("span",{className:"badge gray",style:{marginLeft:4},children:"PPT"})]}),(0,eO.jsx)("td",{children:e.name}),(0,eO.jsx)("td",{style:{fontSize:12},children:e.step.map(e=>{let t=eN.find(t=>t.no===e);return`${String(e).padStart(2,"0")} ${t.name}`}).join(" / ")}),(0,eO.jsx)("td",{children:(0,eO.jsx)("a",{href:e.url,target:"_blank",rel:"noreferrer",className:"drive-link",children:"Driveで開く"})})]},e.code))})]}),(0,eO.jsx)("div",{className:"hint",children:"標準業務フロー(01初回接客〜22引渡し式)の各ステップで使う帳票の一覧です。Driveの原本に直接アクセスできます。各帳票をスプレッドシート化すれば、スイート内チェックリストとして直接実装できます。"})]})]})},group:"基盤"},
 {key:"sinmido",label:"シンミドウの実践記録",icon:"🏆",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("sinmido-html").innerHTML}})},group:"実践記録"},
-{key:"josei",label:"研修助成金シミュレーター",icon:"💴",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("josei-html").innerHTML}})},group:"助成金"}],IB=["経営","営業","設計","工事","集客","教育","基盤","実践記録","助成金"];function IR(){let[e,t]=(0,ew.useState)("dash"),r=IZ.find(t=>t.key===e).comp;return(0,eO.jsx)(eD,{children:(0,eO.jsxs)("div",{className:"app",children:[(0,eO.jsxs)("aside",{className:"sidebar",children:[(0,eO.jsxs)("div",{className:"brand",children:[(0,eO.jsx)("div",{className:"brand-mark",children:"彩"}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"brand-name",children:"彩の国ホーム"}),(0,eO.jsx)("div",{className:"brand-sub",children:"工務店DXスイート(デモ)"})]})]}),(0,eO.jsx)("nav",{children:IB.map(r=>(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"nav-group",children:r}),IZ.filter(e=>e.group===r).map(r=>(0,eO.jsxs)("button",{className:`nav-item ${r.key===e?"on":""}`,onClick:()=>t(r.key),children:[(0,eO.jsx)("span",{className:"nav-icon",children:r.icon}),r.label]},r.key))]},r))}),(0,eO.jsxs)("div",{className:"sidebar-foot",children:["powered by シンミドウ",(0,eO.jsx)("br",{}),"AI×工務店DX(デモ)"]})]}),(0,eO.jsx)("main",{className:"main",children:(0,eO.jsx)(r,{})})]})})}(0,eC.createRoot)(document.getElementById("root")).render((0,eO.jsx)(ew.StrictMode,{children:(0,eO.jsx)(function(){return(0,eO.jsx)(IR,{})},{})}));</script>
+{key:"josei",label:"研修助成金シミュレーター",icon:"💴",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("josei-html").innerHTML}})},group:"助成金"}],IB=["経営","営業","設計","工事","集客","教育(新人)","教育(教える人)","基盤","実践記録","助成金"];function IR(){let[e,t]=(0,ew.useState)("dash"),r=IZ.find(t=>t.key===e).comp;return(0,eO.jsx)(eD,{children:(0,eO.jsxs)("div",{className:"app",children:[(0,eO.jsxs)("aside",{className:"sidebar",children:[(0,eO.jsxs)("div",{className:"brand",children:[(0,eO.jsx)("div",{className:"brand-mark",children:"彩"}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"brand-name",children:"彩の国ホーム"}),(0,eO.jsx)("div",{className:"brand-sub",children:"工務店DXスイート(デモ)"})]})]}),(0,eO.jsx)("nav",{children:IB.map(r=>(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"nav-group",children:r}),IZ.filter(e=>e.group===r).map(r=>(0,eO.jsxs)("button",{className:`nav-item ${r.key===e?"on":""}`,onClick:()=>t(r.key),children:[(0,eO.jsx)("span",{className:"nav-icon",children:r.icon}),r.label]},r.key))]},r))}),(0,eO.jsxs)("div",{className:"sidebar-foot",children:["powered by シンミドウ",(0,eO.jsx)("br",{}),"AI×工務店DX(デモ)"]})]}),(0,eO.jsx)("main",{className:"main",children:(0,eO.jsx)(r,{})})]})})}(0,eC.createRoot)(document.getElementById("root")).render((0,eO.jsx)(ew.StrictMode,{children:(0,eO.jsx)(function(){return(0,eO.jsx)(IR,{})},{})}));</script>
   
 
 <script>
