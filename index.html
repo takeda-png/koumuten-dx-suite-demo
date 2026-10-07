@@ -540,6 +540,149 @@ return S;})();
 </div>
 
     </template>
+<template id="cep-html">
+<style>
+/* ===== CEPマップ（想起分析） ===== */
+#cep-app .cep-hero{background:linear-gradient(135deg,#16302b,#2f9e82);color:#fff;border-radius:14px;padding:22px 26px;margin-bottom:16px}
+#cep-app .cep-hero h3{color:#fff;font-size:18px;margin:0 0 8px}
+#cep-app .cep-hero p{font-size:12.5px;line-height:1.9;color:#dcefe8;max-width:900px;margin:0}
+#cep-app .cep-top{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin-bottom:14px}
+#cep-app .cep-seg{display:inline-flex;border:1px solid #cfd8d3;border-radius:8px;overflow:hidden;background:#fff}
+#cep-app .cep-seg button{border:0;background:transparent;color:#5c6b77;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer}
+#cep-app .cep-seg button.on{background:#2f9e82;color:#fff}
+#cep-app .cep-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:16px;align-items:start}
+@media (max-width:980px){#cep-app .cep-grid{grid-template-columns:1fr}}
+#cep-app .cep-panel{background:#fff;border:1px solid #cfe0d9;border-radius:12px;padding:16px 18px;min-width:0}
+#cep-app .cep-ph{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+#cep-app .cep-ph h4{font-size:14.5px;margin:0;color:#16302b}
+#cep-app .cep-ph small{color:#8a938e;font-size:11px}
+#cep-app svg.cep-mx{width:100%;height:auto;display:block}
+#cep-app svg.cep-mx text{font-family:inherit;fill:#22303c}
+#cep-app svg.cep-mx .ql{font-size:10.5px;font-weight:800}
+#cep-app svg.cep-mx .ax{font-size:10.5px;fill:#8a938e}
+#cep-app svg.cep-mx .lb{font-size:10px}
+#cep-app .cep-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:11.5px;color:#5c6b77}
+#cep-app .cep-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+#cep-app ol.cep-rank{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+#cep-app ol.cep-rank li{display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-radius:8px;background:#fbe9e3;font-size:13px}
+#cep-app ol.cep-rank li.ok{background:#e6f5ef}
+#cep-app ol.cep-rank .n{font-weight:800;color:#b5452a}
+#cep-app ol.cep-rank li.ok .n{color:#2f9e82}
+#cep-app ol.cep-rank .s{font-weight:800;color:#8a938e;font-variant-numeric:tabular-nums;font-size:12px}
+#cep-app .cep-why{display:block;font-size:11.5px;color:#5c6b77;margin-top:2px}
+#cep-app .cep-hooks{margin:0;padding-left:18px;display:grid;gap:8px;font-size:13px}
+#cep-app .cep-hooks li{line-height:1.6}
+#cep-app .cep-empty{color:#8a938e;font-size:12.5px}
+#cep-app .cep-tw{overflow-x:auto;margin-top:16px}
+#cep-app table.cep-t{border-collapse:collapse;width:100%;min-width:880px;background:#fff;border:1px solid #cfe0d9;border-radius:12px;overflow:hidden}
+#cep-app table.cep-t th,#cep-app table.cep-t td{padding:7px 9px;border-bottom:1px solid #e6ece9;text-align:left;vertical-align:top;font-size:13px}
+#cep-app table.cep-t th{font-size:11px;letter-spacing:.05em;color:#5c6b77;font-weight:800;background:#f2fbf7;white-space:nowrap}
+#cep-app table.cep-t th .h{display:block;font-weight:600;letter-spacing:0;font-size:10.5px;color:#8a938e}
+#cep-app table.cep-t textarea[data-k=name]{line-height:1.45}
+#cep-app table.cep-t input,#cep-app table.cep-t select,#cep-app table.cep-t textarea{width:100%;border:1px solid transparent;background:transparent;font:inherit;font-size:13px;padding:4px 6px;border-radius:5px;color:#22303c}
+#cep-app table.cep-t input:hover,#cep-app table.cep-t select:hover,#cep-app table.cep-t textarea:hover{border-color:#cfd8d3;background:#fff}
+#cep-app table.cep-t input:focus,#cep-app table.cep-t select:focus,#cep-app table.cep-t textarea:focus{outline:2px solid #2f9e82;outline-offset:-1px;background:#fff}
+#cep-app table.cep-t input[type=number]{width:58px;text-align:right;font-variant-numeric:tabular-nums}
+#cep-app table.cep-t textarea{resize:vertical;min-height:32px}
+#cep-app table.cep-t td.num{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
+#cep-app .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:800;white-space:nowrap}
+#cep-app .pill.attack{background:#fbe9e3;color:#b5452a}
+#cep-app .pill.keep{background:#e6f5ef;color:#2c7a4b}
+#cep-app .pill.grow{background:#fbf1d9;color:#b07a12}
+#cep-app .pill.drop{background:#ececea;color:#7a7f86}
+#cep-app .cep-del{border:0;background:transparent;color:#8a938e;cursor:pointer;font-size:16px;line-height:1;padding:2px 6px}
+#cep-app .cep-del:hover{color:#b5452a}
+#cep-app .cep-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+#cep-app .cep-btn{border:1px solid #cfd8d3;background:#fff;color:#22303c;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer}
+#cep-app .cep-btn.pri{background:#2f9e82;border-color:#2f9e82;color:#fff}
+#cep-app .cep-btn:hover{border-color:#2f9e82}
+#cep-app .cep-toast{font-size:12px;color:#8a938e;margin-left:auto}
+#cep-app details.cep-help{margin-top:22px;border-top:1px solid #cfe0d9;padding-top:12px}
+#cep-app details.cep-help summary{cursor:pointer;font-weight:800;font-size:13.5px;color:#16302b}
+#cep-app details.cep-help ol{padding-left:20px;margin:10px 0}
+#cep-app details.cep-help li,#cep-app details.cep-help p{font-size:12.5px;color:#5c6b77;line-height:1.85;max-width:80ch}
+#cep-app textarea.cep-io{width:100%;min-height:110px;font-family:ui-monospace,Menlo,monospace;font-size:12px;border:1px solid #cfd8d3;border-radius:8px;background:#fff;padding:10px;margin-top:6px}
+#cep-app .cep-src{font-size:10.5px;color:#8a938e;letter-spacing:.08em;font-weight:800;float:right}
+</style>
+
+<div id="cep-app">
+<div class="module-head">
+  <h2>🧭 CEPマップ（想起分析）</h2>
+  <p>CEP＝Category Entry Points。お客様が「そろそろ家を考えよう」「集客をなんとかしよう」と<b>思い出す入口（場面・きっかけ）</b>のことです。その場面がどれくらい多いか × その場面で自社が思い浮かぶか、の2軸で訴求の優先順位を決める作業台です。工務店向け（対 施主）とシンミドウ自社向け（対 工務店）の2セットを用意しています。</p>
+</div>
+
+<div class="cep-hero">
+  <h3>「どんなときに思い出されるか」を先に決める。</h3>
+  <p>家づくりは「欲しくなった瞬間」が一社に決まるタイミングです。賃貸更新、二人目の出産、金利ニュース、寒い冬。それぞれの場面で自社が候補に上がらなければ、どれだけ良い家を建てていても比較の土俵に乗りません。右下の「攻める穴」（場面は多いのに想起されない）から順に、その場面を主語にした記事・LP・事例を作っていきます。</p>
+</div>
+
+<div class="cep-top">
+  <div class="cep-seg" role="group" aria-label="分析対象">
+    <button type="button" data-cep-preset="koumuten" class="on">工務店（対 施主）</button>
+    <button type="button" data-cep-preset="sinmido">シンミドウ（対 工務店）</button>
+  </div>
+  <span class="cep-src">入力はこのブラウザに自動保存</span>
+</div>
+
+<div class="cep-grid">
+  <section class="cep-panel">
+    <div class="cep-ph"><h4>想起マトリクス</h4><small>横：頻度 ／ 縦：自社想起 ／ 丸の大きさ：競合想起 ／ 番号は下の表と対応</small></div>
+    <svg id="cep-matrix" class="cep-mx" viewBox="0 0 520 400" role="img" aria-label="CEPマトリクス"></svg>
+    <div class="cep-legend">
+      <span><i style="background:#b5452a"></i>攻める穴：多いのに想起されない</span>
+      <span><i style="background:#2c7a4b"></i>守る：主戦場</span>
+      <span><i style="background:#b07a12"></i>育てる：想起はあるがニッチ</span>
+      <span><i style="background:#7a7f86"></i>保留</span>
+    </div>
+  </section>
+  <section class="cep-panel">
+    <div class="cep-ph"><h4>攻めるべきCEP 上位</h4><small>機会スコア ＝ 頻度 × (5 − 自社想起)</small></div>
+    <ol id="cep-rank" class="cep-rank"></ol>
+    <div class="cep-ph" style="margin-top:16px"><h4>訴求への落とし込み</h4><small>上位CEPを主語にした見出し案</small></div>
+    <div id="cep-hooks" class="cep-empty"></div>
+  </section>
+</div>
+
+<div class="cep-tw">
+<table class="cep-t">
+  <thead><tr>
+    <th>#</th>
+    <th>切り口</th>
+    <th style="min-width:260px">CEP（お客様が思い出す場面）<span class="h">「〜のとき」で書く</span></th>
+    <th>頻度<span class="h">1〜5</span></th>
+    <th>自社想起<span class="h">1〜5</span></th>
+    <th>競合想起<span class="h">1〜5 任意</span></th>
+    <th>スコア</th>
+    <th>判定</th>
+    <th style="min-width:200px">今の訴求・証拠<span class="h">HP見出し／事例など</span></th>
+    <th></th>
+  </tr></thead>
+  <tbody id="cep-rows"></tbody>
+</table>
+</div>
+
+<div class="cep-bar">
+  <button type="button" class="cep-btn pri" data-cep-act="add">＋ CEPを追加</button>
+  <button type="button" class="cep-btn" data-cep-act="reset">サンプルに戻す</button>
+  <button type="button" class="cep-btn" data-cep-act="csv">CSVをコピー</button>
+  <button type="button" class="cep-btn" data-cep-act="json">JSONをコピー</button>
+  <span class="cep-toast" id="cep-toast"></span>
+</div>
+
+<details class="cep-help">
+  <summary>使い方と、数字の取り方</summary>
+  <ol>
+    <li><b>CEPを出す</b>：来場アンケートの「家づくりを考えたきっかけ」、初回商談の最初の一言、Google検索サジェスト、問い合わせフォームの自由記述から「どんなときに探し始めたか」を拾い、When／Who／Why／Where のどれかで書く。</li>
+    <li><b>頻度を付ける</b>：その場面がターゲット全体でどれくらい起きるか。アンケートの「あてはまる」率、検索ボリューム、商談記録の件数を1〜5に丸める。</li>
+    <li><b>想起率を付ける</b>：その場面で自社が思い浮かぶか。OB客・来場者に「〇〇のとき、思い浮かんだ会社は？」と自由回答で聞く。母数が小さければ、AI検索（ChatGPT・Gemini等）に「〇〇のとき、おすすめの工務店は？」と聞いて社名が出るかを数える代用指標でもよい。</li>
+    <li><b>右下の「攻める穴」から順に</b>、その場面を主語にしたコラム・LP見出し・施工事例を1本ずつ作る。守る象限は現状維持、育てる象限は尖らせる。</li>
+  </ol>
+  <p>別の端末に持ち出すときは「JSONをコピー」→ 下の欄に貼って「読み込む」。</p>
+  <textarea class="cep-io" id="cep-io" placeholder='[{"axis":"When","name":"…","prev":4,"own":2,"comp":3,"note":"…"}]'></textarea>
+  <div class="cep-bar" style="margin-top:6px"><button type="button" class="cep-btn" data-cep-act="import">JSONを読み込む</button></div>
+</details>
+</div>
+</template>
 <template id="josei-html">
 <style>
 /* 実践記録から複製（このタブでも出典表記を使うため） */
@@ -5281,6 +5424,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
 {key:"data",label:"データ連携ハブ",icon:"🔌",comp:function(){let{projects:e,monthlyPL:t,cashflow13w:r,logs:n,updatePL:a,updateCF:i}=eG(),[l,o]=(0,ew.useState)("io"),[s,u]=(0,ew.useState)(null),c=(0,ew.useRef)(null),f=async e=>{if(e)try{let t=CJ(await e.arrayBuffer(),{type:"array"}),r=C$(t.Sheets[t.SheetNames[0]],{header:1,raw:!1,defval:null}),n=[],l=[],o=null;r.forEach(e=>{let t=String(e?.[0]??"");if(t.includes("月次PL")){o="pl";return}if(t.includes("資金繰り")){o="cf";return}e?.[0]&&null!=e[1]&&("pl"===o&&n.push({month:String(e[0]),sales:+e[1]||0,grossProfit:+e[2]||0,rate:+e[3]||0,ly:0,lyRate:0}),"cf"===o&&l.push({week:String(e[0]),balance:+e[1]||0,in:+e[2]||0,out:+e[3]||0}))}),n.length&&a(n,`CSV\u{53D6}\u{8FBC}(${e.name})`),l.length&&i(l,`CSV\u{53D6}\u{8FBC}(${e.name})`),n.length||l.length?u({ok:!0,t:`\u{53D6}\u{8FBC}\u{5B8C}\u{4E86}:\u{6708}\u{6B21}PL ${n.length}\u{884C} / \u{8CC7}\u{91D1}\u{7E70}\u{308A} ${l.length}\u{884C}\u{3002}\u{30C0}\u{30C3}\u{30B7}\u{30E5}\u{30DC}\u{30FC}\u{30C9}\u{306B}\u{5373}\u{6642}\u{53CD}\u{6620}\u{3055}\u{308C}\u{3066}\u{3044}\u{307E}\u{3059}\u{3002}`}):u({ok:!1,t:"ヘッダー(【月次PL】/【資金繰り】)を認識できませんでした。テンプレート形式でアップロードしてください。"}),c.current&&(c.current.value="")}catch{u({ok:!1,t:"読み取りに失敗しました。CSV / xlsx 形式かご確認ください。"})}},d=e.reduce((e,t)=>e+t.contract,0);return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"データ連携ハブ"}),(0,eO.jsx)("p",{children:"スイートの心臓部。Excel/CSVの取込・書出と、会計・施工管理・SNSなど外部システムとのAPI連携をここで管理します。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"io"===l?"on":""}`,onClick:()=>o("io"),children:"Excel/CSV 取込・書出"}),(0,eO.jsx)("button",{className:`proj-tab ${"api"===l?"on":""}`,onClick:()=>o("api"),children:"API連携設計"}),(0,eO.jsxs)("button",{className:`proj-tab ${"log"===l?"on":""}`,onClick:()=>o("log"),children:["更新履歴(",n.length,")"]})]}),"io"===l&&(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"kpi-grid",children:[(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"管理中の案件"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[e.length,"件"]}),(0,eO.jsxs)("div",{className:"kpi-sub",children:["請負総額 ",d.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"月次PL"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[t.length,"ヶ月分"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"ダッシュボードに反映中"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"資金繰り"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[r.length,"週分"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"安全水準チェック稼働中"})]})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>{let e="\uFEFF"+[["【月次PL】月","売上(万円)","粗利(万円)","粗利率(%)"],...t.map(e=>[e.month,e.sales,e.grossProfit,e.rate]),[""],["【資金繰り】週","残高(万円)","入金(万円)","支払(万円)"],...r.map(e=>[e.week,e.balance,e.in,e.out])].map(e=>e.join(",")).join("\n"),n=document.createElement("a");n.href=URL.createObjectURL(new Blob([e],{type:"text/csv"})),n.download="スイート取込テンプレート.csv",n.click()},children:"📥 テンプレCSVをダウンロード(現データ入り)"}),(0,eO.jsxs)("label",{className:"tpl-btn",style:{cursor:"pointer"},children:["📤 Excel / CSV を取り込む",(0,eO.jsx)("input",{ref:c,type:"file",accept:".csv,.xlsx,.xls",style:{display:"none"},onChange:e=>f(e.target.files?.[0])})]}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"テンプレを編集して取り込むと、経営ダッシュボードの数字がその場で入れ替わります(デモで体感できる連携)。"}),s&&(0,eO.jsx)("div",{className:`imp-msg ${s.ok?"ok":"ng"}`,style:{flexBasis:"100%"},children:s.t})]})]}),"api"===l&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"外部システム連携(設計表)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"接続先"}),(0,eO.jsx)("th",{children:"方向"}),(0,eO.jsx)("th",{children:"連携内容"}),(0,eO.jsx)("th",{children:"状態"})]})}),(0,eO.jsx)("tbody",{children:I_.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.name})}),(0,eO.jsx)("td",{children:e.dir}),(0,eO.jsx)("td",{style:{fontSize:12.5},children:e.what}),(0,eO.jsx)("td",{children:(0,eO.jsx)("span",{className:`badge ${e.status.includes("稼働")?"green":"gray"}`,children:e.status})})]},e.name))})]}),(0,eO.jsx)("div",{className:"hint",children:"思想:入力は1回、反映は全画面。既存ツールを置き換えるのではなく、間をつないで二重入力を消すのがこのスイートの役割です。"})]}),"log"===l&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"データ更新履歴"}),(0,eO.jsx)("div",{className:"feed",children:n.map((e,t)=>(0,eO.jsxs)("div",{className:"feed-item",children:[(0,eO.jsx)("span",{className:"feed-date",children:e.at}),(0,eO.jsx)("span",{className:`badge ${"auto"===e.kind?"green":"api"===e.kind?"amber":"gray"}`,children:"auto"===e.kind?"自動":"api"===e.kind?"連携":"取込"}),(0,eO.jsxs)("span",{children:[(0,eO.jsx)("b",{children:e.src})," — ",e.msg]})]},t))})]})]})},group:"基盤"},
 {key:"arch",label:"システム構成(本番運用)",icon:"☁️",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("arch-html").innerHTML}})},group:"基盤"},{key:"ops",label:"導入・運用ガイド",icon:"🧭",comp:function(){let[e,t]=(0,ew.useState)("road");return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"導入・運用ガイド"}),(0,eO.jsx)("p",{children:"ツールは「入れた後」が本番です。定着までのロードマップと、モジュール別の運用ルールをここに集約しています。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"road"===e?"on":""}`,onClick:()=>t("road"),children:"導入ロードマップ"}),(0,eO.jsx)("button",{className:`proj-tab ${"ops"===e?"on":""}`,onClick:()=>t("ops"),children:"モジュール別 運用手順"}),(0,eO.jsx)("button",{className:`proj-tab ${"week"===e?"on":""}`,onClick:()=>t("week"),children:"週次の回し方"}),(0,eO.jsx)("button",{className:`proj-tab ${"pit"===e?"on":""}`,onClick:()=>t("pit"),children:"定着の壁と対策"}),(0,eO.jsxs)("button",{className:`proj-tab ${"forms"===e?"on":""}`,onClick:()=>t("forms"),children:["帳票ライブラリ(",IM.length,")"]})]}),"road"===e&&(0,eO.jsx)("div",{className:"panel-row",children:ID.map(e=>(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:260},children:[(0,eO.jsx)("div",{className:"badge green",style:{marginBottom:6},children:e.phase}),(0,eO.jsx)("h3",{style:{marginTop:4},children:e.title}),(0,eO.jsx)("ul",{className:"slide-points",children:e.items.map(e=>(0,eO.jsx)("li",{children:e},e))})]},e.phase))}),"ops"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"誰が・いつ・何をするか"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"モジュール"}),(0,eO.jsx)("th",{children:"担当"}),(0,eO.jsx)("th",{children:"頻度"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IG.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.mod})}),(0,eO.jsx)("td",{children:e.who}),(0,eO.jsx)("td",{children:e.when}),(0,eO.jsx)("td",{children:e.what})]},e.mod))})]}),(0,eO.jsx)("div",{className:"hint",children:"週の合計入力時間は全社で約30分。それ以外はAIと連携が回します。"})]}),"week"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"週次リズム(推奨)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:60},children:"曜日"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IL.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.day})}),(0,eO.jsx)("td",{children:e.what})]},e.day))})]})]}),"pit"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"定着の壁 5つと対策"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"よくある壁"}),(0,eO.jsx)("th",{children:"対策"})]})}),(0,eO.jsx)("tbody",{children:IW.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.pit})}),(0,eO.jsx)("td",{children:e.fix})]},e.pit))})]})]}),"forms"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"標準帳票ライブラリ(Google Drive連携・業務フロー01〜22対応)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:70},children:"帳票No"}),(0,eO.jsx)("th",{children:"帳票名"}),(0,eO.jsx)("th",{children:"関連する業務ステップ"}),(0,eO.jsx)("th",{style:{width:90},children:"原本"})]})}),(0,eO.jsx)("tbody",{children:IM.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.code}),"ppt"===e.type&&(0,eO.jsx)("span",{className:"badge gray",style:{marginLeft:4},children:"PPT"})]}),(0,eO.jsx)("td",{children:e.name}),(0,eO.jsx)("td",{style:{fontSize:12},children:e.step.map(e=>{let t=eN.find(t=>t.no===e);return`${String(e).padStart(2,"0")} ${t.name}`}).join(" / ")}),(0,eO.jsx)("td",{children:(0,eO.jsx)("a",{href:e.url,target:"_blank",rel:"noreferrer",className:"drive-link",children:"Driveで開く"})})]},e.code))})]}),(0,eO.jsx)("div",{className:"hint",children:"標準業務フロー(01初回接客〜22引渡し式)の各ステップで使う帳票の一覧です。Driveの原本に直接アクセスできます。各帳票をスプレッドシート化すれば、スイート内チェックリストとして直接実装できます。"})]})]})},group:"基盤"},
 {key:"sinmido",label:"シンミドウの実践記録",icon:"🏆",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("sinmido-html").innerHTML}})},group:"実践記録"},
+{key:"cep",label:"CEPマップ（想起分析）",icon:"🧭",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("cep-html").innerHTML}})},group:"実践記録"},
 {key:"josei",label:"研修助成金シミュレーター",icon:"💴",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("josei-html").innerHTML}})},group:"助成金"}],IB=["経営","営業","設計","工事","集客","教育(新人)","教育(教える人)","基盤","実践記録","助成金"];function IR(){let[e,t]=(0,ew.useState)("dash"),r=IZ.find(t=>t.key===e).comp;return(0,eO.jsx)(eD,{children:(0,eO.jsxs)("div",{className:"app",children:[(0,eO.jsxs)("aside",{className:"sidebar",children:[(0,eO.jsxs)("div",{className:"brand",children:[(0,eO.jsx)("div",{className:"brand-mark",children:"彩"}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"brand-name",children:"彩の国ホーム"}),(0,eO.jsx)("div",{className:"brand-sub",children:"工務店DXスイート(デモ)"})]})]}),(0,eO.jsx)("nav",{children:IB.map(r=>(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"nav-group",children:r}),IZ.filter(e=>e.group===r).map(r=>(0,eO.jsxs)("button",{className:`nav-item ${r.key===e?"on":""}`,onClick:()=>t(r.key),children:[(0,eO.jsx)("span",{className:"nav-icon",children:r.icon}),r.label]},r.key))]},r))}),(0,eO.jsxs)("div",{className:"sidebar-foot",children:["powered by シンミドウ",(0,eO.jsx)("br",{}),"AI×工務店DX(デモ)"]})]}),(0,eO.jsx)("main",{className:"main",children:(0,eO.jsx)(r,{})})]})})}(0,eC.createRoot)(document.getElementById("root")).render((0,eO.jsx)(ew.StrictMode,{children:(0,eO.jsx)(function(){return(0,eO.jsx)(IR,{})},{})}));</script>
   
 
@@ -7185,5 +7329,190 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     app.querySelectorAll('[data-wr]').forEach(function(x){ x.classList.toggle('on', x === b); });
     app.querySelectorAll('[data-wr-pane]').forEach(function(p){ p.classList.toggle('on', p.getAttribute('data-wr-pane') === k); });
   });
+})();
+</script>
+
+<script>
+/* CEPマップ（想起分析）
+   Reactがタブ切替のたびにノードを作り直すため、setIntervalで出現を検知して初期化する（他タブと同じ方式） */
+(function(){
+  var PRESETS = {
+    koumuten: { label:"工務店", rows:[
+      {axis:"When",name:"子どもが小学校に上がる前に家を決めたいと思ったとき",prev:5,own:3,comp:4,note:"学区・子育て導線の事例"},
+      {axis:"When",name:"賃貸の更新時期が近づき、家賃がもったいないと感じたとき",prev:5,own:2,comp:4,note:"（訴求なし）"},
+      {axis:"When",name:"二人目が生まれて今の家が手狭になったとき",prev:4,own:3,comp:3,note:"間取り事例"},
+      {axis:"Who",name:"親との同居・二世帯を考え始めたとき",prev:3,own:2,comp:2,note:"（訴求なし）"},
+      {axis:"When",name:"実家の土地を相続・譲り受けたとき",prev:3,own:2,comp:2,note:"建て替え事例"},
+      {axis:"Why",name:"住宅ローン金利が上がると聞いて急いだとき",prev:4,own:1,comp:3,note:"（訴求なし）"},
+      {axis:"Where",name:"住宅展示場に行ったが、大手は高いと感じた帰り道",prev:4,own:3,comp:5,note:"価格の見せ方"},
+      {axis:"Who",name:"友人・同僚が家を建てて話を聞いたとき",prev:4,own:3,comp:3,note:"OB紹介制度"},
+      {axis:"When",name:"冬に家が寒くて我慢できなくなったとき",prev:4,own:4,comp:2,note:"高断熱・UA値の実測"},
+      {axis:"Why",name:"在宅勤務が増えて仕事部屋が欲しくなったとき",prev:3,own:2,comp:2,note:"（訴求なし）"},
+      {axis:"When",name:"ペットを飼い始めて住まいを変えたくなったとき",prev:2,own:2,comp:1,note:"（訴求なし）"},
+      {axis:"Why",name:"補助金・減税の期限が近いと知ったとき",prev:3,own:2,comp:3,note:"補助金コラム"},
+      {axis:"When",name:"中古＋リノベと新築で迷っているとき",prev:3,own:1,comp:3,note:"（訴求なし）"}
+    ]},
+    sinmido: { label:"シンミドウ", rows:[
+      {axis:"When",name:"新卒・中途の求人を出しても応募が来ないとき",prev:5,own:4,comp:3,note:"採用コンサル／採用支援実績"},
+      {axis:"When",name:"完成見学会・来場予約の数が落ちてきたとき",prev:5,own:3,comp:4,note:"Meta広告運用、物件別レポート"},
+      {axis:"Why",name:"紹介とOB客頼みから脱したいと思ったとき",prev:4,own:2,comp:3,note:"（訴求なし）"},
+      {axis:"When",name:"ホームページが古く、問い合わせが来ないと気づいたとき",prev:4,own:3,comp:4,note:"HP改善、SCOPE月次レポート"},
+      {axis:"Who",name:"採用担当・広報担当が辞めて業務が回らなくなったとき",prev:3,own:2,comp:2,note:"（訴求なし）"},
+      {axis:"When",name:"Instagram運用を任せたいが、社内に人がいないとき",prev:4,own:3,comp:4,note:"SNS運用代行"},
+      {axis:"Why",name:"広告費をかけているが費用対効果が分からないとき",prev:4,own:2,comp:3,note:"SCOPE AI診断"},
+      {axis:"When",name:"AIを業務で使いたいが何から始めるか分からないとき",prev:4,own:3,comp:1,note:"AI研修、実践記録"},
+      {axis:"Why",name:"後継者への事業承継を見据えて組織を整えたいとき",prev:2,own:2,comp:1,note:"MG研修"},
+      {axis:"Where",name:"業界団体・住宅系セミナーで講師の話を聞いたとき",prev:3,own:4,comp:2,note:"登壇実績"},
+      {axis:"When",name:"同業の成功事例を見て焦ったとき",prev:3,own:2,comp:3,note:"事例記事・実践会"},
+      {axis:"Why",name:"採用とマーケを別々の会社に頼んでいて、まとめたいとき",prev:2,own:3,comp:1,note:"採用×デジタルの一社完結"}
+    ]}
+  };
+  var KEY = "kdx_cep_v1";
+  var QL = {attack:"攻める穴",keep:"守る",grow:"育てる",drop:"保留"};
+  var QC = {attack:"#b5452a",keep:"#2c7a4b",grow:"#b07a12",drop:"#7a7f86"};
+  var QS = {attack:"#fbe9e3",keep:"#e6f5ef",grow:"#fbf1d9",drop:"#ececea"};
+  var state = null;
+
+  function clone(o){ return JSON.parse(JSON.stringify(o)); }
+  function load(){ try{ var s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; }catch(e){ return null; } }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+  function ensure(){ if(!state){ state = load() || { preset:"koumuten", data:{ koumuten:clone(PRESETS.koumuten.rows), sinmido:clone(PRESETS.sinmido.rows) } }; } }
+  function rows(){ return state.data[state.preset]; }
+  function q(id){ return document.getElementById(id); }
+  function clamp(v){ v = Number(v); if(!isFinite(v)) return 1; return Math.min(5, Math.max(1, Math.round(v))); }
+  function score(r){ return r.prev * (5 - r.own); }
+  function quad(r){ var hp = r.prev >= 3.5, ho = r.own >= 3; return hp && !ho ? "attack" : hp && ho ? "keep" : !hp && ho ? "grow" : "drop"; }
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+  function render(){
+    var app = q("cep-app"); if(!app) return;
+    app.querySelectorAll("[data-cep-preset]").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-cep-preset") === state.preset); });
+    renderTable(); renderMatrix(); renderRank(); save();
+  }
+
+  function renderTable(){
+    var tb = q("cep-rows"); if(!tb) return;
+    tb.innerHTML = rows().map(function(r, i){
+      var qd = quad(r);
+      return '<tr>' +
+        '<td class="num" style="color:'+QC[qd]+'">'+(i+1)+'</td>' +
+        '<td><select data-i="'+i+'" data-k="axis">' + ["When","Who","Why","Where"].map(function(a){ return '<option'+(a===r.axis?' selected':'')+'>'+a+'</option>'; }).join("") + '</select></td>' +
+        '<td><textarea data-i="'+i+'" data-k="name" rows="2">'+esc(r.name)+'</textarea></td>' +
+        '<td><input type="number" min="1" max="5" step="1" data-i="'+i+'" data-k="prev" value="'+r.prev+'"></td>' +
+        '<td><input type="number" min="1" max="5" step="1" data-i="'+i+'" data-k="own" value="'+r.own+'"></td>' +
+        '<td><input type="number" min="1" max="5" step="1" data-i="'+i+'" data-k="comp" value="'+(r.comp==null?"":r.comp)+'"></td>' +
+        '<td class="num">'+score(r)+'</td>' +
+        '<td><span class="pill '+qd+'">'+QL[qd]+'</span></td>' +
+        '<td><textarea data-i="'+i+'" data-k="note" rows="1">'+esc(r.note)+'</textarea></td>' +
+        '<td><button type="button" class="cep-del" data-cep-del="'+i+'" aria-label="削除">×</button></td></tr>';
+    }).join("");
+  }
+
+  function renderMatrix(){
+    var svg = q("cep-matrix"); if(!svg) return;
+    var W=520,H=400,L=46,R=16,T=18,B=44, pw=W-L-R, ph=H-T-B;
+    var x = function(v){ return L + (v-1)/4*pw; }, y = function(v){ return T + ph - (v-1)/4*ph; };
+    var mx = x(3.5), my = y(3), s = "";
+    s += '<rect x="'+mx+'" y="'+my+'" width="'+(L+pw-mx)+'" height="'+(T+ph-my)+'" fill="'+QS.attack+'"/>';
+    s += '<rect x="'+mx+'" y="'+T+'" width="'+(L+pw-mx)+'" height="'+(my-T)+'" fill="'+QS.keep+'"/>';
+    s += '<rect x="'+L+'" y="'+T+'" width="'+(mx-L)+'" height="'+(my-T)+'" fill="'+QS.grow+'"/>';
+    s += '<rect x="'+L+'" y="'+my+'" width="'+(mx-L)+'" height="'+(T+ph-my)+'" fill="'+QS.drop+'"/>';
+    s += '<text class="ql" x="'+(L+pw-8)+'" y="'+(T+ph-8)+'" text-anchor="end" fill="'+QC.attack+'" style="fill:'+QC.attack+'">攻める穴</text>';
+    s += '<text class="ql" x="'+(L+pw-8)+'" y="'+(T+14)+'" text-anchor="end" style="fill:'+QC.keep+'">守る</text>';
+    s += '<text class="ql" x="'+(L+8)+'" y="'+(T+14)+'" style="fill:'+QC.grow+'">育てる</text>';
+    s += '<text class="ql" x="'+(L+8)+'" y="'+(T+ph-8)+'" style="fill:'+QC.drop+'">保留</text>';
+    for(var v=1; v<=5; v++){
+      s += '<text class="ax" x="'+x(v)+'" y="'+(H-B+16)+'" text-anchor="middle">'+v+'</text>';
+      s += '<text class="ax" x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end">'+v+'</text>';
+    }
+    s += '<text class="ax" x="'+(L+pw/2)+'" y="'+(H-8)+'" text-anchor="middle">場面の発生頻度 →</text>';
+    s += '<text class="ax" transform="translate(12 '+(T+ph/2)+') rotate(-90)" text-anchor="middle">自社の想起率 →</text>';
+    s += '<rect x="'+L+'" y="'+T+'" width="'+pw+'" height="'+ph+'" fill="none" stroke="#cfe0d9"/>';
+    var seen = {};
+    rows().forEach(function(r, idx){
+      if(!r.name) return;
+      var k = r.prev+"-"+r.own, n = (seen[k] = (seen[k]||0)+1);
+      var ang = n*2.1 + 0.8, off = n>1 ? 14+5*n : 0;
+      var cx = x(r.prev)+Math.cos(ang)*off, cy = y(r.own)+Math.sin(ang)*off;
+      var qd = quad(r), col = QC[qd];
+      var rad = 8 + (r.comp ? r.comp*0.9 : 0);
+      s += '<g><circle cx="'+cx+'" cy="'+cy+'" r="'+rad+'" fill="'+col+'" fill-opacity=".9" stroke="#fff" stroke-width="1.5"/>';
+      s += '<text class="lb" x="'+cx+'" y="'+(cy+3.5)+'" text-anchor="middle" style="fill:#fff;font-weight:800;pointer-events:none">'+(idx+1)+'</text>';
+      s += '<title>'+(idx+1)+'. '+esc(r.name)+'\n頻度'+r.prev+' 想起'+r.own+(r.comp?' 競合'+r.comp:'')+' スコア'+score(r)+'</title></g>';
+    });
+    svg.innerHTML = s;
+  }
+
+  function renderRank(){
+    var el = q("cep-rank"), hooks = q("cep-hooks"); if(!el || !hooks) return;
+    var list = rows().filter(function(r){ return r.name; }).map(function(r){ var o = clone(r); o.s = score(r); o.q = quad(r); return o; }).sort(function(a,b){ return b.s-a.s; });
+    var top = list.filter(function(r){ return r.q==="attack"; }).slice(0,5);
+    if(top.length){
+      el.innerHTML = top.map(function(r,i){
+        var cur = r.note && !/訴求なし/.test(r.note) ? "現状："+esc(r.note) : "現状：訴求なし";
+        return '<li><span class="n">'+(i+1)+'</span><span>'+esc(r.name)+'<span class="cep-why">頻度'+r.prev+'・想起'+r.own+(r.comp?'・競合想起'+r.comp:'')+'　'+cur+'</span></span><span class="s">'+r.s+'</span></li>';
+      }).join("");
+      var label = PRESETS[state.preset].label;
+      hooks.className = "";
+      hooks.innerHTML = '<ul class="cep-hooks">' + top.slice(0,3).map(function(r){
+        var scene = r.name.replace(/とき$/,"").replace(/帰り道$/,"帰り道に");
+        return '<li>「'+esc(scene)+'、まず読んでほしい '+esc(label)+'の話」<span class="cep-why">→ この場面を主語にしたコラム・LP見出し・事例を1本ずつ。想起率を上げるのは「場面と社名の結びつき」です。</span></li>';
+      }).join("") + '</ul>';
+    } else {
+      el.innerHTML = '<li class="ok"><span class="n">✓</span><span>「攻める穴」に該当するCEPはありません。頻度4以上で想起3未満の場面を探してみてください。</span><span></span></li>';
+      hooks.className = "cep-empty"; hooks.textContent = "上位CEPが出ると、ここに見出し案が並びます。";
+    }
+  }
+
+  var toastT = null;
+  function toast(m){ var t = q("cep-toast"); if(!t) return; t.textContent = m; clearTimeout(toastT); toastT = setTimeout(function(){ if(q("cep-toast")) q("cep-toast").textContent = ""; }, 2500); }
+  function copyText(text, label){
+    function fb(){ var io = q("cep-io"); if(!io) return; io.value = text; io.closest("details").open = true; io.select(); toast("下の欄に出しました。選択してコピーしてください"); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(function(){ toast(label+"をコピーしました"); }).catch(fb); } else fb();
+  }
+
+  document.addEventListener("input", function(e){
+    var t = e.target; if(!t || !t.closest || !t.closest("#cep-app")) return;
+    var k = t.getAttribute("data-k"); if(!k) return;
+    ensure();
+    var i = +t.getAttribute("data-i"), r = rows()[i]; if(!r) return;
+    if(k==="prev"||k==="own") r[k] = clamp(t.value);
+    else if(k==="comp") r.comp = t.value==="" ? null : clamp(t.value);
+    else r[k] = t.value;
+    renderMatrix(); renderRank(); save();
+    if(k==="prev"||k==="own"){ var tr = t.closest("tr"); tr.children[6].textContent = score(r); var qd = quad(r); tr.children[7].innerHTML = '<span class="pill '+qd+'">'+QL[qd]+'</span>'; }
+  });
+
+  document.addEventListener("click", function(e){
+    var t = e.target; if(!t || !t.closest || !t.closest("#cep-app")) return;
+    ensure();
+    var p = t.closest("[data-cep-preset]"); if(p){ state.preset = p.getAttribute("data-cep-preset"); render(); return; }
+    var d = t.closest("[data-cep-del]"); if(d){ rows().splice(+d.getAttribute("data-cep-del"),1); render(); return; }
+    var a = t.closest("[data-cep-act]"); if(!a) return;
+    var act = a.getAttribute("data-cep-act");
+    if(act==="add"){ rows().push({axis:"When",name:"",prev:3,own:1,comp:null,note:""}); render(); var ta = document.querySelectorAll('#cep-rows textarea[data-k="name"]'); if(ta.length) ta[ta.length-1].focus(); }
+    else if(act==="reset"){ state.data[state.preset] = clone(PRESETS[state.preset].rows); render(); toast("サンプルに戻しました"); }
+    else if(act==="csv"){
+      var h = ["切り口","CEP","頻度","自社想起","競合想起","スコア","判定","今の訴求"];
+      var lines = [h.join(",")].concat(rows().map(function(r){ return [r.axis,r.name,r.prev,r.own,r.comp==null?"":r.comp,score(r),QL[quad(r)],r.note||""].map(function(v){ return '"'+String(v).replace(/"/g,'""')+'"'; }).join(","); }));
+      copyText("﻿"+lines.join("\n"), "CSV");
+    }
+    else if(act==="json"){ copyText(JSON.stringify(rows(),null,1), "JSON"); }
+    else if(act==="import"){
+      try{
+        var arr = JSON.parse(q("cep-io").value); if(!Array.isArray(arr)) throw 0;
+        state.data[state.preset] = arr.map(function(r){ return {axis:r.axis||"When",name:r.name||"",prev:clamp(r.prev),own:clamp(r.own),comp:(r.comp==null||r.comp==="")?null:clamp(r.comp),note:r.note||""}; });
+        render(); toast(arr.length+"件を読み込みました");
+      }catch(err){ toast("JSONの形式が読めません。配列 [ {...}, ... ] で貼ってください"); }
+    }
+  });
+
+  setInterval(function(){
+    var app = q("cep-app");
+    if(app && !app.getAttribute("data-cep-ready")){
+      app.setAttribute("data-cep-ready","1");
+      ensure(); render();
+    }
+  }, 250);
 })();
 </script>
