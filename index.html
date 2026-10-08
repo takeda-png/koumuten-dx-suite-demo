@@ -603,6 +603,26 @@ return S;})();
 #cep-app details.cep-help li,#cep-app details.cep-help p{font-size:12.5px;color:#5c6b77;line-height:1.85;max-width:80ch}
 #cep-app textarea.cep-io{width:100%;min-height:110px;font-family:ui-monospace,Menlo,monospace;font-size:12px;border:1px solid #cfd8d3;border-radius:8px;background:#fff;padding:10px;margin-top:6px}
 #cep-app .cep-src{font-size:10.5px;color:#8a938e;letter-spacing:.08em;font-weight:800;float:right}
+#cep-app .cep-auto{border:1px solid #cfe0d9;border-radius:12px;background:#fff;margin-bottom:16px;overflow:hidden}
+#cep-app .cep-auto summary{cursor:pointer;padding:12px 16px;font-weight:800;font-size:13.5px;color:#16302b;background:#f2fbf7;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+#cep-app .cep-auto summary::-webkit-details-marker{display:none}
+#cep-app .cep-auto summary .st{font-size:11px;font-weight:600;color:#8a938e}
+#cep-app .cep-auto .bd{padding:14px 16px}
+#cep-app .cep-f{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+#cep-app .cep-f label{font-size:11.5px;font-weight:800;color:#4a554f;display:flex;flex-direction:column;gap:4px}
+#cep-app .cep-f input,#cep-app .cep-f select{width:100%;background:#fff;border:1px solid #cfd8d3;border-radius:6px;padding:7px 9px;font-size:13px}
+#cep-app .cep-f input:focus,#cep-app .cep-f select:focus{outline:2px solid #2f9e82;outline-offset:-1px}
+#cep-app .cep-steps{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+#cep-app .cep-prog{flex:1;min-width:160px;height:8px;background:#e6ece9;border-radius:999px;overflow:hidden}
+#cep-app .cep-prog i{display:block;height:100%;width:0;background:#2f9e82;transition:width .3s}
+#cep-app .cep-log{font-size:12px;color:#5c6b77;margin-top:8px;min-height:18px;line-height:1.6}
+#cep-app .cep-log b{color:#16302b}
+#cep-app .cep-cfg{margin-top:10px;font-size:11.5px;color:#8a938e}
+#cep-app .cep-cfg summary{cursor:pointer;display:inline}
+#cep-app .cep-cfg .cep-f{margin-top:8px}
+#cep-app .cep-btn:disabled{opacity:.5;cursor:default}
+#cep-app td .ev{display:block;font-size:10.5px;color:#8a938e;margin-top:2px;line-height:1.45}
+#cep-app tr.measuring td{background:#f2fbf7}
 </style>
 
 <div id="cep-app">
@@ -623,6 +643,32 @@ return S;})();
   </div>
   <span class="cep-src">シンミドウ側の想起は 2026-10-08 AI検索4エンジン実測（Claude・ChatGPT・Gemini・Copilot）／ 入力はこのブラウザに自動保存</span>
 </div>
+
+<details class="cep-auto" id="cep-auto">
+  <summary><span>⚡ URLから自動収集（CEP生成 → AI検索3エンジンで想起実測）</span><span class="st" id="cep-auto-st">Worker未設定</span></summary>
+  <div class="bd">
+    <div class="cep-f">
+      <label>会社URL<input type="url" id="cep-url" placeholder="https://example.co.jp/"></label>
+      <label>会社名（照合に使う）<input type="text" id="cep-company" placeholder="〇〇工務店"></label>
+      <label>商圏・エリア<input type="text" id="cep-area" placeholder="さいたま市／埼玉県南部"></label>
+      <label>顧客<select id="cep-target"><option value="koumuten">施主（工務店向け分析）</option><option value="sinmido">工務店の経営者（シンミドウ向け分析）</option></select></label>
+    </div>
+    <div class="cep-steps">
+      <button type="button" class="cep-btn pri" data-cep-act="gen">① CEPと頻度を生成</button>
+      <button type="button" class="cep-btn" data-cep-act="measure">② 想起を実測（表の全行）</button>
+      <button type="button" class="cep-btn" data-cep-act="stop" hidden>停止</button>
+      <div class="cep-prog"><i id="cep-prog"></i></div>
+    </div>
+    <div class="cep-log" id="cep-log">①でサイトと業界調査からCEP候補と頻度を作り、②で各CEPを「〜のとき、相談できる会社は？」の形で Claude・Gemini・OpenAI に聞いて自社が推薦されるかを数えます。②は1行あたり20〜40秒。</div>
+    <details class="cep-cfg"><summary>接続設定（Worker URL・トークン）</summary>
+      <div class="cep-f">
+        <label>Worker URL<input type="url" id="cep-worker" placeholder="https://cep-collector.xxxx.workers.dev"></label>
+        <label>トークン<input type="password" id="cep-token" placeholder="CEP_TOKEN"></label>
+      </div>
+      <div style="margin-top:6px">鍵はWorker側に置きます。設定手順はリポジトリの worker/README.md。</div>
+    </details>
+  </div>
+</details>
 
 <div class="cep-grid">
   <section class="cep-panel">
@@ -7382,8 +7428,8 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
   function rows(){ return state.data[state.preset]; }
   function q(id){ return document.getElementById(id); }
   function clamp(v){ v = Number(v); if(!isFinite(v)) return 1; return Math.min(5, Math.max(1, Math.round(v))); }
-  function score(r){ return r.prev * (5 - r.own); }
-  function quad(r){ var hp = r.prev >= 3.5, ho = r.own >= 3; return hp && !ho ? "attack" : hp && ho ? "keep" : !hp && ho ? "grow" : "drop"; }
+  function score(r){ return r.prev * (5 - (r.own==null?1:r.own)); }
+  function quad(r){ var hp = r.prev >= 3.5, ho = (r.own==null?1:r.own) >= 3; return hp && !ho ? "attack" : hp && ho ? "keep" : !hp && ho ? "grow" : "drop"; }
   function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 
   function render(){
@@ -7399,9 +7445,9 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       return '<tr>' +
         '<td class="num" style="color:'+QC[qd]+'">'+(i+1)+'</td>' +
         '<td><select data-i="'+i+'" data-k="axis">' + ["When","Who","Why","Where"].map(function(a){ return '<option'+(a===r.axis?' selected':'')+'>'+a+'</option>'; }).join("") + '</select></td>' +
-        '<td><textarea data-i="'+i+'" data-k="name" rows="2">'+esc(r.name)+'</textarea></td>' +
+        '<td><textarea data-i="'+i+'" data-k="name" rows="2">'+esc(r.name)+'</textarea>'+(r.evidence?'<span class="ev">'+esc(r.evidence)+'</span>':'')+'</td>' +
         '<td><input type="number" min="1" max="5" step="1" data-i="'+i+'" data-k="prev" value="'+r.prev+'"></td>' +
-        '<td><input type="number" min="1" max="5" step="1" data-i="'+i+'" data-k="own" value="'+r.own+'"></td>' +
+        '<td><input type="number" min="1" max="5" step="1" data-i="'+i+'" data-k="own" value="'+(r.own==null?"":r.own)+'"></td>' +
         '<td><input type="number" min="1" max="5" step="1" data-i="'+i+'" data-k="comp" value="'+(r.comp==null?"":r.comp)+'"></td>' +
         '<td class="num">'+score(r)+'</td>' +
         '<td><span class="pill '+qd+'">'+QL[qd]+'</span></td>' +
@@ -7495,25 +7541,96 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     if(act==="add"){ rows().push({axis:"When",name:"",prev:3,own:1,comp:null,note:""}); render(); var ta = document.querySelectorAll('#cep-rows textarea[data-k="name"]'); if(ta.length) ta[ta.length-1].focus(); }
     else if(act==="reset"){ state.data[state.preset] = clone(PRESETS[state.preset].rows); render(); toast("サンプルに戻しました"); }
     else if(act==="csv"){
-      var h = ["切り口","CEP","頻度","自社想起","競合想起","スコア","判定","今の訴求"];
-      var lines = [h.join(",")].concat(rows().map(function(r){ return [r.axis,r.name,r.prev,r.own,r.comp==null?"":r.comp,score(r),QL[quad(r)],r.note||""].map(function(v){ return '"'+String(v).replace(/"/g,'""')+'"'; }).join(","); }));
+      var h = ["切り口","CEP","頻度","自社想起","競合想起","スコア","判定","今の訴求","根拠"];
+      var lines = [h.join(",")].concat(rows().map(function(r){ return [r.axis,r.name,r.prev,r.own==null?"":r.own,r.comp==null?"":r.comp,score(r),QL[quad(r)],r.note||"",r.evidence||""].map(function(v){ return '"'+String(v).replace(/"/g,'""')+'"'; }).join(","); }));
       copyText("﻿"+lines.join("\n"), "CSV");
     }
     else if(act==="json"){ copyText(JSON.stringify(rows(),null,1), "JSON"); }
     else if(act==="import"){
       try{
         var arr = JSON.parse(q("cep-io").value); if(!Array.isArray(arr)) throw 0;
-        state.data[state.preset] = arr.map(function(r){ return {axis:r.axis||"When",name:r.name||"",prev:clamp(r.prev),own:clamp(r.own),comp:(r.comp==null||r.comp==="")?null:clamp(r.comp),note:r.note||""}; });
+        state.data[state.preset] = arr.map(function(r){ return {axis:r.axis||"When",name:r.name||"",prev:clamp(r.prev),own:(r.own==null||r.own==="")?null:clamp(r.own),comp:(r.comp==null||r.comp==="")?null:clamp(r.comp),note:r.note||"",evidence:r.evidence||""}; });
         render(); toast(arr.length+"件を読み込みました");
       }catch(err){ toast("JSONの形式が読めません。配列 [ {...}, ... ] で貼ってください"); }
     }
+  });
+
+  /* ---- URLから自動収集 ---- */
+  var CFGKEY = "kdx_cep_cfg_v1", stopFlag = false, running = false;
+  function cfgLoad(){ try{ return JSON.parse(localStorage.getItem(CFGKEY)||"{}"); }catch(e){ return {}; } }
+  function cfgSave(c){ try{ localStorage.setItem(CFGKEY, JSON.stringify(c)); }catch(e){} }
+  function cfgBind(){
+    var c = cfgLoad();
+    [["cep-worker","worker"],["cep-token","token"],["cep-url","url"],["cep-company","company"],["cep-area","area"],["cep-target","target"]].forEach(function(p){
+      var el = q(p[0]); if(!el) return; if(c[p[1]]!=null) el.value = c[p[1]];
+      el.addEventListener("change", function(){ var cc = cfgLoad(); cc[p[1]] = el.value; cfgSave(cc); paintSt(); });
+    });
+    paintSt();
+  }
+  function paintSt(){ var st = q("cep-auto-st"); if(!st) return; var c = cfgLoad(); st.textContent = c.worker ? "接続先: "+c.worker.replace(/^https?:\/\//,"") : "Worker未設定（接続設定を開く）"; }
+  function log(m){ var el = q("cep-log"); if(el) el.innerHTML = m; }
+  function prog(p){ var el = q("cep-prog"); if(el) el.style.width = Math.round(p*100)+"%"; }
+  function setBusy(b){ running = b; var app = q("cep-app"); if(!app) return; app.querySelectorAll('[data-cep-act="gen"],[data-cep-act="measure"]').forEach(function(x){ x.disabled = b; }); var s = app.querySelector('[data-cep-act="stop"]'); if(s) s.hidden = !b; }
+  async function api(path, body){
+    var c = cfgLoad(); if(!c.worker) throw new Error("Worker URLが未設定です（接続設定を開いてください）");
+    var r = await fetch(c.worker.replace(/\/$/,"")+path, { method:"POST", headers:{ "Content-Type":"application/json", "X-CEP-Token": c.token||"" }, body: JSON.stringify(body) });
+    var j = await r.json().catch(function(){ return {}; });
+    if(!r.ok) throw new Error(j.error || ("HTTP "+r.status));
+    return j;
+  }
+  function inputs(){ return { url:(q("cep-url")||{}).value||"", company:(q("cep-company")||{}).value||"", area:(q("cep-area")||{}).value||"", target:(q("cep-target")||{}).value||"koumuten" }; }
+
+  async function genCeps(){
+    var inp = inputs(); if(!inp.url && !inp.company){ log("会社URLか会社名を入れてください"); return; }
+    setBusy(true); prog(0.1); log("サイトを読み、業界調査を検索してCEP候補を作っています（30〜60秒）…");
+    try{
+      var res = await api("/ceps", inp);
+      state.preset = inp.target === "sinmido" ? "sinmido" : "koumuten";
+      state.data[state.preset] = res.rows;
+      var c = cfgLoad(); c.company = res.company || inp.company; c.aliases = res.aliases || []; cfgSave(c);
+      if(q("cep-company") && !q("cep-company").value) q("cep-company").value = c.company;
+      render(); prog(1);
+      log("<b>"+res.rows.length+"件のCEP</b>を生成しました（頻度は根拠つき、想起は未測定）。文言を直してから②を押してください。");
+    }catch(e){ log("生成に失敗: "+esc(e.message)); prog(0); }
+    setBusy(false);
+  }
+  async function measureAll(){
+    var inp = inputs(), c = cfgLoad(); var company = inp.company || c.company;
+    if(!company){ log("会社名（照合に使う）を入れてください"); return; }
+    var rs = rows().filter(function(r){ return r.name; }); if(!rs.length){ log("表にCEPがありません"); return; }
+    stopFlag = false; setBusy(true); prog(0);
+    var done = 0;
+    for(var i=0;i<rows().length;i++){
+      if(stopFlag) break;
+      var r = rows()[i]; if(!r.name) continue;
+      var tr = document.querySelectorAll("#cep-rows tr")[i]; if(tr) tr.classList.add("measuring");
+      log("<b>"+(i+1)+"/"+rows().length+"</b> 「"+esc(r.name)+"」を Claude・Gemini・OpenAI に聞いています…");
+      try{
+        var res = await api("/recall", { cep:r.name, company:company, aliases:c.aliases||[], area:inp.area, target:inp.target });
+        r.own = res.own==null ? r.own : res.own; r.comp = res.comp;
+        r.evidence = (r.evidence||"").replace(/\s*／\s*想起:.*$/,"") + " ／ " + res.evidence;
+        r.recall = res.engines;
+      }catch(e){ r.evidence = (r.evidence||"") + " ／ 想起: 取得失敗（"+e.message+"）"; }
+      if(tr) tr.classList.remove("measuring");
+      done++; prog(done/rs.length); renderTable(); renderMatrix(); renderRank(); save();
+    }
+    setBusy(false);
+    var hit = rows().filter(function(r){ return r.own!=null; }).length;
+    log(stopFlag ? "停止しました（"+done+"件まで反映）" : "<b>実測完了</b>: "+hit+"件の想起を更新しました。想起はAI検索3エンジン（Claude・Gemini・OpenAI）での推薦有無の代用指標です。");
+  }
+  document.addEventListener("click", function(e){
+    var t = e.target; if(!t || !t.closest || !t.closest("#cep-app")) return;
+    var a = t.closest("[data-cep-act]"); if(!a) return; var act = a.getAttribute("data-cep-act");
+    if(act==="gen" && !running){ ensure(); genCeps(); }
+    else if(act==="measure" && !running){ ensure(); measureAll(); }
+    else if(act==="stop"){ stopFlag = true; }
   });
 
   setInterval(function(){
     var app = q("cep-app");
     if(app && !app.getAttribute("data-cep-ready")){
       app.setAttribute("data-cep-ready","1");
-      ensure(); render();
+      ensure(); render(); cfgBind();
     }
   }, 250);
 })();

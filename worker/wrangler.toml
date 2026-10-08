@@ -1,0 +1,14 @@
+name = "cep-collector"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+# 許可するフロントのオリジン（カンマ区切り）。ローカル(localhost)は常に許可
+ALLOW_ORIGIN = "https://takeda-png.github.io"
+# モデルは必要に応じて変更
+ANTHROPIC_MODEL = "claude-sonnet-5-5"
+GEMINI_MODEL = "gemini-2.5-flash"
+OPENAI_MODEL = "gpt-5-mini"
+
+# シークレットは wrangler secret put で登録する（README参照）:
+#   ANTHROPIC_API_KEY / GEMINI_API_KEY / OPENAI_API_KEY / CEP_TOKEN
