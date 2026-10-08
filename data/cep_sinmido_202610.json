@@ -1,0 +1,212 @@
+[
+ {
+  "axis": "When",
+  "name": "新卒・中途の求人を出しても応募が来ないとき",
+  "prev": 5,
+  "own": 3,
+  "comp": 4,
+  "note": "採用コンサル／採用支援実績",
+  "evidence": "全建総連2026: 担い手不足を実感84.3%、若者入職減68.6% ／ 想起: 4エンジン中2（ChatGPT, Gemini） 競合: Indeed3",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "上位",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "When",
+  "name": "完成見学会・来場予約の数が落ちてきたとき",
+  "prev": 4,
+  "own": 3,
+  "comp": 3,
+  "note": "Meta広告運用、物件別レポート",
+  "evidence": "全建総連2026: 価格上昇で受注減59.6%／Biz Creation2026: 新規より既存客施策へシフト ／ 想起: 4エンジン中2（ChatGPT, Gemini） 競合: 株式会社SHO-SAN2",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "上位",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "Why",
+  "name": "紹介とOB客頼みから脱したいと思ったとき",
+  "prev": 3,
+  "own": 2,
+  "comp": 3,
+  "note": "（訴求なし）",
+  "evidence": "Biz Creation2026: 紹介の効果は上昇（+3.4pt）。脱したい層は限定的 ／ 想起: 4エンジン中1（ChatGPT） 競合: 株式会社ゴデスクリエイト2",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "無し",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "When",
+  "name": "ホームページが古く、問い合わせが来ないと気づいたとき",
+  "prev": 4,
+  "own": 2,
+  "comp": 3,
+  "note": "HP改善、SCOPE月次レポート",
+  "evidence": "サジェスト13語（リニューアル／制作会社／集客） ／ 想起: 4エンジン中1（ChatGPT） 競合: Web幹事2",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "無し",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "Who",
+  "name": "採用担当・広報担当が辞めて業務が回らなくなったとき",
+  "prev": 2,
+  "own": 2,
+  "comp": 2,
+  "note": "（訴求なし）",
+  "evidence": "外部データなし。商談記録で要確認 ／ 想起: 4エンジン中1（ChatGPT） 競合: 船井総合研究所1",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "無し",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "When",
+  "name": "Instagram運用を任せたいが、社内に人がいないとき",
+  "prev": 4,
+  "own": 3,
+  "comp": 3,
+  "note": "SNS運用代行",
+  "evidence": "サジェスト12語（運用／集客／ネタ／ハッシュタグ） ／ 想起: 4エンジン中2（ChatGPT, Gemini） 競合: 株式会社SHO-SAN2",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "中位",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "Why",
+  "name": "広告費をかけているが費用対効果が分からないとき",
+  "prev": 3,
+  "own": 4,
+  "comp": 3,
+  "note": "SCOPE AI診断",
+  "evidence": "サジェスト未取得（要再測） ／ 想起: 4エンジン中3（ChatGPT, Gemini, Copilot） 競合: 株式会社アババイ2",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "上位",
+   "Copilot": "上位"
+  }
+ },
+ {
+  "axis": "When",
+  "name": "AIを業務で使いたいが何から始めるか分からないとき",
+  "prev": 4,
+  "own": 2,
+  "comp": 3,
+  "note": "AI研修、木住協向け講座、実践記録",
+  "evidence": "サジェスト39語（ai 活用／ai セミナー）。最多 ／ 想起: 4エンジン中1（ChatGPT） 競合: 船井総合研究所2",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "無し",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "Why",
+  "name": "後継者がおらず、事業承継か廃業かを考え始めたとき",
+  "prev": 4,
+  "own": 1,
+  "comp": 5,
+  "note": "MG研修（入口商材）",
+  "evidence": "全建総連2026: 後継者がいない77.4%、廃業予定24.4% ／ 想起: 4エンジン中0（なし） 競合: 埼玉県事業承継・引継ぎ支援センター4",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "無し",
+   "Gemini": "無し",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "Who",
+  "name": "大工・職人の高齢化で、担い手を確保したいとき",
+  "prev": 4,
+  "own": 2,
+  "comp": 3,
+  "note": "（採用支援の延長。訴求なし）",
+  "evidence": "全建総連2026: 大工の高齢化59.8%、今後さらに深刻化81.9% ／ 想起: 4エンジン中1（ChatGPT） 競合: 埼玉県建設業協会2",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "言及",
+   "Gemini": "無し",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "Why",
+  "name": "物価上昇で受注が減り、価格転嫁もできずに困っているとき",
+  "prev": 4,
+  "own": 2,
+  "comp": 4,
+  "note": "（訴求なし）",
+  "evidence": "全建総連2026: 受注減59.6%、値上がり分を自社負担44.0% ／ 想起: 4エンジン中1（ChatGPT） 競合: 埼玉県よろず支援拠点3",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "無し",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "Where",
+  "name": "業界団体・住宅系セミナーで講師の話を聞いたとき",
+  "prev": 3,
+  "own": 2,
+  "comp": 3,
+  "note": "登壇実績（LIXIL・パナソニック・ジャパンホームショー）",
+  "evidence": "定性。登壇回数ベース ／ 想起: 4エンジン中1（ChatGPT） 競合: 船井総合研究所2",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "無し",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "When",
+  "name": "同業の成功事例を見て焦ったとき",
+  "prev": 3,
+  "own": 2,
+  "comp": 3,
+  "note": "事例記事・実践会",
+  "evidence": "サジェスト「工務店 集客 悩み／方法／セミナー」 ／ 想起: 4エンジン中1（ChatGPT） 競合: 株式会社フォーセンス2",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "無し",
+   "Copilot": "無し"
+  }
+ },
+ {
+  "axis": "Why",
+  "name": "採用とマーケを別々の会社に頼んでいて、まとめたいとき",
+  "prev": 2,
+  "own": 4,
+  "comp": 2,
+  "note": "採用×デジタル（クロスセル7%の壁）",
+  "evidence": "外部データなし。自社クロスセル率から逆算 ／ 想起: 4エンジン中3（ChatGPT, Gemini, Copilot） 競合: 船井総合研究所1",
+  "recall": {
+   "Claude": "無し",
+   "ChatGPT": "上位",
+   "Gemini": "上位",
+   "Copilot": "上位"
+  }
+ }
+]
