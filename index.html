@@ -623,6 +623,57 @@ return S;})();
 #cep-app .cep-btn:disabled{opacity:.5;cursor:default}
 #cep-app td .ev{display:block;font-size:10.5px;color:#8a938e;margin-top:2px;line-height:1.45}
 #cep-app tr.measuring td{background:#f2fbf7}
+#cep-app .cepj{margin-top:26px;border-top:2px solid #cfe0d9;padding-top:18px}
+#cep-app .cepj-h h3{font-size:16px;color:#16302b;margin:0 0 6px}
+#cep-app .cepj-h p{font-size:12.5px;line-height:1.85;color:#5c6b77;margin:0 0 14px;max-width:960px}
+#cep-app .cepj-pick{background:#f2fbf7;border:1px solid #cfe0d9;border-radius:12px;padding:12px 14px;margin-bottom:12px}
+#cep-app .cepj-pick-h{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;font-size:13px;color:#16302b;margin-bottom:8px}
+#cep-app .cepj-pick-h small{color:#8a938e;font-size:11.5px}
+#cep-app .cepj-chips{display:flex;flex-wrap:wrap;gap:6px}
+#cep-app .cepj-chip{border:1px solid #cfd8d3;background:#fff;border-radius:999px;padding:5px 11px;font-size:12px;color:#4a554f;cursor:pointer;text-align:left;line-height:1.4;max-width:100%}
+#cep-app .cepj-chip b{font-variant-numeric:tabular-nums;margin-right:4px}
+#cep-app .cepj-chip.attack{border-color:#e7b9a9}
+#cep-app .cepj-chip.attack b{color:#b5452a}
+#cep-app .cepj-chip.on{background:#16302b;border-color:#16302b;color:#fff}
+#cep-app .cepj-chip.on b{color:#9fd3c1}
+#cep-app table.cepj-t{border-collapse:separate;border-spacing:6px;width:100%;min-width:980px;table-layout:fixed}
+#cep-app table.cepj-t th{font-size:11.5px;font-weight:800;color:#5c6b77;text-align:left;padding:4px 6px;background:none}
+#cep-app table.cepj-t th.stg{background:#16302b;color:#fff;border-radius:8px;padding:7px 10px;position:relative}
+#cep-app table.cepj-t th.stg .cnt{float:right;font-weight:700;color:#9fd3c1;font-size:10.5px}
+#cep-app table.cepj-t th.cepn{width:200px;vertical-align:top;background:#fff;border:1px solid #cfe0d9;border-radius:8px;padding:9px 10px;font-size:12.5px;color:#16302b;line-height:1.5}
+#cep-app table.cepj-t th.cepn .m{display:block;margin-top:5px;font-size:10.5px;color:#8a938e;font-weight:700}
+#cep-app table.cepj-t td{vertical-align:top;border:1px solid #cfe0d9;border-radius:8px;background:#fff;padding:6px;border-left-width:4px}
+#cep-app table.cepj-t td.ok{border-left-color:#2c7a4b}
+#cep-app table.cepj-t td.weak{border-left-color:#d4a23a;background:#fffbf1}
+#cep-app table.cepj-t td.none{border-left-color:#b5452a;background:#fdf1ed}
+#cep-app table.cepj-t td.un{border-left-color:#cfd8d3}
+#cep-app table.cepj-t td textarea{width:100%;min-height:104px;border:1px solid transparent;background:transparent;font:inherit;font-size:12px;line-height:1.55;color:#22303c;resize:vertical;padding:3px 4px;border-radius:5px}
+#cep-app table.cepj-t td textarea:hover{border-color:#cfd8d3;background:#fff}
+#cep-app table.cepj-t td textarea:focus{outline:2px solid #2f9e82;outline-offset:-1px;background:#fff}
+#cep-app table.cepj-t td select{width:100%;margin-top:4px;border:1px solid #cfd8d3;border-radius:5px;background:#fff;font-size:11.5px;font-weight:700;padding:3px 4px;color:#22303c}
+#cep-app .cepj-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11.5px;color:#5c6b77;margin:6px 0 14px}
+#cep-app .cepj-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+#cep-app .cepj-legend i.ok{background:#2c7a4b}
+#cep-app .cepj-legend i.weak{background:#d4a23a}
+#cep-app .cepj-legend i.none{background:#b5452a}
+#cep-app .cepj-legend-note{color:#8a938e}
+#cep-app .cepj-diag{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+#cep-app .cepj-card{background:#fff;border:1px solid #cfe0d9;border-radius:12px;padding:14px 16px;min-width:0}
+#cep-app .cepj-card h4{font-size:14px;color:#16302b;margin:0 0 8px}
+#cep-app .cepj-card h4 small{font-weight:600;color:#8a938e;font-size:11px;margin-left:8px}
+#cep-app .cepj-card ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:12.5px;line-height:1.65;color:#22303c}
+#cep-app .cepj-card p{margin:0;font-size:12.5px;line-height:1.75;color:#22303c}
+#cep-app .cepj-card .warn{color:#b5452a;font-weight:800}
+#cep-app .cepj-card .good{color:#2c7a4b;font-weight:800}
+#cep-app .cepj-card .sub{display:block;font-size:11.5px;color:#5c6b77;margin-top:4px}
+#cep-app .cepj-prop{margin-top:12px;background:linear-gradient(135deg,#16302b,#24564b);border-radius:12px;padding:14px 18px;color:#fff}
+#cep-app .cepj-prop-h{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center}
+#cep-app .cepj-prop-h h4{color:#fff;font-size:14px;margin:0}
+#cep-app .cepj-prop ol{margin:10px 0 2px;padding-left:22px;display:grid;gap:10px}
+#cep-app .cepj-prop li{font-size:12.5px;line-height:1.75;color:#dcefe8}
+#cep-app .cepj-prop li b{color:#fff;font-size:13px}
+#cep-app .cepj-prop li .q{display:block;color:#fff;font-weight:800;font-size:13.5px;margin-bottom:2px}
+@media (max-width:640px){#cep-app .cepj-chip{font-size:11.5px}}
 </style>
 
 <div id="cep-app">
@@ -714,6 +765,48 @@ return S;})();
   <button type="button" class="cep-btn" data-cep-act="json">JSONをコピー</button>
   <span class="cep-toast" id="cep-toast"></span>
 </div>
+
+<section class="cepj" id="cepj">
+  <div class="cepj-h">
+    <h3>CEP × ジャーニー（想起の後、どこで離脱しているか）</h3>
+    <p>CEPマップとジャーニーは<b>混ぜずに、つなぐ</b>。CEPマップで「競合は思い出されるのに自社は弱い場面」を<b>2〜3個だけ</b>選び、その場面から入ったお客様が各段階で何を見て、何に困るかを書きます。全部の場面で引くとジャーニーが10本でき、誰も読まなくなるためです。<b>CEPが優先順位を決め、ジャーニーが施策を決める</b>役割分担です。</p>
+  </div>
+
+  <div class="cepj-pick">
+    <div class="cepj-pick-h"><b>ジャーニーを引くCEP（最大3つ）</b><small id="cepj-pick-note"></small></div>
+    <div class="cepj-chips" id="cepj-chips"></div>
+  </div>
+
+  <div class="cep-tw">
+    <table class="cepj-t" id="cepj-t"></table>
+  </div>
+  <div class="cepj-legend">
+    <span><i class="ok"></i>◎ 受け皿がある</span>
+    <span><i class="weak"></i>△ 弱い</span>
+    <span><i class="none"></i>✕ ない（穴）</span>
+    <span class="cepj-legend-note">各マスに「その場面から入った人が、この段階で見るもの／困ること」を書き、自社サイト・営業に受け皿があるかを選ぶ</span>
+  </div>
+
+  <div class="cepj-diag">
+    <div class="cepj-card">
+      <h4>横の穴<small>想起はされても、その先が無い</small></h4>
+      <div id="cepj-yoko"></div>
+    </div>
+    <div class="cepj-card">
+      <h4>縦の穴<small>そもそも入口が少ない</small></h4>
+      <div id="cepj-tate"></div>
+    </div>
+  </div>
+
+  <div class="cepj-prop">
+    <div class="cepj-prop-h"><h4>提案資料での見せ方（この順で出すと腹落ちしやすい）</h4><button type="button" class="cep-btn" data-jr-act="copy">文章をコピー</button></div>
+    <ol id="cepj-prop"></ol>
+  </div>
+
+  <div class="cep-bar">
+    <button type="button" class="cep-btn" data-jr-act="reset">ジャーニーをサンプルに戻す</button>
+  </div>
+</section>
 
 <details class="cep-help">
   <summary>使い方と、数字の取り方</summary>
@@ -7435,7 +7528,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
   function render(){
     var app = q("cep-app"); if(!app) return;
     app.querySelectorAll("[data-cep-preset]").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-cep-preset") === state.preset); });
-    renderTable(); renderMatrix(); renderRank(); save();
+    renderTable(); renderMatrix(); renderRank(); renderJourney(); save();
   }
 
   function renderTable(){
@@ -7527,7 +7620,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     if(k==="prev"||k==="own") r[k] = clamp(t.value);
     else if(k==="comp") r.comp = t.value==="" ? null : clamp(t.value);
     else r[k] = t.value;
-    renderMatrix(); renderRank(); save();
+    renderMatrix(); renderRank(); renderJourney(); save();
     if(k==="prev"||k==="own"){ var tr = t.closest("tr"); tr.children[6].textContent = score(r); var qd = quad(r); tr.children[7].innerHTML = '<span class="pill '+qd+'">'+QL[qd]+'</span>'; }
   });
 
@@ -7552,6 +7645,221 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
         state.data[state.preset] = arr.map(function(r){ return {axis:r.axis||"When",name:r.name||"",prev:clamp(r.prev),own:(r.own==null||r.own==="")?null:clamp(r.own),comp:(r.comp==null||r.comp==="")?null:clamp(r.comp),note:r.note||"",evidence:r.evidence||""}; });
         render(); toast(arr.length+"件を読み込みました");
       }catch(err){ toast("JSONの形式が読めません。配列 [ {...}, ... ] で貼ってください"); }
+    }
+  });
+
+  /* ---- CEP × ジャーニー ----
+     CEPで優先順位を決め（攻める穴を2〜3個）、選んだCEPだけジャーニーを引く。
+     マスは CEP名で保存（名前を直すとそのCEPのマスは空に戻る） */
+  var STAGES = {
+    koumuten: ["想起","情報収集","比較","来場・問合せ","契約"],
+    sinmido:  ["想起","情報収集","比較","相談・問合せ","契約"]
+  };
+  var STL = {ok:"◎ ある",weak:"△ 弱い",none:"✕ ない",un:"− 未記入"};
+  var JR_HINT = ["どこで思い出す？／誰の名前が先に浮かぶ？","何で調べる？／何が分からない？","何と何を比べる？／決め手が無いのは？","行く・問い合わせる前の不安は？","契約直前に止まる理由は？"];
+  var JR_SAMPLE = {
+    koumuten: {
+      "住宅ローン金利が上がると聞いて急いだとき": [
+        ["見る：金利ニュース、SNSの「今買うべきか」投稿\n困る：急ぐべきか判断する材料がない。工務店の名前は浮かばない","none"],
+        ["見る：「金利上昇 いつ建てる」の検索、FPの記事\n困る：自分の場合に月々いくら増えるか分からない","none"],
+        ["見る：各社の資金計画シミュレーション\n困る：総額・月々の出し方が会社ごとに違い比べられない","weak"],
+        ["見る：資金計画相談会の告知\n困る：売り込まれそうで行きにくい","weak"],
+        ["見る：金利タイプの比較、つなぎ融資\n困る：着工までに金利が変わる不安","ok"]],
+      "賃貸の更新時期が近づき、家賃がもったいないと感じたとき": [
+        ["見る：更新の通知、家賃の総額を計算\n困る：今の家賃で家が建つのか見当がつかない","none"],
+        ["見る：「家賃と同じ 注文住宅」の検索\n困る：月々◯万円で建てた事例が見つからない","none"],
+        ["見る：建売と注文住宅の総額\n困る：注文住宅は高いという思い込みが解けない","weak"],
+        ["見る：完成見学会の日程\n困る：更新期限までに間に合うのか","weak"],
+        ["見る：引渡し時期と退去日の調整\n困る：家賃とローンの二重払い","ok"]],
+      "中古＋リノベと新築で迷っているとき": [
+        ["見る：中古物件サイト、リノベ事例のSNS\n困る：新築の工務店に聞いてよいのか分からない","none"],
+        ["見る：「中古リノベ 新築 比較」の検索\n困る：耐震・断熱・ローン控除の差がまとまった記事が無い","none"],
+        ["見る：総額・性能・住宅ローン減税の差\n困る：中立的な比較が見つからない","none"],
+        ["見る：両方まとめて相談できる窓口\n困る：新築を勧められそうで身構える","weak"],
+        ["見る：既存住宅の調査（インスペクション）\n困る：中古の見えない劣化","weak"]],
+      "実家の土地を相続・譲り受けたとき": [
+        ["見る：相続・名義変更の手続き\n困る：何から手を付けるか分からない","weak"],
+        ["見る：「親の土地 建て替え 費用」の検索\n困る：解体・相続税・名義の話がバラバラ","none"],
+        ["見る：建て替え事例\n困る：自分と同じ条件の事例が少ない","weak"],
+        ["見る：家族で相談できる場\n困る：親を同席させる段取り","weak"],
+        ["見る：名義・資金贈与の整理\n困る：税理士との連携","ok"]],
+      "親との同居・二世帯を考え始めたとき": [
+        ["見る：親の健康・介護の話題\n困る：二世帯を頼める会社が浮かばない","none"],
+        ["見る：「二世帯 間取り 費用」の検索\n困る：完全分離か共有かの判断材料","none"],
+        ["見る：二世帯の事例と総額\n困る：親世帯の資金の出し方","none"],
+        ["見る：親子で行ける見学会\n困る：意見がまとまらないまま行きにくい","weak"],
+        ["見る：持分・登記の整理\n困る：将来の相続","weak"]]
+    },
+    sinmido: {
+      "後継者がおらず、事業承継か廃業かを考え始めたとき": [
+        ["見る：同業の廃業の話、金融機関からの案内\n困る：顧問税理士・銀行が先に浮かび、当社は浮かばない","none"],
+        ["見る：「工務店 事業承継」「M&A」の検索\n困る：承継の前に会社の数字を整える情報が無い","none"],
+        ["見る：M&A仲介・税理士・コンサル\n困る：承継前に何を整えればよいか","none"],
+        ["見る：MG研修・経営計画の相談\n困る：承継の相談と結びつかない","weak"],
+        ["見る：経営計画づくりの伴走\n困る：費用対効果が見えにくい","weak"]],
+      "ホームページが古く、問い合わせが来ないと気づいたとき": [
+        ["見る：問い合わせ減、スマホで崩れる自社サイト\n困る：作り直すか直すかの判断","weak"],
+        ["見る：「工務店 ホームページ 集客」の検索\n困る：どこを直せば問い合わせが増えるのか","weak"],
+        ["見る：制作会社の見積\n困る：作って終わりにならないか","ok"],
+        ["見る：AI診断・HP診断\n困る：診断の後に売り込まれないか","ok"],
+        ["見る：月額の保守と月次レポート\n困る：成果が出なかったとき","ok"]],
+      "AIを業務で使いたいが何から始めるか分からないとき": [
+        ["見る：同業がAIを使い始めたという話\n困る：誰に聞けばよいか","weak"],
+        ["見る：「工務店 AI 活用」の検索\n困る：自社の業務での使い方が分からない","weak"],
+        ["見る：AI研修・ツール会社\n困る：住宅業界を知らない講師","weak"],
+        ["見る：研修・助成金の相談\n困る：社員が本当に使うのか","ok"],
+        ["見る：助成金を使った研修\n困る：申請の手間","ok"]],
+      "大工・職人の高齢化で、担い手を確保したいとき": [
+        ["見る：職人の引退、外注先の取り合い\n困る：採用支援の会社に職人を頼めると思っていない","none"],
+        ["見る：「大工 採用」の検索\n困る：職人向けの媒体・訓練校が分からない","weak"],
+        ["見る：求人媒体・職業訓練校\n困る：若手が来ても育てる仕組みが無い","none"],
+        ["見る：採用相談\n困る：新卒・中途と同じやり方で通じるか","ok"],
+        ["見る：採用支援の契約\n困る：成果報酬か月額か","ok"]],
+      "物価上昇で受注が減り、価格転嫁もできずに困っているとき": [
+        ["見る：資材高、見積の通りが悪い\n困る：相談先が浮かばない","none"],
+        ["見る：「工務店 値上げ 伝え方」の検索\n困る：施主への伝え方の具体例が無い","none"],
+        ["見る：経営コンサル・資材の共同購入\n困る：自社規模に合うか","none"],
+        ["見る：経営の相談\n困る：何を相談してよいか","weak"],
+        ["見る：経営計画・粗利管理の伴走\n困る：効果が出るまでの期間","weak"]]
+    }
+  };
+
+  function jrState(){
+    if(!state.jr) state.jr = {};
+    if(!state.jr[state.preset]) state.jr[state.preset] = { pick:null, cells:{} };
+    return state.jr[state.preset];
+  }
+  function named(){ return rows().filter(function(r){ return r.name; }); }
+  function defaultPick(){
+    var list = named().map(function(r){ return {n:r.name, s:score(r), q:quad(r)}; }).sort(function(a,b){ return b.s-a.s; });
+    var att = list.filter(function(r){ return r.q==="attack"; });
+    var rest = list.filter(function(r){ return r.q!=="attack" && r.q!=="keep"; });
+    return att.concat(rest).slice(0,3).map(function(r){ return r.n; });
+  }
+  function picks(){
+    var js = jrState(), names = named().map(function(r){ return r.name; });
+    var p = js.pick ? js.pick.filter(function(n){ return names.indexOf(n) >= 0; }) : defaultPick();
+    return p.slice(0,3);
+  }
+  function rowByName(n){ var a = named().filter(function(r){ return r.name===n; }); return a[0] || null; }
+  function cellsFor(n){
+    var js = jrState();
+    if(!js.cells[n]){
+      var smp = (JR_SAMPLE[state.preset]||{})[n];
+      js.cells[n] = [0,1,2,3,4].map(function(i){ return smp ? {t:smp[i][0], st:smp[i][1]} : {t:"", st:"un"}; });
+    }
+    return js.cells[n];
+  }
+  function firstLine(t, key){
+    var m = String(t||"").split("\n").filter(function(l){ return l.indexOf(key)===0; })[0];
+    return m ? m.replace(key,"").trim() : "";
+  }
+
+  function renderJourney(){
+    var tb = q("cepj-t"), chips = q("cepj-chips"); if(!tb || !chips) return;
+    var stg = STAGES[state.preset] || STAGES.koumuten, P = picks();
+    chips.innerHTML = named().map(function(r){ return {r:r, s:score(r), q:quad(r)}; }).sort(function(a,b){ return b.s-a.s; }).map(function(o){
+      var on = P.indexOf(o.r.name) >= 0;
+      return '<button type="button" class="cepj-chip '+o.q+(on?' on':'')+'" data-jr-pick="'+esc(o.r.name)+'"><b>'+o.s+'</b>'+esc(o.r.name)+'</button>';
+    }).join("");
+    var nAtt = named().filter(function(r){ return quad(r)==="attack"; }).length;
+    var rest = named().filter(function(r){ return quad(r)==="attack" && P.indexOf(r.name)<0; }).length;
+    q("cepj-pick-note").textContent = "数字は機会スコア。攻める穴 "+nAtt+"個"+(rest?"／選ばなかった "+rest+"個はCEPマップ上の「未開拓」として置いておく":"");
+    if(!P.length){ tb.innerHTML = '<tr><td class="un" style="padding:14px">上のCEPを1〜3個選ぶとジャーニーが出ます。</td></tr>'; renderJrDiag(); return; }
+    var cnt = stg.map(function(_, si){ return P.filter(function(n){ return cellsFor(n)[si].st==="none"; }).length; });
+    var h = '<colgroup><col style="width:200px">'+stg.map(function(){ return '<col>'; }).join("")+'</colgroup>';
+    h += '<thead><tr><th></th>'+stg.map(function(s, si){ return '<th class="stg">'+(si+1)+'. '+s+(cnt[si]?'<span class="cnt">穴 '+cnt[si]+'</span>':'')+'</th>'; }).join("")+'</tr></thead><tbody>';
+    P.forEach(function(n){
+      var r = rowByName(n), cs = cellsFor(n);
+      h += '<tr><th class="cepn">'+esc(n)+'<span class="m">頻度'+r.prev+'・自社想起'+(r.own==null?"−":r.own)+(r.comp?'・競合'+r.comp:'')+'</span></th>';
+      cs.forEach(function(c, si){
+        h += '<td class="'+c.st+'" data-jr-cell><textarea data-jr-n="'+esc(n)+'" data-jr-i="'+si+'" placeholder="'+JR_HINT[si]+'">'+esc(c.t)+'</textarea>'+
+          '<select data-jr-n="'+esc(n)+'" data-jr-i="'+si+'" data-jr-st aria-label="受け皿">'+["ok","weak","none","un"].map(function(k){ return '<option value="'+k+'"'+(c.st===k?' selected':'')+'>'+STL[k]+'</option>'; }).join("")+'</select></td>';
+      });
+      h += '</tr>';
+    });
+    tb.innerHTML = h + '</tbody>';
+    renderJrDiag();
+  }
+
+  function holes(){
+    var stg = STAGES[state.preset] || STAGES.koumuten, out = [];
+    picks().forEach(function(n, pi){
+      var r = rowByName(n), cs = cellsFor(n);
+      cs.forEach(function(c, si){ if(si>0 && c.st==="none") out.push({n:n, si:si, stage:stg[si], s:score(r), pi:pi, t:c.t}); });
+    });
+    return out;
+  }
+
+  function renderJrDiag(){
+    var yk = q("cepj-yoko"), tt = q("cepj-tate"), pr = q("cepj-prop"); if(!yk || !tt || !pr) return;
+    var stg = STAGES[state.preset] || STAGES.koumuten, P = picks(), H = holes();
+    // 横の穴：選んだCEPごとに、想起より後で受け皿が無い段階
+    if(!P.length){ yk.innerHTML = '<p class="sub">CEPを選ぶと判定します。</p>'; }
+    else {
+      yk.innerHTML = '<ul>'+P.map(function(n){
+        var hs = H.filter(function(x){ return x.n===n; });
+        return '<li>「'+esc(n.replace(/とき$/,""))+'」'+(hs.length ? '→ <span class="warn">'+hs.map(function(x){ return x.stage; }).join("・")+'</span> に受け皿が無い' : '→ <span class="good">想起の後は受け皿あり</span>')+'</li>';
+      }).join("")+'</ul><span class="sub">思い出されても、その先の情報が自社に無ければ他社に流れます。</span>';
+    }
+    // 縦の穴：想起される入口（自社想起3以上）の数と、ジャーニー後半の強さ
+    var all = named(), ent = all.filter(function(r){ return (r.own||0) >= 3; });
+    var back = 0, backN = 0, front = 0, frontN = 0;
+    P.forEach(function(n){ cellsFor(n).forEach(function(c, si){ if(c.st==="un") return; if(si>=3){ backN++; if(c.st==="ok") back++; } else { frontN++; if(c.st==="none") front++; } }); });
+    var few = ent.length <= 3;
+    var s = '<p>想起される入口（自社想起3以上）は <b class="'+(few?'warn':'good')+'">'+all.length+'個中 '+ent.length+'個</b>。</p>';
+    if(few) s += '<span class="sub"><span class="warn">入口が少ない構造です。</span>広告・紹介で来た人にしか届いていない可能性があります。'+(backN && back/backN >= 0.5 ? '後半（'+stg[3]+'・'+stg[4]+'）は強いので、入口を増やすほど成果に直結します。' : '')+'</span>';
+    else s += '<span class="sub">入口の数は足りています。次は横の穴（入口の先）を埋める段階です。</span>';
+    if(frontN) s += '<span class="sub">選んだCEPの前半（'+stg[0]+'〜'+stg[2]+'）の穴：'+front+'／'+frontN+'マス'+(backN?'　後半の◎：'+back+'／'+backN+'マス':'')+'</span>';
+    tt.innerHTML = s;
+    // 提案の3段
+    if(!P.length){ pr.innerHTML = '<li>CEPを選ぶと、提案の3段が出ます。</li>'; return; }
+    var p1 = P.map(function(n){ var r = rowByName(n); return '「'+esc(n)+'」（自社想起 '+(r.own==null?"未測定":r.own+"/5")+(r.comp?'・競合 '+r.comp+'/5':'')+'）'; }).join("<br>");
+    var p2 = P.map(function(n){
+      var cs = cellsFor(n), i = -1;
+      for(var k=1;k<cs.length;k++){ if(cs[k].st==="none"){ i=k; break; } }
+      if(i<0) for(var k2=1;k2<cs.length;k2++){ if(cs[k2].st==="weak"){ i=k2; break; } }
+      if(i<0) return '「'+esc(n.replace(/とき$/,""))+'」→ 想起さえされれば最後まで受け皿あり';
+      var why = firstLine(cs[i].t, "困る：");
+      return '「'+esc(n.replace(/とき$/,""))+'」→ <b>'+stg[i]+'</b>で離脱'+(cs[i].st==="weak"?'しやすい':'')+(why?'（'+esc(why)+'）':'');
+    }).join("<br>");
+    var fix = H.slice().sort(function(a,b){ return a.pi-b.pi || a.si-b.si; });
+    var two = [], seen = {};
+    fix.forEach(function(x){ if(two.length<2 && !seen[x.n]){ seen[x.n]=1; two.push(x); } });
+    fix.forEach(function(x){ if(two.length<2 && two.indexOf(x)<0) two.push(x); });
+    var p3 = two.length ? two.map(function(x, i){ var why = firstLine(x.t, "困る："); return (i+1)+'本目：「'+esc(x.n.replace(/とき$/,""))+'」×<b>'+x.stage+'</b>'+(why?' … 「'+esc(why)+'」に答えるコラム・LP・事例を1本':' の受け皿を1本'); }).join("<br>") : '✕の穴はありません。△（弱い）マスを強くする施策に切り替えます。';
+    pr.innerHTML =
+      '<li><span class="q">「あなたの会社は、この状況では思い出されていません」</span>CEPマップ（想起率の実測）<br>'+p1+'</li>'+
+      '<li><span class="q">「思い出された後、ここで離脱しています」</span>選んだCEPのジャーニー<br>'+p2+'</li>'+
+      '<li><span class="q">「だから、この'+(two.length===1?'1':'2')+'本を直します」</span>施策<br>'+p3+'</li>';
+  }
+
+  document.addEventListener("input", function(e){
+    var t = e.target; if(!t || !t.closest || !t.closest("#cepj")) return;
+    if(t.tagName!=="TEXTAREA" || !t.hasAttribute("data-jr-n")) return;
+    ensure(); var c = cellsFor(t.getAttribute("data-jr-n"))[+t.getAttribute("data-jr-i")]; if(!c) return;
+    c.t = t.value; renderJrDiag(); save();
+  });
+  document.addEventListener("change", function(e){
+    var t = e.target; if(!t || !t.closest || !t.closest("#cepj") || !t.hasAttribute("data-jr-st")) return;
+    ensure(); var c = cellsFor(t.getAttribute("data-jr-n"))[+t.getAttribute("data-jr-i")]; if(!c) return;
+    c.st = t.value; t.closest("td").className = c.st; renderJourney(); save();
+  });
+  document.addEventListener("click", function(e){
+    var t = e.target; if(!t || !t.closest || !t.closest("#cepj")) return;
+    ensure();
+    var p = t.closest("[data-jr-pick]");
+    if(p){
+      var n = p.getAttribute("data-jr-pick"), cur = picks(), i = cur.indexOf(n);
+      if(i>=0) cur.splice(i,1); else { if(cur.length>=3){ toast("ジャーニーは3つまで。全部引くと誰も読まなくなります"); return; } cur.push(n); }
+      jrState().pick = cur; renderJourney(); save(); return;
+    }
+    var a = t.closest("[data-jr-act]"); if(!a) return;
+    var act = a.getAttribute("data-jr-act");
+    if(act==="reset"){ state.jr[state.preset] = { pick:null, cells:{} }; renderJourney(); save(); toast("ジャーニーをサンプルに戻しました"); }
+    else if(act==="copy"){
+      var txt = Array.prototype.map.call(q("cepj-prop").children, function(li, i){ return (i+1)+". "+li.innerText.replace(/\n+/g,"\n   "); }).join("\n\n");
+      copyText(txt, "提案の文章");
     }
   });
 
