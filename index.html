@@ -977,7 +977,11 @@ return S;})();
 .jk-etbl2 tr.tot td{background:#ddf0e9;font-weight:800;color:#16302b}
 .jk-eojt{display:flex;align-items:flex-start;gap:6px;font-size:12.5px;font-weight:700;color:#4a554f;background:#fff;border:1px solid #cfd8d3;border-radius:8px;padding:7px 10px;cursor:pointer;line-height:1.4}
 .jk-eojt input{width:14px;height:14px;padding:0;margin:1px 0 0;flex-shrink:0;accent-color:#2f9e82}
-.jk-eojt span{display:block;font-size:10.5px;color:#8a938e;font-weight:600;line-height:1.6}
+.jk-eojt{flex-wrap:wrap}.jk-eojt span{flex-basis:100%;display:block;font-size:10.5px;color:#8a938e;font-weight:600;line-height:1.6}
+.jk-eojti{margin:0 0 10px;font-size:11.5px;line-height:1.65;color:#3d4842;background:#f2fbf7;border:1px solid #cfe7dd;border-radius:8px;padding:7px 10px}
+.jk-eojti.zero{background:#f6f6f3;border-color:#e5e2d8;color:#6b736e}
+.jk-eojti b{color:#1a7a64}
+.jk-eojti .m{color:#c0392b}
 .jk-htbl{margin-top:12px}
 .jk-htbl tr.on td{background:#ddf0e9;font-weight:800}
 .jk-htbl tr.min td{box-shadow:inset 0 0 0 1.5px #2f9e82}
@@ -1066,6 +1070,7 @@ return S;})();
             <label class="jk-eojt"><input type="checkbox" id="jk-e-ojt" checked>使う<span>OJT加算1名10万円がつく代わりに、総訓練時間2か月・142時間以上が必要</span></label>
           </div>
         </div>
+        <div id="jk-e-ojtinfo" class="jk-eojti"></div>
         <div style="overflow-x:auto">
         <table class="jk-bd jk-etbl" style="min-width:520px">
           <thead><tr><th style="min-width:110px">職種・部門</th><th class="r" style="width:80px">人数</th><th class="r" style="width:100px">うち45歳以上</th><th style="width:150px">雇用形態</th><th style="min-width:190px">研修内容</th><th style="width:40px"></th></tr></thead>
@@ -6438,10 +6443,46 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     });
     tb.innerHTML = html || '<tr><td colspan="6" class="jk-eempty">職種を追加してください。</td></tr>';
   }
+  /* OJTチェックの影響を、チェックのすぐ下に「誰が・いくら」で出す(切り替えても金額が動かない理由を見せるため) */
+  function easyOjtInfo(r){
+    var box = q('jk-e-ojtinfo');
+    if(!box) return;
+    var keep = easyUseOjt;
+    easyUseOjt = !keep;
+    var alt = easyCalc();
+    easyUseOjt = keep;
+    var on = keep ? r : alt, off = keep ? alt : r;
+    var gs = on.gs.filter(function(g){ return g.b.ojt1 > 0; });
+    if(!gs.length){
+      box.className = 'jk-eojti zero';
+      box.innerHTML = 'いまの入力では<b>OJTのコースを使う人は0名</b>です。チェックを入れても外しても<b>金額は変わりません</b>。'
+        + '<br>③④が選ばれるのは「45歳以上(④)」または「有期雇用(③)」で、研修内容がDX以外の人だけです。'
+        + 'DX研修の人は⑦リスキリングのほうが助成が多いため、そちらが選ばれます。';
+      return;
+    }
+    var who = gs.map(function(g){
+      var tag = g.senior === true ? '45歳以上' : (g.senior === false ? '45歳未満' : '');
+      return (g.jobs || [g.job]).join('・') + (tag ? '(' + tag + ')' : '') + ' ' + g.n + '名 → ' + g.b.c.n;
+    }).join('<br>');
+    var n = gs.reduce(function(a, g){ return a + g.n; }, 0);
+    var dG = on.paid - off.paid, dN = on.netAll - off.netAll, dS = on.sr.total - off.sr.total;
+    var sg = function(v){ return (v > 0 ? '+' : (v < 0 ? '−' : '±')) + yen(Math.abs(v)); };
+    box.className = 'jk-eojti';
+    box.innerHTML = (keep ? 'いま<b>OJTのコースを使っている人</b>：' : 'チェックを入れると<b>OJTのコースになる人</b>：')
+      + '<br>' + who
+      + '<br>使う場合と使わない場合の差 ＝ 助成金 <b>' + sg(dG) + '</b>／社労士費用 <b>' + sg(dS) + '</b>／実質負担 <b>' + sg(dN) + '</b>'
+      + '（対象はこの' + n + '名だけ。ほかの人の計算は変わりません）'
+      + '<br>→ ' + (dN > 0 ? '<b>使うと会社の負担が ' + yen(dN) + ' 増えます。</b>'
+          + (dS > 0 ? '研修が' + (on.gs.length - off.gs.length) + '本増えて社労士費用がかかり、OJT加算より大きいためです。' : '')
+          + '外したほうがお得です。'
+        : (dN < 0 ? '<b>使うと会社の負担が ' + yen(-dN) + ' 減ります。</b>' : '負担は同じです。'))
+      + '<br><span class="m">その' + n + '名はOJTの実施が必須で、OJTを含めて2か月・142時間以上の訓練が必要です。</span>';
+  }
   function easyRender(){
     var out = q('jk-e-out');
     if(!out) return;
     var r = easyCalc();
+    easyOjtInfo(r);
     if(!r.gs.length){
       out.innerHTML = '<div class="jk-eempty">助成の対象になる受講者がいません。人数と雇用形態をご確認ください。</div>';
       return;
