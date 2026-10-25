@@ -1509,6 +1509,265 @@ return S;})();
   </div>
 </div>
 </template>
+<template id="sec-html">
+<style>
+#sec-app .sec-sev{display:inline-block;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:700;white-space:nowrap}
+#sec-app .sec-hi{background:#fdecea;color:#b3261e}
+#sec-app .sec-md{background:#fff4e0;color:#8a5300}
+#sec-app .sec-lo{background:#eef1ee;color:#4a554f}
+#sec-app .sec-ok{background:#e6f5ef;color:#1b6b57}
+#sec-app .sec-scroll{overflow-x:auto}
+#sec-app .sec-2{display:flex;gap:16px;flex-wrap:wrap}
+#sec-app .sec-2>*{flex:1 1 320px;min-width:0}
+#sec-app .sec-note{margin-top:12px;background:#f2fbf7;border-left:3px solid #2f9e82;border-radius:0 8px 8px 0;padding:9px 12px;font-size:12px;line-height:1.8;color:#28453c}
+#sec-app .sec-warn{margin-top:12px;background:#fff8f1;border-left:3px solid #f38020;border-radius:0 8px 8px 0;padding:9px 12px;font-size:12px;line-height:1.8;color:#6b3d12}
+#sec-app .sec-hint{font-size:11.5px;color:#7e8b96;margin-top:9px;line-height:1.8}
+#sec-app .sec-bars{display:flex;flex-direction:column;gap:7px}
+#sec-app .sec-bar{display:grid;grid-template-columns:96px 1fr 44px;gap:8px;align-items:center;font-size:12.5px;color:#3a443e}
+#sec-app .sec-bar i{display:block;height:12px;border-radius:0 6px 6px 0;background:#2f9e82;min-width:2px}
+#sec-app .sec-bar i.w{background:#e0a33a}
+#sec-app .sec-bar i.r{background:#d1574b}
+#sec-app .sec-bar b{text-align:right;font-variant-numeric:tabular-nums}
+#sec-app .sec-days{display:flex;align-items:flex-end;gap:8px;height:140px;padding:6px 2px 0;border-bottom:1px solid #e5e2d8}
+#sec-app .sec-day{flex:1 1 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:11px;color:#7e8b96}
+#sec-app .sec-day i{display:block;width:70%;max-width:34px;background:#9fd3c1;border-radius:5px 5px 0 0}
+#sec-app .sec-day i.hot{background:#d1574b}
+#sec-app .sec-day em{font-style:normal;font-weight:700;color:#2b332f;margin-bottom:3px;font-variant-numeric:tabular-nums}
+#sec-app .sec-dl{display:flex;gap:8px;margin-top:5px}
+#sec-app .sec-dl span{flex:1 1 0;text-align:center;font-size:11px;color:#7e8b96}
+#sec-app .sec-up{display:flex;gap:2px;margin-top:8px}
+#sec-app .sec-up i{flex:1 1 0;height:22px;border-radius:2px;background:#2f9e82}
+#sec-app .sec-up i.dn{background:#d1574b}
+#sec-app .sec-mail{border:1px solid #e5e2d8;border-radius:10px;padding:11px 13px;margin-bottom:9px;cursor:pointer;background:#fff}
+#sec-app .sec-mail:hover{border-color:#2f9e82}
+#sec-app .sec-mail:focus-visible{outline:2px solid #2f9e82;outline-offset:2px}
+#sec-app .sec-mail-h{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#sec-app .sec-mail-h .sec-subj{flex:1 1 220px;min-width:0;font-weight:700;font-size:13px;color:#16302b}
+#sec-app .sec-mail-h .sec-pt{font-size:12px;color:#4a554f;font-variant-numeric:tabular-nums;white-space:nowrap}
+#sec-app .sec-mail-from{font-size:11.5px;color:#7e8b96;margin-top:3px;word-break:break-all}
+#sec-app .sec-mail ul{margin:8px 0 0;padding-left:18px;font-size:12px;line-height:1.85;color:#3a443e;display:none}
+#sec-app .sec-mail.open ul{display:block}
+#sec-app .sec-try{display:flex;flex-direction:column;gap:6px}
+#sec-app .sec-try label{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;line-height:1.6;color:#3a443e;cursor:pointer}
+#sec-app .sec-try label em{font-style:normal;color:#7e8b96;font-size:11px;margin-left:auto;white-space:nowrap;padding-left:8px}
+#sec-app .sec-gauge{height:14px;border-radius:7px;background:#eef1ee;overflow:hidden;margin:10px 0 6px}
+#sec-app .sec-gauge i{display:block;height:100%;background:#2f9e82;transition:width .2s}
+#sec-app .sec-verdict{font-size:20px;font-weight:800;color:#16302b}
+#sec-app .sec-q{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #efefe9}
+#sec-app .sec-q:last-child{border-bottom:0}
+#sec-app .sec-q-t{font-size:12.8px;color:#2b332f;line-height:1.6}
+#sec-app .sec-q-t small{display:block;color:#8a938e;font-size:11px;line-height:1.6;margin-top:1px}
+#sec-app .sec-seg{display:flex;border:1px solid #cfd8d3;border-radius:999px;overflow:hidden}
+#sec-app .sec-seg button{border:0;background:#fff;padding:5px 11px;font-size:12px;color:#4a554f;cursor:pointer;white-space:nowrap}
+#sec-app .sec-seg button+button{border-left:1px solid #cfd8d3}
+#sec-app .sec-seg button.on.y{background:#2f9e82;color:#fff;font-weight:700}
+#sec-app .sec-seg button.on.n{background:#d1574b;color:#fff;font-weight:700}
+#sec-app .sec-seg button.on.u{background:#8a938e;color:#fff;font-weight:700}
+#sec-app .sec-cat{font-weight:700;font-size:13px;color:#16302b;margin:16px 0 2px}
+#sec-app .sec-cat:first-child{margin-top:0}
+#sec-app .sec-score{font-size:44px;font-weight:800;color:#16302b;line-height:1;font-variant-numeric:tabular-nums}
+#sec-app .sec-score small{font-size:14px;font-weight:400;color:#7e8b96;margin-left:4px}
+#sec-app .sec-todo{margin:0;padding-left:20px;font-size:12.5px;line-height:1.85;color:#3a443e}
+#sec-app .sec-todo li{margin-bottom:8px}
+#sec-app .sec-todo b{color:#16302b}
+#sec-app .sec-sum{font-size:13px;line-height:1.95;color:#3a443e;margin:0}
+#sec-app .sec-faq dt{font-weight:700;font-size:13.5px;color:#16302b;margin-top:16px;padding-left:20px;position:relative;line-height:1.6}
+#sec-app .sec-faq dt:first-child{margin-top:0}
+#sec-app .sec-faq dt:before{content:"Q";position:absolute;left:0;top:0;color:#2f9e82;font-size:12.5px}
+#sec-app .sec-faq dd{margin:6px 0 0 20px;font-size:12.5px;line-height:1.95;color:#4a554f}
+#sec-app .sec-sticky{position:sticky;top:12px}
+@media(max-width:640px){
+ #sec-app .sec-q{grid-template-columns:1fr}
+ #sec-app .sec-bar{grid-template-columns:80px 1fr 40px}
+ #sec-app .sec-sticky{position:static}
+ #sec-app .sec-2>.panel{flex:1 1 100%!important}
+ #sec-app .sec-seg{width:100%}
+ #sec-app .sec-seg button{flex:1 1 0;min-width:0;padding:6px 2px;font-size:11px}
+}
+</style>
+<div id="sec-app">
+  <div class="module-head">
+    <h2>セキュリティ(監視・社内診断)</h2>
+    <p>ホームページへの攻撃・ログインの異常・サイトの停止と、届いた怪しいメールを自動で見張り、何かあればChatworkに知らせます。あわせて、社内のセキュリティを20の質問で点数にし、どこから手を付けるかを出します。</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">今月 遮断した攻撃</div><div class="kpi-value">312件</div><div class="kpi-sub">うち重大 3件・すべて遮断済み</div></div>
+    <div class="kpi"><div class="kpi-label">管理画面のログイン失敗</div><div class="kpi-value">47回</div><div class="kpi-sub">ロック 2回・社内からの失敗 1回</div></div>
+    <div class="kpi"><div class="kpi-label">サイトの稼働率</div><div class="kpi-value">99.93%</div><div class="kpi-sub">5分ごとに確認・停止 1回(30分)</div></div>
+    <div class="kpi"><div class="kpi-label">怪しいメール</div><div class="kpi-value">危険 4 / 注意 9</div><div class="kpi-sub">全14名の受信箱・本文は外部に送らない</div></div>
+  </div>
+
+  <div class="proj-tabs" id="sec-tabs" style="margin-bottom:14px"></div>
+
+  <!-- ① 通知の一覧 -->
+  <div id="sec-v-alert">
+    <div class="panel">
+      <h3>直近の通知(Chatworkに届いたもの)</h3>
+      <div class="sec-scroll">
+        <table class="tbl" style="min-width:620px">
+          <thead><tr><th>日時</th><th>重さ</th><th>何が起きたか</th><th>対応</th></tr></thead>
+          <tbody id="sec-alerts"></tbody>
+        </table>
+      </div>
+      <div class="sec-note">通知は「人が動く必要があるもの」だけに絞っています。毎日数十件ある通常の遮断は通知せず、月次レポートにまとめます。通知が多すぎると誰も見なくなるためです。</div>
+    </div>
+    <div class="sec-2">
+      <div class="panel">
+        <h3>通知のルール</h3>
+        <div class="sec-scroll">
+        <table class="tbl" style="min-width:300px">
+          <thead><tr><th>こうなったら</th><th>通知</th></tr></thead>
+          <tbody>
+            <tr><td>設定ファイル・秘密鍵を読み出そうとする攻撃</td><td><span class="sec-sev sec-hi">すぐ</span></td></tr>
+            <tr><td>同じ相手から1時間に30回以上の攻撃</td><td><span class="sec-sev sec-hi">すぐ</span></td></tr>
+            <tr><td>サイトが2回続けて開けない(10分)</td><td><span class="sec-sev sec-hi">すぐ</span></td></tr>
+            <tr><td>管理画面のログイン失敗で鍵がかかった</td><td><span class="sec-sev sec-md">すぐ</span></td></tr>
+            <tr><td>危険と判定したメールが届いた</td><td><span class="sec-sev sec-md">すぐ</span></td></tr>
+            <tr><td>上記以外の通常の遮断</td><td><span class="sec-sev sec-lo">週1回まとめ</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>見張っている場所</h3>
+        <div class="sec-bars" style="gap:10px">
+          <div class="sec-q-t"><b>ホームページの防御ログ</b><small>サーバーに入っている防御の仕組みが遮断した記録を毎時読み取ります。</small></div>
+          <div class="sec-q-t"><b>管理画面のログイン履歴</b><small>失敗・ロック・社外からの成功を見ます。社内の回線からのものは除外します。</small></div>
+          <div class="sec-q-t"><b>サイトの死活</b><small>主要4ページを5分ごとに開いて確認します。</small></div>
+          <div class="sec-q-t"><b>社員の受信箱</b><small>社外から届いた、リンクか添付のあるメールだけを5分ごとに採点します。</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② ホームページ -->
+  <div id="sec-v-site" hidden>
+    <div class="sec-2">
+      <div class="panel">
+        <h3>直近7日の遮断件数</h3>
+        <div class="sec-days" id="sec-days"></div>
+        <div class="sec-dl" id="sec-dl"></div>
+        <div class="sec-hint">赤い日は重大な攻撃を含む日です。10/22 は同じ相手が設定ファイルを読み出そうと繰り返していました(すべて遮断)。</div>
+      </div>
+      <div class="panel">
+        <h3>攻撃の種類(今月)</h3>
+        <div class="sec-bars" id="sec-kinds"></div>
+        <div class="sec-hint">多いのは「よくある入口を順に試す」機械的な探りです。数そのものより、重大の種類が来ているかを見ます。</div>
+      </div>
+    </div>
+    <div class="sec-2">
+      <div class="panel">
+        <h3>管理画面のログイン(今月)</h3>
+        <div class="sec-scroll">
+        <table class="tbl" style="min-width:360px">
+          <thead><tr><th>結果</th><th style="text-align:right">回数</th><th>中身</th></tr></thead>
+          <tbody>
+            <tr><td>成功</td><td style="text-align:right">38</td><td>すべて社内の回線から</td></tr>
+            <tr><td>失敗</td><td style="text-align:right">47</td><td>社外46・社内1(打ち間違い)</td></tr>
+            <tr><td>鍵がかかった</td><td style="text-align:right">2</td><td>海外から「admin」で連続して試行</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="sec-warn">社外の回線からログインに<b>成功</b>したら、最優先で通知します。在宅や出張先から入る人がいる場合は、その回線を先に登録しておきます。</div>
+      </div>
+      <div class="panel">
+        <h3>サイトの稼働(直近30日・1マス=1日)</h3>
+        <div class="sec-up" id="sec-up"></div>
+        <div class="sec-hint">10/9 に30分間開けない時間がありました。サーバー会社の障害で、同じサーバーの他のサイトも止まっていました。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ メール -->
+  <div id="sec-v-mail" hidden>
+    <div class="sec-2">
+      <div class="panel">
+        <h3>今週判定したメール(押すと理由が出ます)</h3>
+        <div id="sec-mails"></div>
+        <div class="sec-note">判定は決まったルールで点数を足すだけです。<b>メールの本文はAIを含め外部に送りません</b>。60点以上が「危険」、35〜59点が「注意」です。最初の2週間は受信箱から動かさず、誤判定がないかを見てから「危険は自動で隔離」に切り替えます。</div>
+      </div>
+      <div class="panel">
+        <div class="sec-sticky">
+          <h3>点数を試す</h3>
+          <div class="sec-try" id="sec-try"></div>
+          <div class="sec-gauge"><i id="sec-try-g" style="width:0"></i></div>
+          <div><span class="sec-verdict" id="sec-try-v">0点</span> <span id="sec-try-b"></span></div>
+          <div class="sec-hint">当てはまるものにチェックを入れると、実際のルールと同じ配点で採点します。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 社内診断 -->
+  <div id="sec-v-check" hidden>
+    <div class="sec-2">
+      <div class="panel" style="flex:2 1 420px">
+        <h3>20の質問に答える</h3>
+        <div id="sec-qs"></div>
+        <div class="sec-hint">「分からない」はできていない扱いで数えます(誰も把握していない状態も弱点です)。</div>
+      </div>
+      <div class="panel" style="flex:1 1 280px">
+        <div class="sec-sticky">
+          <h3>結果</h3>
+          <div class="sec-score" id="sec-score">0<small>/ 100点</small></div>
+          <div id="sec-rank" style="margin:8px 0 14px"></div>
+          <div class="sec-bars" id="sec-cats"></div>
+          <h3 style="margin-top:18px">先に手を付けること</h3>
+          <ol class="sec-todo" id="sec-todo"></ol>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+            <button type="button" class="proj-tab" data-sec-reset="demo">入力例に戻す</button>
+            <button type="button" class="proj-tab" data-sec-reset="blank">すべて空にする</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 月次レポート -->
+  <div id="sec-v-report" hidden>
+    <div class="panel">
+      <h3>2026年10月 セキュリティ月次レポート(見本)</h3>
+      <div class="sec-scroll">
+      <table class="tbl" style="min-width:460px">
+        <thead><tr><th>項目</th><th style="text-align:right">9月</th><th style="text-align:right">10月</th><th>ひとこと</th></tr></thead>
+        <tbody>
+          <tr><td>遮断した攻撃</td><td style="text-align:right">264</td><td style="text-align:right">312</td><td>増加。新しい弱点を狙う探りが増えた</td></tr>
+          <tr><td>うち重大</td><td style="text-align:right">1</td><td style="text-align:right">3</td><td>同じ相手から2回。相手の回線を遮断済み</td></tr>
+          <tr><td>ログイン失敗</td><td style="text-align:right">61</td><td style="text-align:right">47</td><td>ログイン画面の住所を変えた効果</td></tr>
+          <tr><td>サイト稼働率</td><td style="text-align:right">100%</td><td style="text-align:right">99.93%</td><td>サーバー会社の障害で30分</td></tr>
+          <tr><td>危険メール</td><td style="text-align:right">6</td><td style="text-align:right">4</td><td>うち1通は自社を名乗る偽物</td></tr>
+          <tr><td>社内診断の点数</td><td style="text-align:right">50</td><td style="text-align:right">60</td><td>2段階認証を全員に設定</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <h3 style="margin-top:18px">来月やること</h3>
+      <ol class="sec-todo">
+        <li><b>退職者のアカウントを止める手順を決める</b> ― 誰が・何日以内に・どのサービスを止めるかを1枚に。</li>
+        <li><b>見積・図面データのバックアップを月1回、別の場所にも</b> ― 同じパソコンや同じ共有フォルダだけでは、ランサムウェアでまとめて消えます。</li>
+        <li><b>自社を名乗る偽メールが来たことを全員に共有</b> ― 実物の画面を見せるのが一番効きます。</li>
+      </ol>
+    </div>
+    <div class="panel">
+      <h3>よくあるご質問</h3>
+      <dl class="sec-faq">
+        <dt>うちのような小さな工務店でも狙われますか？</dt>
+        <dd>狙われます。攻撃の大半は会社を選ばず、機械的に世界中のサイトを順に試しています。工務店は施主の住所・図面・ローンの情報を持っており、取引先への偽請求の踏み台にもされやすい業種です。</dd>
+        <dt>メールの中身を外部のAIに読ませて大丈夫ですか？</dt>
+        <dd>このしくみでは本文を外部に送りません。差出人・送信元の認証結果・リンクの行き先・添付の種類など、決まったルールで点数を付けるだけです。施主のお名前や金額が書かれたメールでも、外に出ることはありません。</dd>
+        <dt>ホームページのサーバーに何か入れる必要はありますか？</dt>
+        <dd>記録を読み取るための小さな部品を1つ置きます。読み取り専用で、サイトの表示や更新には関わりません。外すときもすぐ外せます。</dd>
+        <dt>通知が来たら、社内で何をすればいいですか？</dt>
+        <dd>ほとんどは「遮断済み・対応不要」と書いて届きます。「要対応」と書かれたものだけ、通知に書かれた手順(パスワード変更・該当メールの削除など)を行います。判断に迷うものはシンミドウにそのまま転送してください。</dd>
+        <dt>社内診断の20問はどこから来ていますか？</dt>
+        <dd>IPA(情報処理推進機構)の「中小企業の情報セキュリティ対策ガイドライン」の考え方をもとに、工務店で起きやすいこと(現場のスマホ・図面の持ち出し・協力業者とのやり取り)に寄せて選んでいます。</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="sec-hint" style="margin-top:4px">※ 数字・メール・攻撃の記録はすべてデモ用の架空のものです。実際の監視は、シンミドウが自社サイトと自社の受信箱で稼働させているしくみと同じ構成です。</div>
+</div>
+</template>
 <template id="arch-html">
 <style>
 #arch-app .arch-fig{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
@@ -5573,7 +5832,7 @@ h("div",{className:"sub-bar-wrap"},h("div",{className:"sub-bar",style:{width:`${
 h("div",{className:"sub-pct",style:{width:70}},`${e[1].n}件`))),
 h("div",{className:"hint"},"件数だけでなく「止まっている案件を何件抱えているか」で見ます。多く持っている人ほど止まりやすいので、配り直しの判断材料になります。"))))},group:"基盤"},
 {key:"data",label:"データ連携ハブ",icon:"🔌",comp:function(){let{projects:e,monthlyPL:t,cashflow13w:r,logs:n,updatePL:a,updateCF:i}=eG(),[l,o]=(0,ew.useState)("io"),[s,u]=(0,ew.useState)(null),c=(0,ew.useRef)(null),f=async e=>{if(e)try{let t=CJ(await e.arrayBuffer(),{type:"array"}),r=C$(t.Sheets[t.SheetNames[0]],{header:1,raw:!1,defval:null}),n=[],l=[],o=null;r.forEach(e=>{let t=String(e?.[0]??"");if(t.includes("月次PL")){o="pl";return}if(t.includes("資金繰り")){o="cf";return}e?.[0]&&null!=e[1]&&("pl"===o&&n.push({month:String(e[0]),sales:+e[1]||0,grossProfit:+e[2]||0,rate:+e[3]||0,ly:0,lyRate:0}),"cf"===o&&l.push({week:String(e[0]),balance:+e[1]||0,in:+e[2]||0,out:+e[3]||0}))}),n.length&&a(n,`CSV\u{53D6}\u{8FBC}(${e.name})`),l.length&&i(l,`CSV\u{53D6}\u{8FBC}(${e.name})`),n.length||l.length?u({ok:!0,t:`\u{53D6}\u{8FBC}\u{5B8C}\u{4E86}:\u{6708}\u{6B21}PL ${n.length}\u{884C} / \u{8CC7}\u{91D1}\u{7E70}\u{308A} ${l.length}\u{884C}\u{3002}\u{30C0}\u{30C3}\u{30B7}\u{30E5}\u{30DC}\u{30FC}\u{30C9}\u{306B}\u{5373}\u{6642}\u{53CD}\u{6620}\u{3055}\u{308C}\u{3066}\u{3044}\u{307E}\u{3059}\u{3002}`}):u({ok:!1,t:"ヘッダー(【月次PL】/【資金繰り】)を認識できませんでした。テンプレート形式でアップロードしてください。"}),c.current&&(c.current.value="")}catch{u({ok:!1,t:"読み取りに失敗しました。CSV / xlsx 形式かご確認ください。"})}},d=e.reduce((e,t)=>e+t.contract,0);return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"データ連携ハブ"}),(0,eO.jsx)("p",{children:"スイートの心臓部。Excel/CSVの取込・書出と、会計・施工管理・SNSなど外部システムとのAPI連携をここで管理します。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"io"===l?"on":""}`,onClick:()=>o("io"),children:"Excel/CSV 取込・書出"}),(0,eO.jsx)("button",{className:`proj-tab ${"api"===l?"on":""}`,onClick:()=>o("api"),children:"API連携設計"}),(0,eO.jsxs)("button",{className:`proj-tab ${"log"===l?"on":""}`,onClick:()=>o("log"),children:["更新履歴(",n.length,")"]})]}),"io"===l&&(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"kpi-grid",children:[(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"管理中の案件"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[e.length,"件"]}),(0,eO.jsxs)("div",{className:"kpi-sub",children:["請負総額 ",d.toLocaleString("ja-JP"),"円"]})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"月次PL"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[t.length,"ヶ月分"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"ダッシュボードに反映中"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"資金繰り"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[r.length,"週分"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"安全水準チェック稼働中"})]})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>{let e="\uFEFF"+[["【月次PL】月","売上(万円)","粗利(万円)","粗利率(%)"],...t.map(e=>[e.month,e.sales,e.grossProfit,e.rate]),[""],["【資金繰り】週","残高(万円)","入金(万円)","支払(万円)"],...r.map(e=>[e.week,e.balance,e.in,e.out])].map(e=>e.join(",")).join("\n"),n=document.createElement("a");n.href=URL.createObjectURL(new Blob([e],{type:"text/csv"})),n.download="スイート取込テンプレート.csv",n.click()},children:"📥 テンプレCSVをダウンロード(現データ入り)"}),(0,eO.jsxs)("label",{className:"tpl-btn",style:{cursor:"pointer"},children:["📤 Excel / CSV を取り込む",(0,eO.jsx)("input",{ref:c,type:"file",accept:".csv,.xlsx,.xls",style:{display:"none"},onChange:e=>f(e.target.files?.[0])})]}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"テンプレを編集して取り込むと、経営ダッシュボードの数字がその場で入れ替わります(デモで体感できる連携)。"}),s&&(0,eO.jsx)("div",{className:`imp-msg ${s.ok?"ok":"ng"}`,style:{flexBasis:"100%"},children:s.t})]})]}),"api"===l&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"外部システム連携(設計表)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"接続先"}),(0,eO.jsx)("th",{children:"方向"}),(0,eO.jsx)("th",{children:"連携内容"}),(0,eO.jsx)("th",{children:"状態"})]})}),(0,eO.jsx)("tbody",{children:I_.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.name})}),(0,eO.jsx)("td",{children:e.dir}),(0,eO.jsx)("td",{style:{fontSize:12.5},children:e.what}),(0,eO.jsx)("td",{children:(0,eO.jsx)("span",{className:`badge ${e.status.includes("稼働")?"green":"gray"}`,children:e.status})})]},e.name))})]}),(0,eO.jsx)("div",{className:"hint",children:"思想:入力は1回、反映は全画面。既存ツールを置き換えるのではなく、間をつないで二重入力を消すのがこのスイートの役割です。"})]}),"log"===l&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"データ更新履歴"}),(0,eO.jsx)("div",{className:"feed",children:n.map((e,t)=>(0,eO.jsxs)("div",{className:"feed-item",children:[(0,eO.jsx)("span",{className:"feed-date",children:e.at}),(0,eO.jsx)("span",{className:`badge ${"auto"===e.kind?"green":"api"===e.kind?"amber":"gray"}`,children:"auto"===e.kind?"自動":"api"===e.kind?"連携":"取込"}),(0,eO.jsxs)("span",{children:[(0,eO.jsx)("b",{children:e.src})," — ",e.msg]})]},t))})]})]})},group:"基盤"},
-{key:"arch",label:"システム構成(本番運用)",icon:"☁️",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("arch-html").innerHTML}})},group:"基盤"},{key:"ops",label:"導入・運用ガイド",icon:"🧭",comp:function(){let[e,t]=(0,ew.useState)("road");return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"導入・運用ガイド"}),(0,eO.jsx)("p",{children:"ツールは「入れた後」が本番です。定着までのロードマップと、モジュール別の運用ルールをここに集約しています。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"road"===e?"on":""}`,onClick:()=>t("road"),children:"導入ロードマップ"}),(0,eO.jsx)("button",{className:`proj-tab ${"ops"===e?"on":""}`,onClick:()=>t("ops"),children:"モジュール別 運用手順"}),(0,eO.jsx)("button",{className:`proj-tab ${"week"===e?"on":""}`,onClick:()=>t("week"),children:"週次の回し方"}),(0,eO.jsx)("button",{className:`proj-tab ${"pit"===e?"on":""}`,onClick:()=>t("pit"),children:"定着の壁と対策"}),(0,eO.jsxs)("button",{className:`proj-tab ${"forms"===e?"on":""}`,onClick:()=>t("forms"),children:["帳票ライブラリ(",IM.length,")"]})]}),"road"===e&&(0,eO.jsx)("div",{className:"panel-row",children:ID.map(e=>(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:260},children:[(0,eO.jsx)("div",{className:"badge green",style:{marginBottom:6},children:e.phase}),(0,eO.jsx)("h3",{style:{marginTop:4},children:e.title}),(0,eO.jsx)("ul",{className:"slide-points",children:e.items.map(e=>(0,eO.jsx)("li",{children:e},e))})]},e.phase))}),"ops"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"誰が・いつ・何をするか"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"モジュール"}),(0,eO.jsx)("th",{children:"担当"}),(0,eO.jsx)("th",{children:"頻度"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IG.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.mod})}),(0,eO.jsx)("td",{children:e.who}),(0,eO.jsx)("td",{children:e.when}),(0,eO.jsx)("td",{children:e.what})]},e.mod))})]}),(0,eO.jsx)("div",{className:"hint",children:"週の合計入力時間は全社で約30分。それ以外はAIと連携が回します。"})]}),"week"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"週次リズム(推奨)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:60},children:"曜日"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IL.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.day})}),(0,eO.jsx)("td",{children:e.what})]},e.day))})]})]}),"pit"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"定着の壁 5つと対策"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"よくある壁"}),(0,eO.jsx)("th",{children:"対策"})]})}),(0,eO.jsx)("tbody",{children:IW.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.pit})}),(0,eO.jsx)("td",{children:e.fix})]},e.pit))})]})]}),"forms"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"標準帳票ライブラリ(Google Drive連携・業務フロー01〜22対応)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:70},children:"帳票No"}),(0,eO.jsx)("th",{children:"帳票名"}),(0,eO.jsx)("th",{children:"関連する業務ステップ"}),(0,eO.jsx)("th",{style:{width:90},children:"原本"})]})}),(0,eO.jsx)("tbody",{children:IM.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.code}),"ppt"===e.type&&(0,eO.jsx)("span",{className:"badge gray",style:{marginLeft:4},children:"PPT"})]}),(0,eO.jsx)("td",{children:e.name}),(0,eO.jsx)("td",{style:{fontSize:12},children:e.step.map(e=>{let t=eN.find(t=>t.no===e);return`${String(e).padStart(2,"0")} ${t.name}`}).join(" / ")}),(0,eO.jsx)("td",{children:(0,eO.jsx)("a",{href:e.url,target:"_blank",rel:"noreferrer",className:"drive-link",children:"Driveで開く"})})]},e.code))})]}),(0,eO.jsx)("div",{className:"hint",children:"標準業務フロー(01初回接客〜22引渡し式)の各ステップで使う帳票の一覧です。Driveの原本に直接アクセスできます。各帳票をスプレッドシート化すれば、スイート内チェックリストとして直接実装できます。"})]})]})},group:"基盤"},
+{key:"arch",label:"システム構成(本番運用)",icon:"☁️",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("arch-html").innerHTML}})},group:"基盤"},{key:"sec",label:"セキュリティ(監視・診断)",icon:"🛡️",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("sec-html").innerHTML}})},group:"基盤"},{key:"ops",label:"導入・運用ガイド",icon:"🧭",comp:function(){let[e,t]=(0,ew.useState)("road");return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"導入・運用ガイド"}),(0,eO.jsx)("p",{children:"ツールは「入れた後」が本番です。定着までのロードマップと、モジュール別の運用ルールをここに集約しています。"})]}),(0,eO.jsxs)("div",{className:"proj-tabs",style:{marginBottom:14},children:[(0,eO.jsx)("button",{className:`proj-tab ${"road"===e?"on":""}`,onClick:()=>t("road"),children:"導入ロードマップ"}),(0,eO.jsx)("button",{className:`proj-tab ${"ops"===e?"on":""}`,onClick:()=>t("ops"),children:"モジュール別 運用手順"}),(0,eO.jsx)("button",{className:`proj-tab ${"week"===e?"on":""}`,onClick:()=>t("week"),children:"週次の回し方"}),(0,eO.jsx)("button",{className:`proj-tab ${"pit"===e?"on":""}`,onClick:()=>t("pit"),children:"定着の壁と対策"}),(0,eO.jsxs)("button",{className:`proj-tab ${"forms"===e?"on":""}`,onClick:()=>t("forms"),children:["帳票ライブラリ(",IM.length,")"]})]}),"road"===e&&(0,eO.jsx)("div",{className:"panel-row",children:ID.map(e=>(0,eO.jsxs)("div",{className:"panel",style:{flex:1,minWidth:260},children:[(0,eO.jsx)("div",{className:"badge green",style:{marginBottom:6},children:e.phase}),(0,eO.jsx)("h3",{style:{marginTop:4},children:e.title}),(0,eO.jsx)("ul",{className:"slide-points",children:e.items.map(e=>(0,eO.jsx)("li",{children:e},e))})]},e.phase))}),"ops"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"誰が・いつ・何をするか"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"モジュール"}),(0,eO.jsx)("th",{children:"担当"}),(0,eO.jsx)("th",{children:"頻度"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IG.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.mod})}),(0,eO.jsx)("td",{children:e.who}),(0,eO.jsx)("td",{children:e.when}),(0,eO.jsx)("td",{children:e.what})]},e.mod))})]}),(0,eO.jsx)("div",{className:"hint",children:"週の合計入力時間は全社で約30分。それ以外はAIと連携が回します。"})]}),"week"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"週次リズム(推奨)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:60},children:"曜日"}),(0,eO.jsx)("th",{children:"やること"})]})}),(0,eO.jsx)("tbody",{children:IL.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.day})}),(0,eO.jsx)("td",{children:e.what})]},e.day))})]})]}),"pit"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"定着の壁 5つと対策"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"よくある壁"}),(0,eO.jsx)("th",{children:"対策"})]})}),(0,eO.jsx)("tbody",{children:IW.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.pit})}),(0,eO.jsx)("td",{children:e.fix})]},e.pit))})]})]}),"forms"===e&&(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("h3",{children:"標準帳票ライブラリ(Google Drive連携・業務フロー01〜22対応)"}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{style:{width:70},children:"帳票No"}),(0,eO.jsx)("th",{children:"帳票名"}),(0,eO.jsx)("th",{children:"関連する業務ステップ"}),(0,eO.jsx)("th",{style:{width:90},children:"原本"})]})}),(0,eO.jsx)("tbody",{children:IM.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.code}),"ppt"===e.type&&(0,eO.jsx)("span",{className:"badge gray",style:{marginLeft:4},children:"PPT"})]}),(0,eO.jsx)("td",{children:e.name}),(0,eO.jsx)("td",{style:{fontSize:12},children:e.step.map(e=>{let t=eN.find(t=>t.no===e);return`${String(e).padStart(2,"0")} ${t.name}`}).join(" / ")}),(0,eO.jsx)("td",{children:(0,eO.jsx)("a",{href:e.url,target:"_blank",rel:"noreferrer",className:"drive-link",children:"Driveで開く"})})]},e.code))})]}),(0,eO.jsx)("div",{className:"hint",children:"標準業務フロー(01初回接客〜22引渡し式)の各ステップで使う帳票の一覧です。Driveの原本に直接アクセスできます。各帳票をスプレッドシート化すれば、スイート内チェックリストとして直接実装できます。"})]})]})},group:"基盤"},
 {key:"sinmido",label:"シンミドウの実践記録",icon:"🏆",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("sinmido-html").innerHTML}})},group:"実践記録"},
 {key:"cep",label:"CEPマップ（想起分析）",icon:"🧭",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("cep-html").innerHTML}})},group:"実践記録"},
 {key:"josei",label:"研修助成金シミュレーター",icon:"💴",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("josei-html").innerHTML}})},group:"助成金"}],IB=["経営","営業","設計","工事","集客","教育(新人)","教育(教える人)","基盤","実践記録","助成金"];function IR(){let[e,t]=(0,ew.useState)("dash"),r=IZ.find(t=>t.key===e).comp;return(0,eO.jsx)(eD,{children:(0,eO.jsxs)("div",{className:"app",children:[(0,eO.jsxs)("aside",{className:"sidebar",children:[(0,eO.jsxs)("div",{className:"brand",children:[(0,eO.jsx)("div",{className:"brand-mark",children:"彩"}),(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"brand-name",children:"彩の国ホーム"}),(0,eO.jsx)("div",{className:"brand-sub",children:"工務店DXスイート(デモ)"})]})]}),(0,eO.jsx)("nav",{children:IB.map(r=>(0,eO.jsxs)("div",{children:[(0,eO.jsx)("div",{className:"nav-group",children:r}),IZ.filter(e=>e.group===r).map(r=>(0,eO.jsxs)("button",{className:`nav-item ${r.key===e?"on":""}`,onClick:()=>t(r.key),children:[(0,eO.jsx)("span",{className:"nav-icon",children:r.icon}),r.label]},r.key))]},r))}),(0,eO.jsxs)("div",{className:"sidebar-foot",children:["powered by シンミドウ",(0,eO.jsx)("br",{}),"AI×工務店DX(デモ)"]})]}),(0,eO.jsx)("main",{className:"main",children:(0,eO.jsx)(r,{})})]})})}(0,eC.createRoot)(document.getElementById("root")).render((0,eO.jsx)(ew.StrictMode,{children:(0,eO.jsx)(function(){return(0,eO.jsx)(IR,{})},{})}));</script>
@@ -7987,6 +8246,206 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     if(app && !app.getAttribute("data-cep-ready")){
       app.setAttribute("data-cep-ready","1");
       ensure(); render(); cfgBind();
+    }
+  }, 250);
+})();
+</script>
+<script>
+/* セキュリティ(監視・社内診断) */
+(function(){
+  var TABS = [
+    {k:'alert',  label:'通知の一覧'},
+    {k:'site',   label:'ホームページ'},
+    {k:'mail',   label:'怪しいメール'},
+    {k:'check',  label:'社内セキュリティ診断'},
+    {k:'report', label:'月次レポート・FAQ'}
+  ];
+  var SEV = {hi:['sec-hi','重大'], md:['sec-md','注意'], lo:['sec-lo','情報'], ok:['sec-ok','解決']};
+  var ALERTS = [
+    ['10/24 08:12','md','「カード会社」を名乗るメールを危険と判定(営業部 井上)','受信者に開かないよう連絡済み'],
+    ['10/22 02:41','hi','同じ相手が設定ファイル・秘密鍵の読み出しを37回試行','すべて遮断。相手の回線を遮断済み'],
+    ['10/20 14:05','md','自社とよく似た住所(1文字違い)から請求書メールが届いた','偽物と判断。全員に共有'],
+    ['10/17 23:58','md','管理画面のログイン失敗で鍵がかかった(海外から「admin」)','対応不要。鍵は自動で解除'],
+    ['10/14 10:30','lo','社内の回線からログイン失敗3回(打ち間違い)','本人に確認済み'],
+    ['10/09 13:20','hi','サイトが開けない状態が10分続いた','サーバー会社の障害。30分で復旧'],
+    ['10/09 13:50','ok','サイトが開けるようになった','復旧を確認']
+  ];
+  var DAYS = [['10/19',38,0],['10/20',41,0],['10/21',29,0],['10/22',74,1],['10/23',33,0],['10/24',36,0],['10/25',22,0]];
+  var KINDS = [['入口の探り',168,''],['ログイン総当たり',47,''],['古い部品の弱点',52,'w'],['不正な書き込み',38,'w'],['設定の読み出し',7,'r']];
+  var MAILS = [
+    {s:'【重要】お支払い方法の確認が必要です', f:'カード会社サポート <info@secure-card-check-77.top>', p:92, r:['送信元の認証(DMARC)に失敗 +25','表示名はカード会社なのに送信元が無関係 +20','リンクの見た目と行き先が違う +20','詐欺に多い末尾(.top) +15','「24時間以内」と急がせる +12']},
+    {s:'請求書の送付(10月分)', f:'彩の国ホーム 経理 <keiri@sainokunl-home.example>', p:78, r:['自社に似せた住所(i→l の1文字違い) +35','初めての相手 +8','添付がHTMLファイル +25','「至急ご確認」と急がせる +10']},
+    {s:'お荷物のお届けについて', f:'配送センター <no-reply@delivery-notice-07.info>', p:66, r:['送信元の認証(SPF)に失敗 +20','リンクが短縮URL +16','表示名は配送業者なのに送信元が無関係 +20','初めての相手 +10']},
+    {s:'見積書をお送りします', f:'(株)北関東建材 <sales@kitakanto-kenzai.example>', p:41, r:['添付がパスワード付きzip(中身を検査できない) +25','初めての相手 +16','※取引先なら問題なし。送り主に電話で確認を']},
+    {s:'システム更新のお知らせ', f:'Microsoft 365 <no-reply@microsoft.com>', p:6, r:['送信元の認証はすべて成功','リンクの行き先も本物 → 問題なし']},
+    {s:'Re: 11/2 上棟の段取り', f:'中原 <nakahara@sainokuni-home.example>', p:0, r:['社内からのメール → 採点の対象外']}
+  ];
+  var TRY = [
+    ['送信元の認証(DMARC・SPF・DKIM)に失敗している',25],
+    ['自社や取引先とよく似た住所(1文字違いなど)',35],
+    ['表示名と送信元の会社が違う(カード会社・配送業者など)',20],
+    ['リンクの見た目と、押したときの行き先が違う',20],
+    ['リンクが短縮URL・数字だけの住所',16],
+    ['添付がHTML・実行ファイル・マクロ付きの文書',25],
+    ['「至急」「24時間以内」など急がせる文言',12],
+    ['初めてやり取りする相手',10]
+  ];
+  var QS = [
+    {c:'アカウント', t:'メール・クラウドに2段階認証を全員設定している', h:'パスワードが漏れても、本人のスマホがなければ入れません。', i:3, a:'Google・Microsoft・会計ソフトから順に2段階認証を設定する'},
+    {c:'アカウント', t:'同じパスワードを複数のサービスで使い回していない', h:'1か所漏れると全部に入られます。', i:3, a:'パスワード管理アプリを全員に入れ、使い回しをやめる'},
+    {c:'アカウント', t:'退職者のアカウントを何日以内に止めるか決まっている', h:'辞めた人のメールが生きたままになっていませんか。', i:3, a:'退職時に止めるサービスの一覧と担当者を1枚にまとめる'},
+    {c:'アカウント', t:'共用のID(info@ など)のパスワードを誰が知っているか把握している', h:'', i:2, a:'共用IDの持ち主を決め、知っている人を記録する'},
+    {c:'端末・スマホ', t:'パソコンのOS・ブラウザの更新を止めていない', h:'更新の多くは弱点の修正です。', i:3, a:'自動更新をオンにし、月1回だけ全員の更新状況を確認する'},
+    {c:'端末・スマホ', t:'現場で使うスマホ・タブレットに画面ロックがある', h:'現場に置き忘れると、写真と施主の連絡先が丸見えです。', i:2, a:'全端末に6桁以上の画面ロックを設定する'},
+    {c:'端末・スマホ', t:'なくした端末を遠隔でロック・消去できる', h:'', i:2, a:'端末の「探す」機能を有効にし、なくしたときの連絡先を決める'},
+    {c:'端末・スマホ', t:'私物のスマホで会社のデータを扱うルールがある', h:'', i:1, a:'私物で見てよいもの・保存してはいけないものを決める'},
+    {c:'メール・やり取り', t:'振込先の変更依頼は、電話で本人に確認してから応じる', h:'偽の請求書で振込先を変えさせる詐欺が増えています。', i:3, a:'「振込先変更は電話で確認」を経理のルールに明記する'},
+    {c:'メール・やり取り', t:'怪しいメールが来たときに報告する先が決まっている', h:'', i:2, a:'報告先(人かChatworkルーム)を1つ決めて全員に伝える'},
+    {c:'メール・やり取り', t:'協力業者との図面のやり取りに、期限付きの共有リンクを使っている', h:'メール添付だと、誤送信したときに取り戻せません。', i:1, a:'図面は期限付きの共有リンクで送る運用に切り替える'},
+    {c:'データ・バックアップ', t:'見積・図面・顧客台帳のバックアップを定期的に取っている', h:'', i:3, a:'月1回の自動バックアップを設定する'},
+    {c:'データ・バックアップ', t:'バックアップを本体とは別の場所(別のクラウド等)にも置いている', h:'同じ場所だけだと、ランサムウェアでまとめて暗号化されます。', i:3, a:'バックアップの1つを社外のクラウドに置く'},
+    {c:'データ・バックアップ', t:'バックアップから実際に戻せるか試したことがある', h:'', i:2, a:'年1回、1ファイルだけでも戻してみる'},
+    {c:'データ・バックアップ', t:'共有フォルダの見られる範囲を部署ごとに分けている', h:'', i:1, a:'給与・人事のフォルダだけでも閲覧者を絞る'},
+    {c:'ホームページ', t:'ホームページの本体・部品を定期的に更新している', h:'古い部品は攻撃の入口になります。', i:3, a:'保守契約で月1回の更新を必ず入れる'},
+    {c:'ホームページ', t:'ホームページへの攻撃や停止に気づける仕組みがある', h:'', i:2, a:'監視を入れ、何かあればChatworkに届くようにする'},
+    {c:'ホームページ', t:'問い合わせフォームの送信内容が暗号化されている(https)', h:'', i:2, a:'全ページをhttpsにし、証明書の期限切れを監視する'},
+    {c:'ルール・教育', t:'年1回以上、全員でセキュリティの話をする時間がある', h:'', i:2, a:'実際に届いた偽メールを見せる15分の勉強会を年2回'},
+    {c:'ルール・教育', t:'事故が起きたときに誰が何をするか決まっている', h:'', i:2, a:'「誰に・何を・どの順で」連絡するかを1枚にまとめる'}
+  ];
+  var DEMO = ['y','n','n','y','y','y','y','u','n','y','y','y','n','n','u','y','y','y','y','n'];
+  var KEY = 'kdx_sec_check_v1';
+  var ans = DEMO.slice();
+  var curTab = 'alert';
+
+  function q(id){ return document.getElementById(id); }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function load(){ try{ var v = JSON.parse(localStorage.getItem(KEY)||'null'); if(v && v.length === QS.length) ans = v; }catch(e){} }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(ans)); }catch(e){} }
+
+  function renderTabs(){
+    var tb = q('sec-tabs'); if(!tb) return;
+    tb.innerHTML = '';
+    TABS.forEach(function(t){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'proj-tab' + (t.k === curTab ? ' on' : '');
+      b.textContent = t.label;
+      b.setAttribute('data-sec-tab', t.k);
+      tb.appendChild(b);
+    });
+    TABS.forEach(function(t){ var v = q('sec-v-' + t.k); if(v) v.hidden = (t.k !== curTab); });
+  }
+
+  function renderStatic(){
+    var tb = q('sec-alerts');
+    if(tb) tb.innerHTML = ALERTS.map(function(a){
+      var s = SEV[a[1]];
+      return '<tr><td style="white-space:nowrap">' + a[0] + '</td><td><span class="sec-sev ' + s[0] + '">' + s[1] + '</span></td><td>' + esc(a[2]) + '</td><td>' + esc(a[3]) + '</td></tr>';
+    }).join('');
+    var max = Math.max.apply(null, DAYS.map(function(d){ return d[1]; }));
+    var dd = q('sec-days'), dl = q('sec-dl');
+    if(dd) dd.innerHTML = DAYS.map(function(d){
+      return '<div class="sec-day"><em>' + d[1] + '</em><i class="' + (d[2] ? 'hot' : '') + '" style="height:' + Math.round(d[1] / max * 100) + 'px"></i></div>';
+    }).join('');
+    if(dl) dl.innerHTML = DAYS.map(function(d){ return '<span>' + d[0] + '</span>'; }).join('');
+    var km = Math.max.apply(null, KINDS.map(function(k){ return k[1]; }));
+    var kb = q('sec-kinds');
+    if(kb) kb.innerHTML = KINDS.map(function(k){
+      return '<div class="sec-bar"><span>' + k[0] + '</span><i class="' + k[2] + '" style="width:' + Math.max(2, Math.round(k[1] / km * 100)) + '%"></i><b>' + k[1] + '</b></div>';
+    }).join('');
+    var up = q('sec-up');
+    if(up){ var h = ''; for(var i = 0; i < 30; i++) h += '<i class="' + (i === 13 ? 'dn' : '') + '" title="' + (i === 13 ? '10/9 停止30分' : '稼働') + '"></i>'; up.innerHTML = h; }
+    var ml = q('sec-mails');
+    if(ml) ml.innerHTML = MAILS.map(function(m, i){
+      var v = verdict(m.p);
+      return '<div class="sec-mail" data-sec-mail="' + i + '" role="button" tabindex="0"><div class="sec-mail-h"><span class="sec-sev ' + v[0] + '">' + v[1] + '</span><span class="sec-subj">' + esc(m.s) + '</span><span class="sec-pt">' + m.p + '点</span></div>'
+        + '<div class="sec-mail-from">' + esc(m.f) + '</div><ul>' + m.r.map(function(r){ return '<li>' + esc(r) + '</li>'; }).join('') + '</ul></div>';
+    }).join('');
+    var tr = q('sec-try');
+    if(tr) tr.innerHTML = TRY.map(function(t, i){
+      return '<label><input type="checkbox" data-sec-try="' + i + '"> <span>' + esc(t[0]) + '</span><em>+' + t[1] + '</em></label>';
+    }).join('');
+  }
+
+  function verdict(p){ return p >= 60 ? ['sec-hi','危険'] : p >= 35 ? ['sec-md','注意'] : ['sec-ok','問題なし']; }
+
+  function renderTry(){
+    var p = 0;
+    document.querySelectorAll('#sec-app [data-sec-try]').forEach(function(c){ if(c.checked) p += TRY[+c.getAttribute('data-sec-try')][1]; });
+    p = Math.min(100, p);
+    var v = verdict(p), g = q('sec-try-g');
+    if(g){ g.style.width = p + '%'; g.style.background = p >= 60 ? '#d1574b' : p >= 35 ? '#e0a33a' : '#2f9e82'; }
+    if(q('sec-try-v')) q('sec-try-v').textContent = p + '点';
+    if(q('sec-try-b')) q('sec-try-b').innerHTML = '<span class="sec-sev ' + v[0] + '">' + v[1] + '</span>';
+  }
+
+  function renderQs(){
+    var box = q('sec-qs'); if(!box) return;
+    var h = '', last = '';
+    QS.forEach(function(x, i){
+      if(x.c !== last){ h += '<div class="sec-cat">' + x.c + '</div>'; last = x.c; }
+      var a = ans[i];
+      h += '<div class="sec-q"><div class="sec-q-t">' + esc(x.t) + (x.h ? '<small>' + esc(x.h) + '</small>' : '') + '</div>'
+        + '<div class="sec-seg">'
+        + '<button type="button" class="y' + (a === 'y' ? ' on' : '') + '" data-sec-q="' + i + '" data-v="y">できている</button>'
+        + '<button type="button" class="n' + (a === 'n' ? ' on' : '') + '" data-sec-q="' + i + '" data-v="n">できていない</button>'
+        + '<button type="button" class="u' + (a === 'u' ? ' on' : '') + '" data-sec-q="' + i + '" data-v="u">分からない</button>'
+        + '</div></div>';
+    });
+    box.innerHTML = h;
+  }
+
+  function renderResult(){
+    var score = 0, cats = {}, order = [];
+    QS.forEach(function(x, i){
+      if(!cats[x.c]){ cats[x.c] = {ok:0, n:0}; order.push(x.c); }
+      cats[x.c].n++;
+      if(ans[i] === 'y'){ score += 5; cats[x.c].ok++; }
+    });
+    if(q('sec-score')) q('sec-score').innerHTML = score + '<small>/ 100点</small>';
+    var rk = score >= 80 ? ['sec-ok','しっかりできています'] : score >= 60 ? ['sec-md','あと一歩'] : score >= 40 ? ['sec-md','穴があります'] : ['sec-hi','急いで手当てを'];
+    if(q('sec-rank')) q('sec-rank').innerHTML = '<span class="sec-sev ' + rk[0] + '" style="font-size:12.5px;padding:4px 12px">' + rk[1] + '</span>';
+    if(q('sec-cats')) q('sec-cats').innerHTML = order.map(function(c){
+      var r = cats[c].ok / cats[c].n, cls = r >= 0.75 ? '' : r >= 0.5 ? 'w' : 'r';
+      return '<div class="sec-bar"><span>' + c + '</span><i class="' + cls + '" style="width:' + Math.max(2, Math.round(r * 100)) + '%"></i><b>' + cats[c].ok + '/' + cats[c].n + '</b></div>';
+    }).join('');
+    var todo = QS.map(function(x, i){ return {x:x, i:i}; })
+      .filter(function(o){ return ans[o.i] !== 'y'; })
+      .sort(function(a, b){ return b.x.i - a.x.i || a.i - b.i; })
+      .slice(0, 3);
+    if(q('sec-todo')) q('sec-todo').innerHTML = todo.length
+      ? todo.map(function(o){ return '<li><b>' + esc(o.x.a) + '</b><br><span style="color:#7e8b96;font-size:11.5px">' + esc(o.x.c) + '：' + esc(o.x.t) + '</span></li>'; }).join('')
+      : '<li>20問すべてできています。年1回、見直しだけ続けてください。</li>';
+  }
+
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if(!t || !t.closest || !t.closest('#sec-app')) return;
+    var tb = t.closest('[data-sec-tab]');
+    if(tb){ curTab = tb.getAttribute('data-sec-tab'); renderTabs(); return; }
+    var qb = t.closest('[data-sec-q]');
+    if(qb){ ans[+qb.getAttribute('data-sec-q')] = qb.getAttribute('data-v'); save(); renderQs(); renderResult(); return; }
+    var rs = t.closest('[data-sec-reset]');
+    if(rs){ ans = rs.getAttribute('data-sec-reset') === 'demo' ? DEMO.slice() : QS.map(function(){ return 'u'; }); save(); renderQs(); renderResult(); return; }
+    var m = t.closest('[data-sec-mail]');
+    if(m){ m.classList.toggle('open'); }
+  });
+  document.addEventListener('change', function(e){
+    if(e.target && e.target.closest && e.target.closest('#sec-app [data-sec-try]')) renderTry();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var m = e.target && e.target.closest ? e.target.closest('#sec-app [data-sec-mail]') : null;
+    if(m){ e.preventDefault(); m.classList.toggle('open'); }
+  });
+
+  setInterval(function(){
+    var app = q('sec-app');
+    if(app && !app.getAttribute('data-sec-ready')){
+      app.setAttribute('data-sec-ready', '1');
+      curTab = 'alert';
+      load();
+      renderTabs(); renderStatic(); renderTry(); renderQs(); renderResult();
     }
   }, 250);
 })();
