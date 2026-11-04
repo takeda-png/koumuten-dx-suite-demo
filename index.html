@@ -1649,7 +1649,7 @@ return S;})();
           <input data-rs="r2" type="number" min="0" max="1" step="0.05" value="0.8" aria-label="2年目の戦力換算">
           <input data-rs="r3" type="number" min="0" max="1.2" step="0.05" value="1.0" aria-label="3年目の戦力換算">
         </span>
-        <em class="rs-hint">1.0＝一人前。現場監督や設計は1年目0.3〜0.4が目安。長期インターン経由なら1年目0.6も狙えます</em>
+        <em class="rs-hint">1.0＝一人前。技術職・専門職は1年目0.3〜0.4が目安。長期インターン経由なら1年目0.6も狙えます</em>
       </div>
 
       <label class="rs-f"><span>3年以内の離職率<b data-rso="churn"></b></span>
@@ -1678,11 +1678,11 @@ return S;})();
           </div>
           <div class="rs-wc">
             <div class="t">② 採らないと失うもの</div>
-            <label class="mini"><span>人手が足りず断っている棟数</span><span class="rs-row"><input data-rs="lose" type="number" min="0" max="50" step="0.5" value="1"><span class="rs-u">棟/年</span></span></label>
-            <label class="mini"><span>1棟あたりの粗利</span><span class="rs-row"><input data-rs="gp" type="number" min="0" step="10" value="992"><span class="rs-u">万円</span></span></label>
+            <label class="mini"><span>人手が足りず断っている仕事の売上</span><span class="rs-row"><input data-rs="lose" type="number" min="0" step="100" value="4048"><span class="rs-u">万円/年</span></span></label>
+            <label class="mini"><span>その仕事の粗利率</span><span class="rs-row"><input data-rs="gp" type="number" min="0" max="100" step="0.5" value="24.5"><span class="rs-u">%</span></span></label>
             <div class="big" data-rso="wl"></div>
             <p data-rso="wlt"></p>
-            <div class="cap">受注に対して監督・職人が足りない会社の見方です。上のROIには含めていません。1棟粗利の初期値は、3ヶ年経営計画と同じ平均単価4,048万円×粗利率24.5%。</div>
+            <div class="cap">依頼や引き合いに対して人手が足りず、仕事を断ったり先送りしたりしている会社の見方です。上のROIには含めていません。初期値は工務店の1棟分（売上4,048万円・粗利率24.5%）。</div>
           </div>
           <div class="rs-wc">
             <div class="t">③ 月額にならすと</div>
@@ -8736,9 +8736,9 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     var L=years(p,p.va,10),pb=payback(L.cum),c10=L.cum[10],c5=L.cum[5];
     o=out(a,'w10');o.innerHTML=sg(c10)+'<small>万円（10年）</small>';o.className='big '+(c10>=0?'pos':'neg');
     out(a,'w10t').textContent=(isFinite(pb)?('回収は'+(pb<1?'1年以内':('約'+pb.toFixed(1)+'年'))+'。'):'10年でも回収できません。')+'5年で'+sg(c5)+'万円、10年で'+sg(c10)+'万円。'+(p.cost>0&&c10>0?('採用費'+fmt(p.cost)+'万円を差し引いても、その約'+(c10/p.cost).toFixed(1)+'倍が手元に残る計算です。'):'');
-    var lost=p.lose*p.gp*3;
+    var gpy=p.lose*p.gp/100,lost=gpy*3;
     o=out(a,'wl');o.innerHTML=fmt(lost)+'<small>万円（3年）</small>';o.className='big '+(lost>0?'neg':'');
-    out(a,'wlt').textContent=p.lose>0?('年'+p.lose+'棟を断ると、3年で粗利'+fmt(lost)+'万円を逃します。採用費'+fmt(p.cost)+'万円の'+(p.cost>0?('約'+(lost/p.cost).toFixed(1)+'倍'):'—')+'です。'):'いま断っている仕事がなければ、この見方は当てはまりません。';
+    out(a,'wlt').textContent=gpy>0?('年'+fmt(p.lose)+'万円分の仕事を断ると、粗利は年'+fmt(gpy)+'万円、3年で'+fmt(lost)+'万円を逃します。採用費'+fmt(p.cost)+'万円の'+(p.cost>0?('約'+(lost/p.cost).toFixed(1)+'倍'):'—')+'です。'):'いま断っている仕事がなければ、この見方は当てはまりません。';
     var pm=p.n>0&&L.mon>0?p.cost/p.n/L.mon:0;
     out(a,'wm').innerHTML='月'+(pm>=1?pm.toFixed(1)+'<small>万円</small>':fmt(pm*10000)+'<small>円</small>')+'<small>／1人</small>';
     out(a,'wmt').textContent='1人あたり採用費'+fmt(p.cost/Math.max(p.n,1))+'万円 ÷ 見込み在籍'+Math.round(L.mon)+'か月。年間人件費'+fmt(p.salary*12*p.coef)+'万円の人を確保するための上乗せとして見ると、人件費の約'+(p.salary*p.coef>0?((pm/(p.salary*p.coef))*100).toFixed(1):'—')+'%です。';
