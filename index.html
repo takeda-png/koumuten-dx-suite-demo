@@ -1525,6 +1525,13 @@ return S;})();
 #rs-app input[type=range]{width:100%;accent-color:#2f9e82}
 #rs-app .rs-fixed{display:block;padding:7px 10px;border:1px dashed #cfd8d3;border-radius:8px;background:#f4f6f3;color:#16302b;font-size:16px;font-weight:800;font-variant-numeric:tabular-nums}
 #rs-app .rs-fixed small{font-size:12px;margin-left:3px;font-weight:700}
+#rs-app .rs-gauge .gr{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr) 92px;gap:10px;align-items:center;margin:9px 0;font-size:13px}
+#rs-app .rs-gauge .gr span{color:#3d524c;line-height:1.35}
+#rs-app .rs-gauge .gr b{text-align:right;font-variant-numeric:tabular-nums;color:#16302b;font-size:15px}
+#rs-app .rs-gauge .tk{height:14px;border-radius:7px;background:#f1efe8;overflow:hidden}
+#rs-app .rs-gauge .tk i{display:block;height:100%;border-radius:7px}
+#rs-app .rs-gauge .rs-gnote{margin:12px 0 6px;font-size:14px;line-height:1.75;color:#16302b}
+@media(max-width:640px){#rs-app .rs-gauge .gr{grid-template-columns:minmax(0,1fr) 84px}#rs-app .rs-gauge .gr .tk{grid-column:1/-1;grid-row:2}}
 #rs-app .rs-u{font-size:12px;color:#7e8b96;white-space:nowrap}
 #rs-app .rs-hint{font-size:11.5px;color:#7e8b96;line-height:1.7}
 #rs-app .rs-pre{display:flex;flex-wrap:wrap;gap:6px}
@@ -1666,6 +1673,12 @@ return S;})();
       </div>
 
       <div class="rs-vd"><i data-rso="dot"></i><div data-rso="vtext"></div></div>
+      <div class="panel rs-gauge">
+        <div class="rs-h">採用費のものさし（1人あたり）</div>
+        <div data-rso="gauge"></div>
+        <p class="rs-gnote" data-rso="gnote"></p>
+        <em class="rs-hint">新卒の平均は「マイナビ 2026年卒 企業新卒内定状況調査」の入社予定者1人あたり採用費（非上場企業 約71.2万円・全体 約71.5万円）。会社ごとに採用費÷入社予定人数を出した平均です</em>
+      </div>
 
       <div class="panel">
         <div class="rs-h">この採用費を払う理由</div>
@@ -8723,12 +8736,21 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     o=out(a,'net');o.innerHTML=sg(r.net)+'<small>万円</small>';o.className='v '+(r.net>=0?'pos':'neg');
     out(a,'be').innerHTML=isFinite(pb0)?('約'+(pb0<1?'1':pb0.toFixed(1))+'<small>年</small>'):'10年超';
     o=out(a,'be');o.className='v '+(pb0<=3?'pos':'neg');
-    out(a,'be_n').textContent=cap>0?('参考：3年で元を取れる採用費の上限は'+fmt(cap)+'万円'):'参考：採用費が0円でも3年では回収できない条件';
+    out(a,'be_n').textContent='採用費'+fmt(p.cost)+'万円を含めて計算';
     var d=out(a,'dot'),t=out(a,'vtext');
     var yr=isFinite(pb0)?('約'+(pb0<1?'1':pb0.toFixed(1))+'年'):'10年以上';
     if(r.net>=0){d.style.background='#2f9e82';t.textContent='採用費'+fmt(p.cost)+'万円をかけても3年で元が取れ、3年間で'+fmt(r.net)+'万円が残ります（回収は'+yr+'）。3年で元を取れる採用費の上限は'+fmt(cap)+'万円なので、まだ'+fmt(cap-p.cost)+'万円の余裕があります。';}
     else if(isFinite(pb0)){d.style.background=pb0<=5?'#e0a33a':'#d1574b';t.textContent='採用費'+fmt(p.cost)+'万円だと3年では'+fmt(-r.net)+'万円足りず、元が取れるのは'+yr+'後です。'+(cap>0?('3年で回収したいなら、採用費を'+fmt(cap)+'万円以下に抑える必要があります。'):'この条件では採用費が0円でも3年では回収できません（1年目の人件費を付加価値で取り返すのに時間がかかるため）。')+'長く見ると下の「長く見ると」のとおり利益は積み上がります。';}
     else{d.style.background='#d1574b';t.textContent='この条件では10年たっても採用費と人件費を回収できません。1人あたり付加価値を上げる・1年目の戦力換算を上げる・離職を減らす、のどれかが要ります。';}
+    var AVG=71.2,nn=Math.max(p.n,1),cpp=p.cost/nn,capp=cap/nn,avgT=AVG*nn;
+    p.cost=avgT;var pbA=payback(years(p,p.va,10).cum);p.cost=c0;
+    var gm=Math.max(AVG,cpp,1)*2,yrs=function(v){return isFinite(v)?('約'+(v<1?'1':v.toFixed(1))+'年'):'10年超';};
+    var gr=[['新卒採用の平均',AVG,'#9fb3ad'],['この試算の採用費',cpp,'#16302b'],['3年で元が取れる上限',capp,'#2f9e82']];
+    out(a,'gauge').innerHTML=gr.map(function(x){return '<div class="gr"><span>'+x[0]+'</span><div class="tk"><i style="width:'+Math.min(100,Math.max(0,x[1]/gm*100)).toFixed(1)+'%;background:'+x[2]+'"></i></div><b>'+(x[1]>0?fmt(x[1])+'万円':'0円')+'</b></div>';}).join('');
+    var ratio=cpp/AVG,gt='この試算の採用費は1人'+fmt(cpp)+'万円で、新卒の平均（約'+fmt(AVG)+'万円）の約'+ratio.toFixed(1)+'倍です。';
+    gt+=capp>0?('3年で元を取るなら1人'+fmt(capp)+'万円までが上限です。'):'この条件では、採用費が0円でも3年では元が取れません。';
+    gt+='採用費を平均並み（全員で約'+fmt(avgT)+'万円）に抑えると、元が取れるまで'+yrs(pbA)+'（いまは'+yrs(pb0)+'）。';
+    out(a,'gnote').textContent=gt;
     var s=r.st,names={v:'生む付加価値',c:'人件費',p:'純貢献'};
     out(a,'tbl').innerHTML=['v','c','p'].map(function(k){
       var x=s[k],T=sum(x),neg=function(n){return k==='p'&&Math.round(n)<0?' class="neg"':(k==='p'&&k?' class="pos"':'');};
