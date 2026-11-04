@@ -1625,9 +1625,9 @@ return S;})();
         <span class="rs-row"><input data-rs="n" type="number" min="1" max="50" step="1" value="3"><span class="rs-u">名</span></span>
       </label>
 
-      <label class="rs-f"><span>採用費（3年でトントンになる金額・自動）<b data-rso="cpp"></b></span>
-        <input data-rs="cost" type="hidden" value="0"><div class="rs-fixed" data-rso="costfix"></div>
-        <em class="rs-hint">3年間の「付加価値 − 人件費」（離職の分も込み）をそのまま採用費の上限とし、10万円単位で切り下げています。ほかの条件を変えると自動で変わり、直接は入力できません。媒体・紹介手数料・イベント・制作物・内定者フォローなどの合計で、社内の工数は含みません</em>
+      <label class="rs-f"><span>採用費（全員分の合計）<b data-rso="cpp"></b></span>
+        <input data-rs="cost" type="hidden" value="500"><div class="rs-fixed" data-rso="costfix"></div>
+        <em class="rs-hint">この試算では実際にかかる額として500万円で固定しています（媒体・紹介手数料・イベント・制作物・内定者フォローなどの合計。社内の工数は含みません）。業種を変えても採用費は変わりません</em>
       </label>
 
       <label class="rs-f"><span>初任給（月額）<b data-rso="salary"></b></span>
@@ -1662,7 +1662,7 @@ return S;})();
       <div class="rs-kpis">
         <div class="rs-k dk"><div class="l">3年ROI（総投資に対して）</div><div class="v" data-rso="roi"></div><div class="n">3年純利益 ÷（採用費＋人件費）</div></div>
         <div class="rs-k"><div class="l">3年間の純利益（全員分）</div><div class="v" data-rso="net"></div><div class="n">付加価値 − 人件費 − 採用費</div></div>
-        <div class="rs-k"><div class="l">3年でトントンになる採用費</div><div class="v" data-rso="be"></div><div class="n" data-rso="be_n"></div></div>
+        <div class="rs-k"><div class="l">元が取れるまで（採用費込み）</div><div class="v" data-rso="be"></div><div class="n" data-rso="be_n"></div></div>
       </div>
 
       <div class="rs-vd"><i data-rso="dot"></i><div data-rso="vtext"></div></div>
@@ -8708,8 +8708,8 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
   function payback(cum){for(var t=1;t<cum.length;t++){if(cum[t]>=0){var f=cum[t-1]<0?(-cum[t-1])/(cum[t]-cum[t-1]):0;return t-1+f;}}return Infinity;}
   function be(p){var a=calc(p,0).net,b=calc(p,1000).net,s=(b-a)/1000;return s>0?-a/s:Infinity;}
   function render(a){
-    var p=read(a);p.cost=0;var r0=calc(p,p.va);p.cost=Math.max(0,Math.floor(r0.net/10)*10);el(a,'cost').value=p.cost;
-    var r=calc(p,p.va),B=be(p);
+    var p=read(a),c0=p.cost;p.cost=0;var cap=Math.max(0,Math.floor(calc(p,p.va).net/10)*10);p.cost=c0;
+    var r=calc(p,p.va),B=be(p),L0=years(p,p.va,10),pb0=payback(L0.cum);
     out(a,'costfix').innerHTML=fmt(p.cost)+'<small>万円</small>';
     out(a,'va').textContent=fmt(p.va)+'万円';
     out(a,'n').textContent=p.n+'名';
@@ -8721,11 +8721,14 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     out(a,'churn').textContent=p.churn+'%';
     var o=out(a,'roi');o.textContent=pc(r.roi);o.className='v '+(r.roi>=0?'pos':'neg');
     o=out(a,'net');o.innerHTML=sg(r.net)+'<small>万円</small>';o.className='v '+(r.net>=0?'pos':'neg');
-    out(a,'be').innerHTML=fmt(p.cost)+'<small>万円</small>';
-    out(a,'be_n').textContent=p.cost>0?('1人あたり'+fmt(p.cost/Math.max(p.n,1))+'万円まで'):'3年では人件費も回収できない';
+    out(a,'be').innerHTML=isFinite(pb0)?('約'+(pb0<1?'1':pb0.toFixed(1))+'<small>年</small>'):'10年超';
+    o=out(a,'be');o.className='v '+(pb0<=3?'pos':'neg');
+    out(a,'be_n').textContent=cap>0?('参考：3年で元を取れる採用費の上限は'+fmt(cap)+'万円'):'参考：採用費が0円でも3年では回収できない条件';
     var d=out(a,'dot'),t=out(a,'vtext');
-    if(p.cost>0){d.style.background='#2f9e82';t.textContent='この条件なら、採用費は全員で約'+fmt(p.cost)+'万円（1人あたり約'+fmt(p.cost/Math.max(p.n,1))+'万円）までかけても3年で元が取れます。これを超えると3年では回収できず、抑えた分はそのまま利益になります。4年目以降は下の「長く見ると」のとおり利益が積み上がります。';}
-    else{d.style.background='#d1574b';t.textContent='この条件では、採用費が0円でも3年間の人件費を付加価値で回収できません。1人あたり付加価値を上げる・1年目の戦力換算を上げる・離職を減らす、のどれかが要ります。';}
+    var yr=isFinite(pb0)?('約'+(pb0<1?'1':pb0.toFixed(1))+'年'):'10年以上';
+    if(r.net>=0){d.style.background='#2f9e82';t.textContent='採用費'+fmt(p.cost)+'万円をかけても3年で元が取れ、3年間で'+fmt(r.net)+'万円が残ります（回収は'+yr+'）。3年で元を取れる採用費の上限は'+fmt(cap)+'万円なので、まだ'+fmt(cap-p.cost)+'万円の余裕があります。';}
+    else if(isFinite(pb0)){d.style.background=pb0<=5?'#e0a33a':'#d1574b';t.textContent='採用費'+fmt(p.cost)+'万円だと3年では'+fmt(-r.net)+'万円足りず、元が取れるのは'+yr+'後です。'+(cap>0?('3年で回収したいなら、採用費を'+fmt(cap)+'万円以下に抑える必要があります。'):'この条件では採用費が0円でも3年では回収できません（1年目の人件費を付加価値で取り返すのに時間がかかるため）。')+'長く見ると下の「長く見ると」のとおり利益は積み上がります。';}
+    else{d.style.background='#d1574b';t.textContent='この条件では10年たっても採用費と人件費を回収できません。1人あたり付加価値を上げる・1年目の戦力換算を上げる・離職を減らす、のどれかが要ります。';}
     var s=r.st,names={v:'生む付加価値',c:'人件費',p:'純貢献'};
     out(a,'tbl').innerHTML=['v','c','p'].map(function(k){
       var x=s[k],T=sum(x),neg=function(n){return k==='p'&&Math.round(n)<0?' class="neg"':(k==='p'&&k?' class="pos"':'');};
