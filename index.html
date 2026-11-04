@@ -1509,6 +1509,181 @@ return S;})();
   </div>
 </div>
 </template>
+<template id="roisim-html">
+<style>
+#rs-app{width:100%;min-width:300px}
+#rs-app em{font-style:normal}
+#rs-app .rs-grid{display:grid;grid-template-columns:360px minmax(0,1fr);gap:16px;align-items:start}
+@media(max-width:980px){#rs-app .rs-grid{grid-template-columns:minmax(0,1fr)}}
+#rs-app .rs-in{display:flex;flex-direction:column;gap:13px}
+#rs-app .rs-in h3,#rs-app .rs-h{margin:0 0 4px;font-size:13px;font-weight:700;color:#2f9e82;letter-spacing:.06em}
+#rs-app .rs-f{display:flex;flex-direction:column;gap:4px}
+#rs-app .rs-f>span{font-size:12.5px;color:#5c6b66;display:flex;justify-content:space-between;gap:8px}
+#rs-app .rs-f>span b{color:#16302b;font-variant-numeric:tabular-nums}
+#rs-app .rs-row{display:flex;gap:6px;align-items:center}
+#rs-app input[type=number],#rs-app select{width:100%;min-width:0;padding:7px 9px;border:1px solid #e5e2d8;border-radius:8px;background:#fbfaf6;color:#16302b;font:inherit;font-size:13.5px;font-variant-numeric:tabular-nums}
+#rs-app input[type=range]{width:100%;accent-color:#2f9e82}
+#rs-app .rs-u{font-size:12px;color:#7e8b96;white-space:nowrap}
+#rs-app .rs-hint{font-size:11.5px;color:#7e8b96;line-height:1.7}
+#rs-app .rs-ci{display:grid;grid-template-columns:minmax(0,1fr) 96px;gap:6px;align-items:center;font-size:12.5px;color:#5c6b66}
+#rs-app .rs-tot{display:flex;justify-content:space-between;align-items:baseline;padding:7px 10px;background:#f2fbf7;border-radius:8px;font-size:12.5px;margin-top:4px}
+#rs-app .rs-tot b{font-size:17px;font-variant-numeric:tabular-nums}
+#rs-app .rs-pre{display:flex;flex-wrap:wrap;gap:6px}
+#rs-app .rs-pre button{font:inherit;font-size:12px;padding:5px 10px;border:1px solid #e5e2d8;border-radius:999px;background:#fff;color:#16302b;cursor:pointer}
+#rs-app .rs-pre button:hover{border-color:#2f9e82;color:#1b6b57}
+#rs-app .rs-out{display:flex;flex-direction:column;gap:16px;min-width:0}
+#rs-app .rs-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+#rs-app .rs-k{background:#fff;border:1px solid #e5e2d8;border-radius:12px;padding:14px 16px;min-width:0}
+#rs-app .rs-k.dk{background:#16302b;border-color:#16302b;color:#fff}
+#rs-app .rs-k .l{font-size:12px;color:#7e8b96}
+#rs-app .rs-k.dk .l,#rs-app .rs-k.dk .n{color:#b9d6cc}
+#rs-app .rs-k .v{font-size:26px;font-weight:800;line-height:1.25;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+#rs-app .rs-k .v small{font-size:13px;margin-left:3px}
+#rs-app .rs-k .n{font-size:11.5px;color:#7e8b96}
+#rs-app .pos{color:#1b8a6e}#rs-app .neg{color:#c0443a}
+#rs-app .rs-k.dk .pos{color:#7fe0c2}#rs-app .rs-k.dk .neg{color:#ff9d92}
+#rs-app .rs-vd{display:flex;gap:10px;align-items:flex-start;padding:12px 16px;border-radius:12px;background:#f2fbf7;border:1px solid #e5e2d8;font-size:13.5px;line-height:1.8}
+#rs-app .rs-vd i{width:11px;height:11px;border-radius:50%;margin-top:7px;flex:none}
+#rs-app .rs-scroll{overflow-x:auto}
+#rs-app table.rs-t{width:100%;min-width:440px;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+#rs-app .rs-t th,#rs-app .rs-t td{padding:8px 10px;text-align:right;border-bottom:1px solid #eeebe2}
+#rs-app .rs-t th:first-child,#rs-app .rs-t td:first-child{text-align:left}
+#rs-app .rs-t thead th{background:#16302b;color:#fff;font-weight:700}
+#rs-app .rs-t tr.tt td{font-weight:700;background:#f2fbf7}
+#rs-app .rs-bars{display:flex;flex-direction:column;gap:8px}
+#rs-app .rs-bar{display:grid;grid-template-columns:72px minmax(0,1fr) 84px;gap:8px;align-items:center;font-size:12.5px}
+#rs-app .rs-bar .tr{height:16px;background:#eef6f2;border-radius:4px;overflow:hidden}
+#rs-app .rs-bar .fi{height:100%;background:#2f9e82;border-radius:4px}
+#rs-app .rs-bar .fi.neg{background:#d1574b}
+#rs-app .rs-bar .va{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+#rs-app .rs-sens{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+@media(max-width:1180px){#rs-app .rs-sens{grid-template-columns:repeat(3,minmax(0,1fr))}}
+#rs-app .rs-sc{background:#fff;border:1px solid #e5e2d8;border-radius:10px;padding:10px 12px}
+#rs-app .rs-sc.cur{border-color:#2f9e82;box-shadow:inset 0 0 0 1px #2f9e82}
+#rs-app .rs-sc .l{font-size:11.5px;color:#7e8b96}
+#rs-app .rs-sc .v{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums}
+#rs-app .rs-sc .d{font-size:11.5px;color:#7e8b96}
+#rs-app .rs-note{background:#f2fbf7;border-left:3px solid #2f9e82;border-radius:0 8px 8px 0;padding:9px 12px;font-size:12px;line-height:1.8;color:#28453c}
+#rs-app .rs-src{font-size:11.5px;color:#7e8b96;line-height:1.8}
+</style>
+<div id="rs-app">
+  <div class="module-head">
+    <h2>新卒採用 ROIシミュレーター</h2>
+    <p>新卒を採ったら何年で元が取れるかを試算します。1人が生む付加価値・採用費・初任給・定着率を入れると、3年間のROIと「3年で回収するのに必要な付加価値」が出ます。初期値は建設業の中小企業平均です。自社の決算書の数字に置き換えてください。</p>
+  </div>
+
+  <div class="rs-grid">
+    <div class="panel rs-in">
+      <h3>入力</h3>
+      <label class="rs-f"><span>業種（中小企業・法人の平均値）</span>
+        <select data-rs="ind">
+          <option value="598">全産業平均 598万円</option>
+          <option value="1540">不動産業・物品賃貸業 1,540万円</option>
+          <option value="750">卸売業 750万円</option>
+          <option value="690" selected>建設業 690万円</option>
+          <option value="670">学術研究・専門技術サービス業 670万円</option>
+          <option value="660">製造業・情報通信業 660万円</option>
+          <option value="570">運輸業・郵便業 570万円</option>
+          <option value="460">生活関連サービス業・娯楽業 460万円</option>
+          <option value="410">小売業 410万円</option>
+          <option value="400">サービス業（他に分類されないもの） 400万円</option>
+          <option value="240">宿泊業・飲食サービス業 240万円</option>
+          <option value="custom">自社の数字を入力</option>
+        </select>
+        <em class="rs-hint">出典：中小企業庁 中小企業実態基本調査（法人企業・令和4年度決算）。選ぶと下の欄に入ります</em>
+      </label>
+
+      <label class="rs-f"><span>1人が生む年間付加価値<b data-rso="va"></b></span>
+        <span class="rs-row"><input data-rs="va" type="number" min="100" max="5000" step="10" value="690"><span class="rs-u">万円／年</span></span>
+        <em class="rs-hint">自社で出すなら「粗利 ÷ 戦力の人数」。粗利で入れると業種平均より控えめな試算になります</em>
+      </label>
+
+      <div class="rs-pre">
+        <button type="button" data-rs-pre="base">標準に戻す</button>
+        <button type="button" data-rs-pre="intern">インターン経由（1年目0.6・離職15%）</button>
+        <button type="button" data-rs-pre="small">30〜99人規模の離職率 41.9%</button>
+        <button type="button" data-rs-pre="none">全員定着した場合</button>
+      </div>
+
+      <label class="rs-f"><span>採用人数<b data-rso="n"></b></span>
+        <span class="rs-row"><input data-rs="n" type="number" min="1" max="50" step="1" value="3"><span class="rs-u">名</span></span>
+      </label>
+
+      <div class="rs-f"><span>採用費の内訳（万円）<b data-rso="cpp"></b></span>
+        <label class="rs-ci"><span>ナビ媒体・掲載費</span><input data-rs="c_media" data-rs-c type="number" min="0" step="10" value="150"></label>
+        <label class="rs-ci"><span>紹介会社への成功報酬</span><input data-rs="c_agent" data-rs-c type="number" min="0" step="10" value="100"></label>
+        <label class="rs-ci"><span>長期インターン人件費</span><input data-rs="c_intern" data-rs-c type="number" min="0" step="10" value="100"></label>
+        <label class="rs-ci"><span>説明会・合説・イベント</span><input data-rs="c_event" data-rs-c type="number" min="0" step="10" value="60"></label>
+        <label class="rs-ci"><span>採用サイト・制作物</span><input data-rs="c_site" data-rs-c type="number" min="0" step="10" value="50"></label>
+        <label class="rs-ci"><span>内定者フォロー・研修</span><input data-rs="c_follow" data-rs-c type="number" min="0" step="10" value="40"></label>
+        <label class="rs-ci"><span>その他</span><input data-rs="c_other" data-rs-c type="number" min="0" step="10" value="0"></label>
+        <div class="rs-tot"><span>合計</span><b data-rso="cost"></b></div>
+        <em class="rs-hint">人事・面接官の工数は含めていません。含めるなら「その他」へ</em>
+      </div>
+
+      <label class="rs-f"><span>初任給（月額）<b data-rso="salary"></b></span>
+        <span class="rs-row"><input data-rs="salary" type="number" min="15" max="50" step="0.1" value="23.7"><span class="rs-u">万円／月</span></span>
+      </label>
+
+      <label class="rs-f"><span>人件費係数（法定福利・賞与・教育費込み）<b data-rso="coef"></b></span>
+        <input data-rs="coef" type="range" min="1.2" max="1.8" step="0.05" value="1.4">
+        <em class="rs-hint">月給×12×係数＝年間人件費。1.4が目安</em>
+      </label>
+
+      <label class="rs-f"><span>年間昇給率<b data-rso="raise"></b></span>
+        <input data-rs="raise" type="range" min="0" max="10" step="0.5" value="3">
+      </label>
+
+      <div class="rs-f"><span>戦力換算（1年目／2年目／3年目）<b data-rso="ramp"></b></span>
+        <span class="rs-row">
+          <input data-rs="r1" type="number" min="0" max="1" step="0.05" value="0.4" aria-label="1年目の戦力換算">
+          <input data-rs="r2" type="number" min="0" max="1" step="0.05" value="0.8" aria-label="2年目の戦力換算">
+          <input data-rs="r3" type="number" min="0" max="1.2" step="0.05" value="1.0" aria-label="3年目の戦力換算">
+        </span>
+        <em class="rs-hint">1.0＝一人前。現場監督や設計は1年目0.3〜0.4が目安。長期インターン経由なら1年目0.6も狙えます</em>
+      </div>
+
+      <label class="rs-f"><span>3年以内の離職率<b data-rso="churn"></b></span>
+        <input data-rs="churn" type="range" min="0" max="70" step="0.1" value="33.8">
+        <em class="rs-hint">全国平均33.8%、30〜99人規模41.9%、5〜29人52.0%。辞めた人は平均1.5年いたものとして計算</em>
+      </label>
+    </div>
+
+    <div class="rs-out">
+      <div class="rs-kpis">
+        <div class="rs-k dk"><div class="l">3年ROI（総投資に対して）</div><div class="v" data-rso="roi"></div><div class="n">3年純利益 ÷（採用費＋人件費）</div></div>
+        <div class="rs-k"><div class="l">3年間の純利益（全員分）</div><div class="v" data-rso="net"></div><div class="n">付加価値 − 人件費 − 採用費</div></div>
+        <div class="rs-k"><div class="l">3年で回収するのに必要な付加価値</div><div class="v" data-rso="be"></div><div class="n" data-rso="be_n"></div></div>
+      </div>
+
+      <div class="rs-vd"><i data-rso="dot"></i><div data-rso="vtext"></div></div>
+
+      <div class="panel">
+        <div class="rs-h">定着した1人の3年モデル（万円）</div>
+        <div class="rs-scroll">
+          <table class="rs-t">
+            <thead><tr><th>項目</th><th>1年目</th><th>2年目</th><th>3年目</th><th>3年計</th></tr></thead>
+            <tbody data-rso="tbl"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="rs-h">全体の収支（万円）</div>
+        <div class="rs-bars" data-rso="bars"></div>
+      </div>
+
+      <div class="panel">
+        <div class="rs-h">1人あたり付加価値を変えると（3年ROI）</div>
+        <div class="rs-sens" data-rso="sens"></div>
+      </div>
+
+      <div class="rs-note">人件費＝初任給×12×係数で、2年目以降は昇給率で増えます。付加価値＝入力値×各年の戦力換算。辞めた人は1年目は丸1年、2年目は半年在籍したものとして付加価値・人件費とも按分し、採用費は全員に均等にかかるとしています。回収ラインは、3年の純利益が0になる付加価値を離職の影響込みで解いたものです。</div>
+      <div class="rs-src">出典：中小企業庁「令和5年中小企業実態基本調査速報」（法人企業・令和4年度決算、業種別は10万円単位に換算）／リクルートワークス研究所 第43回ワークス大卒求人倍率調査（2026年4月入社 大卒初任給23.7万円）／厚生労働省 新規学卒就職者の離職状況（令和4年3月卒）。業種平均は中小企業全体の値です。</div>
+    </div>
+  </div>
+</div>
+</template>
 <template id="sec-html">
 <style>
 #sec-app .sec-sev{display:inline-block;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:700;white-space:nowrap}
@@ -3666,7 +3841,7 @@ h("div",{className:"hint"},"全部を一度に手放すことはできません�
 h("div",{className:"panel"},
 h("h3",null,"3ヶ年計画とのつながり"),
 h("p",{className:"hint",style:{margin:0}},"3ヶ年経営計画では棟数を増やすと必要人数が自動で増えますが、増えた人がすぐ戦力になるわけではありません。この表で「渡せる業務」を先に決めておくと、採用したときに何を任せるかが決まっている状態になります。逆に、ここが埋まっていないまま人を増やすと、社長の仕事は減らずに人件費だけが増えます。")))}
-,group:"経営"},{key:"leads",label:"追客管理",icon:"📇",comp:function(){let[e,t]=(0,ew.useState)(C0),[r,n]=(0,ew.useState)("all"),[a,i]=(0,ew.useState)(null),l=(0,ew.useRef)(null),o=(0,ew.useMemo)(()=>e.filter(e=>"all"===r||e.grade===r),[e,r]),s=e.filter(e=>e.last>=("A"===e.grade?7:"B"===e.grade?14:30)),u=async r=>{if(r)try{let n=CJ(await r.arrayBuffer(),{type:"array"}),a=C$(n.Sheets[n.SheetNames[0]],{header:1,raw:!1,defval:null}),o=(a[0]||[]).map(e=>String(e??""));if(!o[0]?.includes("お客様"))return void i({ok:!1,t:"ヘッダー形式を認識できません。テンプレートCSVの列構成でアップロードしてください。"});let s=a.slice(1).filter(e=>e&&e[0]).map((e,t)=>({id:`L-I${String(t+1).padStart(2,"0")}`,name:String(e[0]),grade:["A","B","C"].includes(String(e[1]))?String(e[1]):"C",src:String(e[2]??"インポート"),land:String(e[3]??"土地なし"),budget:Number(String(e[4]??"0").replace(/[,、]/g,""))||0,last:Number(e[5]??0)||0,next:String(e[6]??"初回接触"),nextDate:String(e[7]??"未定"),note:String(e[8]??"")})),u=[...e.filter(e=>!s.some(t=>t.name===e.name)),...s];t(u),i({ok:!0,t:`${s.length}\u{4EF6}\u{3092}\u{53D6}\u{308A}\u{8FBC}\u{307F}\u{307E}\u{3057}\u{305F}(\u{540C}\u{540D}\u{306F}\u{4E0A}\u{66F8}\u{304D})\u{3002}\u{65E2}\u{5B58}\u{306E}Excel\u{8FFD}\u{5BA2}\u{30EA}\u{30B9}\u{30C8}\u{304B}\u{3089}\u{305D}\u{306E}\u{307E}\u{307E}\u{79FB}\u{884C}\u{3067}\u{304D}\u{307E}\u{3059}\u{3002}`}),l.current&&(l.current.value="")}catch{i({ok:!1,t:"読み取りに失敗しました。CSV / xlsx / xls 形式かご確認ください。"})}};return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"追客管理(見込み客)"}),(0,eO.jsx)("p",{children:"パイプラインの数字の裏側にある個票です。温度感別の放置日数アラートと次回アクションの予約で、追客を営業個人の記憶から仕組みに移します。"})]}),(0,eO.jsxs)("div",{className:"kpi-grid",children:[(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"新規反響(当月)"}),(0,eO.jsx)("div",{className:"kpi-value",children:"34件"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"前年同月比 +30.8%(前年26件)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"追客中"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[e.length+22,"件"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"A:8 / B:11 / C:9(表示は抜粋)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"今月の受注"}),(0,eO.jsx)("div",{className:"kpi-value",children:"3棟"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"前年同月 2棟 / 累計18棟(前年比+20%)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"反響→契約 転換率"}),(0,eO.jsx)("div",{className:"kpi-value",children:"8.8%"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"初回商談化率 52.9% / 商談→契約 16.7%"})]})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>{let t="\uFEFF"+[["お客様名","温度(A/B/C)","経路","土地(あり/土地なし)","予算(万円)","最終接触(日前)","次回アクション","予定日","メモ"],...e.map(e=>[e.name,e.grade,e.src,e.land,e.budget,e.last,e.next,e.nextDate,e.note])].map(e=>e.join(",")).join("\n"),r=document.createElement("a");r.href=URL.createObjectURL(new Blob([t],{type:"text/csv"})),r.download="追客リスト.csv",r.click()},children:"📥 テンプレCSVをダウンロード(現データ入り)"}),(0,eO.jsxs)("label",{className:"tpl-btn",style:{cursor:"pointer"},children:["📤 Excel / CSV から取り込む",(0,eO.jsx)("input",{ref:l,type:"file",accept:".csv,.xlsx,.xls",style:{display:"none"},onChange:e=>u(e.target.files?.[0])})]}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"いまお使いの追客Excelをそのまま移行できます。列:お客様名/温度/経路/土地/予算/最終接触/次回アクション/予定日/メモ"}),a&&(0,eO.jsx)("div",{className:`imp-msg ${a.ok?"ok":"ng"}`,style:{flexBasis:"100%"},children:a.t})]}),s.length>0&&(0,eO.jsxs)("div",{className:"alert-center",style:{borderLeftColor:"#D98E32"},children:[(0,eO.jsxs)("div",{className:"alert-title",children:["⏰ 放置アラート(",s.length,"件)— 基準: A=7日 / B=14日 / C=30日"]}),s.map(e=>(0,eO.jsxs)("div",{className:"alert-line amber",children:[(0,eO.jsx)("span",{children:"👤"}),(0,eO.jsxs)("span",{className:"alert-text",children:[e.name,"(",e.grade,"ランク)最終接触から",e.last,"日経過"]}),(0,eO.jsxs)("span",{className:"alert-to",children:["→ ",e.next]})]},e.id))]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("div",{className:"proj-tabs",style:{marginBottom:12},children:["all","A","B","C"].map(t=>(0,eO.jsx)("button",{className:`proj-tab ${r===t?"on":""}`,onClick:()=>n(t),children:"all"===t?`\u{5168}\u{4EF6}(${e.length})`:`${t}\u{30E9}\u{30F3}\u{30AF}(${e.filter(e=>e.grade===t).length})`},t))}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"お客様"}),(0,eO.jsx)("th",{children:"温度"}),(0,eO.jsx)("th",{children:"経路"}),(0,eO.jsx)("th",{children:"土地"}),(0,eO.jsx)("th",{className:"r",children:"予算"}),(0,eO.jsx)("th",{className:"r",children:"最終接触"}),(0,eO.jsx)("th",{children:"次回アクション(予定日)"}),(0,eO.jsx)("th",{children:"メモ"})]})}),(0,eO.jsx)("tbody",{children:o.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.name})}),(0,eO.jsx)("td",{children:(0,eO.jsx)("span",{className:"badge",style:{background:`${C1[e.grade]}22`,color:C1[e.grade]},children:e.grade})}),(0,eO.jsx)("td",{children:e.src}),(0,eO.jsx)("td",{children:e.land}),(0,eO.jsxs)("td",{className:"r",children:[e.budget.toLocaleString(),"万円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:e.last>=14?"#C4554D":void 0,fontWeight:e.last>=14?800:400},children:[e.last,"日前"]}),(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.nextDate})," ",e.next]}),(0,eO.jsx)("td",{style:{fontSize:12,color:"#5C6B77"},children:e.note})]},e.id))})]}),(0,eO.jsx)("div",{className:"hint",children:"スイート連携:資金計画書・設計AIプレゼン・図面アーカイブの類似案・補助金の残枠アラートが、そのまま追客の「接触する口実」になります。"})]})]})},group:"営業"},
+,group:"経営"},{key:"roisim",label:"新卒採用ROIシミュレーター",icon:"🎓",comp:function(){return(0,eO.jsx)("div",{dangerouslySetInnerHTML:{__html:document.getElementById("roisim-html").innerHTML}})},group:"経営"},{key:"leads",label:"追客管理",icon:"📇",comp:function(){let[e,t]=(0,ew.useState)(C0),[r,n]=(0,ew.useState)("all"),[a,i]=(0,ew.useState)(null),l=(0,ew.useRef)(null),o=(0,ew.useMemo)(()=>e.filter(e=>"all"===r||e.grade===r),[e,r]),s=e.filter(e=>e.last>=("A"===e.grade?7:"B"===e.grade?14:30)),u=async r=>{if(r)try{let n=CJ(await r.arrayBuffer(),{type:"array"}),a=C$(n.Sheets[n.SheetNames[0]],{header:1,raw:!1,defval:null}),o=(a[0]||[]).map(e=>String(e??""));if(!o[0]?.includes("お客様"))return void i({ok:!1,t:"ヘッダー形式を認識できません。テンプレートCSVの列構成でアップロードしてください。"});let s=a.slice(1).filter(e=>e&&e[0]).map((e,t)=>({id:`L-I${String(t+1).padStart(2,"0")}`,name:String(e[0]),grade:["A","B","C"].includes(String(e[1]))?String(e[1]):"C",src:String(e[2]??"インポート"),land:String(e[3]??"土地なし"),budget:Number(String(e[4]??"0").replace(/[,、]/g,""))||0,last:Number(e[5]??0)||0,next:String(e[6]??"初回接触"),nextDate:String(e[7]??"未定"),note:String(e[8]??"")})),u=[...e.filter(e=>!s.some(t=>t.name===e.name)),...s];t(u),i({ok:!0,t:`${s.length}\u{4EF6}\u{3092}\u{53D6}\u{308A}\u{8FBC}\u{307F}\u{307E}\u{3057}\u{305F}(\u{540C}\u{540D}\u{306F}\u{4E0A}\u{66F8}\u{304D})\u{3002}\u{65E2}\u{5B58}\u{306E}Excel\u{8FFD}\u{5BA2}\u{30EA}\u{30B9}\u{30C8}\u{304B}\u{3089}\u{305D}\u{306E}\u{307E}\u{307E}\u{79FB}\u{884C}\u{3067}\u{304D}\u{307E}\u{3059}\u{3002}`}),l.current&&(l.current.value="")}catch{i({ok:!1,t:"読み取りに失敗しました。CSV / xlsx / xls 形式かご確認ください。"})}};return(0,eO.jsxs)("div",{children:[(0,eO.jsxs)("div",{className:"module-head",children:[(0,eO.jsx)("h2",{children:"追客管理(見込み客)"}),(0,eO.jsx)("p",{children:"パイプラインの数字の裏側にある個票です。温度感別の放置日数アラートと次回アクションの予約で、追客を営業個人の記憶から仕組みに移します。"})]}),(0,eO.jsxs)("div",{className:"kpi-grid",children:[(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"新規反響(当月)"}),(0,eO.jsx)("div",{className:"kpi-value",children:"34件"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"前年同月比 +30.8%(前年26件)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"追客中"}),(0,eO.jsxs)("div",{className:"kpi-value",children:[e.length+22,"件"]}),(0,eO.jsx)("div",{className:"kpi-sub",children:"A:8 / B:11 / C:9(表示は抜粋)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"今月の受注"}),(0,eO.jsx)("div",{className:"kpi-value",children:"3棟"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"前年同月 2棟 / 累計18棟(前年比+20%)"})]}),(0,eO.jsxs)("div",{className:"kpi",children:[(0,eO.jsx)("div",{className:"kpi-label",children:"反響→契約 転換率"}),(0,eO.jsx)("div",{className:"kpi-value",children:"8.8%"}),(0,eO.jsx)("div",{className:"kpi-sub",children:"初回商談化率 52.9% / 商談→契約 16.7%"})]})]}),(0,eO.jsxs)("div",{className:"panel",style:{display:"flex",gap:10,alignItems:"center",flexWrap:"wrap"},children:[(0,eO.jsx)("button",{className:"tpl-btn",onClick:()=>{let t="\uFEFF"+[["お客様名","温度(A/B/C)","経路","土地(あり/土地なし)","予算(万円)","最終接触(日前)","次回アクション","予定日","メモ"],...e.map(e=>[e.name,e.grade,e.src,e.land,e.budget,e.last,e.next,e.nextDate,e.note])].map(e=>e.join(",")).join("\n"),r=document.createElement("a");r.href=URL.createObjectURL(new Blob([t],{type:"text/csv"})),r.download="追客リスト.csv",r.click()},children:"📥 テンプレCSVをダウンロード(現データ入り)"}),(0,eO.jsxs)("label",{className:"tpl-btn",style:{cursor:"pointer"},children:["📤 Excel / CSV から取り込む",(0,eO.jsx)("input",{ref:l,type:"file",accept:".csv,.xlsx,.xls",style:{display:"none"},onChange:e=>u(e.target.files?.[0])})]}),(0,eO.jsx)("span",{className:"hint",style:{margin:0},children:"いまお使いの追客Excelをそのまま移行できます。列:お客様名/温度/経路/土地/予算/最終接触/次回アクション/予定日/メモ"}),a&&(0,eO.jsx)("div",{className:`imp-msg ${a.ok?"ok":"ng"}`,style:{flexBasis:"100%"},children:a.t})]}),s.length>0&&(0,eO.jsxs)("div",{className:"alert-center",style:{borderLeftColor:"#D98E32"},children:[(0,eO.jsxs)("div",{className:"alert-title",children:["⏰ 放置アラート(",s.length,"件)— 基準: A=7日 / B=14日 / C=30日"]}),s.map(e=>(0,eO.jsxs)("div",{className:"alert-line amber",children:[(0,eO.jsx)("span",{children:"👤"}),(0,eO.jsxs)("span",{className:"alert-text",children:[e.name,"(",e.grade,"ランク)最終接触から",e.last,"日経過"]}),(0,eO.jsxs)("span",{className:"alert-to",children:["→ ",e.next]})]},e.id))]}),(0,eO.jsxs)("div",{className:"panel",children:[(0,eO.jsx)("div",{className:"proj-tabs",style:{marginBottom:12},children:["all","A","B","C"].map(t=>(0,eO.jsx)("button",{className:`proj-tab ${r===t?"on":""}`,onClick:()=>n(t),children:"all"===t?`\u{5168}\u{4EF6}(${e.length})`:`${t}\u{30E9}\u{30F3}\u{30AF}(${e.filter(e=>e.grade===t).length})`},t))}),(0,eO.jsxs)("table",{className:"tbl",children:[(0,eO.jsx)("thead",{children:(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("th",{children:"お客様"}),(0,eO.jsx)("th",{children:"温度"}),(0,eO.jsx)("th",{children:"経路"}),(0,eO.jsx)("th",{children:"土地"}),(0,eO.jsx)("th",{className:"r",children:"予算"}),(0,eO.jsx)("th",{className:"r",children:"最終接触"}),(0,eO.jsx)("th",{children:"次回アクション(予定日)"}),(0,eO.jsx)("th",{children:"メモ"})]})}),(0,eO.jsx)("tbody",{children:o.map(e=>(0,eO.jsxs)("tr",{children:[(0,eO.jsx)("td",{children:(0,eO.jsx)("b",{children:e.name})}),(0,eO.jsx)("td",{children:(0,eO.jsx)("span",{className:"badge",style:{background:`${C1[e.grade]}22`,color:C1[e.grade]},children:e.grade})}),(0,eO.jsx)("td",{children:e.src}),(0,eO.jsx)("td",{children:e.land}),(0,eO.jsxs)("td",{className:"r",children:[e.budget.toLocaleString(),"万円"]}),(0,eO.jsxs)("td",{className:"r",style:{color:e.last>=14?"#C4554D":void 0,fontWeight:e.last>=14?800:400},children:[e.last,"日前"]}),(0,eO.jsxs)("td",{children:[(0,eO.jsx)("b",{children:e.nextDate})," ",e.next]}),(0,eO.jsx)("td",{style:{fontSize:12,color:"#5C6B77"},children:e.note})]},e.id))})]}),(0,eO.jsx)("div",{className:"hint",children:"スイート連携:資金計画書・設計AIプレゼン・図面アーカイブの類似案・補助金の残枠アラートが、そのまま追客の「接触する口実」になります。"})]})]})},group:"営業"},
 {key:"process",label:"営業プロセス分析",icon:"🔍",comp:function(){
 const h=ew.createElement;
 const num=(v,on,step,w)=>h("input",{type:"number",step:step||1,value:v,onChange:e=>on(+e.target.value||0),style:{width:w||72,textAlign:"right"}});
@@ -8448,5 +8623,83 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
       renderTabs(); renderStatic(); renderTry(); renderQs(); renderResult();
     }
   }, 250);
+})();
+</script>
+<script>
+/* 新卒採用 ROIシミュレーター（#rs-app）。template内のscriptは実行されないのでここで委譲＋出現検知 */
+(function(){
+  var KEYS=['va','n','salary','coef','raise','r1','r2','r3','churn','c_media','c_agent','c_intern','c_event','c_site','c_follow','c_other'];
+  var COSTS=['c_media','c_agent','c_intern','c_event','c_site','c_follow','c_other'];
+  var PRE={
+    base:{va:690,n:3,salary:23.7,coef:1.4,raise:3,r1:0.4,r2:0.8,r3:1.0,churn:33.8,c_media:150,c_agent:100,c_intern:100,c_event:60,c_site:50,c_follow:40,c_other:0},
+    intern:{r1:0.6,r2:0.9,r3:1.0,churn:15,c_agent:0,c_intern:150,c_follow:60},
+    small:{churn:41.9},
+    none:{churn:0}
+  };
+  function app(){return document.getElementById('rs-app');}
+  function el(a,k){return a.querySelector('[data-rs="'+k+'"]');}
+  function out(a,k){return a.querySelector('[data-rso="'+k+'"]');}
+  function fmt(x){return Math.round(x).toLocaleString('ja-JP');}
+  function sg(x){return (Math.round(x)<0?'▲':'')+fmt(Math.abs(x));}
+  function pc(x){var r=Math.round(x);return (r<0?'▲':'＋')+Math.abs(r)+'%';}
+  function read(a){var o={};KEYS.forEach(function(k){o[k]=parseFloat(el(a,k).value)||0;});o.cost=COSTS.reduce(function(s,k){return s+o[k];},0);return o;}
+  function head(p,va,w){
+    var b=p.salary*12*p.coef,g=1+p.raise/100,cs=[b,b*g,b*g*g],rp=[p.r1,p.r2,p.r3];
+    var v=rp.map(function(r,i){return va*r*w[i];}),c=cs.map(function(x,i){return x*w[i];});
+    return {v:v,c:c,p:v.map(function(x,i){return x-c[i];})};
+  }
+  function sum(x){return x.reduce(function(s,y){return s+y;},0);}
+  function calc(p,va){
+    var st=head(p,va,[1,1,1]),lv=head(p,va,[1,0.5,0]),q=p.churn/100,ns=p.n*(1-q),nl=p.n*q;
+    var V=ns*sum(st.v)+nl*sum(lv.v),C=ns*sum(st.c)+nl*sum(lv.c),net=V-C-p.cost,inv=C+p.cost;
+    return {V:V,C:C,net:net,roi:inv>0?net/inv*100:0,st:st};
+  }
+  function be(p){var a=calc(p,0).net,b=calc(p,1000).net,s=(b-a)/1000;return s>0?-a/s:Infinity;}
+  function render(a){
+    var p=read(a),r=calc(p,p.va),B=be(p);
+    out(a,'va').textContent=fmt(p.va)+'万円';
+    out(a,'n').textContent=p.n+'名';
+    out(a,'cpp').textContent='1人あたり'+fmt(p.cost/Math.max(p.n,1))+'万円';
+    out(a,'cost').textContent=fmt(p.cost)+'万円';
+    out(a,'salary').textContent=p.salary+'万円';
+    out(a,'coef').textContent='×'+p.coef.toFixed(2)+'（年'+fmt(p.salary*12*p.coef)+'万円）';
+    out(a,'raise').textContent=p.raise+'%';
+    out(a,'ramp').textContent=p.r1+' / '+p.r2+' / '+p.r3;
+    out(a,'churn').textContent=p.churn+'%';
+    var o=out(a,'roi');o.textContent=pc(r.roi);o.className='v '+(r.roi>=0?'pos':'neg');
+    o=out(a,'net');o.innerHTML=sg(r.net)+'<small>万円</small>';o.className='v '+(r.net>=0?'pos':'neg');
+    out(a,'be').innerHTML=(isFinite(B)?fmt(B):'—')+'<small>万円／年</small>';
+    out(a,'be_n').textContent=isFinite(B)?('いま'+fmt(p.va)+'万円 → '+(p.va>=B?'ラインを'+fmt(p.va-B)+'万円上回る':'あと'+fmt(B-p.va)+'万円足りない')):'この条件では回収できない';
+    var d=out(a,'dot'),t=out(a,'vtext');
+    if(r.roi>=20){d.style.background='#2f9e82';t.textContent='3年で回収できます。採用費'+fmt(p.cost)+'万円は妥当な投資です。定着を守れば成り立ちます。';}
+    else if(r.roi>=0){d.style.background='#e0a33a';t.textContent='3年でぎりぎり回収です。もう1人辞めると赤字に転じます。定着の手当てと1年目の立ち上がりが条件です。';}
+    else{d.style.background='#d1574b';t.textContent='3年では回収できません。「5年で回収する投資」として判断するか、1人あたり付加価値を'+(isFinite(B)?fmt(B)+'万円':'さらに')+'以上に上げる・採用費を下げる・1年目の戦力換算を上げる・離職を減らす、のどれかが要ります。';}
+    var s=r.st,names={v:'生む付加価値',c:'人件費',p:'純貢献'};
+    out(a,'tbl').innerHTML=['v','c','p'].map(function(k){
+      var x=s[k],T=sum(x),neg=function(n){return k==='p'&&Math.round(n)<0?' class="neg"':(k==='p'&&k?' class="pos"':'');};
+      return '<tr'+(k==='p'?' class="tt"':'')+'><td>'+names[k]+'</td>'+x.map(function(n){return '<td'+neg(n)+'>'+sg(n)+'</td>';}).join('')+'<td'+neg(T)+'>'+sg(T)+'</td></tr>';
+    }).join('');
+    var rows=[['付加価値',r.V],['人件費',-r.C],['採用費',-p.cost],['純利益',r.net]],mx=Math.max.apply(null,rows.map(function(x){return Math.abs(x[1]);}).concat([1]));
+    out(a,'bars').innerHTML=rows.map(function(x){var n=x[1]<0;return '<div class="rs-bar"><span>'+x[0]+'</span><div class="tr"><div class="fi'+(n?' neg':'')+'" style="width:'+(Math.abs(x[1])/mx*100)+'%"></div></div><span class="va'+(n?' neg':'')+'">'+sg(x[1])+'</span></div>';}).join('');
+    var lb=['−20%','−10%','いま','＋10%','＋25%','＋50%'],mul=[0.8,0.9,1,1.1,1.25,1.5];
+    out(a,'sens').innerHTML=mul.map(function(m,i){var v=p.va*m,rr=calc(p,v);return '<div class="rs-sc'+(i===2?' cur':'')+'"><div class="l">'+lb[i]+'</div><div class="v '+(rr.roi>=0?'pos':'neg')+'">'+pc(rr.roi)+'</div><div class="d">'+fmt(v)+'万円／年</div></div>';}).join('');
+  }
+  function syncInd(a){var ind=el(a,'ind'),v=el(a,'va').value,m=null;for(var i=0;i<ind.options.length;i++){if(ind.options[i].value===v){m=v;break;}}ind.value=m||'custom';}
+  document.addEventListener('input',function(e){
+    var a=app(),t=e.target;if(!a||!t||!t.closest||!t.closest('#rs-app'))return;
+    if(t.getAttribute('data-rs')==='va')syncInd(a);
+    if(t.getAttribute('data-rs')==='ind'){if(t.value!=='custom')el(a,'va').value=t.value;}
+    render(a);
+  });
+  document.addEventListener('change',function(e){
+    var a=app(),t=e.target;if(!a||!t||t.getAttribute&&t.getAttribute('data-rs')!=='ind'||!t.closest('#rs-app'))return;
+    if(t.value!=='custom')el(a,'va').value=t.value;render(a);
+  });
+  document.addEventListener('click',function(e){
+    var a=app(),b=e.target&&e.target.closest?e.target.closest('#rs-app [data-rs-pre]'):null;if(!a||!b)return;
+    var pr=PRE[b.getAttribute('data-rs-pre')];Object.keys(pr).forEach(function(k){el(a,k).value=pr[k];});
+    syncInd(a);render(a);
+  });
+  setInterval(function(){var a=app();if(a&&!a.getAttribute('data-rs-ready')){a.setAttribute('data-rs-ready','1');render(a);}},250);
 })();
 </script>
