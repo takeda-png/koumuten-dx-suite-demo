@@ -1525,9 +1525,6 @@ return S;})();
 #rs-app input[type=range]{width:100%;accent-color:#2f9e82}
 #rs-app .rs-u{font-size:12px;color:#7e8b96;white-space:nowrap}
 #rs-app .rs-hint{font-size:11.5px;color:#7e8b96;line-height:1.7}
-#rs-app .rs-ci{display:grid;grid-template-columns:minmax(0,1fr) 96px;gap:6px;align-items:center;font-size:12.5px;color:#5c6b66}
-#rs-app .rs-tot{display:flex;justify-content:space-between;align-items:baseline;padding:7px 10px;background:#f2fbf7;border-radius:8px;font-size:12.5px;margin-top:4px}
-#rs-app .rs-tot b{font-size:17px;font-variant-numeric:tabular-nums}
 #rs-app .rs-pre{display:flex;flex-wrap:wrap;gap:6px}
 #rs-app .rs-pre button{font:inherit;font-size:12px;padding:5px 10px;border:1px solid #e5e2d8;border-radius:999px;background:#fff;color:#16302b;cursor:pointer}
 #rs-app .rs-pre button:hover{border-color:#2f9e82;color:#1b6b57}
@@ -1609,17 +1606,10 @@ return S;})();
         <span class="rs-row"><input data-rs="n" type="number" min="1" max="50" step="1" value="3"><span class="rs-u">名</span></span>
       </label>
 
-      <div class="rs-f"><span>採用費の内訳（万円）<b data-rso="cpp"></b></span>
-        <label class="rs-ci"><span>ナビ媒体・掲載費</span><input data-rs="c_media" data-rs-c type="number" min="0" step="10" value="150"></label>
-        <label class="rs-ci"><span>紹介会社への成功報酬</span><input data-rs="c_agent" data-rs-c type="number" min="0" step="10" value="100"></label>
-        <label class="rs-ci"><span>長期インターン人件費</span><input data-rs="c_intern" data-rs-c type="number" min="0" step="10" value="100"></label>
-        <label class="rs-ci"><span>説明会・合説・イベント</span><input data-rs="c_event" data-rs-c type="number" min="0" step="10" value="60"></label>
-        <label class="rs-ci"><span>採用サイト・制作物</span><input data-rs="c_site" data-rs-c type="number" min="0" step="10" value="50"></label>
-        <label class="rs-ci"><span>内定者フォロー・研修</span><input data-rs="c_follow" data-rs-c type="number" min="0" step="10" value="40"></label>
-        <label class="rs-ci"><span>その他</span><input data-rs="c_other" data-rs-c type="number" min="0" step="10" value="0"></label>
-        <div class="rs-tot"><span>合計</span><b data-rso="cost"></b></div>
-        <em class="rs-hint">人事・面接官の工数は含めていません。含めるなら「その他」へ</em>
-      </div>
+      <label class="rs-f"><span>採用費（全員分の合計）<b data-rso="cpp"></b></span>
+        <span class="rs-row"><input data-rs="cost" type="number" min="0" step="10" value="500"><span class="rs-u">万円</span></span>
+        <em class="rs-hint">媒体・紹介手数料・イベント・制作物・内定者フォローなどの合計。社内の工数は含めない</em>
+      </label>
 
       <label class="rs-f"><span>初任給（月額）<b data-rso="salary"></b></span>
         <span class="rs-row"><input data-rs="salary" type="number" min="15" max="50" step="0.1" value="23.7"><span class="rs-u">万円／月</span></span>
@@ -8628,11 +8618,10 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
 <script>
 /* 新卒採用 ROIシミュレーター（#rs-app）。template内のscriptは実行されないのでここで委譲＋出現検知 */
 (function(){
-  var KEYS=['va','n','salary','coef','raise','r1','r2','r3','churn','c_media','c_agent','c_intern','c_event','c_site','c_follow','c_other'];
-  var COSTS=['c_media','c_agent','c_intern','c_event','c_site','c_follow','c_other'];
+  var KEYS=['va','n','salary','coef','raise','r1','r2','r3','churn','cost'];
   var PRE={
-    base:{va:690,n:3,salary:23.7,coef:1.4,raise:3,r1:0.4,r2:0.8,r3:1.0,churn:33.8,c_media:150,c_agent:100,c_intern:100,c_event:60,c_site:50,c_follow:40,c_other:0},
-    intern:{r1:0.6,r2:0.9,r3:1.0,churn:15,c_agent:0,c_intern:150,c_follow:60},
+    base:{va:690,n:3,salary:23.7,coef:1.4,raise:3,r1:0.4,r2:0.8,r3:1.0,churn:33.8,cost:500},
+    intern:{r1:0.6,r2:0.9,r3:1.0,churn:15},
     small:{churn:41.9},
     none:{churn:0}
   };
@@ -8642,7 +8631,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
   function fmt(x){return Math.round(x).toLocaleString('ja-JP');}
   function sg(x){return (Math.round(x)<0?'▲':'')+fmt(Math.abs(x));}
   function pc(x){var r=Math.round(x);return (r<0?'▲':'＋')+Math.abs(r)+'%';}
-  function read(a){var o={};KEYS.forEach(function(k){o[k]=parseFloat(el(a,k).value)||0;});o.cost=COSTS.reduce(function(s,k){return s+o[k];},0);return o;}
+  function read(a){var o={};KEYS.forEach(function(k){o[k]=parseFloat(el(a,k).value)||0;});return o;}
   function head(p,va,w){
     var b=p.salary*12*p.coef,g=1+p.raise/100,cs=[b,b*g,b*g*g],rp=[p.r1,p.r2,p.r3];
     var v=rp.map(function(r,i){return va*r*w[i];}),c=cs.map(function(x,i){return x*w[i];});
@@ -8660,7 +8649,6 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     out(a,'va').textContent=fmt(p.va)+'万円';
     out(a,'n').textContent=p.n+'名';
     out(a,'cpp').textContent='1人あたり'+fmt(p.cost/Math.max(p.n,1))+'万円';
-    out(a,'cost').textContent=fmt(p.cost)+'万円';
     out(a,'salary').textContent=p.salary+'万円';
     out(a,'coef').textContent='×'+p.coef.toFixed(2)+'（年'+fmt(p.salary*12*p.coef)+'万円）';
     out(a,'raise').textContent=p.raise+'%';
