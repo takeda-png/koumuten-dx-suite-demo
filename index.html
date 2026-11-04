@@ -1561,12 +1561,29 @@ return S;})();
 #rs-app .rs-sc .v{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums}
 #rs-app .rs-sc .d{font-size:11.5px;color:#7e8b96}
 #rs-app .rs-note{background:#f2fbf7;border-left:3px solid #2f9e82;border-radius:0 8px 8px 0;padding:9px 12px;font-size:12px;line-height:1.8;color:#28453c}
+#rs-app .rs-why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media(max-width:1180px){#rs-app .rs-why{grid-template-columns:minmax(0,1fr)}}
+#rs-app .rs-wc{background:#fff;border:1px solid #e5e2d8;border-top:4px solid #2f9e82;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+#rs-app .rs-wc .t{font-size:12px;font-weight:700;color:#2f9e82;letter-spacing:.04em}
+#rs-app .rs-wc .big{font-size:24px;font-weight:800;line-height:1.25;font-variant-numeric:tabular-nums;color:#16302b;overflow-wrap:anywhere}
+#rs-app .rs-wc .big small{font-size:13px;margin-left:3px}
+#rs-app .rs-wc p{margin:0;font-size:12.5px;line-height:1.8;color:#3a443e}
+#rs-app .rs-wc .mini{display:flex;flex-direction:column;gap:3px;font-size:12px;color:#5c6b66}
+#rs-app .rs-wc .cap{font-size:11px;color:#7e8b96;line-height:1.7}
+#rs-app .rs-yrs{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:4px;align-items:end;height:170px;padding-top:18px;position:relative;border-bottom:1px solid #cfd8d3}
+#rs-app .rs-yr{position:relative;height:100%}
+#rs-app .rs-yr i{position:absolute;left:12%;right:12%;border-radius:3px}
+#rs-app .rs-yr i.p{background:#2f9e82}#rs-app .rs-yr i.m{background:#d1574b}
+#rs-app .rs-yr i.pb{outline:2px solid #e0a33a;outline-offset:1px}
+#rs-app .rs-yr em{position:absolute;left:0;right:0;font-size:10.5px;text-align:center;font-variant-numeric:tabular-nums;color:#3a443e;white-space:nowrap}
+#rs-app .rs-yl{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:4px;font-size:11px;color:#7e8b96;text-align:center;margin-top:4px}
+#rs-app .rs-zero{position:absolute;left:0;right:0;border-top:1px dashed #9aa8a2}
 #rs-app .rs-src{font-size:11.5px;color:#7e8b96;line-height:1.8}
 </style>
 <div id="rs-app">
   <div class="module-head">
     <h2>新卒採用 ROIシミュレーター</h2>
-    <p>新卒を採ったら何年で元が取れるかを試算します。1人が生む付加価値・採用費・初任給・定着率を入れると、3年間のROIと「3年で回収するのに必要な付加価値」が出ます。初期値は建設業の中小企業平均です。自社の決算書の数字に置き換えてください。</p>
+    <p>新卒を採ったら何年で元が取れるかを試算します。1人が生む付加価値・採用費・初任給・定着率を入れると、3年間のROIと「3年で回収するのに必要な付加価値」が出ます。3年で区切った数字に加えて、10年の累積・採らなかった場合に逃す粗利・月額にならした採用費の3つの見方で「この採用費を払う理由」を示します。初期値は建設業の中小企業平均です。自社の決算書の数字に置き換えてください。</p>
   </div>
 
   <div class="rs-grid">
@@ -1647,6 +1664,39 @@ return S;})();
       </div>
 
       <div class="rs-vd"><i data-rso="dot"></i><div data-rso="vtext"></div></div>
+
+      <div class="panel">
+        <div class="rs-h">この採用費を払う理由</div>
+        <div class="rs-why">
+          <div class="rs-wc">
+            <div class="t">① 長く見ると</div>
+            <div class="big" data-rso="w10"></div>
+            <p data-rso="w10t"></p>
+            <div class="cap">新卒は1年目が赤字、3年目から一人前の稼ぎになります。3年で区切ると、いちばん稼ぐ時期を数えないことになります。</div>
+          </div>
+          <div class="rs-wc">
+            <div class="t">② 採らないと失うもの</div>
+            <label class="mini"><span>人手が足りず断っている棟数</span><span class="rs-row"><input data-rs="lose" type="number" min="0" max="50" step="0.5" value="1"><span class="rs-u">棟/年</span></span></label>
+            <label class="mini"><span>1棟あたりの粗利</span><span class="rs-row"><input data-rs="gp" type="number" min="0" step="10" value="992"><span class="rs-u">万円</span></span></label>
+            <div class="big" data-rso="wl"></div>
+            <p data-rso="wlt"></p>
+            <div class="cap">受注に対して監督・職人が足りない会社の見方です。上のROIには含めていません。1棟粗利の初期値は、3ヶ年経営計画と同じ平均単価4,048万円×粗利率24.5%。</div>
+          </div>
+          <div class="rs-wc">
+            <div class="t">③ 月額にならすと</div>
+            <div class="big" data-rso="wm"></div>
+            <p data-rso="wmt"></p>
+            <div class="cap">1人あたりの採用費を、10年間で見込める在籍月数（離職の分を差し引いた期待値）で割った金額です。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="rs-h">累積の収支（全員分・万円）<span class="rs-u" style="margin-left:8px;font-weight:400" data-rso="pbl"></span></div>
+        <div class="rs-yrs" data-rso="yrs"></div>
+        <div class="rs-yl"><span>採用時</span><span>1年</span><span>2年</span><span>3年</span><span>4年</span><span>5年</span><span>6年</span><span>7年</span><span>8年</span><span>9年</span><span>10年</span></div>
+        <div class="rs-hint" style="margin-top:8px">採用時に採用費を払い、その後は毎年の「付加価値 − 人件費」を足していきます。4年目以降は戦力換算を3年目のまま・人件費は昇給率どおり増える前提で、4年目以降の離職は見込んでいません。オレンジ枠が回収した年です。</div>
+      </div>
 
       <div class="panel">
         <div class="rs-h">定着した1人の3年モデル（万円）</div>
@@ -8618,7 +8668,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
 <script>
 /* 新卒採用 ROIシミュレーター（#rs-app）。template内のscriptは実行されないのでここで委譲＋出現検知 */
 (function(){
-  var KEYS=['va','n','salary','coef','raise','r1','r2','r3','churn','cost'];
+  var KEYS=['va','n','salary','coef','raise','r1','r2','r3','churn','cost','lose','gp'];
   var PRE={
     base:{va:690,n:3,salary:23.7,coef:1.4,raise:3,r1:0.4,r2:0.8,r3:1.0,churn:33.8,cost:500},
     intern:{r1:0.6,r2:0.9,r3:1.0,churn:15},
@@ -8643,6 +8693,17 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     var V=ns*sum(st.v)+nl*sum(lv.v),C=ns*sum(st.c)+nl*sum(lv.c),net=V-C-p.cost,inv=C+p.cost;
     return {V:V,C:C,net:net,roi:inv>0?net/inv*100:0,st:st};
   }
+  /* 10年の年ごと収支（全員分）。離職は3年以内のみ（平均1.5年在籍） */
+  function years(p,va,Y){
+    var b=p.salary*12*p.coef,g=1+p.raise/100,q=p.churn/100,ns=p.n*(1-q),nl=p.n*q,rp=[p.r1,p.r2,p.r3],cum=[-p.cost],c=-p.cost,mon=0;
+    for(var t=1;t<=Y;t++){
+      var r=t<=3?rp[t-1]:p.r3,cs=b*Math.pow(g,t-1),w=t===1?1:(t===2?0.5:0),y=ns*(va*r-cs)+nl*w*(va*r-cs);
+      c+=y;cum.push(c);
+    }
+    mon=(1-q)*Y*12+q*18;
+    return {cum:cum,mon:mon};
+  }
+  function payback(cum){for(var t=1;t<cum.length;t++){if(cum[t]>=0){var f=cum[t-1]<0?(-cum[t-1])/(cum[t]-cum[t-1]):0;return t-1+f;}}return Infinity;}
   function be(p){var a=calc(p,0).net,b=calc(p,1000).net,s=(b-a)/1000;return s>0?-a/s:Infinity;}
   function render(a){
     var p=read(a),r=calc(p,p.va),B=be(p);
@@ -8661,7 +8722,7 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     var d=out(a,'dot'),t=out(a,'vtext');
     if(r.roi>=20){d.style.background='#2f9e82';t.textContent='3年で回収できます。採用費'+fmt(p.cost)+'万円は妥当な投資です。定着を守れば成り立ちます。';}
     else if(r.roi>=0){d.style.background='#e0a33a';t.textContent='3年でぎりぎり回収です。もう1人辞めると赤字に転じます。定着の手当てと1年目の立ち上がりが条件です。';}
-    else{d.style.background='#d1574b';t.textContent='3年では回収できません。「5年で回収する投資」として判断するか、1人あたり付加価値を'+(isFinite(B)?fmt(B)+'万円':'さらに')+'以上に上げる・採用費を下げる・1年目の戦力換算を上げる・離職を減らす、のどれかが要ります。';}
+    else{d.style.background='#d1574b';t.textContent='3年では回収できません。下の「長く見ると」で何年で回収できるかを確認するか、1人あたり付加価値を'+(isFinite(B)?fmt(B)+'万円':'さらに')+'以上に上げる・採用費を下げる・1年目の戦力換算を上げる・離職を減らす、のどれかが要ります。';}
     var s=r.st,names={v:'生む付加価値',c:'人件費',p:'純貢献'};
     out(a,'tbl').innerHTML=['v','c','p'].map(function(k){
       var x=s[k],T=sum(x),neg=function(n){return k==='p'&&Math.round(n)<0?' class="neg"':(k==='p'&&k?' class="pos"':'');};
@@ -8670,6 +8731,21 @@ h("div",{className:"hint"},"件数だけでなく「止まっている案件を�
     var rows=[['付加価値',r.V],['人件費',-r.C],['採用費',-p.cost],['純利益',r.net]],mx=Math.max.apply(null,rows.map(function(x){return Math.abs(x[1]);}).concat([1]));
     out(a,'bars').innerHTML=rows.map(function(x){var n=x[1]<0;return '<div class="rs-bar"><span>'+x[0]+'</span><div class="tr"><div class="fi'+(n?' neg':'')+'" style="width:'+(Math.abs(x[1])/mx*100)+'%"></div></div><span class="va'+(n?' neg':'')+'">'+sg(x[1])+'</span></div>';}).join('');
     var lb=['−20%','−10%','いま','＋10%','＋25%','＋50%'],mul=[0.8,0.9,1,1.1,1.25,1.5];
+    var L=years(p,p.va,10),pb=payback(L.cum),c10=L.cum[10],c5=L.cum[5];
+    o=out(a,'w10');o.innerHTML=sg(c10)+'<small>万円（10年）</small>';o.className='big '+(c10>=0?'pos':'neg');
+    out(a,'w10t').textContent=(isFinite(pb)?('回収は'+(pb<1?'1年以内':('約'+pb.toFixed(1)+'年'))+'。'):'10年でも回収できません。')+'5年で'+sg(c5)+'万円、10年で'+sg(c10)+'万円。'+(p.cost>0&&c10>0?('採用費'+fmt(p.cost)+'万円を差し引いても、その約'+(c10/p.cost).toFixed(1)+'倍が手元に残る計算です。'):'');
+    var lost=p.lose*p.gp*3;
+    o=out(a,'wl');o.innerHTML=fmt(lost)+'<small>万円（3年）</small>';o.className='big '+(lost>0?'neg':'');
+    out(a,'wlt').textContent=p.lose>0?('年'+p.lose+'棟を断ると、3年で粗利'+fmt(lost)+'万円を逃します。採用費'+fmt(p.cost)+'万円の'+(p.cost>0?('約'+(lost/p.cost).toFixed(1)+'倍'):'—')+'です。'):'いま断っている仕事がなければ、この見方は当てはまりません。';
+    var pm=p.n>0&&L.mon>0?p.cost/p.n/L.mon:0;
+    out(a,'wm').innerHTML='月'+(pm>=1?pm.toFixed(1)+'<small>万円</small>':fmt(pm*10000)+'<small>円</small>')+'<small>／1人</small>';
+    out(a,'wmt').textContent='1人あたり採用費'+fmt(p.cost/Math.max(p.n,1))+'万円 ÷ 見込み在籍'+Math.round(L.mon)+'か月。年間人件費'+fmt(p.salary*12*p.coef)+'万円の人を確保するための上乗せとして見ると、人件費の約'+(p.salary*p.coef>0?((pm/(p.salary*p.coef))*100).toFixed(1):'—')+'%です。';
+    out(a,'pbl').textContent=isFinite(pb)?('回収 約'+pb.toFixed(1)+'年'):'10年で回収できない';
+    var mxv=Math.max.apply(null,L.cum.map(Math.abs).concat([1])),hi=Math.max.apply(null,L.cum.concat([0])),lo=Math.min.apply(null,L.cum.concat([0])),span=Math.max(hi-lo,1),z=hi/span*100,pbY=isFinite(pb)?Math.ceil(pb):-1;
+    out(a,'yrs').innerHTML='<div class="rs-zero" style="top:calc(18px + (100% - 18px)*'+(z/100).toFixed(4)+')"></div>'+L.cum.map(function(v,t){
+      var h=Math.abs(v)/span*100,top=v>=0?(z-h):z,cls=(v>=0?'p':'m')+(t===pbY?' pb':''),lab=v>=0?('bottom:'+(100-top)+'%'):('top:'+(top+h)+'%');
+      return '<div class="rs-yr"><i class="'+cls+'" style="top:'+top+'%;height:'+Math.max(h,0.6)+'%"></i><em style="'+(v>=0?'bottom:calc('+(100-top)+'% + 2px)':'bottom:calc('+(100-z)+'% + 2px)')+'">'+sg(v)+'</em></div>';
+    }).join('');
     out(a,'sens').innerHTML=mul.map(function(m,i){var v=p.va*m,rr=calc(p,v);return '<div class="rs-sc'+(i===2?' cur':'')+'"><div class="l">'+lb[i]+'</div><div class="v '+(rr.roi>=0?'pos':'neg')+'">'+pc(rr.roi)+'</div><div class="d">'+fmt(v)+'万円／年</div></div>';}).join('');
   }
   function syncInd(a){var ind=el(a,'ind'),v=el(a,'va').value,m=null;for(var i=0;i<ind.options.length;i++){if(ind.options[i].value===v){m=v;break;}}ind.value=m||'custom';}
